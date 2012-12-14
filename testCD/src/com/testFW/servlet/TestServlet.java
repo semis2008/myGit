@@ -1,4 +1,4 @@
-package com.testCD.servlet;
+package com.testFW.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

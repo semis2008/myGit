@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <servlet-name>test</servlet-name>
-    <servlet-class>com.testCD.servlet.TestServlet</servlet-class>
+    <servlet-class>com.testFW.servlet.TestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>test</servlet-name>
@@ -12,11 +12,11 @@
     <session-timeout>40</session-timeout>
   </session-config>
   <listener>
-    <listener-class>com.testCD.listener.SessionListener</listener-class>
+    <listener-class>com.testFW.listener.SessionListener</listener-class>
   </listener>
   <filter>
     <filter-name>encodingFilter</filter-name>
-    <filter-class>com.testCD.filter.CharSetFilter</filter-class>
+    <filter-class>com.testFW.filter.CharSetFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
@@ -42,8 +42,8 @@
     <extension>ppt</extension>
     <mime-type>application/vnd.ms-powerpoint</mime-type>
   </mime-mapping>
-  <display-name>测试跨域网站1</display-name>
-  <description>用来进行跨域访问测试的网站1</description>
+  <display-name>测试架构网站</display-name>
+  <description>用来进行架构设计测试的网站</description>
   <icon>
     <small-icon>/img/small.gif</small-icon>
     <large-icon>/img/large.gif</large-icon>
