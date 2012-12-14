@@ -1,63 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>com.testFW.servlet.TestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test.do</url-pattern>
-  </servlet-mapping>
-  <session-config>
-    <session-timeout>40</session-timeout>
-  </session-config>
-  <listener>
-    <listener-class>com.testFW.listener.SessionListener</listener-class>
-  </listener>
-  <filter>
-    <filter-name>encodingFilter</filter-name>
-    <filter-class>com.testFW.filter.CharSetFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-    <init-param>
-      <param-name>ignore</param-name>
-      <param-value>false</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>encodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <mime-mapping>
-    <extension>doc</extension>
-    <mime-type>application/vnd.ms-word</mime-type>
-  </mime-mapping>
-  <mime-mapping>
-    <extension>xls</extension>
-    <mime-type>application/vnd.ms-excel</mime-type>
-  </mime-mapping>
-  <mime-mapping>
-    <extension>ppt</extension>
-    <mime-type>application/vnd.ms-powerpoint</mime-type>
-  </mime-mapping>
-  <display-name>测试架构网站</display-name>
-  <description>用来进行架构设计测试的网站</description>
-  <icon>
-    <small-icon>/img/small.gif</small-icon>
-    <large-icon>/img/large.gif</large-icon>
-  </icon>
-  <welcome-file-list>
-    <welcome-file>/jsp/index.jsp</welcome-file>
-    <welcome-file>/jsp/welcome.jsp</welcome-file>
-  </welcome-file-list>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/jsp/error404.jsp</location>
-  </error-page>
-  <error-page>
-    <exception-type>java.lang.Exception</exception-type>
-    <location>/jsp/exception.jsp</location>
-  </error-page>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<session-config>
+		<session-timeout>40</session-timeout>
+	</session-config>
+	<listener>
+		<listener-class>com.testFW.listener.SessionListener</listener-class>
+	</listener>
+	<!-- Character Encoding filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!-- 过滤不合法的访问请求 -->
+	 <filter>
+		<filter-name>UrlFilter</filter-name>
+		<filter-class>com.testFW.filter.UrlFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- listener -->
+	<!-- log4j监听 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- Spring监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/conf/application*.xml,
+			/WEB-INF/conf/TestFW_*.xml
+		</param-value>
+	</context-param>
+	<mime-mapping>
+		<extension>doc</extension>
+		<mime-type>application/vnd.ms-word</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xls</extension>
+		<mime-type>application/vnd.ms-excel</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>ppt</extension>
+		<mime-type>application/vnd.ms-powerpoint</mime-type>
+	</mime-mapping>
+	<display-name>测试架构网站</display-name>
+	<description>用来进行架构设计测试的网站</description>
+
+
+	<!-- Servlet类配置，除测试类外，其他Servlet均采用代理的方式利用Spring的IOC注入 -->
+	<servlet>
+		<servlet-name>test</servlet-name>
+		<servlet-class>com.testFW.servlet.TestServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>User</servlet-name>
+		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>System</servlet-name>
+		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
+	</servlet>
+
+	<!-- Servlet路径配置 -->
+	<servlet-mapping>
+		<servlet-name>test</servlet-name>
+		<url-pattern>/test.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>User</servlet-name>
+		<url-pattern>/user.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>System</servlet-name>
+		<url-pattern>/system.do</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+	<icon>
+		<small-icon>/img/small.gif</small-icon>
+		<large-icon>/img/large.gif</large-icon>
+	</icon>
+	<welcome-file-list>
+		<welcome-file>/jsp/index.jsp</welcome-file>
+		<welcome-file>/jsp/welcome.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/jsp/exception.jsp</location>
+	</error-page>
 </web-app>
