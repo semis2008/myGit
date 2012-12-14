@@ -7,12 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.RequestWrapper;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-
-import com.testFW.service.UserService;
 
 /**
  * 系统响应处理

@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 过滤不合法的访问路径
+ * 
  * @author Kalor
  * @time 2012-12-14
- *
+ * 
  */
 public class UrlFilter implements Filter {
 	private static Logger logger = Logger.getLogger(UrlFilter.class);
@@ -47,10 +48,11 @@ public class UrlFilter implements Filter {
 		logger.info("开始过滤URL:" + targetURL);
 
 		// 本系统网站访问路径均通过Servlet进行，所有直接访问文件的路径均不合法
-		if (targetURL.contains(".jsp") || targetURL.contains(".js")
-				|| targetURL.contains(".css") || targetURL.contains(".html")) {
-			response.sendRedirect(request.getContextPath() + "/system.do?fun=error");
-			logger.error("URL路径不合法！Url:"+targetURL);
+		if (targetURL.contains(".jsp") || targetURL.contains(".htm")
+				|| targetURL.contains(".html")) {
+			response.sendRedirect(request.getContextPath()
+					+ "/system.do?fun=error");
+			logger.error("URL路径不合法！Url:" + targetURL);
 			return;
 		}
 		// 加入filter链继续向下执行
