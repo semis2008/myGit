@@ -12,19 +12,21 @@ import org.springframework.stereotype.Component;
 
 import com.testFW.service.UserService;
 
+/**
+ * 用户相关处理类
+ * 
+ * @author Kalor
+ * @time 2012-12-14
+ */
 @Component
-public class UserServlet extends HttpServlet{
-	/**
-	 * 
-	 */
+public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(UserServlet.class);
-	
 	private UserService userService;
+
 	public void setUserService(UserService service) {
 		this.userService = service;
 	}
-	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -35,17 +37,21 @@ public class UserServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.setContentType("text/html;charset=utf-8");  
+		resp.setContentType("text/html;charset=utf-8");
 		String fun = (String) req.getParameter("fun");
-		if("regist".equals(fun)) {
-			 registUser(req,resp);
+		if ("regist".equals(fun)) {
+			registUser(req, resp);
 		}
 	}
-	
-	//
-	private boolean registUser (HttpServletRequest req, HttpServletResponse resp) {
+
+	/**
+	 * 用户注册
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	private boolean registUser(HttpServletRequest req, HttpServletResponse resp) {
 		return false;
 	}
-	
+
 }
-	

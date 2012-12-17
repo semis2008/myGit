@@ -28,7 +28,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 * } 
 * </code> 
 * @author Kalor 
-* @version 1.0 2012-12-14 
+* @time 2012-12-14 
 */ 
 public class DbUtilsTemplate { 
 

@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
  * ≤‚ ‘¿‡
  * 
  * @author kalor
- * @date Sep 14, 2012
+ * @time 2012-12-14
  */
 public class FwTest extends TestCase {
 	private final static Logger logger = Logger.getLogger(FwTest.class);

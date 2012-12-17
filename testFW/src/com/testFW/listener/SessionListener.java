@@ -1,7 +1,15 @@
 package com.testFW.listener;
+
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-public class SessionListener implements HttpSessionListener{
+
+/**
+ * session监听器
+ * 
+ * @author Kalor
+ * @time 2012-11-14
+ */
+public class SessionListener implements HttpSessionListener {
 
 	@Override
 	public void sessionCreated(HttpSessionEvent httpsessionevent) {
