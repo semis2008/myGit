@@ -24,6 +24,7 @@
 	<div>
 		<input type="button" onclick="showMsg()" value="点击获取后台信息"/>
 		<span id="showMsg"></span>
+		<a href='http://www.testFW.com/action/system/mainpage'>主页</a>
 	</div>
 </body>
 </html>

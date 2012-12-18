@@ -43,6 +43,9 @@ public class SystemServlet extends HttpServlet {
 		if ("exception".equals(fun)) {
 			targetpath = "/jsp/exception.jsp";
 		}
+		if ("mainpage".equals(fun)) {
+			targetpath = "/jsp/mainPage.jsp";
+		}
 		RequestDispatcher rd = req.getRequestDispatcher(targetpath);
 		rd.forward(req, resp);
 	}
