@@ -12,7 +12,7 @@ CREATE TABLE `user` (
   `msn` varchar(20) DEFAULT NULL,
   `photo` varchar(100) DEFAULT NULL,
   `integral` bigint(20) NOT NULL DEFAULT '0' COMMENT '积分',
-  `authority` int(20) NOT NULL DEFAULT '0' COMMENT '权限',
+  `authority` bigint(20) NOT NULL DEFAULT '0' COMMENT '权限',
   `state` varchar(20) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8

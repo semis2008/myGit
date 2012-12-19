@@ -1,3 +1,7 @@
+html {
+    background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;
+    height: 100%;
+}
 body {
    	background: url("../img/bg_body.gif") repeat-y scroll left top transparent;
     color: #555555;
@@ -124,6 +128,9 @@ li.active #mainpage:hover, li.active #mainpage, body.home li #mainpage {
 #mainpage:hover {
     background-position: -160px 0;
 }
+li.active #mainpage:hover, li.active #mainpage {
+    background-position: -80px 0px;
+}
 #diary {
     background-position: 0 -90px;
 }
@@ -150,4 +157,44 @@ li.active #picture:hover, li.active #picture {
 }
 li.active #aboutus:hover, li.active #aboutus {
     background-position: -80px -180px;
+}
+.main_wrap {
+    margin: 0;
+    padding-left: 120px;
+}
+.main {
+    margin: 0;
+    overflow: hidden;
+    padding: 24px 0;
+    width: 100%;
+}
+.top_bar {
+    margin-bottom: 12px;
+    overflow: hidden;
+    width: 100%;
+}
+.more_padding {
+    padding-top: 30px;
+}
+.section_wrap {
+    border-top: 1px solid #CCCCCC;
+    clear: left;
+    margin: 0 40px 0 0;
+    padding-bottom: 30px;
+    padding-top: 12px;
+}
+.section_wrap h3 {
+    color: #CCCCCC;
+    display: inline;
+    float: right;
+    font-size: 3em;
+    line-height: 1em;
+    margin: -11px 0 0;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+.small {
+    color: #999999;
+    font-family: Georgia;
+    font-size: 1em;
+    font-style: italic;
 }

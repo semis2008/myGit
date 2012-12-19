@@ -36,17 +36,32 @@ public class SystemServlet extends HttpServlet {
 		String targetpath = "";
 		if ("error".equals(fun)) {
 			targetpath = "/jsp/error.jsp";
-		}
-		if ("404error".equals(fun)) {
+		}else if ("404error".equals(fun)) {
 			targetpath = "/jsp/error404.jsp";
-		}
-		if ("exception".equals(fun)) {
+		}else if ("exception".equals(fun)) {
 			targetpath = "/jsp/exception.jsp";
-		}
-		if ("mainpage".equals(fun)) {
+		}else if ("mainpage".equals(fun)) {
 			targetpath = "/jsp/mainPage.jsp";
+		}else if ("diary".equals(fun)) {
+			targetpath = "/jsp/diaryPage.jsp";
+		}else if ("picture".equals(fun)) {
+			targetpath = "/jsp/picturePage.jsp";
+		}else if ("aboutus".equals(fun)) {
+			targetpath = "/jsp/aboutPage.jsp";
+		}else if ("search".equals(fun)) {
+			String s = (String) req.getParameter("s");
+			if("".equals(s)) {
+				targetpath = "/jsp/mainPage.jsp";
+			}else {
+				targetpath = "/jsp/resultPage.jsp";
+			}
 		}
+		
+		req.setAttribute("fun", fun);
 		RequestDispatcher rd = req.getRequestDispatcher(targetpath);
 		rd.forward(req, resp);
 	}
+	
+	
+	
 }

@@ -29,7 +29,7 @@
 		});
 	});
 </script>
-<title>主页</title>
+<title>图册</title>
 </head>
 <body>
 	<div class="wrap">

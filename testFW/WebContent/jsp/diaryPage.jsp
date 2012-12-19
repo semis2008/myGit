@@ -29,7 +29,7 @@
 		});
 	});
 </script>
-<title>主页</title>
+<title>日志</title>
 </head>
 <body>
 	<div class="wrap">
@@ -54,6 +54,7 @@
 		</div>
 		<div class="container">
 			<div class="sidebar">
+
 				<ul class="side_nav">
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						href="http://www.testFW.com/action/system/mainpage" id="mainpage">主页</a>
@@ -68,6 +69,8 @@
 						href="http://www.testFW.com/action/system/aboutus" id="aboutus">about</a>
 					</li>
 				</ul>
+
+
 			</div>
 			<div class="main_wrap">
 				<div class="main">

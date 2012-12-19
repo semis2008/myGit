@@ -7,7 +7,6 @@
 		fun = "";
 %>
 
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,7 +28,7 @@
 		});
 	});
 </script>
-<title>主页</title>
+<title>搜寻结果</title>
 </head>
 <body>
 	<div class="wrap">
@@ -48,12 +47,14 @@
 					alt="TestFW Logo" /> </a>
 			</h1>
 			<p>
-				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					不因得失,而惧怕前行. 
+				不因感情,而影响行动<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不因得失,而惧怕前行.
+
+				
 			</p>
 		</div>
 		<div class="container">
 			<div class="sidebar">
+
 				<ul class="side_nav">
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						href="http://www.testFW.com/action/system/mainpage" id="mainpage">主页</a>
@@ -68,10 +69,11 @@
 						href="http://www.testFW.com/action/system/aboutus" id="aboutus">about</a>
 					</li>
 				</ul>
+
+
 			</div>
 			<div class="main_wrap">
 				<div class="main">
-					<div class="top_bar"></div>
 					<h1>Comming&nbsp;&nbsp;Soon!</h1>
 				</div>
 				<div class="section_wrap more_padding">
