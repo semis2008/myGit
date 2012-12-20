@@ -3,6 +3,7 @@ package com.testFW.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,10 @@ public class TestServlet extends HttpServlet{
 		String fun = (String) req.getParameter("fun");
 		if("showMsgAjax".equals(fun)) {
 			showMsgAjax(req,resp);
+		}else if("testFancyBox".equals(fun)) {
+			req.setAttribute("fun", fun);
+			RequestDispatcher rd = req.getRequestDispatcher("/demo/fancybox/index.jsp");
+			rd.forward(req, resp);
 		}
 	}
 	
