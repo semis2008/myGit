@@ -43,7 +43,9 @@ img.aligncenter {
     display: none;
     height: 40px;
     margin: -60px auto 0;
-    position: relative;
+    position: absolute;
+    left:40px;
+    bottom:7px;
     text-indent: -9999px;
     width: 137px;
     z-index: 99;
@@ -62,7 +64,10 @@ img.aligncenter {
     display: none;
     height: 158px;
     margin: -192px auto 0;
-    position: relative;
+    position: absolute;
+	left:30px;
+	bottom:35px;
+
     text-indent: -9999px;
     width: 158px;
     z-index: 99;

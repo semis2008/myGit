@@ -159,7 +159,7 @@
 				</div>
 				<div class="section_wrap more_padding">
 					<h3>
-						<strong>1989</strong> Keep learning &amp; Remain Modest.
+						<strong>1989</strong> Keep Learning &amp; Remain Modest.
 					</h3>
 					<small>&copy; Copyright 2012 TestFW. All rights reserved.
 						Designed by <a target="_blank"
