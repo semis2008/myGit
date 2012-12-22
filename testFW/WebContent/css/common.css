@@ -10,6 +10,35 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	vertical-align: baseline;
 }
 
+ol,ul {
+	list-style: none;
+}
+
+blockquote,q {
+	quotes: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/* IE6 */
+* html .clearfix {
+	height: 1%;
+}
+/* IE7 */
+*:first-child+html .clearfix {
+	min-height: 1px;
+}
+
 html {
 	background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;
 	height: 100%;
@@ -30,6 +59,21 @@ body {
 	min-width: 1000px;
 	overflow: hidden;
 	width: 100%;
+}
+
+a.exampleTip {
+	color: #FEC92C;
+}
+
+a.exampleTip:hover{
+	text-decoration: underline;
+}
+
+.section {
+	text-align: left;
+	padding-bottom: 18px;
+	border-bottom: 1px solid #333;
+	margin-bottom: 18px;
 }
 
 .search_box {

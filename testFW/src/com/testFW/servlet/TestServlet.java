@@ -35,7 +35,12 @@ public class TestServlet extends HttpServlet{
 			req.setAttribute("fun", fun);
 			RequestDispatcher rd = req.getRequestDispatcher("/demo/fancybox/index.jsp");
 			rd.forward(req, resp);
+		}else if("testTip".equals(fun)) {
+			req.setAttribute("fun", fun);
+			RequestDispatcher rd = req.getRequestDispatcher("/demo/atooltip/demos.jsp");
+			rd.forward(req, resp);
 		}
+		
 	}
 	
 	/**
