@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html lang="en-GB">  
+	<head>
+		<title>Spotlight: jQuery replaceText</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head>
+
+	<body>
+    	<div id="container">
+        	<h1>Spotlight: jQuery stickyFloat</h1>
+		<div>by Siddharth for the lovely folks at Nettuts+</div>
+		
+		<p>Feel free to scroll around!      </p>
+		
+		
+	<div class="section">
+			<div id="menu" class="menu">Sticky menu</div>
+			<div class="content">I wanted to write something incredibly, unabashedly witty here. I failed. :(</div>
+		</div>
+
+
+<div class="section">
+			<div id="menu2" class="menu">Yep, I'll follow you everywhere as long as you're within my parent</div>
+			<div class="content">You were expecting something clever here, didn't you? I know you did! Fess up!</div>
+		</div>
+
+
+<div id="ohmygodsomuchwhitespace"></div>
+		
+		
+		
+		</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/sticky.js"></script>
+	<script type="text/javascript">
+				$(document).ready(function(){
+					$('#menu').stickyfloat({ duration: 400 });
+					$('#menu2').stickyfloat({ duration: 400 });
+				});
+	</script>
+
+	</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Inline Modal Window w/ CSS and jQuery by Soh Tanaka</title>
+<style type="text/css">
+body {
+	background: #2d2d2d;
+	margin: 0; padding: 0;
+	font: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	line-height: 1.8em;
+	min-width: 980px;
+}
+img {border: none;}
+a {color: #0052af;}
+h1 {
+	font: 3.5em normal Georgia, 'Times New Roman', Times, serif;
+	padding: 20px;
+	margin: 0;
+}
+h1 small{
+	font: 0.3em normal Verdana, Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	display: block;
+}
+.container {width: 900px; margin: 0 auto; font-size: 1.2em;  color: #555;}
+#content {	background: #f0f0f0; float: left; width: 100%;}
+.post {
+	margin: 0; padding: 10px 20px;
+	float: left;
+	width: 560px;
+}
+
+
+
+
+
+/*------------------POPUPS------------------------*/
+#fade {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+}
+.popup_block{
+	display: none;
+	background: #fff;
+	padding: 20px; 	
+	border: 20px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+img.btn_close {
+	float: right; 
+	margin: -55px -55px 0 0;
+}
+.popup p {
+	padding: 5px 10px;
+	margin: 5px 0;
+}
+/*--Making IE6 Understand Fixed Positioning--*/
+*html #fade {
+	position: absolute;
+}
+*html .popup_block {
+	position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="content">
+	<h1>Inline Modal Window w/ CSS and jQuery<small>by Soh Tanaka | <a href="http://www.sohtanaka.com/web-design/inline-modal-window-w-css-and-jquery">View Tutorial</a></small></h1>
+	<div class="post">
+    	<h2>Accumsan praesent interdico delenit</h2>
+		<a href="#?w=500" rel="popup1" class="poplight">See Popup in Action - Width = 500px</a>
+		<p>Te natu gilvus, brevitas tation valde eligo jugis foras eros mauris refoveo nisl. Nobis scisco nobis quod duis quia laoreet ea tristique augue, accumsan, aliquam. </p>
+
+        <p>Quod, ad, suscipere ullamcorper probo damnum pala uxor at humo ad paratus pala. Esca, facilisi cui mos et capio dignissim dolor secundum. Secundum in, luptatum wisi valetudo causa et. Indoles eum in premo tation distineo blandit opto ludus. Duis opes quidem, in aliquip singularis ut tum elit tum. Ille neo quadrum singularis jugis genitus antehabeo jugis. Facilisis meus nonummy duis praesent et nostrud vicis vereor, delenit blandit</p> 
+	</div>
+	<div class="post">
+		<h2>Accumsan praesent interdico delenit</h2>
+        <a href="#?w=700" rel="popup2" class="poplight">See Popup in Action - Width = 700px</a>
+		<p>Te natu gilvus, brevitas tation valde eligo jugis foras eros mauris refoveo nisl. Nobis scisco nobis quod duis quia laoreet ea tristique augue, accumsan, aliquam. </p>
+
+        <p>Quod, ad, suscipere ullamcorper probo damnum pala uxor at humo ad paratus pala. Esca, facilisi cui mos et capio dignissim dolor secundum. Secundum in, luptatum wisi valetudo causa et. Indoles eum in premo tation distineo blandit opto ludus. Duis opes quidem, in aliquip singularis ut tum elit tum. Ille neo quadrum singularis jugis genitus antehabeo jugis. Facilisis meus nonummy duis praesent et nostrud vicis vereor, delenit blandit</p> 
+	</div>
+	<div class="post">
+		<h2>Accumsan praesent interdico delenit</h2>
+        <a href="#?w=350" rel="popup3" class="poplight">See Popup in Action - Width = 350px</a>
+		<p>Te natu gilvus, brevitas tation valde eligo jugis foras eros mauris refoveo nisl. Nobis scisco nobis quod duis quia laoreet ea tristique augue, accumsan, aliquam. </p>
+
+        <p>Quod, ad, suscipere ullamcorper probo damnum pala uxor at humo ad paratus pala. Esca, facilisi cui mos et capio dignissim dolor secundum. Secundum in, luptatum wisi valetudo causa et. Indoles eum in premo tation distineo blandit opto ludus. Duis opes quidem, in aliquip singularis ut tum elit tum. Ille neo quadrum singularis jugis genitus antehabeo jugis. Facilisis meus nonummy duis praesent et nostrud vicis vereor, delenit blandit</p> 
+	</div>
+</div>
+
+</div>
+
+
+
+
+<!--POPUP START-->
+<div id="popup1" class="popup_block">
+	<a href="http://www.designbombs.com"><img src="bomber.gif" alt="Lil bomb dude" style="float: right; margin: 50px 0 0 20px;" /></a>
+    <h2>Popup #1</h2>
+    <pre>&lt;a href=&quot;#?w=500&quot; rel=&quot;popup2&quot; class=&quot;poplight&quot;&gt;</pre>
+    <p>Aliquip transverbero loquor esse ille vulputate exerci veniam fatua eros similis illum valde. Praesent, venio conventio rusticus antehabeo lenis. Melior pertineo feugait, praesent hos rusticus et haero facilisis abluo. </p>
+    <p>Veniam tincidunt augue abluo vero, augue nisl melior quidem secundum nobis singularis eum eum.</p><p><strong>Need Inspiration?</strong> Check out <a href="http://www.designbombs.com">Design Bombs</a></p>
+    
+</div>
+
+<div id="popup2" class="popup_block">
+	<a href="http://www.designbombs.com"><img src="bomber.gif" alt="Lil bomb dude" style="float: right; margin: 20px 0 0 20px;" /></a>
+    <h2>Popup #2</h2>
+    <pre>&lt;a href=&quot;#?w=700&quot; rel=&quot;popup2&quot; class=&quot;poplight&quot;&gt;</pre>
+    <p>Aliquip transverbero loquor esse ille vulputate exerci veniam fatua eros similis illum valde. Praesent, venio conventio rusticus antehabeo lenis. Melior pertineo feugait, praesent hos rusticus et haero facilisis abluo. </p>
+    <p>Veniam tincidunt augue abluo vero, augue nisl melior quidem secundum nobis singularis eum eum.</p><p><strong>Need Inspiration?</strong> Check out <a href="http://www.designbombs.com">Design Bombs</a></p>
+    
+</div>
+
+<div id="popup3" class="popup_block">
+	<a href="http://www.designbombs.com"><img src="bomber.gif" alt="Lil bomb dude" style="float: right; margin: 80px 0 0 20px;" /></a>
+    <h2>Popup #3</h2>
+    <pre>&lt;a href=&quot;#?w=350&quot; rel=&quot;popup3&quot; class=&quot;poplight&quot;&gt;</pre>
+    <p>Aliquip transverbero loquor esse ille vulputate exerci veniam fatua eros similis illum valde. Praesent, venio conventio rusticus antehabeo lenis. Melior pertineo feugait, praesent hos rusticus et haero facilisis abluo. </p>
+    <p>Veniam tincidunt augue abluo vero, augue nisl melior quidem secundum nobis singularis eum eum.</p><p><strong>Need Inspiration?</strong> Check out <a href="http://www.designbombs.com">Design Bombs</a></p>
+    
+</div>
+<!--END POPUP-->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+						   		   
+	//When you click on a link with class of poplight and the href starts with a # 
+	$('a.poplight[href^=#]').click(function() {
+		var popID = $(this).attr('rel'); //Get Popup Name
+		var popURL = $(this).attr('href'); //Get Popup href to define size
+				
+		//Pull Query & Variables from href URL
+		var query= popURL.split('?');
+		var dim= query[1].split('&');
+		var popWidth = dim[0].split('=')[1]; //Gets the first query string value
+
+		//Fade in the Popup and add close button
+		$('#' + popID).fadeIn().css({ 'width': Number( popWidth ) }).prepend('<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>');
+		
+		//Define margin for center alignment (vertical + horizontal) - we add 80 to the height/width to accomodate for the padding + border width defined in the css
+		var popMargTop = ($('#' + popID).height() + 80) / 2;
+		var popMargLeft = ($('#' + popID).width() + 80) / 2;
+		
+		//Apply Margin to Popup
+		$('#' + popID).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		//Fade in Background
+		$('body').append('<div id="fade"></div>'); //Add the fade layer to bottom of the body tag.
+		$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer 
+		
+		return false;
+	});
+	
+	
+	//Close Popups and Fade Layer
+	$('a.close, #fade').live('click', function() { //When clicking on the close or fade layer...
+	  	$('#fade , .popup_block').fadeOut(function() {
+			$('#fade, a.close').remove();  
+	}); //fade them both out
+		
+		return false;
+	});
+
+	
+});
+</script>
+
+</body>
+
+
+
+</html>

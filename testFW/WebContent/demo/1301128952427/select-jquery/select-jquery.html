@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Making Better Select Elements with jQuery and CSS3 | Tutorialzine Demo</title>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+</head>
+<body>
+
+<div id="page">
+	<h1>Your Product</h1>
+
+	<form method="post" action="">
+    
+    	<!-- We are going to use jQuery to hide the select element and replace it -->
+        
+		<select name="fancySelect" class="makeMeFancy">
+        
+        	<!-- Notice the HTML5 data attributes -->
+        
+	        <option value="0" selected="selected" data-skip="1">Choose Your Product</option>
+        	<option value="1" data-icon="img/products/iphone.png" data-html-text="iPhone 4&lt;i&gt;in stock&lt;/i&gt;">iPhone 4</option>
+        	<option value="2" data-icon="img/products/ipod.png" data-html-text="iPod &lt;i&gt;in stock&lt;/i&gt;">iPod</option>
+            <option value="3" data-icon="img/products/air.png" data-html-text="MacBook Air&lt;i&gt;out of stock&lt;/i&gt;">MacBook Air</option>
+            <option value="4" data-icon="img/products/imac.png" data-html-text="iMac Station&lt;i&gt;in stock&lt;/i&gt;">iMac Station</option>
+        </select>
+    </form>
+    
+</div>
+
+<!-- Feel free to remove this footer -->
+
+<div id="footer">
+	<div class="tri"></div>
+	<h1>Better Select Elements with jQuery and CSS3</h1>
+	<a class="tzine" href="http://tutorialzine.com/2010/11/better-select-jquery-css3/">Read &amp; Download on</a>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

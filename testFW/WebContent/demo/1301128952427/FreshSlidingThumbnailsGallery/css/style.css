@@ -1,0 +1,158 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:Verdana;
+    text-transform:uppercase;
+    color:#fff;
+    font-size:10px;
+    overflow:hidden;
+    background-color:#f9f9f9;
+}
+.albumbar{
+    height:24px;
+    line-height:24px;
+    text-align:center;
+    position:fixed;
+    background-color:#000;
+    left:0px;
+    width:100%;
+    top:0px;
+    -moz-box-shadow:-2px 0px 4px #333;
+    -webkit-box-shadow:-2px 0px 4px #333;
+    box-shadow:-2px 0px 4px #333;
+    z-index:11;
+}
+.infobar{
+    height:22px;
+    line-height:22px;
+    text-align:center;
+    position:fixed;
+    background-color:#000;
+    left:0px;
+    width:100%;
+    bottom:0px;
+    -moz-box-shadow:0px -1px 2px #000;
+    -webkit-box-shadow:0px -1px 2px #000;
+    box-shadow:0px -1px 2px #000;
+}
+span#description, .albumbar span{
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
+}
+.albumbar span a{
+    color:#aaa;
+    text-decoration:none;
+}
+.albumbar span a:hover{
+    color:#ddd;
+}
+#loading{
+    display:none;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:40%;
+    left:50%;
+    margin-left:-24px;
+    background:transparent url(../icons/loading.gif) no-repeat top left;
+}
+#thumbsWrapper{
+    position: absolute;
+    width:100%;
+    height:102px;
+    overflow-y:hidden;
+    background-color:#000;
+    bottom:0px;
+    left:0px;
+    border-top:2px solid #000;
+}
+#thumbsContainer{
+    height:79px;
+    display:block;
+    margin: 0;   
+}
+#thumbsWrapper img{
+    float:left;
+    margin:2px;
+    display:block;
+    cursor:pointer;
+    opacity:0.4;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+}
+#imageWrapper{
+    position:relative;
+    padding-top:30px;
+    text-align:center;
+}
+#imageWrapper img{
+    margin:0 auto;
+    -moz-box-shadow:2px 2px 10px #111;
+    -webkit-box-shadow:2px 2px 10px #111;
+    box-shadow:2px 2px 10px #111;
+}
+.cursorRight{
+   cursor:url("../icons/next.cur"),url("icons/next.cur"), default;
+}
+.cursorLeft{
+    cursor:url("../icons/prev.cur"),url("icons/prev.cur"), default;
+}
+.cursorPlus{
+    cursor:url("../icons/plus.cur"),url("icons/plus.cur"), default;
+}
+.cursorMinus{
+    cursor:url("../icons/minus.cur"),url("icons/minus.cur"), default;
+}
+.albumSelect{
+    height:18px;
+    line-height:18px;
+    position:absolute;
+    right:5px;
+    top:2px;
+    width:120px;
+}
+.albumSelect .title{
+    color:#f0f0f0;
+    z-index:10;
+    border:1px solid #444;
+    background-color:#555;
+    background-repeat:no-repeat;
+    background-position:90% 50%;
+    cursor:pointer;
+    text-align:left;
+    text-indent:10px;
+    width:100%;   
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+.down{
+    background-image:url(../icons/down.png);
+}
+.up{
+    background-image:url(../icons/up.png);
+}
+.albumSelect ul {
+    list-style:none;
+    display:none;
+    padding:0px;
+    width:100%;
+    border:1px solid #444;
+    background-color:#555;
+    margin:22px 0px 0px 0px;
+    -moz-box-shadow:0px 0px 2px #000;
+    -webkit-box-shadow:0px 0px 2px #000;
+    box-shadow:0px 0px 2px #000;
+}
+.albumSelect ul li a{
+    text-decoration:none;
+    cursor:pointer;
+    display:block;
+    padding:3px 0px;
+    color:#ccc;
+}
+.albumSelect ul li a:hover{
+    background-color:#000;
+    color:#fff;
+}

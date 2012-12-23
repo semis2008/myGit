@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Animated Circular Portfolio with jQuery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Animated Circular Portfolio with jQuery" />
+        <meta name="keywords" content="jquery, animate, circle, round, portfolio, design, tutorial"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            body{
+                font-family:Arial;
+                background:#a7cede url(bg.png) no-repeat top right;
+            }
+            .title{
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:130px;
+                height:570px;
+                background:#a7cede url(title.png) no-repeat top left;
+            }
+            a.back{
+                background:transparent url(back.png) no-repeat 0px 0px;
+                position:absolute;
+                width:150px;
+                height:27px;
+                outline:none;
+                top:2px;
+                right:0px;
+            }
+            
+        </style>
+        <!--[if IE]>
+		 <style>
+                    .circle{
+                        background:transparent url(images/circleIE.gif) no-repeat top left;
+                    }
+                    .description ul a{
+                        font-weight:normal;
+                    }
+		</style>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="content">
+            <div class="title"></div>
+            <a class="back" href="http://tympanus.net/codrops/2010/05/07/stunning-circular-motion-effect/"></a>
+            <div class="wrapper">
+                <div id="images" class="images">
+                    <img id="image_about" src="images/1.png" alt="" width="402" height="402" style="display:block;"/>
+                    <img id="image_portfolio" src="images/2.png" alt="" width="402" height="402"/>
+                    <img id="image_contact" src="images/3.png" alt="" width="402" height="402" />
+                </div>
+                <div class="circleBig">
+                    <div id="menu" class="menu">
+                        <a id="about" class="about" href="">About me</a>
+                        <a id="portfolio" class="portfolio" href="">Portfolio</a>
+                        <a id="contact" class="contact" href="">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div id="circle_about" class="circle">
+                <div class="description">
+                    <ul>
+                        <li><a href="#">Who I am</a></li>
+                        <li><a href="#">What I do</a></li>
+                        <li><a href="#">My CV</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="circle_portfolio" class="circle">
+                <div class="description">
+                    <div class="thumbs">
+                        <a href="http://www.flickr.com/photos/patdavid/4100979060/in/set-72157622106008372/"><img src="thumbs/1.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3793395986/in/set-72157622106008372/"><img src="thumbs/2.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/4242525457/in/set-72157622106008372/"><img src="thumbs/3.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3799109785/in/set-72157622106008372/"><img src="thumbs/4.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3871609087/in/set-72157622106008372/"><img src="thumbs/5.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3872388968/in/set-72157622106008372/"><img src="thumbs/6.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3866147681/in/set-72157622106008372/"><img src="thumbs/7.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/3872389922/in/set-72157622106008372/"><img src="thumbs/8.jpg" alt=""/></a>
+                        <a href="http://www.flickr.com/photos/patdavid/4127983465/in/set-72157622106008372/"><img src="thumbs/9.jpg" alt=""/></a>
+                    </div>
+                </div>
+            </div>
+            <div id="circle_contact" class="circle">
+                <div class="description">
+                    <ul>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.path.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                
+                /* when page loads animate the about section by default */
+                //move($('#about'),2000,2);
+
+                $('#menu > a').mouseover(
+                function(){
+                    var $this = $(this);
+                    move($this,800,1);
+                }
+            );
+
+                /*
+                function to animate / show one circle.
+                speed is the time it takes to show the circle
+                turns is the turns the circle gives around the big circle
+                 */
+                function move($elem,speed,turns){
+                    var id = $elem.attr('id');
+                    var $circle = $('#circle_'+id);
+
+                    /* if hover the same one nothing happens */
+                    if($circle.css('opacity')==1)
+                        return;
+
+                    /* change the image */
+                    $('#image_'+id).stop(true,true).fadeIn(650).siblings().not(this).fadeOut(650);
+
+                    /*
+                    if there's a circle already, then let's remove it:
+                    either animate it in a circular movement or just fading out, depending on the current position of it
+                     */
+                    $('#content .circle').each(function(i){
+                        var $theCircle = $(this);
+                        if($theCircle.css('opacity')==1)
+                            $theCircle.stop()
+                        .animate({
+                            path : new $.path.arc({
+                                center	: [409,359],
+                                radius	: 257,
+                                start	: 65,
+                                end     : -110,
+                                dir	: -1
+                            }),
+                            opacity: '0'
+                        },1500);
+                        else
+                            $theCircle.stop()
+                        .animate({opacity: '0'},200);
+                    });
+
+                    /* make the circle appear in a circular movement */
+                    var end = 65 - 360 * (turns-1);
+                    $circle.stop()
+                    .animate({
+                        path : new $.path.arc({
+                            center	: [409,359],
+                            radius	: 257,
+                            start	: 180,
+                            end		: end,
+                            dir		: -1
+                        }),
+                        opacity: '1'
+                    },speed);
+                }
+            });
+        </script>
+    </body>
+</html>

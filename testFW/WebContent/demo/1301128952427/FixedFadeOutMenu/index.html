@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Fixed Fade Out Menu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="description" content="Fixed Fade Out Menu: A CSS and jQuery Tutorial" />
+        
+        <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>
+    </head>
+    <style>
+        body{
+            margin:0px;
+            padding:0px;           
+            font-family:Arial;
+			 background:#EFF7FF url(fixedmenu.png) no-repeat top center;
+        }
+		a.back{
+            width:256px;
+            height:73px;
+            position:fixed;
+            bottom:15px;
+            right:15px;
+            background:transparent url(codrops_back.png) no-repeat top left;
+        }
+        .scroll{
+            width:133px;
+            height:61px;
+            position:fixed;
+            bottom:15px;
+            left:20px;
+            background:transparent url(scroll.png) no-repeat top left;
+        }
+        .info{
+            text-align:right;
+
+        }
+		.desc{
+			height:90px;
+			width:100%;
+			position:absolute;
+			top:1000px;
+			left:0px;
+			background:transparent url(hover.png) no-repeat center center;
+		}
+		#top{
+			top:0px;
+			left:0px;
+			position:absolute;
+			width:100%;
+			height:10px;
+		}
+		#bottom{
+			top:1500px;
+			left:0px;
+			position:absolute;
+			width:100%;
+			height:90px;
+			background:transparent url(end.png) no-repeat center center;
+		}
+    </style>
+    <body>
+        <div id="nav">
+            <ul>
+                <li><a class="top" href="#top"><span></span></a></li>
+                <li><a class="bottom" href="#bottom"><span></span></a></li>
+                <li><a>Link 1</a></li>
+                <li><a>Link 2</a></li>
+                <li><a>Link 3</a></li>
+                <li><a>Link 4</a></li>
+                <li><a>Link 5</a></li>
+                <li><a>Link 6</a></li>
+                <li class="search">
+					<input type="text"/><input class="searchbutton" type="submit" value=""/>
+				</li>
+            </ul>
+        </div>        
+		<div id="top"></div>
+		<div class="desc"></div>
+		<div id="bottom"></div>
+		<div class="scroll"></div>
+        <div class="info">
+            <a class="back" href="http://tympanus.net/codrops/2009/12/11/fixed-fade-out-menu-a-css-and-jquery-tutorial/"></a>
+        </div>
+
+        <script type="text/javascript" src="jquery-1.3.2.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $(window).scroll(function(){
+					var scrollTop = $(window).scrollTop();
+					if(scrollTop != 0)
+						$('#nav').stop().animate({'opacity':'0.2'},400);
+					else	
+						$('#nav').stop().animate({'opacity':'1'},400);
+				});
+				
+				$('#nav').hover(
+					function (e) {
+						var scrollTop = $(window).scrollTop();
+						if(scrollTop != 0){
+							$('#nav').stop().animate({'opacity':'1'},400);
+						}
+					},
+					function (e) {
+						var scrollTop = $(window).scrollTop();
+						if(scrollTop != 0){
+							$('#nav').stop().animate({'opacity':'0.2'},400);
+						}
+					}
+				);
+            });
+        </script>
+    </body>
+</html>

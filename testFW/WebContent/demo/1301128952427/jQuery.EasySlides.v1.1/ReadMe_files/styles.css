@@ -1,0 +1,47 @@
+h1 {
+    margin-bottom:8px;
+    font-size:35px
+}
+
+h2 {
+    margin-top:55px;
+    font-size:25px
+}
+
+h3 {
+    font-size:20px;
+    font-style: italic;
+    font-weight:normal;
+    margin-top:30px;
+}
+
+#page {
+    width:870px;
+    margin:0 0 100px 20px;
+}
+
+div.code {
+    margin:25px 0 40px 25px;
+    padding:10px;
+    width:700px;
+    border:1px dashed #ddd;
+    background-color:#f4f4f4;
+}
+
+div.code span.comment {
+    font-style: italic;
+    color:#888;
+}
+
+#example_1_container {
+    margin-top:40px;
+}
+
+#example_2_container {
+    margin-top:25px;
+    margin-left:25px
+}
+
+#nav {
+    margin-top:10px;
+}

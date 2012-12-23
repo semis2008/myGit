@@ -1,0 +1,12 @@
+/*
+Author : Onextrapixel
+URL: http://www.onextrapixel.com
+*/
+body,html { font-family:Calibri, sans-serif; background:#eaf3fb; font-size:12px; height:1000px; line-height:18px; }
+p { height:30px; }
+.dv1 { width:200px; background-color:#eff7ff; border:1px solid #96c2f1; position:absolute; left:100px; top:100px; }
+.dv1 h2 { background-color:#b2d3f5; padding:5px; font-family:Georgia, "Times New Roman", Times, serif; font-size:1.0em; text-transform:uppercase; font-weight:bold; color:#3a424a; margin:1px; cursor:move; }
+.dv1 div { padding:5px; margin-bottom:10px; }
+.dv2 { background-color:#f6ebfb; border:1px solid #a36fde; width:550px; position:absolute; cursor:move; left:400px; top:230px; }
+.dv2 h2 { background-color:#eacfe9; letter-spacing:-0.09em; font-size:1.8em; font-weight: bold; padding:15px; margin:1px; color:#241f24; cursor:move; }
+.dv2 .content2 { padding:5px; margin-bottom:10px; }

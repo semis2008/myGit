@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Image Highlighting and Preview with jQuery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Image Highlighting and Preview with jQuery" />
+        <meta name="keywords" content="jquery, images, highlight, preview, lighbox, overlay, center, enlarge"/>
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            body{
+                font-family:Georgia,Times,serif;
+                background:#f0f0f0;
+            }
+            #content{
+                background-color:#f6f6f6;
+                width:750px;
+                padding:40px 40px 80px 40px;
+                margin:0 auto 40px auto;
+				color:#fff;
+                border-left:10px solid #0968A0;
+                border-right:1px solid #444;
+				-moz-box-shadow:0px 0px 10px #000;
+				-webkit-box-shadow:0px 0px 10px #000;
+				box-shadow:0px 0px 10px #000;
+				-moz-border-radius:0px 0px 20px 20px;
+				-webkit-border-bottom-left-radius:20px;
+				-webkit-border-bottom-right-radius:20px;
+				border-bottom-left-radius:20px;
+				border-bottom-right-radius:20px;
+
+            }
+            .head, .meta a{
+                font-family:Helvetica,Arial,Verdana;
+                text-transform:uppercase;
+                font-weight:bold;
+                font-size:12px;
+                letter-spacing:3px;
+                color:#ccc;
+                padding-bottom:10px;
+                margin-bottom:10px;
+				text-shadow:1px 1px 1px #fff;
+				text-decoration: none;
+            }
+			.line{
+				background-color:#ddd;
+				border-bottom:1px solid #fff;
+				height:1px;
+				margin:0px 0px 15px 0px;
+			}
+            #content h1{
+                color:#0968A0;
+                font-weight:normal;
+                font-size:56px;
+                text-shadow:1px 1px 1px #fff;
+            }
+            .subline{
+                font-size:22px;
+                margin:20px 0px;
+                color:#999;
+				text-shadow:1px 1px 1px #fff;
+            }
+			.meta{
+				text-align:right;
+			}
+
+			.meta a:hover{
+				color:#aaa;
+				
+			}
+            .article p{
+                margin:20px 0px;
+                line-height:26px;
+                text-align:justify;
+				color:#666;
+				text-shadow:1px 1px 1px #fff;
+            }
+			.article a{
+				color:#aaa;
+				text-transform: uppercase;
+				text-decoration: none;
+				font-weight: bold;
+			}
+			.article a:hover{
+				color:#0968A0;
+			}
+
+			.article p img.left{
+				float:left;
+				margin-right:20px;
+			}
+			.article p img.right{
+				float:right;
+				margin-left:20px;
+			}
+
+		</style>
+    </head>
+
+    <body>
+		<div id="content">
+            <span class="scroll"></span>
+            <p class="head">Codrops Tutorial Demo</p>
+			<div class="line"></div>
+            <h1>Image Highlighting and Preview with jQuery</h1>
+            <p class="subline">Hover over an image to highlight it</p>
+			<div class="line"></div>
+            <p class="meta"><a href="http://tympanus.net/codrops/2010/07/04/image-highlighting-preview/">Back to the Codrops Tutorial</a></p>
+            <div id="article" class="article">
+                <p>In one part of this cellar we kept wines, liquors and provisions. From
+					the rapidity of their disappearance we acquired the superstitious belief
+					that the spirits of the persons buried there came at dead of night and
+					held a festival.
+					<img src="images/thumbs/1.jpg" alt="images/1.jpg" class="ih_image left"/>
+					It was at least certain that frequently of a morning we
+					would discover fragments of pickled meats, canned goods and such débris,
+					littering the place, although it had been securely locked and barred
+					against human intrusion. It was proposed to remove the provisions and
+					store them elsewhere, but our dear mother, always generous and
+					hospitable, said it was better to endure the loss than risk exposure: if
+					the ghosts were denied this trifling gratification they might set on
+					foot an investigation, which would overthrow
+					<img src="images/thumbs/2.jpg" alt="images/2.jpg" class="ih_image right"/>
+					our scheme of the division
+					of labor, by diverting the energies of the whole family into the single
+					industry pursued by me--we might all decorate the cross-beams of
+					gibbets. We accepted her decision with filial submission, due to our
+					reverence for her wordly wisdom and the purity of her character.
+
+				</p>
+				<p>
+					On the incidents of our precipitate flight from that horrible place--on
+					the extinction of all human sentiment in that tumultuous, mad scramble
+					up the damp and mouldy stairs--slipping, falling,
+					<img src="images/thumbs/3.jpg" alt="images/3.jpg" class="ih_image left"/>
+					pulling one another
+					down and clambering over one another's back--the lights extinguished,
+					babes trampled beneath the feet of their strong brothers and hurled
+					backward to death by a mother's arm!--on all this I do not dare to
+					dwell.
+
+					My mother, my eldest brother and sister and I escaped; the others
+					remained below, to perish of their wounds, or of their terror--some,
+					perhaps, by flame. For within an hour we four, hastily gathering
+					together what money and jewels we had and what clothing we could carry,
+					fired the dwelling and fled by its light into the hills.
+					<img src="images/thumbs/4.jpg" alt="images/4.jpg" class="ih_image right"/>
+					We did not even
+					pause to collect the insurance, and my dear mother said on her
+					death-bed, years afterward in a distant land, that this was the only sin
+					of omission that lay upon her conscience. Her confessor, a holy man,
+					assured her that under the circumstances Heaven would pardon the
+					neglect.
+
+				</p>
+				<p>
+					All was clear. My father, whatever had caused him to be "taken bad" at
+					his meal (and I think my sainted mother could have thrown some light
+					upon that matter) had indubitably been buried alive. The grave having
+					been accidentally dug above the forgotten drain, and down almost to the
+					crown of its arch, and no coffin having been used, his struggles on
+					reviving had broken the rotten masonry and he had fallen through,
+					escaping finally into the cellar. Feeling that he was not welcome in his
+					own house, yet having no other, he had lived in subterranean seclusion,
+					a witness to our thrift and a pensioner on our providence.
+					<img src="images/thumbs/5.jpg" alt="images/5.jpg" class="ih_image left"/>
+					It was he who
+					had eaten our food; it was he who had drunk our wine--he was no better
+					than a thief! In a moment of intoxication, and feeling, no doubt, that
+					need of companionship which is the one sympathetic link between a
+					drunken man and his race, he had left his place of concealment at a
+					strangely inopportune time, entailing the most deplorable consequences
+					upon those nearest and dearest to him--a blunder that had almost the
+					dignity of crime.
+
+				</p>
+				<p>
+					Photos by <a href="http://www.flickr.com/photos/paulobrandao/">paulobrandao</a>
+				</p>
+
+            </div>
+        </div>
+		<div id="ih_overlay" class="ih_overlay" style="display:none;"></div>
+
+
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+				/**
+				* timeout to control the display of the overlay/highlight
+				*/
+				var highlight_timeout;
+
+				/**
+				* user hovers one image:
+				* create a absolute div with the same image inside,
+				* and append it to the body
+				*/
+				$('img.ih_image').bind('mouseenter',function () {
+						var $thumb = $(this);
+						
+						var $clone = $('<div />',{
+							'id'		: 'ih_clone',
+							'className': 'ih_image_clone_wrap',
+							'html'     	: '<img src="'+$thumb.attr('src')+'" alt="'+$thumb.attr('alt')+'"/><span class="ih_zoom"></span>',
+							'style'		: 'top:'+$thumb.offset().top+'px;left:'+$thumb.offset().left+'px;'
+						});
+						
+						var highlight = function (){
+							$('#ih_overlay').show();
+							$('BODY').append($clone);
+						}
+						//show it after some time ... 
+						highlight_timeout = setTimeout(highlight,700);
+
+						/**
+						* when we click on the zoom, 
+						* we display the image in the center of the window,
+						* and enlarge it to the size of the real image, 
+						* fading this one in, after the animation is over.
+						*/
+						$clone.find('.ih_zoom').bind('click',function(){
+							var $zoom = $(this);
+							$zoom.addClass('ih_loading').removeClass('ih_zoom');
+							var imgL_source = $thumb.attr('alt');
+							
+							$('<img class="ih_preview" style="display:none;"/>').load(function(){
+								var $imgL = $(this);
+								$zoom.hide();
+								var windowW = $(window).width();
+								var windowH = $(window).height();
+								var windowS = $(window).scrollTop();
+								
+								$clone.append($imgL).animate({
+									'top'			: windowH/2 + windowS + 'px',
+									'left'			: windowW/2  + 'px',
+									'margin-left'	: -$thumb.width()/2 + 'px',
+									'margin-top'	: -$thumb.height()/2 + 'px'
+								},400,function(){
+									var $clone = $(this);
+									var largeW = $imgL.width();
+									var largeH = $imgL.height();
+									$clone.animate({
+										'top'			: windowH/2 + windowS + 'px',
+										'left'			: windowW/2  + 'px',
+										'margin-left'	: -largeW/2 + 'px',
+										'margin-top'	: -largeH/2 + 'px',
+										'width'			: largeW + 'px',
+										'height'		: largeH + 'px'
+									},400).find('img:first').animate({
+										'width'			: largeW + 'px',
+										'height'		: largeH + 'px'
+									},400,function(){
+										var $thumb = $(this);
+										/**
+										* fade in the large image. Replace the zoom with a cross,
+										* so the user can close the preview mode
+										*/
+										$imgL.fadeIn(function(){
+											$zoom.addClass('ih_close').removeClass('ih_loading').fadeIn(function(){
+												$(this).bind('click',function(){
+													$clone.remove();
+													clearTimeout(highlight_timeout);
+													$('#ih_overlay').hide();
+												});
+											});
+											$thumb.remove();
+										});
+									});
+								});
+							}).error(function(){
+								/**
+								* error loading image. Maybe show a message : 'no preview available'?
+								*/
+								$zoom.fadeOut();
+							}).attr('src',imgL_source);
+						});		
+				}).bind('mouseleave',function(){
+					/**
+					* the user moves the mouse out of an image.
+					* if there's no clone yet, clear the timeout
+					* (user was probably scolling through the article, and 
+					* doesn't want to view the image)
+					*/
+					if($('#ih_clone').length) return;
+					clearTimeout(highlight_timeout);
+				});
+				
+				/**
+				* the user moves the mouse out of the clone.
+				* if we don't have yet the cross option to close the preview, then
+				* clear the timeout
+				*/
+				$('#ih_clone').live('mouseleave',function() {
+					var $clone = $('#ih_clone');
+					if(!$clone.find('.ih_preview').length){
+						$clone.remove();
+						clearTimeout(highlight_timeout);
+						$('#ih_overlay').hide();
+					}
+				});
+            });
+        </script>
+    </body>
+</html>

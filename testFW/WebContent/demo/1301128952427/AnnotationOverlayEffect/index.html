@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Annotation Overlay Effect with jQuery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Annotation Overlay Effect with jQuery and CSS3" />
+        <meta name="keywords" content="jquery, effect, zoom out, annotations, css3"/>
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+
+		<script src="js/cufon-yui.js" type="text/javascript"></script>
+		<script src="js/Bebas_400.font.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			Cufon.replace('a, h1, h2, h3');
+			Cufon('h1,h3',{
+				textShadow: '1px 1px #fff'
+			});
+		</script>
+        <style type="text/css">
+			h1{
+				font-size:40px;
+				word-spacing:10px;
+				color:#333;
+			}
+			h3{
+				margin-bottom:30px;
+				font-size:18px;
+				word-spacing:5px;
+				color:#c1a97e;
+			}
+			span.reference{
+				font-family:Arial;
+				position:fixed;
+				left:10px;
+				bottom:10px;
+				font-size:12px;
+			}
+			span.reference a{
+				color:#333;
+				text-transform:uppercase;
+				text-decoration:none;
+			}
+		</style>
+    </head>
+
+    <body>
+		<div class="content">
+			<h1>Annotation Overlay Effect with jQuery</h1>
+			<h3>Click on the images to see the notes for each item</h3>
+
+			<div id="portfolio" class="portfolio">
+				<div class="portfolio_item">
+					<div class="image_wrap">
+						<img src="images/website1.jpg" alt="Website1"/>
+					</div>
+					<div class="zoom_overlay">
+						<img src="images/website1_notes.png" alt="Website1Notes"/>
+					</div>
+				</div>
+				<div class="portfolio_item">
+					<div class="image_wrap">
+						<img src="images/website2.jpg" alt="Website2"/>
+					</div>
+					<div class="zoom_overlay">
+						<img src="images/website2_notes.png" alt="Website2Notes"/>
+					</div>
+				</div>
+				<div class="portfolio_item">
+					<div class="image_wrap">
+						<img src="images/website3.jpg" alt="Website3"/>
+					</div>
+					<div class="zoom_overlay">
+						<img src="images/website3_notes.png" alt="Website3Notes"/>
+					</div>
+				</div>
+				<div class="portfolio_item">
+					<div class="image_wrap">
+						<img src="images/website4.jpg" alt="Website4"/>
+					</div>
+					<div class="zoom_overlay">
+						<img src="images/website4_notes.png" alt="Website4Notes"/>
+					</div>
+				</div>
+				<div class="portfolio_item">
+					<div class="image_wrap">
+						<img src="images/website5.jpg" alt="Website5"/>
+					</div>
+					<div class="zoom_overlay">
+						<img src="images/website5_notes.png" alt="Website5Notes"/>
+					</div>	
+				</div>
+
+			</div>
+		</div>
+        <div>
+            <span class="reference">
+                <a href="http://tympanus.net/codrops/2010/10/12/annotation-overlay-effect/">back to the Codrops tutorial</a>
+            </span>
+		</div>
+
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+				//main div
+				var $portfolio	= $('#portfolio');
+				
+				//click event for the image : 
+				//show the overlay
+				$portfolio.find('.image_wrap').bind('click',function(){
+					var $elem	= $(this);
+					var $image	= $elem.find('img:first');
+					$image.stop(true)
+						  .animate({
+							'width'	:'400px',
+							'height':'400px'
+						  },250);
+						  
+					//the overlay is the next element
+					var opacity	= '1';
+					if($.browser.msie)
+						opacity	= '0.5'
+					$elem.next()
+						 .stop(true)
+						 .animate({
+							'width'		:'500px',
+							'height'	:'500px',
+							'marginTop'	:'-250px',
+							'marginLeft':'-250px',
+							'opacity'	:opacity
+						},250,function(){
+							//fade in the annotations
+							$(this).find('img').fadeIn();
+						});
+				});
+				
+				//click event for the overlay :
+				//show the image again and hide the overlay
+				$portfolio.find('.zoom_overlay').bind('click',function(){
+					var $elem	= $(this);
+					var $image	= $elem.prev()
+									   .find('img:first');
+					//hide overlay
+					$elem.find('img')
+						 .hide()
+						 .end()
+						 .stop(true)
+						 .animate({
+							'width'		:'400px',
+							'height'	:'400px',
+							'marginTop'	:'-200px',
+							'marginLeft':'-200px',
+							'opacity'	:'0'
+						 },125,function(){
+							//hide overlay
+							$(this).hide();
+						 });
+						 
+					//show image	 
+					$image.stop(true)
+						  .animate({
+							'width':'500px',
+							'height':'500px'
+						  },250);
+				});
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+.menuWrapper{
+    position:relative;
+    margin:20px auto;
+    height:542px;
+    width:798px;
+    background-position:0 0;
+    background-repeat:no-repeat;
+    background-color:transparent;
+}
+ul.menu{
+    list-style:none;
+    font-family: "Trebuchet MS", Arial, sans-serif;;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    text-transform:uppercase;
+    letter-spacing: normal;
+    line-height: 1.45em;
+    width:798px;
+}
+ul.menu li{
+    float:left;
+    width:265px;
+    height:542px;
+    border-right:1px solid #777;
+    background-repeat:no-repeat;
+    background-color:transparent;
+    padding:0px;
+    margin:0px;
+}
+.bg1{
+    background-image: url(../images/1.jpg);
+}
+.bg2{
+    background-image: url(../images/2.jpg);
+}
+.bg3{
+    background-image: url(../images/3.jpg);
+}
+ul.menu li.pos1{
+    background-position:0px 0px;
+}
+ul.menu li.pos2{
+     background-position:-266px 0px;
+}
+ul.menu li.pos3{
+     background-position:-532px 0px;
+}
+ul.menu li.last{
+    border:none;
+}
+ul.menu li a{
+    float:left;
+    width:265px;
+    height:50px;
+    margin:450px 0px 0px 0px;
+    text-align:center;
+    line-height:50px;
+    color:#ddd;
+    background-color:#333;
+    letter-spacing:1px;
+    cursor:pointer;
+    text-decoration:none;
+    text-shadow:0px 0px 1px #fff;
+    padding:0px;
+}
+/*ul.menu > li > a:hover, ul.menu a.selected{
+    color:#fff;
+    background-color:#2992C9;
+}*/
+ul.menu li ul{
+    list-style:none;
+    float:left;
+    margin:-180px 0px 0px 0px;
+    padding:0px;
+    width:265px;
+    height:110px;
+    padding-top:20px;
+    background-repeat:no-repeat;
+    background-color:transparent;
+}
+
+ul.menu li ul.sub1{
+    background-image:url(../images/bg1sub.png);
+}
+ul.menu li ul.sub2{
+    background-image:url(../images/bg2sub.png);
+}
+ul.menu li ul.sub3{
+    background-image:url(../images/bg3sub.png);
+}
+ul.menu li ul li a{
+    padding:0px;
+    color:#fff;
+    text-decoration:none;
+    line-height:30px;
+    margin:0px 0px 0px 20px;
+    font-size:11px;
+    width:auto;
+    height:30px;
+    text-align:left;
+    background-color:transparent;
+}
+ul.menu li ul li{
+    display:none;
+    width:265px;
+    height:30px;
+    margin:0px;
+    padding:0px;
+}
+ul.menu li ul.sub1 li{
+    display:block;
+}
+ul.menu  li ul li a:hover{
+    border-bottom:1px dotted #fff;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Before After</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.qbeforeafter.js"></script>	
+	<script type="text/javascript">
+	$(function () {
+		$('.pic1').qbeforeafter({defaultgap:50, leftgap:0, rightgap:10, caption: false, reveal: 0.5});
+		$('.pic2, .pic3').qbeforeafter({defaultgap:20, leftgap:5, rightgap:10, caption: true});
+	});
+	</script>
+	<link rel="stylesheet" href="qbeforeafter.css" />
+	<style type="text/css">
+		
+		#container {width:800px; margin:0 auto; font-family:arial;}
+
+		.pic1 {width:392px; height:294px;}		
+		.pic2 {width:272px; height:321px;}		
+		.pic3 {width:275px; height:315px;}			
+		
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		
+		<h2>Queness' Before &amp; After Photo Gallery Effect</h2>
+		
+		<h3>Without Caption</h3>
+		<div class="pic1">
+			<img src="pic1a.jpg" alt="Caption 1" width="392" height="294"/>
+			<img src="pic1b.jpg" alt="Caption 2" width="392" height="294"/>		
+		</div>
+		
+		<br/>
+		
+		<h3>With Caption</h3>
+		
+		<div class="pic2">
+			<img src="pic2a.jpg" alt="Before Retouching" width="278" height="321"/>
+			<img src="pic2b.jpg" alt="After Retouching" width="278" height="321"/>		
+		</div>
+
+		<br/>
+
+		<div class="pic3">
+			<img src="pic3a.jpg" alt="Before Retouching" width="275" height="315"/>
+			<img src="pic3b.jpg" alt="After Retouching" width="275" height="315"/>		
+		</div>
+			
+	</div>
+	
+	
+	<br/><br/><br/>
+	
+</body>
+</html>
