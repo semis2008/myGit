@@ -52,7 +52,7 @@
 			<h1>
 				<a href="<%=request.getContextPath()%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=request.getContextPath()%>/img/testfw.jpg"
+					src="<%=request.getContextPath()%>/img/easyfw.png"
 					alt="TestFW Logo" /> </a>
 			</h1>
 			<p>
@@ -83,6 +83,10 @@
 			<div class="main_wrap">
 				<div class="main">
 					<div class="top_bar"></div>
+					<div class="group" id="paging">
+						<a title="Page 1" href="#">登录</a>
+						<a title="Page 1" href="#">留言</a>
+					</div>
 					<h1>Comming&nbsp;&nbsp;Soon!</h1>
 				</div>
 				<div class="section_wrap more_padding">

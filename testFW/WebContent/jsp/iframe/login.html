@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>登录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style rel="stylesheet" type="text/css">
+#login {
+	margin: 0;
+	width: 546px;
+}
+
+#cap-top {
+	background: url("/img/login/cap-top.png") no-repeat scroll 0 0
+		transparent;
+	height: 8px;
+	width: 546px;
+}
+
+#cap-body {
+	background: url("/img/login/cap-bg.png") repeat-y scroll 0 0 transparent;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+div#login div#branding {
+	padding-top: 20px;
+}
+
+.clearfix {
+	display: block;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+element.style {
+	border-width: 0;
+	float: left;
+	max-height: 60px;
+	max-width: 260px;
+}
+
+div#login div#branding img {
+	display: block;
+	margin: 0 0 10px;
+}
+
+div#login div#panelLogin div,div#login div#panelResetPass div,div#login div#panelChangePass div,div#login div#registDiv div
+	{
+	margin: 0 auto;
+	padding-bottom: 18px;
+	width: 456px;
+}
+
+div#login label,.info {
+	color: #888888;
+	display: block;
+	font-size: 13px;
+}
+
+div#login input.textbox340
+	{
+	background: none repeat scroll 0 0 #fafafa;
+	border: 1px solid #EEEEEE;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 0;
+	padding: 3px;
+	width: 440px;
+}
+
+div#login a:link,div#login a:visited {
+	color: #aaaaaa;
+}
+
+.buttonLoginV2 {
+	background: -moz-linear-gradient(center top, #FFFFFF 5%, #F0F0F0 100%)
+		repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #D1D1D1;
+	border-radius: 16px 16px 16px 16px;
+	box-shadow: 0 1px 3px 0 #DEDEDE;
+	color: #666666 !important;
+	display: inline-block;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #FFFFFF;
+}
+</style>
+<body>
+	<script type="text/javascript">
+		function showResetPass() {
+			document.getElementById("panelLogin").style.display = "none";//隐藏
+			document.getElementById("panelResetPass").style.display = "";//显示
+		}
+		function showRegist() {
+			document.getElementById("panelLogin").style.display = "none";//隐藏
+			document.getElementById("panelResetPass").style.display = "none";
+			document.getElementById("registDiv").style.display = "";//显示
+		}
+	</script>
+	<div>
+		<div id="login">
+			<div id="cap-top"></div>
+			<div id="cap-body">
+				<div class="clearfix" id="branding">
+					<img
+						style="border-width: 0px; float: left; max-width: 260px; max-height: 60px;"
+						src="http://www.testfw.com/img/easyfw.png" id="imgLogo">
+				</div>
+				<div id="panelLogin">
+					<div>
+						<label>账号(注册邮箱): </label> <input type="text" value=""
+							id="txtLogin" name="txtLogin" class="textbox340">
+					</div>
+					<div>
+						<label>密码: </label> <input type="password" value=""
+							autocomplete="off" id="txtPassword" name="txtPassword"
+							class="textbox340">
+					</div>
+					<div style="text-align: right;" class="submit clearfix">
+						<a href="#" class="buttonLoginV2" id="lbtnLogin">LOGIN</a>
+					</div>
+					<p class="lostpassword">
+						<a href="#" onclick="javascript:showResetPass();"> 密码忘记了?</a> or <a
+							href="#" onclick="javascript:showRegist();">5秒快速注册?</a>
+					</p>
+				</div>
+				<div id="panelResetPass" style="display: none;">
+					<div class="info">输入您注册时候的邮箱，来找回您的密码。</div>
+					<div>
+						<label> 注册邮箱地址：</label> <input type="text" value=""
+							id="txtEmailAddressResetPass" name="txtEmailAddressResetPass"
+							class="textbox340">
+					</div>
+					<div style="text-align: right;" class="submit clearfix">
+						<a href="#" class="buttonLoginV2" id="lbtnRetrieve">找回密码</a>
+					</div>
+				</div>
+				<div id="registDiv" style="display: none;">
+					<div>
+						<label> 注册邮箱：</label> <input type="text" value=""
+							id="txtEmailAddressRegist" name="txtEmailAddressRegist"
+							class="textbox340">
+					</div>
+					<div>
+						<label> 密码：</label> <input type="password" value=""
+							id="txtPasswordRegist" name="txtPasswordRegist"
+							class="textbox340">
+					</div>
+					<div>
+						<label> 确认密码：</label> <input type="password" value=""
+							id="txtPasswordCon" name="txtPasswordCon" class="textbox340">
+					</div>
+					<div style="text-align: right;" class="submit clearfix">
+						<a href="#" class="buttonLoginV2" id="lbtnRegist">快速注册</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

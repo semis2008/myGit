@@ -1,10 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="com.testFW.bo.UserBO"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
 	String fun = (String) request.getAttribute("fun");
 	if (fun == null)
 		fun = "";
+	UserBO user = (UserBO)request.getAttribute("loginUser");
+	boolean hasLogin = false;
+	if(user==null) {
+		user = new UserBO(); 
+	}else{
+		hasLogin = true;
+	}
 %>
 
 
@@ -19,6 +27,11 @@
 <link type="text/css"
 	href="<%=request.getContextPath()%>/demo/atooltip/css/atooltip.css"
 	rel="stylesheet" media="screen" />
+<script language="javascript" type="text/javascript"
+	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/plugin/fancybox/jquery.fancybox.css"
+	media="screen" />
 <!-- aToolTip js -->
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/demo/atooltip/js/jquery.atooltip.js"></script>
@@ -29,6 +42,12 @@
 			if (this.value == this.defaultValue) {
 				this.value = '';
 			}
+		});
+		$('.fancybox-iframe').fancybox({
+			'padding':0,
+			'margin':0,
+			'scrolling':'no',
+			'type':'ajax'
 		});
 		$('.small_search').blur(function() {
 			if (this.value == '') {
@@ -54,7 +73,7 @@
 			<h1>
 				<a href="<%=request.getContextPath()%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=request.getContextPath()%>/img/testfw.jpg"
+					src="<%=request.getContextPath()%>/img/easyfw.png"
 					alt="TestFW Logo" /> </a>
 			</h1>
 			<p>
@@ -85,7 +104,22 @@
 			<div class="main_wrap">
 				<div class="main">
 					<div class="top_bar"></div>
-					<h1>Comming&nbsp;&nbsp;Soon!</h1>
+					<div class="group" id="paging">
+						<%
+							if(!hasLogin) {
+								%>
+						<a class="fancybox-iframe" href="<%=request.getContextPath() %>/jsp/iframe/login.html">登录</a>
+								<%
+							}else {
+								%>
+						<a class="" href="<%=request.getContextPath() %>/action/system/mainpage"><%=user.getName() %></a>
+								<%
+							}
+						%>
+						<a title="fancybox-iframe" href="#">留言</a>
+					</div>
+					
+					
 				</div>
 				<div class="section_wrap more_padding">
 					<h3>

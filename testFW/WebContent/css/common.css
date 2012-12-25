@@ -253,6 +253,7 @@ li.active #aboutus:hover,li.active #aboutus {
 	overflow: hidden;
 	padding: 24px 0;
 	width: 100%;
+	min-height: 200px;
 }
 
 .top_bar {
@@ -301,3 +302,50 @@ li.active #aboutus:hover,li.active #aboutus {
 .clearfix { *+
 	height: 1%;
 } /*不知道有什么用处，不加ie7也没有问题*/
+
+/*浮动右侧菜单栏样式-start*/
+.group:before, .group:after {
+    content: "";
+    display: table;
+}
+.group:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.group:before, .group:after {
+    content: "";
+    display: table;
+}
+#paging, #paging a {
+    color: #BBBBBB;
+}
+#paging {
+    height: 30px;
+    line-height: 26px;
+    position: fixed;
+    right: 20px;
+    text-align: left;
+    top: 148px;
+}
+.group{
+    display: block;
+}
+#paging, #paging a {
+    color: #BBBBBB;
+}
+#paging a {
+    border-left-style: solid;
+    border-left-width: 4px;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 0 1px;
+    padding: 2px 7px 1px;
+    text-transform: uppercase;
+    width: 70px;
+    font-size: 1.2em;
+}
+/*浮动右侧菜单栏样式-end*/

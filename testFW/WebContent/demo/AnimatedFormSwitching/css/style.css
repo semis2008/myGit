@@ -5,7 +5,6 @@
 body{
 	font-family:"Trebuchet MS", "Myriad Pro", Arial, sans-serif;
 	font-size:14px;
-	background:#f4f4f4 url(../images/bg.gif) repeat top left;
 	color:#333;
 	text-shadow:1px 1px 1px #fff;
 	overflow-y:scroll;
@@ -31,7 +30,6 @@ p{
 	padding:5px 0px;
 }
 .wrapper{
-	width:960px;
 	margin:20px auto;
 	min-height:550px;
 }
