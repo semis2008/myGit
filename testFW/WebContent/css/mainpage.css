@@ -1,0 +1,91 @@
+.articles{
+    width: 70%;
+    float: left;
+    margin: 0;
+    padding: 22px 25px;
+
+}
+.artical{
+    clear: both;
+    margin: 0 0 48px;
+}
+ 
+div.art-cats {
+    float: left;
+    font-size: 9px;
+    margin-bottom: 14px;
+    margin-right: 12px;
+    margin-top: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 48px;
+}
+
+div.art-cats li {
+    list-style-type: none;
+    margin-bottom: 1px;
+}
+div.art-cats li.blogNum a {
+	font-size:25px;
+	padding: 10px;
+}
+div.art-cats li a {
+    background-color: #262626;
+    color: #FFFFFF;
+    display: block;
+    padding-top: 40px;
+    text-decoration: none;
+}
+div.art-cats li.tag a {
+    line-height: 14px;
+    padding-top: 0;
+}
+div.art-cats li.tag a {
+    background: none repeat scroll 0 0 #25A8E0;
+}
+.art-title {
+    float: left;
+    margin-top: 10px;
+    width: 80%;
+}
+.art-title a {
+    color: #666666;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+.comment-count {
+    float: right;
+    font-size: 16px;
+    margin: 0 !important;
+    padding: 7px 0 0;
+    width: auto;
+}
+.comment-count a {
+    background: none repeat scroll 0 0 #848484;
+    border-radius: 9px 9px 9px 9px;
+    color: #FFFFFF;
+    display: block;
+    padding: 3px 8px;
+    text-decoration: none;
+}
+.art-header {
+	display: block;
+	height: 100px;
+}
+.art-header .art-meta {
+    border-bottom: 1px solid #D1D1D1;
+    color: #909090;
+    float: left;
+    font-size: 12px;
+    margin-top:10px;
+    margin-bottom: 12px;
+    padding: 0 0 2px;
+    width: 540px;
+}
+
+.art-header .art-meta a {
+    color: #909090;
+    text-decoration: none;
+}
+.art-content{
+}

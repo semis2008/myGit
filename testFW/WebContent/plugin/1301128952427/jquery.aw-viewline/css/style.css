@@ -1,0 +1,103 @@
+
+/* Reset */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,dialog,figure,footer,header,hgroup,nav,section{margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block}body{line-height:1}a img{border:none}table{border-collapse:separate;border-spacing:0}caption,th,td{text-align:left;font-weight:normal}table,td,th{vertical-align:middle}blockquote:before,blockquote:after,q:before,q:after{content:""}blockquote,q{quotes:""""}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}button::-moz-focus-inner{border:0}
+
+body
+{
+	color: #000;
+	font-family: Century Gothic, Arial;
+	font-size: 12px;
+}
+
+a
+{
+	color: #ff377c;
+}
+
+h1
+{
+	font-size: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+h2
+{
+	font-size: 16px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.menu
+{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+	color: #999;
+}
+
+	.menu a
+	{
+		color: #999;
+	}
+	
+	.menu a.active
+	{
+		font-weight: bold;
+	}
+
+
+/* Viewline
+------------*/
+
+#viewline
+{
+	background-color: #000;
+	position: relative;
+	height: 470px;
+	overflow: hidden;
+}
+
+	#viewline #left-arrow, #viewline #right-arrow
+	{
+		position: absolute;
+		background-image: url(../images/arrows.png);
+		cursor: pointer;
+		height: 33px;
+		width: 33px;
+		text-align: center;
+		font-size: 18px;
+		color: #fff;
+		left: 20px;
+		z-index: 50;
+		background-position: 0 0px;
+	}
+	
+	#viewline #left-arrow:hover, #right-arrow:hover
+	{
+		background-position: 0 -34px;
+	}
+	
+	#viewline #right-arrow
+	{
+		left: auto;
+		right: 20px;
+		background-position: -34px 0px;
+	}
+	
+	#viewline #right-arrow:hover
+	{
+		background-position: -34px -34px;
+	}
+	
+	#viewline .caption
+	{
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		background-image: url(../images/caption-bg.png);
+		padding: 20px;
+		color: #fff;
+		z-index: 40;
+	}

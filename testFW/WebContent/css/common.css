@@ -109,8 +109,6 @@ a.exampleTip:hover{
 
 h1,h2,h3,h4,h5,h6 {
 	color: #7D7974;
-	font-family: "HelveticaNeueLight", "Helvetica Neue Light",
-		"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 1.4em;
 	font-weight: 200;
 }
@@ -308,19 +306,9 @@ li.active #aboutus:hover,li.active #aboutus {
     content: "";
     display: table;
 }
-.group:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
 .group:before, .group:after {
     content: "";
     display: table;
-}
-#paging, #paging a {
-    color: #BBBBBB;
 }
 #paging {
     height: 30px;
@@ -336,6 +324,9 @@ li.active #aboutus:hover,li.active #aboutus {
 #paging, #paging a {
     color: #BBBBBB;
 }
+#paging a:HOVER{
+    color: #999999;
+}
 #paging a {
     border-left-style: solid;
     border-left-width: 4px;
@@ -349,3 +340,8 @@ li.active #aboutus:hover,li.active #aboutus {
     font-size: 1.2em;
 }
 /*浮动右侧菜单栏样式-end*/
+
+h1{
+    font-size: 28px;
+    line-height: 34px;
+}
