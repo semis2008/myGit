@@ -301,3 +301,9 @@
 .snippet-wrap .snippet-no-num li .box-sp {
 	display: none;
 }
+
+.java p{
+	margin-left:-60%;
+	color: fuchsia;
+	line-height: 1.1em;
+}

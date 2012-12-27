@@ -63,7 +63,7 @@
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
 
-		$("pre.styles").snippet("java", {
+		$("pre.java").snippet("java", {
 			style : "ide-eclipse",
 		});
 		$("pre.js").snippet("javascript", {
@@ -181,16 +181,15 @@
 									“Her&nbsp;ability to iterate and improve on core patches, her
 									outstanding communication skills, and her knowledge of the
 									codebase, make her a great addition to the bbPress team.”</p>
-								<pre class="styles">
-									 class test{
+								<pre class="java"><p>
+									class test{
 										 public static void main(String args[]) {
 											if("asdasd".equals(user)) {
 												System.out.println("asdasdasd");
 											}
 										 	System.out.println("asdasdasd");
 										 }
-									 }
-									 </pre>
+									 }</p></pre>
 								<p>
 									In the <a
 										href="http://bbpress.org/blog/2012/12/introducing-jmdodd/">blog
@@ -212,6 +211,8 @@
 									<li class="blogNum"><a title="测试博文" href="#">2</a>
 									</li>
 									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
 									</li>
 									<li class="tag"><a title="标签2" href="#">标签two</a>
 									</li>
@@ -246,7 +247,7 @@
 									“Her&nbsp;ability to iterate and improve on core patches, her
 									outstanding communication skills, and her knowledge of the
 									codebase, make her a great addition to the bbPress team.”</p>
-								<pre class="styles">
+								<pre class="java"><p>
 									 class test{
 										 public static void main(String args[]) {
 											if("asdasd".equals(user)) {
@@ -254,8 +255,7 @@
 											}
 										 	System.out.println("asdasdasd");
 										 }
-									 }
-									 </pre>
+									 }</p></pre>
 								<p>
 									In the <a
 										href="http://bbpress.org/blog/2012/12/introducing-jmdodd/">blog
