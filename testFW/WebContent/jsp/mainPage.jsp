@@ -134,7 +134,213 @@
 						%>
 						<a class="fancybox-iframe" href="#">留言</a>
 					</div>
-					<h1>Comming&nbsp;&nbsp;soon!</h1> 
+					<div id="foreword">
+						<div id="sidebar_top">
+							<h1>卡莱尔</h1>
+							<h2>测试人员</h2>
+							<div id="picture-profile">
+								<img alt="Ricardo Castillo"
+									src="<%=request.getContextPath()%>/img/head/profile.jpg">
+							</div>
+							<ul>
+								<li><a href="#">加入日期：</a><span>2012/12/20</span></li>
+								<li><a href="#">日志：</a><span><em>12</em>&nbsp;篇</span></li>
+								<li><a href="#">图册：</a><span><em>9</em>&nbsp;集</span></li>
+								<li><a href="#">专修：</a><span>java,C++</span></li>
+								<li><a href="#">联系方式：</a><span>不公开</span></li>
+							</ul>
+						</div>
+
+
+					</div>
+					<div class="content">
+						<div id="content-gallery">
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+							<div class="gallery-item" id="post-116">
+								<h2>
+									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+								</h2>
+							</div>
+							<div class="gallery-item" id="post-134">
+								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+									class=""
+									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								</a>
+								<h2>测试图册缩略图</h2>
+							</div>
+						</div>
+						<!-- content-gallery -->
+					</div>
+
 					<div class="section_wrap more_padding">
 						<h3>
 							<strong>1989</strong> Keep learning &amp; Remain Modest.

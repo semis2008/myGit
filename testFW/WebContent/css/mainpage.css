@@ -1,0 +1,97 @@
+#foreword {
+    float: left;
+    width: 250px;
+    background-color: #9191ad;
+}
+.content {
+    margin-left: 250px;
+    min-height: 100%;
+    position: relative;
+    width: 760px;
+    z-index: 15;
+}
+#content-gallery, #content-single {
+    float: left;
+    margin-bottom: 50px;
+}
+
+.gallery-item {
+    float: left;
+    height: 220px;
+    position: relative;
+    width: 220px;
+}
+
+.gallery-item h2, .gallery-item h2 a {
+    background: none repeat scroll 0 0 #333333;
+    color: #a3a3a3;
+    font-size: 28px;
+    font-weight: normal;
+    font-family:"Microsoft yahei";
+    height: 187px;
+    left: 0;
+    line-height: 32px;
+    padding: 12px 20px 20px 19px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    width: 180px;
+    z-index: 5;
+}
+.gallery-item h2 a p{
+	font-family: "宋体";
+	font-size: 13px;
+	line-height: 15px;
+	padding-top: 40px;
+}
+.gallery-item img {
+    height: 219px;
+    position: absolute;
+    transition-duration: 0.3s;
+    width: 219px;
+    z-index: 10;
+} 
+.gallery-item h2 a:hover {
+    background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;
+    box-shadow: 0 0 2px #CCCCCC inset;
+    color: #222222;
+}
+
+#sidebar_top {
+    background: none repeat scroll 0 0 #373737;
+    height: 100%;
+    left: 0;
+    position: relative;
+    text-align: center;
+    top: 0;
+    width: 250px;
+    z-index: 4;
+}
+#sidebar_top h1, #sidebar_top h2 {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    width: 80%;
+}
+
+#sidebar_top #picture-profile {
+    background: none repeat scroll 0 0 #656565;
+    text-align: center;
+}
+
+#sidebar_top #picture-profile img {
+    margin: 10px 0;
+}
+#sidebar_top ul li a{
+    color: #A3A3A3;
+	text-align: left;
+    display: block;
+    height: 1.5em;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: middle;
+    float: left;
+}
+#sidebar_top ul li span{
+	color: #c9c9c9;
+}
