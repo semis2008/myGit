@@ -24,11 +24,11 @@
 	src="<%=request.getContextPath()%>/js/jquery-1.8.2.js"></script>
 <!-- aToolTip css -->
 <link type="text/css"
-	href="<%=request.getContextPath()%>/demo/atooltip/css/atooltip.css"
+	href="<%=request.getContextPath()%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
 <!-- aToolTip js -->
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/demo/atooltip/js/jquery.atooltip.js"></script>
+	src="<%=request.getContextPath()%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 <!-- Add mousewheel plugin (this is optional) -->
 <script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
