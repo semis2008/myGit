@@ -56,9 +56,11 @@ body {
 	background: url("../img/bg_header.jpg") repeat-x scroll center top
 		transparent;
 	height: 102px;
+	position:fixed;
 	min-width: 1000px;
 	overflow: hidden;
 	width: 100%;
+	z-index: 999;
 }
 
 a.exampleTip {
@@ -153,8 +155,8 @@ p img {
 
 .sidebar {
 	left: 0;
-	position: absolute;
-	top: 0;
+	position: fixed;
+	top: 120px;
 	width: 80px;
 }
 
@@ -243,6 +245,7 @@ li.active #aboutus:hover,li.active #aboutus {
 
 .main_wrap {
 	margin: 0;
+	padding-top:120px;
 	padding-left: 120px;
 }
 

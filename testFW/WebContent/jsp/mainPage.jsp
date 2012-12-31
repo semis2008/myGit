@@ -14,8 +14,6 @@
 		hasLogin = true;
 	}
 %>
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -56,16 +54,6 @@
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
-
-		$("pre.java").snippet("java", {
-			style : "ide-eclipse",
-		});
-		$("pre.js").snippet("javascript", {
-			style : "ide-eclipse",
-			transparent : true,
-			showNum : false
-		});
-
 	});
 </script>
 <title>主页</title>
@@ -143,15 +131,13 @@
 									src="<%=request.getContextPath()%>/img/head/profile.jpg">
 							</div>
 							<ul>
-								<li><a href="#">加入日期：</a><span>2012/12/20</span></li>
-								<li><a href="#">日志：</a><span><em>12</em>&nbsp;篇</span></li>
-								<li><a href="#">图册：</a><span><em>9</em>&nbsp;集</span></li>
-								<li><a href="#">专修：</a><span>java,C++</span></li>
-								<li><a href="#">联系方式：</a><span>不公开</span></li>
+								<li>加入日期：<a href="#">2012/12/20</a></li>
+								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a></li>
+								<li>图册：<a href="#"><em>9</em>&nbsp;集</a></li>
+								<li>专修：<a href="#">java,C++</a></li>
+								<li>联系方式：<a href="#">不公开</a></li>
 							</ul>
 						</div>
-
-
 					</div>
 					<div class="content">
 						<div id="content-gallery">
