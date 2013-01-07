@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@page import="com.testFW.bo.UserBO"%>
-	<%@page import="com.testFW.util.ConstantsUtil"%>
+<%@page import="com.testFW.bo.UserBO"%>
+<%@page import="com.testFW.util.ConstantsUtil"%>
 <%
 	String fun = (String) request.getAttribute("fun");
 	if (fun == null)
@@ -72,8 +72,8 @@
 			<h1>
 				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png"
-					alt="TestFW Logo" /> </a>
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png" alt="TestFW Logo" />
+				</a>
 			</h1>
 			<p>
 				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -86,22 +86,19 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
+						title="查看日志" id="diary">日志</a></li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture" title="查看图册信息"
-						id="picture">图册</a>
-					</li>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
+						title="查看图册信息" id="picture">图册</a></li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus" title="关于我以及本站"
-						id="aboutus">about</a>
-					</li>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -120,7 +117,8 @@
 						<%
 							}
 						%>
-						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
 					<div class="aboutMe">
 						<h3>>关于我</h3>
@@ -143,8 +141,10 @@
 					<div class="aboutProcess">
 						<div class="timeline">
 							<ul class="events">
-								<li style="width: 20%; left: 5%;">构建开发环境<em>(12/07~14)</em></li>
-								<li style="width: 22%; left: 15%;">完成主体框架<em>(12/10~19)</em></li>
+								<li style="width: 20%; left: 5%;">构建开发环境<em>(12/07~14)</em>
+								</li>
+								<li style="width: 22%; left: 15%;">完成主体框架<em>(12/10~19)</em>
+								</li>
 								<li style="width: 25%; left: 28.4%;">前台页面设计<em>(12/18~now)</em>
 								</li>
 							</ul>
