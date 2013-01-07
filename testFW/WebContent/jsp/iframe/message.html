@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>留言</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style rel="stylesheet" type="text/css">
+#message {
+	margin: 0;
+	width: 546px;
+}
+
+#cap-top {
+	background: url("/img/login/cap-top.png") no-repeat scroll 0 0
+		transparent;
+	height: 8px;
+	width: 546px;
+}
+
+#cap-body {
+	background: url("/img/login/cap-bg.png") repeat-y scroll 0 0 transparent;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+div#message div#branding {
+	padding-top: 20px;
+}
+
+.clearfix {
+	display: block;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+element.style {
+	border-width: 0;
+	float: left;
+	max-height: 60px;
+	max-width: 260px;
+}
+
+div#message div#branding img {
+	display: block;
+	margin: 0 0 10px;
+}
+
+div#message div#leaveMessage div {
+	margin: 0 auto;
+	padding-bottom: 18px;
+	width: 456px;
+}
+
+div#message label,.info {
+	color: #888888;
+	display: block;
+	font-size: 13px;
+}
+
+div#message input.textbox340 {
+	background: none repeat scroll 0 0 #fafafa;
+	border: 1px solid #EEEEEE;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 0;
+	padding: 3px;
+	width: 440px;
+}
+
+div#message a:link,div#message a:visited {
+	color: #aaaaaa;
+}
+
+.buttonMsg {
+	background: -moz-linear-gradient(center top, #FFFFFF 5%, #F0F0F0 100%)
+		repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #D1D1D1;
+	border-radius: 16px 16px 16px 16px;
+	box-shadow: 0 1px 3px 0 #DEDEDE;
+	color: #666666 !important;
+	display: inline-block;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #FFFFFF;
+}
+.textarea{
+	background: none repeat scroll 0 0 #fafafa;
+	border: 1px solid #EEEEEE;
+	font-size: 15px;
+	font-family:"MicroSoft yahei";
+	line-height: 15px;
+	margin: 0;
+	padding: 3px;
+	width: 440px;
+	height: 150px;
+}
+#result{
+	margin-bottom: 40px;
+}
+</style>
+<body>
+	<script type="text/javascript">
+		function leaveMsg() {
+			document.getElementById("leaveMessage").style.display = "none";//隐藏
+			document.getElementById("result").style.display = "";//显示
+		}
+	</script>
+	<div>
+		<div id="message">
+			<div id="cap-top"></div>
+			<div id="cap-body">
+				<div class="clearfix" id="branding">
+					<img
+						style="border-width: 0px; float: left; max-width: 260px; max-height: 60px;"
+						src="../../img/easyfw.png" id="imgLogo">
+				</div>
+				<div id="leaveMessage">
+					<div>
+						<label>邮箱: </label> <input type="text" value="" id="email"
+							name="email" class="textbox340">
+					</div>
+					<div>
+						<label>姓名: </label> <input type="text" value="" id="name"
+							name="name" class="textbox340">
+					</div>
+					<div>
+						<label>想对我说: </label>
+						<textarea id="msg" name="msg" class="textarea"></textarea>
+					</div>
+					<div style="text-align: right;" class="submit clearfix">
+						<a href="#" class="buttonMsg" id="lbtnMsg" onclick="javascript:leaveMsg()">留言</a>
+					</div>
+				</div>
+				<div id="result" style="display: none;">
+					<div class="info">Sorry,尚未开放本功能~</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

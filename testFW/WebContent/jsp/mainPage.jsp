@@ -121,7 +121,7 @@
 						<%
 							}
 						%>
-						<a class="fancybox-iframe" href="#">留言</a>
+						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
 					<div id="foreword">
 						<div id="sidebar_top">

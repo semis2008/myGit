@@ -144,16 +144,20 @@ lTip();
 				<div class="main">
 					<div class="top_bar"></div>
 					<div class="group" id="paging">
-						<%if (!hasLogin) {%>
-						<a class="fancybox-iframe fixedTip"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html"
-							title="点击登录">登录</a>
-						<%} else {%>
-						<a class="fixedTip"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
+						<%
+							if (!hasLogin) {
+						%>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
+						<%
+							} else {
+						%>
+						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 							title="点击进入主页"><%=user.getName()%></a>
-						<%}%>
-						<a class="fancybox-iframe fixedTip" href="#" title="点击给我留言">留言</a>
+						<%
+							}
+						%>
+						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
 					<div id="post-1" class="album">
 						<div class="iLikeThis" id="iLikeThis-1">

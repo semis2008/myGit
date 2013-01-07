@@ -7,11 +7,11 @@
 	String fun = (String) request.getAttribute("fun");
 	if (fun == null)
 		fun = "";
-	UserBO user = (UserBO)request.getAttribute("loginUser");
+	UserBO user = (UserBO) request.getAttribute("loginUser");
 	boolean hasLogin = false;
-	if(user==null) {
-		user = new UserBO(); 
-	}else{
+	if (user == null) {
+		user = new UserBO();
+	} else {
 		hasLogin = true;
 	}
 %>
@@ -22,20 +22,31 @@
 <link href="/css/diary.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
-	<!-- snippet js and css-->
-	<!-- aToolTip css -->
+<!-- aToolTip css -->
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
+<script language="javascript" type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
+	media="screen" />
 <!-- aToolTip js -->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
+
 <script language="javascript" type="text/javascript">
 	$(function() {
 		$('.small_search').click(function() {
 			if (this.value == this.defaultValue) {
 				this.value = '';
 			}
+		});
+		$('.fancybox-iframe').fancybox({
+			'padding' : 0,
+			'margin' : 0,
+			'scrolling' : 'no',
+			'type' : 'ajax'
 		});
 		$('.small_search').blur(function() {
 			if (this.value == '') {
@@ -93,8 +104,20 @@
 				<div class="main">
 					<div class="top_bar"></div>
 					<div class="group" id="paging">
-						<a title="Page 1" href="#">登录</a>
-						<a title="Page 1" href="#">留言</a>
+						<%
+							if (!hasLogin) {
+						%>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
+						<%
+							} else {
+						%>
+						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
+							title="点击进入主页"><%=user.getName()%></a>
+						<%
+							}
+						%>
+						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
 					<div class="articles">
 						<div class="artical" id="post-1">
