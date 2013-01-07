@@ -3,7 +3,7 @@
 	pageEncoding="utf-8"%>
 	
 	<%
-	String imgPath = request.getContextPath()+"/demo/fancybox/";
+	String imgPath = ConstantsUtil.FW_DOMAIN+"/demo/fancybox/";
 	
 	%>
 <html>
@@ -15,34 +15,34 @@
 
 <!-- Add jQuery library -->
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery-1.8.2.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 
 <!-- Add mousewheel plugin (this is optional) -->
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
 
 <!-- Add fancyBox main JS and CSS files -->
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/plugin/fancybox/jquery.fancybox.css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
 	media="screen" />
 
 <!-- Add Button helper (this is optional) -->
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/plugin/fancybox/jquery.fancybox-buttons.css" />
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox-buttons.css" />
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox-buttons.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox-buttons.js"></script>
 
 <!-- Add Thumbnail helper (this is optional) -->
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/plugin/fancybox/jquery.fancybox-thumbs.css" />
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox-thumbs.css" />
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox-thumbs.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox-thumbs.js"></script>
 
 <!-- Add Media helper (this is optional) -->
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox-media.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox-media.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(

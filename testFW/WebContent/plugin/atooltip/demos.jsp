@@ -6,17 +6,17 @@
 		<title>aToolTip Demos</title>
 		
 		<!-- CSS -->
-		<link type="text/css" href="<%=request.getContextPath()%>/demo/atooltip/css/style.css" rel="stylesheet"  media="screen" />
+		<link type="text/css" href="<%=ConstantsUtil.FW_DOMAIN%>/demo/atooltip/css/style.css" rel="stylesheet"  media="screen" />
 		
 		<!-- aToolTip css -->
-		<link type="text/css" href="<%=request.getContextPath()%>/demo/atooltip/css/atooltip.css" rel="stylesheet"  media="screen" />
+		<link type="text/css" href="<%=ConstantsUtil.FW_DOMAIN%>/demo/atooltip/css/atooltip.css" rel="stylesheet"  media="screen" />
 		
 		
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery-1.8.2.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 		
 		<!-- aToolTip js -->
-		<script type="text/javascript" src="<%=request.getContextPath()%>/demo/atooltip/js/jquery.atooltip.js"></script>
+		<script type="text/javascript" src="<%=ConstantsUtil.FW_DOMAIN%>/demo/atooltip/js/jquery.atooltip.js"></script>
 		<script type="text/javascript">
 			$(function(){ 
 				$('a.normalTip').aToolTip();

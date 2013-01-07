@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
+import com.testFW.util.ConstantsUtil;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -50,7 +52,7 @@ public class UrlFilter implements Filter {
 		// 本系统网站访问路径均通过Servlet进行，所有直接访问文件的路径均不合法
 		if (targetURL.contains(".jsp") || targetURL.contains(".htm")
 				|| targetURL.contains(".html")) {
-			response.sendRedirect(request.getContextPath()
+			response.sendRedirect(ConstantsUtil.FW_DOMAIN
 					+ "/system.do?fun=error");
 			logger.error("URL路径不合法！Url:" + targetURL);
 			return;

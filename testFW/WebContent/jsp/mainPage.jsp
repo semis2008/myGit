@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <%@page import="com.testFW.bo.UserBO"%>
+<%@page import="com.testFW.util.ConstantsUtil"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
@@ -20,19 +21,19 @@
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/css/mainpage.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery-1.8.2.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 <!-- aToolTip css -->
 <link type="text/css"
-	href="<%=request.getContextPath()%>/css/plugin/atooltip/atooltip.css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
 <script language="javascript" type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/fancybox/jquery.fancybox.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/plugin/fancybox/jquery.fancybox.css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
 	media="screen" />
 <!-- aToolTip js -->
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/plugin/atooltip/jquery.atooltip.js"></script>
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 
 <script language="javascript" type="text/javascript">
 	$(function() {
@@ -63,15 +64,15 @@
 		<div class="header">
 			<div class="search_box">
 				<form method="post" id="sForm"
-					action="<%=request.getContextPath()%>/action/system/search">
+					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
 					<input name="s" id="s" value="站内搜索" class="small_search"
 						type="text" />
 				</form>
 			</div>
 			<h1>
-				<a href="<%=request.getContextPath()%>/action/system/mainpage"
+				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=request.getContextPath()%>/img/easyfw.png"
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png"
 					alt="TestFW Logo" /> </a>
 			</h1>
 			<p>
@@ -84,21 +85,21 @@
 				<ul class="side_nav">
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="http://www.testFW.com/action/system/mainpage"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 						title="查看个人主页信息" id="mainpage">主页</a>
 					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="http://www.testFW.com/action/system/diary/"
+						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
 						title="查看日志" id="diary">日志</a>
 					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="http://www.testFW.com/action/system/picture" title="查看图册信息"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture" title="查看图册信息"
 						id="picture">图册</a>
 					</li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="http://www.testFW.com/action/system/aboutus" title="关于我以及本站"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus" title="关于我以及本站"
 						id="aboutus">about</a>
 					</li>
 				</ul>
@@ -111,11 +112,11 @@
 							if (!hasLogin) {
 						%>
 						<a class="fancybox-iframe"
-							href="<%=request.getContextPath()%>/jsp/iframe/login.html">登录</a>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
 						<%
 							} else {
 						%>
-						<a href="<%=request.getContextPath()%>/action/system/mainpage"
+						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 							title="点击进入主页"><%=user.getName()%></a>
 						<%
 							}
@@ -128,7 +129,7 @@
 							<h2>测试人员</h2>
 							<div id="picture-profile">
 								<img alt="Ricardo Castillo"
-									src="<%=request.getContextPath()%>/img/head/profile.jpg">
+									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/profile.jpg">
 							</div>
 							<ul>
 								<li>加入日期：<a href="#">2012/12/20</a></li>
@@ -333,7 +334,7 @@
 						</h3>
 						<small>&copy; Copyright 2012 TestFW. All rights reserved.
 							Designed by <a target="_blank"
-							href="http://www.testFW.com/action/user/1">Kalor</a> </small><br><br>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
 					</div>
 				</div>
 			</div>
