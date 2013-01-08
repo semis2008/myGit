@@ -133,7 +133,7 @@
 							</div>
 							<div class="art-header">
 								<h1 class="art-title">
-									<a title="测试博文标题" href="#">测试博文标题test blog-title</a>
+									<a title="测试博文标题" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test blog-title</a>
 								</h1>
 								<p class="comment-count">
 									<a title="测试博文回复数" href="#">3</a>
@@ -145,14 +145,6 @@
 								</div>
 							</div>
 							<div class="art-content">
-							<!-- 
-								<div style="width: 610px" class="" id="attachment_42042">
-									<a href="#"><img width="600" height="240"
-										src="http://cdn4.wpcandy.com/wp-content/uploads/2012/12/bbpress-jennifer-m-dodd.jpg">
-									</a>
-									<p class="wp-caption-text">Photo credit: Jennifer Dodd</p>
-								</div>
-							 -->
 								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
 									joined the bbPress core commit team this week after
 									contributing to the project since the plugin version of bbPress
@@ -160,7 +152,7 @@
 								</p>
 								<p>
 									<a class="more-link"
-										href="#">查看全文
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">查看全文
 										<span>↓</span>
 									</a>
 								</p>
@@ -181,7 +173,7 @@
 							</div>
 							<div class="art-header">
 								<h1 class="art-title">
-									<a title="测试博文标题" href="#">测试博文标题test blog-title</a>
+									<a title="测试博文标题" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test blog-title</a>
 								</h1>
 								<p class="comment-count">
 									<a title="测试博文回复数" href="#">3</a>
@@ -208,7 +200,7 @@
 								</p>
 								<p>
 									<a class="more-link"
-										href="#">查看全文
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">查看全文
 										<span>↓</span>
 									</a>
 								</p>

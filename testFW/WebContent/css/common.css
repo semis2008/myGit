@@ -116,12 +116,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 a:link {
-	color: #CE1315;
-}
-
-a {
-	font-weight: bold;
-	text-decoration: none;
+	color: #25A8E0;
 }
 
 .header p {
@@ -180,10 +175,6 @@ ul {
 	height: 90px;
 	text-indent: -9999px;
 	width: 80px;
-}
-
-a:link {
-	color: #CE1315;
 }
 
 a {

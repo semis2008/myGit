@@ -43,7 +43,7 @@ public class SystemServlet extends HttpServlet {
 		}else if ("mainpage".equals(fun)) {
 			targetpath = "/jsp/mainPage.jsp";
 		}else if ("diary".equals(fun)) {
-			targetpath = "/jsp/diaryPage.jsp";
+			targetpath = showDiary(req, resp);
 		}else if ("picture".equals(fun)) {
 			targetpath = "/jsp/picturePage.jsp";
 		}else if ("aboutus".equals(fun)) {
@@ -62,6 +62,19 @@ public class SystemServlet extends HttpServlet {
 		rd.forward(req, resp);
 	}
 	
+	/**
+	 * 日志业务处理
+	 * @param req
+	 * @param resp
+	 */
+	private String showDiary(HttpServletRequest req, HttpServletResponse resp) {
+		String param = req.getParameter("p1");
+		if(param==null) {
+			return "/jsp/diaryPage.jsp";
+		}else{
+			return "/jsp/diaryDetail.jsp";
+		}
+	}
 	
 	
 }
