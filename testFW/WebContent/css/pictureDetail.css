@@ -1,0 +1,87 @@
+.hostinfo {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    display: inline-block;
+}
+.face {
+    height: 200px;
+    width: 200px;
+    float: left;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 10px #CCCCCC;
+}
+.face img{
+    width: 180px;
+    margin: 10px;
+}
+.o-info p{
+	display: inline-block;
+}
+.o-info h2{
+	color: #333333;
+    font: 24px/1.2 微软雅黑,Arial,宋体;
+    display: inline-block;
+}
+.albuminfo{
+	float: left;
+	margin-left: 30px;
+	padding-top: 10px;
+}
+.albumdesc{
+	color: #999;
+	font-size: 11px;
+	width:70%;
+	margin-left: 30px;
+}
+.ico-attention{
+	background: url("/img/ico_likecmt_gray.png") no-repeat scroll 0 0 transparent;
+    height: 14px;
+    vertical-align: middle;
+    display:inline-block;
+    background-position: 0 0;
+    width: 16px; 
+}
+.ico-cmt{
+	background: url("/img/ico_likecmt_gray.png") no-repeat scroll 0 0 transparent;
+    height: 14px;
+    vertical-align: middle;
+    background-position: -22px 0;
+    display:inline-block;
+    width: 16px;
+}
+.ico-like{
+	background: url("/img/ico_likecmt_gray.png") no-repeat scroll 0 0 transparent;
+    height: 14px;
+    vertical-align: middle;
+    display:inline-block;
+    background-position: -45px 0;
+    width: 16px;
+}
+.author-follow{
+	background-color: #25a8e0;
+    border-bottom: 1px solid #1FABE7;
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    margin-left:5px;
+    font-size:13px;
+    letter-spacing: 0;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.author-follow a{
+	color: #f3f3f3;
+}
+.praise a{
+	color: #333333;
+}
+.praise{
+	background-color: #cdcdcd;
+    border-bottom: 1px solid #e4e4e4;
+    border-radius: 2px 2px 2px 2px;
+    margin-left:10px;
+    cursor: pointer;
+    font-size:13px;
+    letter-spacing: 0;
+    text-decoration: none;
+    vertical-align: middle;
+}

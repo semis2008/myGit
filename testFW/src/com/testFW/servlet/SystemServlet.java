@@ -45,7 +45,7 @@ public class SystemServlet extends HttpServlet {
 		}else if ("diary".equals(fun)) {
 			targetpath = showDiary(req, resp);
 		}else if ("picture".equals(fun)) {
-			targetpath = "/jsp/picturePage.jsp";
+			targetpath = showPicture(req, resp); 
 		}else if ("aboutus".equals(fun)) {
 			targetpath = "/jsp/aboutPage.jsp";
 		}else if ("search".equals(fun)) {
@@ -73,6 +73,20 @@ public class SystemServlet extends HttpServlet {
 			return "/jsp/diaryPage.jsp";
 		}else{
 			return "/jsp/diaryDetail.jsp";
+		}
+	}
+	
+	/**
+	 * 图册业务处理
+	 * @param req
+	 * @param resp
+	 */
+	private String showPicture(HttpServletRequest req, HttpServletResponse resp) {
+		String param = req.getParameter("p1");
+		if(param==null) {
+			return "/jsp/picturePage.jsp";
+		}else{
+			return "/jsp/pictureDetail.jsp";
 		}
 	}
 	

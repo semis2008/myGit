@@ -171,11 +171,11 @@
 								<img alt="#"
 									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
 								<textarea id="cmt_area">发表回复...</textarea>
+								<div class="proceed">
+									<button class="btn" type="submit">回复</button>
+								</div>
 								<input type="text" value="name" /><input type="text"
 									value="email" /><input type="text" value="webSite" />
-								<div class="proceed">
-									<button class="btn submit" type="submit">回复</button>
-								</div>
 							</div>
 						</div>
 						<div id="comment-1" class="cmt top">
@@ -185,6 +185,26 @@
 								<a href="#" class="name">Kalor</a><a href="#" class="reply">回复</a>
 								<p class="time">08.07 12:45</p>
 								<div>在这里，直接和我说话吧</div>
+							</div>
+							<div id="reply-2" class="cmt replyForm">
+								<div class="user">
+									<img alt="#"
+										src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
+									<textarea id="cmt_area">发表回复...</textarea>
+									<div class="proceed">
+										<button class="btn" type="submit">回复</button>
+									</div>
+								</div>
+								<div class="guest">
+									<img alt="#"
+										src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
+									<textarea id="cmt_area">发表回复...</textarea>
+									<div class="proceed">
+										<button class="btn" type="submit">回复</button>
+									</div>
+									<input type="text" value="name" /><input type="text"
+										value="email" /><input type="text" value="webSite" />
+								</div>
 							</div>
 							<div id="comment-2" class="cmt child">
 								<img alt="#"

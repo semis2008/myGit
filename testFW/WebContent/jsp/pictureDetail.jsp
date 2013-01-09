@@ -20,7 +20,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
-<link href="/css/picturePage.css" rel="stylesheet" type="text/css" />
+<link href="/css/pictureDetail.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 <!-- aToolTip css -->
@@ -61,22 +61,6 @@
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
 		$('.fancybox').fancybox();
-		$('.fancybox-thumbs').fancybox({
-			prevEffect : 'none',
-			nextEffect : 'none',
-			closeBtn : false,
-			arrows : false,
-			nextClick : true,
-			helpers : {
-				title : {
-					type : 'over'
-				},
-				thumbs : {
-					width : 50,
-					height : 50
-				}
-			}
-		});
 		$('.fancybox-iframe').fancybox({
 			'padding' : 0,
 			'margin' : 0,
@@ -90,10 +74,10 @@
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToo
-lTip();
+		lTip();
 	});
 </script>
-<title>图册</title>
+<title>图册详情</title>
 </head>
 <body>
 	<div class="wrap">
@@ -108,8 +92,8 @@ lTip();
 			<h1>
 				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png"
-					alt="TestFW Logo" /> </a>
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png" alt="TestFW Logo" />
+				</a>
 			</h1>
 			<p>
 				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -125,18 +109,19 @@ lTip();
 						title="查看个人主页信息" id="mainpage">主页</a>
 					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
+						class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
 						title="查看日志" id="diary">日志</a>
 					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture" title="查看图册信息"
-						id="picture">图册</a>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
+						title="查看图册信息" id="picture">图册</a>
 					</li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus" title="关于我以及本站"
-						id="aboutus">about</a>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
+						title="关于我以及本站" id="aboutus">about</a>
 					</li>
 				</ul>
 			</div>
@@ -157,57 +142,43 @@ lTip();
 						<%
 							}
 						%>
-						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
-					<div id="post-1" class="album">
-						<div class="iLikeThis" id="iLikeThis-1">
-							<span class="counter">4<a onclick="likeThis(1);"
-								class="fixedTip" title="点击标记该相册为喜爱">Like</a> </span>
+					<div class="albumDetail">
+						<div class="hostinfo ">
+							<div id="" class="face">
+								<a title="进入AnRan的个人展区" href="http://anran0420.pp.163.com/">
+									<img src="<%=imgPath%>4_b.jpg" alt="" /> </a>
+							</div>
+							<ul class="albuminfo">
+								<li class="o-info">
+									<h2 class="album-title">【Napa Valley酒庄之旅】</h2>
+									<p>
+										<b>[14张]</b>
+									</p>
+								</li>
+								<li class="albumdesc">
+									<p>器材： 佳能 - EOS 5D Mark II ， 适马 - 50 F1.4 拍摄于：海外 美国 ，
+										发布于：2013.01.09 10:29</p></li>
+								<li class="pic-cmtnum">
+									<p>
+										<b title="浏览量" class="ico-attention"></b> <span>948</span>
+										<b title="评论" class="ico-cmt"></b> <span>4</span> <b
+											title="喜欢" class="ico-like"></b><span>18</span>
+									</p>
+								</li>
+								<li>
+									<p class="album-author">
+										&copy; <a title="进入Kalor的主页"
+											href="#">Kalor</a> <span
+											class="author-follow"><a href="#"><b>+</b>关注他</a><a
+											href="#"> <b>√</b> 已关注</a> <a href="#">取消关注</a> </span> <span
+											class="praise" href="#"><a href="#">赞他(128)</a></span>
+									</p>
+								</li>
+							</ul>
 						</div>
-						<p>
-							<a class="fancybox-thumbs" title="这是测试图册的封面"
-								data-fancybox-group="thumb1" href="<%=imgPath%>4_b.jpg"><img
-								width="200" height="200" class="aligncenter size-medium"
-								src="<%=imgPath%>4_s.jpg" alt="这是测试图册的封面" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>3_b.jpg"><img
-								src="<%=imgPath%>3_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>2_b.jpg"><img
-								src="<%=imgPath%>2_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>1_b.jpg"><img
-								src="<%=imgPath%>1_s.jpg" alt="这是测试图片" /> </a>
-						</p>
-						<a class="btn_details_only"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture/1">Details</a>
-						<a title="预览" class="btn_preview_w_details"
-							onclick="javascript:$('.fancybox-thumbs').click();">Preview</a>
-					</div>
-					<div id="post-2" class="album">
-						<div class="iLikeThis" id="iLikeThis-2">
-							<span class="counter">4<a onclick="likeThis(2);"
-								class="fixedTip" title="点击标记该相册为喜爱">Like</a> </span>
-						</div>
-						<p>
-							<a class="fancybox-thumbs" title="这是测试图册的封面"
-								data-fancybox-group="thumb2" href="<%=imgPath%>4_b.jpg"><img
-								width="200" height="200" class="aligncenter size-medium"
-								src="<%=imgPath%>4_s.jpg" alt="这是测试图册的封面" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>3_b.jpg"><img
-								src="<%=imgPath%>3_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>2_b.jpg"><img
-								src="<%=imgPath%>2_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>1_b.jpg"><img
-								src="<%=imgPath%>1_s.jpg" alt="这是测试图片" /> </a>
-						</p>
-						<a class="btn_details_only"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture/2">Details</a>
-						<a title="预览" class="btn_preview_w_details"
-							onclick="javascript:$('.fancybox-thumbs').click();">Preview</a>
 					</div>
 				</div>
 				<div class="section_wrap more_padding">
