@@ -125,7 +125,7 @@ lTip();
 						title="查看个人主页信息" id="mainpage">主页</a>
 					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
+						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
 						title="查看日志" id="diary">日志</a>
 					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a

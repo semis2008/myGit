@@ -110,7 +110,7 @@
 					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
 						title="查看日志" id="diary">日志</a>
 					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
