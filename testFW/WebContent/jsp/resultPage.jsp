@@ -64,8 +64,8 @@
 			<div class="search_box">
 				<form method="post" id="sForm"
 					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
-					<input name="s" id="s" value="站内搜索" class="small_search fixedTip"
-						type="text" title="输入内容后，敲击回车可以在全站内搜索相关信息" />
+					<input name="s" id="s" value="站内搜索" class="small_search"
+						type="text" />
 				</form>
 			</div>
 			<h1>
@@ -134,5 +134,11 @@
 			</div>
 		</div>
 	</div>
+	<!--
+	//后期替换js文件为google的链接
+	 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+	 -->
 </body>
 </html>

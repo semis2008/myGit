@@ -85,8 +85,8 @@
 			<div class="search_box">
 				<form method="post" id="sForm"
 					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
-					<input name="s" id="s" value="站内搜索" class="small_search fixedTip"
-						type="text" title="输入内容后，敲击回车可以在全站内搜索相关信息" />
+					<input name="s" id="s" value="站内搜索" class="small_search"
+						type="text" />
 				</form>
 			</div>
 			<h1>
@@ -106,23 +106,19 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -156,28 +152,137 @@
 									<h2 class="album-title">【Napa Valley酒庄之旅】</h2>
 									<p>
 										<b>[14张]</b>
-									</p>
-								</li>
+									</p></li>
 								<li class="albumdesc">
 									<p>器材： 佳能 - EOS 5D Mark II ， 适马 - 50 F1.4 拍摄于：海外 美国 ，
-										发布于：2013.01.09 10:29</p></li>
+										发布于：2013.01.09 10:29</p>
+								</li>
 								<li class="pic-cmtnum">
 									<p>
-										<b title="浏览量" class="ico-attention"></b> <span>948</span>
-										<b title="评论" class="ico-cmt"></b> <span>4</span> <b
-											title="喜欢" class="ico-like"></b><span>18</span>
-									</p>
-								</li>
+										<b title="浏览量" class="ico-attention"></b> <span>948</span> <b
+											title="评论" class="ico-cmt"></b> <span>4</span> <b title="喜欢"
+											class="ico-like"></b><span>18</span>
+									</p></li>
 								<li>
 									<p class="album-author">
-										&copy; <a title="进入Kalor的主页"
-											href="#">Kalor</a> <span
+										&copy; <a title="进入Kalor的主页" href="#">Kalor</a> <span
 											class="author-follow"><a href="#"><b>+</b>关注他</a><a
 											href="#"> <b>√</b> 已关注</a> <a href="#">取消关注</a> </span> <span
-											class="praise" href="#"><a href="#">赞他(128)</a></span>
-									</p>
-								</li>
+											class="praise" href="#"><a href="#">赞他(128)</a> </span>
+									</p></li>
 							</ul>
+						</div>
+						<div class="pics">
+							<div class="left">
+								<ul style="top: -4px; position: absolute;" class="tl_scrubber"
+									id="tl_scrubber">
+									<li class="focus"><a>美景</a></li>
+									<li><a>黄山</a></li>
+									<li><a>嵩山</a></li>
+									<li><a>长江</a></li>
+									<li><a>日出</a></li>
+									<li><a>水</a></li>
+								</ul>
+							</div>
+							<div class="right">
+								<a style="overflow: visible;" class="tl_line"
+									href="javascript:void(0);"> <span style="display: none;"
+									class="tl_add"></span> </a>
+								<div class="tab_block" id="tab_1">
+									<a href="javascript:void(0)" class="tl_point haspic"></a>
+									<div class="tab_div">
+										<div class="tab_head">
+											<a href="#">美景</a>
+										</div>
+										<div class="tab_photos">
+											<div class="main-area">
+												<div class="pic-area" style="">
+													<img src="<%=imgPath%>4_b.jpg"
+														style="width: auto; height: auto;" />
+												</div>
+												<div class="m-picAct">
+													<div class="pic-descArea">
+														<p class="pic-description">未标题-1</p>
+													</div>
+													<div class="pic-btnarea">
+														<p>
+															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
+															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
+																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
+															</a> <a class="w-btnWhiteSmoke f-ml10 "
+																onclick="return false;" href="#">评论</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="main-area">
+												<div class="pic-area" style="">
+													<img src="<%=imgPath%>4_b.jpg"
+														style="width: auto; height: auto;" />
+												</div>
+												<div class="m-picAct">
+													<div class="pic-descArea">
+														<p class="pic-description">未标题-1</p>
+													</div>
+													<div class="pic-btnarea">
+														<p>
+															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
+															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
+																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
+															</a> <a class="w-btnWhiteSmoke f-ml10 "
+																onclick="return false;" href="#">评论</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="main-area">
+												<div class="pic-area" style="">
+													<img src="<%=imgPath%>4_b.jpg"
+														style="width: auto; height: auto;" />
+												</div>
+												<div class="m-picAct">
+													<div class="pic-descArea">
+														<p class="pic-description">未标题-1</p>
+													</div>
+													<div class="pic-btnarea">
+														<p>
+															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
+															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
+																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
+															</a> <a class="w-btnWhiteSmoke f-ml10 "
+																onclick="return false;" href="#">评论</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="main-area">
+												<div class="pic-area" style="">
+													<img src="<%=imgPath%>4_b.jpg"
+														style="width: auto; height: auto;" />
+												</div>
+												<div class="m-picAct">
+													<div class="pic-descArea">
+														<p>未标题-1</p>
+													</div>
+													<div class="pic-btnarea">
+														<p>
+															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
+															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
+																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
+															</a> <a class="w-btnWhiteSmoke f-ml10 "
+																onclick="return false;" href="#">评论</a>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab_none" id="tab_2">
+									<a href="javascript:void(0)" class="tl_point haspic"></a>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>

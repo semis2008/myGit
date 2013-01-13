@@ -65,8 +65,8 @@
 			<div class="search_box">
 				<form method="post" id="sForm"
 					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
-					<input name="s" id="s" value="站内搜索" class="small_search fixedTip"
-						type="text" title="输入内容后，敲击回车可以在全站内搜索相关信息" />
+					<input name="s" id="s" value="站内搜索" class="small_search"
+						type="text" />
 				</form>
 			</div>
 			<h1>
