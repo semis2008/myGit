@@ -183,11 +183,11 @@ a.more-link{
     color: #FAFAFA;
     cursor: pointer;
     position:absolute;
- 	right:28.5%;;
+ 	left:69.6%;;
     height: 30px;
     margin-top:15px;
     width: 60px;
-    float: right;
+    float: left;
 }
 .proceed .btn:HOVER {
 	background-color: #2f96b4;

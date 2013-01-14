@@ -1,6 +1,7 @@
 package com.testFW.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +43,12 @@ public class UserServlet extends HttpServlet {
 		if ("regist".equals(fun)) {
 			registUser(req, resp);
 		}
+		if ("login".equals(fun)) {
+			registUser(req, resp);
+		}
+		if ("findpass".equals(fun)) {
+			registUser(req, resp);
+		}
 	}
 
 	/**
@@ -49,9 +56,40 @@ public class UserServlet extends HttpServlet {
 	 * @param req
 	 * @param resp
 	 * @return
+	 * @throws IOException 
 	 */
-	private boolean registUser(HttpServletRequest req, HttpServletResponse resp) {
-		return false;
+	private void registUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		PrintWriter out = resp.getWriter();
+		String email = req.getParameter("email");
+		String pass = req.getParameter("pass");
+		String name = req.getParameter("name");
+		String invitationcode = req.getParameter("invitationcode");
+		String msg = "";
+		/*
+		 * 验证邀请码是否有效
+		 */
+		boolean code_result = userService.verifyCode(invitationcode);
+		if(!code_result) {
+			msg = "邀请码无效！";
+			out.print(msg);
+			out.flush();
+			out.close();
+			return;
+		}
+		
+		/*
+		 * 注册
+		 */
+		boolean regist_result = userService.regist(email,name,pass);
+		if(regist_result) {
+			msg = "success";
+		}else {
+			msg = "系统正在维护~";
+		}
+		
+		out.print(msg);
+		out.flush();
+		out.close();
 	}
 
 }

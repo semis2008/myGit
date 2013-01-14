@@ -68,8 +68,7 @@ div#login label,.info {
 	font-size: 13px;
 }
 
-div#login input.textbox340
-	{
+div#login input.textbox340 {
 	background: none repeat scroll 0 0 #fafafa;
 	border: 1px solid #EEEEEE;
 	font-size: 18px;
@@ -98,33 +97,127 @@ div#login a:link,div#login a:visited {
 	text-decoration: none;
 	text-shadow: 1px 1px 0 #FFFFFF;
 }
-#result{
+
+#result {
 	margin-bottom: 40px;
+}
+
+.tip {
+	color: red;
 }
 </style>
 <body>
 	<script type="text/javascript">
+		$("input").focus(function() {
+			$(".tip").text("");
+		});
 		function showResetPass() {
-			document.getElementById("panelLogin").style.display = "none";//隐藏
-			document.getElementById("panelResetPass").style.display = "";//显示
+			$(".tip").text("");
+			$("#panelLogin").hide();//隐藏
+			$("#panelResetPass").show();//显示
+		}
+		function showLogin() {
+			$(".tip").text("");
+			$("#panelLogin").show();
+			$("#result").hide();
 		}
 		function showRegist() {
-			document.getElementById("panelLogin").style.display = "none";//隐藏
-			document.getElementById("panelResetPass").style.display = "none";
-			document.getElementById("registDiv").style.display = "";//显示
+			$(".tip").text("");
+			$("#panelLogin").hide();//隐藏
+			$("#panelResetPass").hide();
+			$("#registDiv").show();//显示
 		}
 		function doAct(type) {
-			if(type=="login"){
-				
-			}else if(type=="findPass"){
-				
-			}else if(type=="regist") {
-				
-			}	
-			document.getElementById("panelLogin").style.display = "none";//隐藏
-			document.getElementById("panelResetPass").style.display = "none";
-			document.getElementById("registDiv").style.display = "none";
-			document.getElementById("result").style.display = "";
+			$(".tip").text("");
+			if (type == "login") {
+				$.ajax({
+					type : "POST",
+					url : "/action/user/login",
+					dataType : "text",
+					success : function(msg) {
+						if ("success" == msg) {
+							parent.location.reload();
+							return;
+						} else {
+							$("#result").text("对不起，登录失败：" + msg);
+						}
+					}
+				});
+			} else if (type == "findpass") {
+				$.ajax({
+					type : "POST",
+					url : "/action/user/findpass",
+					dataType : "text",
+					success : function(msg) {
+						if ("success" == msg) {
+							$("#result").text("找回密码链接已发送到您邮箱，请登录邮箱查看~");
+						} else {
+							$("#result").text("对不起,找回失败~");
+						}
+					}
+				});
+			} else if (type == "regist") {
+				var email = $("#txtEmailAddressRegist").val();
+				var name = $("#txtNameRegist").val();
+				var pass = $("#txtPasswordRegist").val();
+				var pass_con = $("#txtPasswordCon").val();
+				var invitationcode = $("#txtInvitationCode").val();
+				//非空验证
+				if (email == "") {
+					$("#email_tip").text("邮箱不能为空！");
+					return;
+				}
+				if (name == "") {
+					$("#name_tip").text("昵称不能为空！");
+					return;
+				}
+				if (pass == "") {
+					$("#pass_tip").text("密码不能为空！");
+					return;
+				}
+				if (pass_con == "") {
+					$("#pass_con_tip").text("确认密码不能为空！");
+					return;
+				}
+				if (invitationcode == "") {
+					$("#code_tip").text("邀请码不能为空！");
+					return;
+				}
+
+				//验证邮箱格式
+
+				//验证密码
+				if (pass != pass_con) {
+					$("#pass_con_tip").text("密码不一致！");
+					return;
+				}
+				//异步提交注册
+				$
+						.ajax({
+							type : "POST",
+							url : "/action/user/regist",
+							data : {
+								email : email,
+								pass : pass,
+								name : name,
+								invitationcode : invitationcode
+							},
+							dataType : "text",
+							success : function(msg) {
+								if ("success" == msg) {
+									$("#result")
+											.html(
+													"恭喜您，注册成功！现在马上&nbsp;<a href='#' onclick='javascript:showLogin();'>登录~</a>");
+								} else {
+									$("#result").text("对不起，注册失败~" + msg);
+								}
+							}
+						});
+			}
+			$("#panelLogin").hide();//隐藏
+			$("#panelResetPass").hide();
+			$("#registDiv").hide();
+			$("#result").show();
 		}
 	</script>
 	<div>
@@ -147,7 +240,8 @@ div#login a:link,div#login a:visited {
 							class="textbox340">
 					</div>
 					<div style="text-align: right;" class="submit clearfix">
-						<a href="#" class="buttonLoginV2" id="lbtnLogin" onclick="javascript:doAct('login');">LOGIN</a>
+						<a href="#" class="buttonLoginV2" id="lbtnLogin"
+							onclick="javascript:doAct('login');">LOGIN</a>
 					</div>
 					<p class="lostpassword">
 						<a href="#" onclick="javascript:showResetPass();"> 密码忘记了?</a> or <a
@@ -162,34 +256,42 @@ div#login a:link,div#login a:visited {
 							class="textbox340">
 					</div>
 					<div style="text-align: right;" class="submit clearfix">
-						<a href="#" class="buttonLoginV2" id="lbtnRetrieve" onclick="javascript:doAct('findPass');">找回密码</a>
+						<a href="#" class="buttonLoginV2" id="lbtnRetrieve"
+							onclick="javascript:doAct('findpass');">找回密码</a>
 					</div>
 				</div>
 				<div id="registDiv" style="display: none;">
 					<div>
-						<label> 注册邮箱：</label> <input type="text" value=""
-							id="txtEmailAddressRegist" name="txtEmailAddressRegist"
+						<label> 注册邮箱：<span class="tip" id="email_tip"></span> </label> <input
+							type="text" value="" id="txtEmailAddressRegist"
+							name="txtEmailAddressRegist" class="textbox340">
+					</div>
+					<div>
+						<label> 昵称：<span class="tip" id="name_tip"></span> </label> <input
+							type="text" value="" id="txtNameRegist" name="txtNameRegist"
 							class="textbox340">
 					</div>
 					<div>
-						<label> 密码：</label> <input type="password" value=""
-							id="txtPasswordRegist" name="txtPasswordRegist"
-							class="textbox340">
+						<label> 密码：<span class="tip" id="pass_tip"></span> </label> <input
+							type="password" value="" id="txtPasswordRegist"
+							name="txtPasswordRegist" class="textbox340">
 					</div>
 					<div>
-						<label> 确认密码：</label> <input type="password" value=""
-							id="txtPasswordCon" name="txtPasswordCon" class="textbox340">
+						<label> 确认密码：<span class="tip" id="pass_con_tip"></span> </label>
+						<input type="password" value="" id="txtPasswordCon"
+							name="txtPasswordCon" class="textbox340">
 					</div>
 					<div>
-						<label> 邀请码：</label> <input type="text" value=""
-							id="txtInvitationCode" name="txtInvitationCode" class="textbox340">
+						<label> 邀请码：<span class="tip" id="code_tip"></span> </label> <input
+							type="text" value="" id="txtInvitationCode"
+							name="txtInvitationCode" class="textbox340">
 					</div>
 					<div style="text-align: right;" class="submit clearfix">
-						<a href="#" class="buttonLoginV2" id="lbtnRegist" onclick="javascript:doAct('regist');">快速注册</a>
+						<a href="#" class="buttonLoginV2" id="lbtnRegist"
+							onclick="javascript:doAct('regist');">快速注册</a>
 					</div>
 				</div>
-				<div id="result" style="display: none;">
-					<div class="info">Sorry,尚未开放本功能~</div>
+				<div class="info" id="result" style="display: none;">
 				</div>
 
 			</div>

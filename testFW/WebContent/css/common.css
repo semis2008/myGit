@@ -314,6 +314,7 @@ li.active #aboutus:hover,li.active #aboutus {
 }
 .group{
     display: block;
+    z-index: 100;
 }
 #paging, #paging a {
     color: #BBBBBB;
