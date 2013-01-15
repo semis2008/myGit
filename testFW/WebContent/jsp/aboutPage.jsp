@@ -145,13 +145,16 @@
 								</li>
 								<li style="width: 22%; left: 15%;">完成主体框架<em>(12/10~19)</em>
 								</li>
-								<li style="width: 25%; left: 28.4%;">前台页面设计<em>(12/18~now)</em>
+								<li style="width: 24%; left: 28.4%;">前台页面设计<em>(12/18~1/13)</em>
+								</li>
+								<li style="width: 22%; left: 44%;">逻辑功能实现<em>(1/14~now)</em>
 								</li>
 							</ul>
 							<ul class="intervals">
 								<li class="first">2012-12-01</li>
 								<li>2012-12-10</li>
 								<li>2012-12-20</li>
+								<li>2012-1-13</li>
 								<li class="last">now</li>
 							</ul>
 							<!-- end .intervals -->
