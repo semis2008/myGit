@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.testFW.service.UserService;
 import com.testFW.util.StringUtil;
+import com.testFW.util.UserUtil;
 
 /**
  * 用户相关处理类
@@ -43,23 +44,25 @@ public class UserServlet extends HttpServlet {
 		String fun = (String) req.getParameter("fun");
 		if ("regist".equals(fun)) {
 			userRegist(req, resp);
-		}
-		if ("login".equals(fun)) {
+		} else if ("login".equals(fun)) {
 			userLogin(req, resp);
-		}
-		if ("findpass".equals(fun)) {
+		} else if ("findpass".equals(fun)) {
 			userRegist(req, resp);
+		} else if ("userquit".equals(fun)) {
+			userQuit(req, resp);
 		}
 	}
 
 	/**
 	 * 用户注册
+	 * 
 	 * @param req
 	 * @param resp
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	private void userRegist(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void userRegist(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 		PrintWriter out = resp.getWriter();
 		String email = req.getParameter("email");
 		String pass = req.getParameter("pass");
@@ -67,74 +70,94 @@ public class UserServlet extends HttpServlet {
 		String invitationcode = req.getParameter("invitationcode");
 		String msg = "";
 		/*
-		 * 验证邮箱是否已经被注册 
+		 * 验证邮箱是否已经被注册
 		 */
 		boolean email_result = userService.verifyEmail(email);
-		if(email_result) {
+		if (email_result) {
 			msg = "email_error";
 			out.print(msg);
 			out.flush();
 			out.close();
 			return;
 		}
-		
+
 		/*
 		 * 验证邀请码是否有效
 		 */
 		boolean code_result = userService.verifyCode(invitationcode);
-		if(!code_result) {
+		if (!code_result) {
 			msg = "code_error";
 			out.print(msg);
 			out.flush();
 			out.close();
 			return;
 		}
-		
+
 		/*
 		 * 注册
 		 */
-		boolean regist_result = userService.regist(email,name,pass);
-		if(regist_result) {
+		boolean regist_result = userService.regist(email, name, pass);
+		if (regist_result) {
 			msg = "success";
-		}else {
+		} else {
 			msg = "system_error";
 		}
-		
+
 		out.print(msg);
 		out.flush();
 		out.close();
 	}
-	
+
 	/**
 	 * 用户登录
+	 * 
 	 * @param req
 	 * @param resp
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	private void userLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void userLogin(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 		PrintWriter out = resp.getWriter();
 		String email = req.getParameter("email");
 		String pass = req.getParameter("pass");
 		String msg = "";
 		/*
-		 * 验证邮箱是否存在 
+		 * 验证邮箱是否存在
 		 */
 		boolean email_result = userService.verifyEmail(email);
-		if(!email_result) {
+		if (!email_result) {
 			msg = "email_error";
 			out.print(msg);
 			out.flush();
 			out.close();
 			return;
 		}
-		
+
 		/*
 		 * 登录
 		 */
 		pass = StringUtil.passEncrypt(pass);
 		msg = userService.userLogin(req, resp);
 
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 用户退出
+	 * 
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws IOException
+	 */
+	private void userQuit(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String msg = "success";
+		UserUtil.quit(req, resp);
 		out.print(msg);
 		out.flush();
 		out.close();

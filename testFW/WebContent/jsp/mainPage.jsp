@@ -12,7 +12,7 @@
 	boolean hasLogin = false;
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
-	} 
+	}
 	if (user == null) {
 		user = new UserBO();
 	} else {
@@ -40,7 +40,7 @@
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 
 <script language="javascript" type="text/javascript">
-	$(function() {
+	$(function(){
 		$('.small_search').click(function() {
 			if (this.value == this.defaultValue) {
 				this.value = '';
@@ -60,6 +60,16 @@
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
 	});
+	function userQuit() {
+		$.ajax({
+			type : "POST",
+			url : "/action/user/userquit",
+			dataType : "text",
+			success : function(msg) {
+				location.reload();
+			}
+		});
+	}
 </script>
 <title>主页</title>
 </head>
@@ -76,8 +86,8 @@
 			<h1>
 				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png"
-					alt="TestFW Logo" /> </a>
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png" alt="TestFW Logo" />
+				</a>
 			</h1>
 			<p>
 				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -93,18 +103,19 @@
 						title="查看个人主页信息" id="mainpage">主页</a>
 					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
+						class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
 						title="查看日志" id="diary">日志</a>
 					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture" title="查看图册信息"
-						id="picture">图册</a>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
+						title="查看图册信息" id="picture">图册</a>
 					</li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus" title="关于我以及本站"
-						id="aboutus">about</a>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
+						title="关于我以及本站" id="aboutus">about</a>
 					</li>
 				</ul>
 			</div>
@@ -120,12 +131,14 @@
 						<%
 							} else {
 						%>
-						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId() %>"
-							title="点击进入主页"><%=user.getName()%></a>
+						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+							title="点击进入主页"><%=user.getName()%></a> <a href="#"
+							onclick="userQuit();" title="点击退出">退出</a>
 						<%
 							}
 						%>
-						<a class="fancybox-iframe" href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
 					<div id="foreword">
 						<div id="sidebar_top">
@@ -156,7 +169,7 @@
 								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 									class="" title="测试缩略图标题~~~~test pic-sc title"
 									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 								</a>
 								<h2>测试图册缩略图</h2>
 							</div>
@@ -170,7 +183,7 @@
 								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 									class="" title="测试缩略图标题~~~~test pic-sc title"
 									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 								</a>
 								<h2>测试图册缩略图</h2>
 							</div>
@@ -184,7 +197,7 @@
 								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 									class="" title="测试缩略图标题~~~~test pic-sc title"
 									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 								</a>
 								<h2>测试图册缩略图</h2>
 							</div>
@@ -198,7 +211,7 @@
 								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 									class="" title="测试缩略图标题~~~~test pic-sc title"
 									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 								</a>
 								<h2>测试图册缩略图</h2>
 							</div>

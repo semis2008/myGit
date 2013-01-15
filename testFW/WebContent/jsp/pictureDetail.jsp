@@ -106,19 +106,23 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
+						title="查看日志" id="diary">日志</a>
+					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
+						title="查看图册信息" id="picture">图册</a>
+					</li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -152,36 +156,44 @@
 									<h2 class="album-title">【Napa Valley酒庄之旅】</h2>
 									<p>
 										<b>[14张]</b>
-									</p></li>
+									</p>
+								</li>
 								<li class="albumdesc">
 									<p>器材： 佳能 - EOS 5D Mark II ， 适马 - 50 F1.4 拍摄于：海外 美国 ，
-										发布于：2013.01.09 10:29</p>
-								</li>
+										发布于：2013.01.09 10:29</p></li>
 								<li class="pic-cmtnum">
 									<p>
 										<b title="浏览量" class="ico-attention"></b> <span>948</span> <b
 											title="评论" class="ico-cmt"></b> <span>4</span> <b title="喜欢"
 											class="ico-like"></b><span>18</span>
-									</p></li>
+									</p>
+								</li>
 								<li>
 									<p class="album-author">
 										&copy; <a title="进入Kalor的主页" href="#">Kalor</a> <span
 											class="author-follow"><a href="#"><b>+</b>关注他</a><a
 											href="#"> <b>√</b> 已关注</a> <a href="#">取消关注</a> </span> <span
 											class="praise" href="#"><a href="#">赞他(128)</a> </span>
-									</p></li>
+									</p>
+								</li>
 							</ul>
 						</div>
 						<div class="pics">
 							<div class="left">
 								<ul style="top: -4px; position: absolute;" class="tl_scrubber"
 									id="tl_scrubber">
-									<li class="focus"><a>美景</a></li>
-									<li><a>黄山</a></li>
-									<li><a>嵩山</a></li>
-									<li><a>长江</a></li>
-									<li><a>日出</a></li>
-									<li><a>水</a></li>
+									<li class="focus"><a>美景</a>
+									</li>
+									<li><a>黄山</a>
+									</li>
+									<li><a>嵩山</a>
+									</li>
+									<li><a>长江</a>
+									</li>
+									<li><a>日出</a>
+									</li>
+									<li><a>水</a>
+									</li>
 								</ul>
 							</div>
 							<div class="right">
@@ -281,7 +293,6 @@
 								<div class="tab_none" id="tab_2">
 									<a href="javascript:void(0)" class="tl_point haspic"></a>
 								</div>
-
 							</div>
 						</div>
 					</div>
