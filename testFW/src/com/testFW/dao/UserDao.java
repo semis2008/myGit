@@ -1,6 +1,7 @@
 package com.testFW.dao;
 
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.UserBO;
 
 /**
  * 用户数据处理接口
@@ -27,7 +28,14 @@ public interface UserDao {
 	 * @param email 注册邮箱
 	 * @param name 昵称
 	 * @param pass 密码
-	 * @return
+	 * @return 受影响行数
 	 */
 	int insertUser(String email,String name,String pass);
+	
+	/**
+	 * 依据注册邮箱查询用户
+	 * @param email 注册邮箱
+	 * @return 用户实体类
+	 */
+	UserBO queryUserByEmail(String email); 
 }

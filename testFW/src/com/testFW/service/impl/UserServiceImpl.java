@@ -1,6 +1,7 @@
 package com.testFW.service.impl;
 
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.UserBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
 
@@ -39,6 +40,15 @@ public class UserServiceImpl implements UserService{
 			return false;
 		}
 		
+	}
+	@Override
+	public boolean verifyEmail(String email) {
+		UserBO bo = userDao.queryUserByEmail(email);
+		if(bo!=null&&bo.getId()>0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 	
 }

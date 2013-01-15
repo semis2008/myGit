@@ -66,11 +66,23 @@ public class UserServlet extends HttpServlet {
 		String invitationcode = req.getParameter("invitationcode");
 		String msg = "";
 		/*
+		 * 验证邮箱是否已经被注册 
+		 */
+		boolean email_result = userService.verifyEmail(email);
+		if(!email_result) {
+			msg = "email_error";
+			out.print(msg);
+			out.flush();
+			out.close();
+			return;
+		}
+		
+		/*
 		 * 验证邀请码是否有效
 		 */
 		boolean code_result = userService.verifyCode(invitationcode);
 		if(!code_result) {
-			msg = "邀请码无效！";
+			msg = "code_error";
 			out.print(msg);
 			out.flush();
 			out.close();
@@ -84,12 +96,11 @@ public class UserServlet extends HttpServlet {
 		if(regist_result) {
 			msg = "success";
 		}else {
-			msg = "系统正在维护~";
+			msg = "system_error";
 		}
 		
 		out.print(msg);
 		out.flush();
 		out.close();
 	}
-
 }

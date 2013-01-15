@@ -1,6 +1,7 @@
 package com.testFW.dao.impl;
 
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.UserBO;
 import com.testFW.dao.UserDao;
 import com.testFW.dao.template.DbUtilsTemplate;
 import com.testFW.util.StringUtil;
@@ -31,6 +32,11 @@ public class UserDaoImpl implements UserDao{
 		pass = StringUtil.passEncrypt(pass);
 		Object[] param = {email,name,pass};
 		return dbUtilsTemplate.update(sql,param);
+	}
+	@Override
+	public UserBO queryUserByEmail(String email) {
+		String sql = "select * from user where email = ?";
+		return dbUtilsTemplate.findFirst(UserBO.class, sql, email);
 	} 
 	
 	

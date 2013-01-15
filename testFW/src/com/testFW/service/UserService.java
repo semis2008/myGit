@@ -20,4 +20,12 @@ public interface UserService {
 	 * @return 注册结果
 	 */
 	boolean regist(String email,String name,String pass);
+	
+	/**
+	 * 验证邮箱是否被注册
+	 * @param email
+	 * @return
+	 */
+	boolean verifyEmail(String email);
+	
 }

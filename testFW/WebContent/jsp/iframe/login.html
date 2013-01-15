@@ -127,6 +127,7 @@ div#login a:link,div#login a:visited {
 			$("#panelResetPass").hide();
 			$("#registDiv").show();//显示
 		}
+
 		function doAct(type) {
 			$(".tip").text("");
 			if (type == "login") {
@@ -183,15 +184,18 @@ div#login a:link,div#login a:visited {
 					$("#code_tip").text("邀请码不能为空！");
 					return;
 				}
-
 				//验证邮箱格式
-
+				var emailRegExp = new RegExp(
+						"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+				if (!emailRegExp.test(email) || email.indexOf('.') == -1) {
+					$("#email_tip").text("您输入的邮箱格式不正确！");
+					return;
+				}
 				//验证密码
 				if (pass != pass_con) {
 					$("#pass_con_tip").text("密码不一致！");
 					return;
 				}
-				//异步提交注册
 				$
 						.ajax({
 							type : "POST",
@@ -204,17 +208,29 @@ div#login a:link,div#login a:visited {
 							},
 							dataType : "text",
 							success : function(msg) {
-								if ("success" == msg) {
-									$("#result")
-											.html(
-													"恭喜您，注册成功！现在马上&nbsp;<a href='#' onclick='javascript:showLogin();'>登录~</a>");
+								if ("code_error" == msg) {
+									$("#code_tip").text("邀请码无效！");
+									return;
+								} else if ("email_error" == msg) {
+									$("#email_tip").text("邮箱已经被注册！");
+									return;
 								} else {
-									$("#result").text("对不起，注册失败~" + msg);
+									if ("success" == msg) {
+										$("#result")
+												.html(
+														"恭喜您，注册成功！现在马上&nbsp;<a href='#' onclick='javascript:showLogin();'>登录~</a>");
+									} else {
+										$("#result").text("对不起，注册失败:系统正在维护中~");
+									}
+									showResult();
 								}
 							}
 						});
 			}
-			$("#panelLogin").hide();//隐藏
+		}
+		//显示结果页
+		function showResult() {
+			$("#panelLogin").hide();
 			$("#panelResetPass").hide();
 			$("#registDiv").hide();
 			$("#result").show();
@@ -291,8 +307,7 @@ div#login a:link,div#login a:visited {
 							onclick="javascript:doAct('regist');">快速注册</a>
 					</div>
 				</div>
-				<div class="info" id="result" style="display: none;">
-				</div>
+				<div class="info" id="result" style="display: none;"></div>
 
 			</div>
 		</div>
