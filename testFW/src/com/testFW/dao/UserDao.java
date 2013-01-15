@@ -38,4 +38,26 @@ public interface UserDao {
 	 * @return 用户实体类
 	 */
 	UserBO queryUserByEmail(String email); 
+	
+	/**
+	 * 依据邮箱和密码查询用户
+	 * @param email 注册邮箱
+	 * @param pass 密码
+	 * @return 用户实体类
+	 */
+	UserBO queryUser(String email, String pass);
+	
+	/**
+	 * 更新用户最近登陆时间
+	 * @param email 注册邮箱
+	 * @return 受影响的行数
+	 */ 
+	int updateLoginTime(String email);
+	
+	/**
+	 * 依据用户id查询用户信息
+	 * @param id 用户id
+	 * @return 用户实体类
+	 */
+	UserBO queryUserByID(String id);
 }

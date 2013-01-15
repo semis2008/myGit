@@ -8,7 +8,11 @@
 	if (fun == null)
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
+	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
 	boolean hasLogin = false;
+	if (visitedUser == null) {
+		visitedUser = new UserBO();
+	} 
 	if (user == null) {
 		user = new UserBO();
 	} else {
@@ -116,7 +120,7 @@
 						<%
 							} else {
 						%>
-						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
+						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId() %>"
 							title="点击进入主页"><%=user.getName()%></a>
 						<%
 							}

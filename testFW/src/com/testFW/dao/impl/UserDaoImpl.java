@@ -29,7 +29,6 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public int insertUser(String email, String name, String pass) {
 		String sql = "insert into user (email,name,password) values (?,?,?)";
-		pass = StringUtil.passEncrypt(pass);
 		Object[] param = {email,name,pass};
 		return dbUtilsTemplate.update(sql,param);
 	}
@@ -37,6 +36,22 @@ public class UserDaoImpl implements UserDao{
 	public UserBO queryUserByEmail(String email) {
 		String sql = "select * from user where email = ?";
 		return dbUtilsTemplate.findFirst(UserBO.class, sql, email);
+	}
+	@Override
+	public UserBO queryUser(String email, String pass) {
+		String sql = "select * from user where email = ? and password = ?";
+		Object[] param = {email,pass};
+		return dbUtilsTemplate.findFirst(UserBO.class, sql, param);
+	}
+	@Override
+	public int updateLoginTime(String email) {
+		String sql = "update user set logon_time = now() where email = ?";
+		return dbUtilsTemplate.update(sql, email);
+	}
+	@Override
+	public UserBO queryUserByID(String id) {
+		String sql = "select * from user where id = ?";
+		return dbUtilsTemplate.findFirst(UserBO.class, sql, id);
 	} 
 	
 	

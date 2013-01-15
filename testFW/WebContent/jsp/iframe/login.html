@@ -131,16 +131,43 @@ div#login a:link,div#login a:visited {
 		function doAct(type) {
 			$(".tip").text("");
 			if (type == "login") {
+				var email = $("#txtEmailLogin").val();
+				var pass = $("#txtPasswordLogin").val();
+				//非空验证
+				if (email == "") {
+					$("#email_login_tip").text("邮箱不能为空！");
+					return;
+				}
+				if (pass == "") {
+					$("#pass_login_tip").text("密码不能为空！");
+					return;
+				}
+				//验证邮箱格式
+				var emailRegExp = new RegExp(
+						"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+				if (!emailRegExp.test(email) || email.indexOf('.') == -1) {
+					$("#email_login_tip").text("您输入的邮箱格式不正确！");
+					return;
+				}
+				//异步登录
 				$.ajax({
 					type : "POST",
 					url : "/action/user/login",
+					data : {
+						email : email,
+						pass : pass
+					},
 					dataType : "text",
 					success : function(msg) {
-						if ("success" == msg) {
+						if("email_error" == msg) {
+							$("#email_login_tip").text("帐号不存在！");
+							return;
+						}else if ("success" == msg) {
 							parent.location.reload();
 							return;
 						} else {
-							$("#result").text("对不起，登录失败：" + msg);
+							$("#result").text("对不起，登录失败：系统正在维护~");
+							showResult();
 						}
 					}
 				});
@@ -155,6 +182,7 @@ div#login a:link,div#login a:visited {
 						} else {
 							$("#result").text("对不起,找回失败~");
 						}
+						showResult();
 					}
 				});
 			} else if (type == "regist") {
@@ -165,7 +193,7 @@ div#login a:link,div#login a:visited {
 				var invitationcode = $("#txtInvitationCode").val();
 				//非空验证
 				if (email == "") {
-					$("#email_tip").text("邮箱不能为空！");
+					$("#email_regist_tip").text("邮箱不能为空！");
 					return;
 				}
 				if (name == "") {
@@ -173,7 +201,7 @@ div#login a:link,div#login a:visited {
 					return;
 				}
 				if (pass == "") {
-					$("#pass_tip").text("密码不能为空！");
+					$("#pass_regist_tip").text("密码不能为空！");
 					return;
 				}
 				if (pass_con == "") {
@@ -188,7 +216,7 @@ div#login a:link,div#login a:visited {
 				var emailRegExp = new RegExp(
 						"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 				if (!emailRegExp.test(email) || email.indexOf('.') == -1) {
-					$("#email_tip").text("您输入的邮箱格式不正确！");
+					$("#email_regist_tip").text("您输入的邮箱格式不正确！");
 					return;
 				}
 				//验证密码
@@ -212,7 +240,7 @@ div#login a:link,div#login a:visited {
 									$("#code_tip").text("邀请码无效！");
 									return;
 								} else if ("email_error" == msg) {
-									$("#email_tip").text("邮箱已经被注册！");
+									$("#email_regist_tip").text("邮箱已经被注册！");
 									return;
 								} else {
 									if ("success" == msg) {
@@ -247,12 +275,12 @@ div#login a:link,div#login a:visited {
 				</div>
 				<div id="panelLogin">
 					<div>
-						<label>账号(注册邮箱): </label> <input type="text" value=""
-							id="txtLogin" name="txtLogin" class="textbox340">
+						<label>账号(注册邮箱): <span class="tip" id="email_login_tip"></span></label> <input type="text" value=""
+							id="txtEmailLogin" name="txtEmailLogin" class="textbox340">
 					</div>
 					<div>
-						<label>密码: </label> <input type="password" value=""
-							autocomplete="off" id="txtPassword" name="txtPassword"
+						<label>密码: <span class="tip" id="pass_login_tip"></span></label> <input type="password" value=""
+							autocomplete="off" id="txtPasswordLogin" name="txtPasswordLogin"
 							class="textbox340">
 					</div>
 					<div style="text-align: right;" class="submit clearfix">
@@ -267,7 +295,7 @@ div#login a:link,div#login a:visited {
 				<div id="panelResetPass" style="display: none;">
 					<div class="info">输入您注册时候的邮箱，来找回您的密码。</div>
 					<div>
-						<label> 注册邮箱地址：</label> <input type="text" value=""
+						<label> 注册邮箱地址：<span class="tip" id="email_findpass_tip"></span></label> <input type="text" value=""
 							id="txtEmailAddressResetPass" name="txtEmailAddressResetPass"
 							class="textbox340">
 					</div>
@@ -278,7 +306,7 @@ div#login a:link,div#login a:visited {
 				</div>
 				<div id="registDiv" style="display: none;">
 					<div>
-						<label> 注册邮箱：<span class="tip" id="email_tip"></span> </label> <input
+						<label> 注册邮箱：<span class="tip" id="email_regist_tip"></span> </label> <input
 							type="text" value="" id="txtEmailAddressRegist"
 							name="txtEmailAddressRegist" class="textbox340">
 					</div>
@@ -288,7 +316,7 @@ div#login a:link,div#login a:visited {
 							class="textbox340">
 					</div>
 					<div>
-						<label> 密码：<span class="tip" id="pass_tip"></span> </label> <input
+						<label> 密码：<span class="tip" id="pass_regist_tip"></span> </label> <input
 							type="password" value="" id="txtPasswordRegist"
 							name="txtPasswordRegist" class="textbox340">
 					</div>

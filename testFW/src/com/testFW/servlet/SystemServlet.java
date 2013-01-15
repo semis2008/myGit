@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.testFW.bo.UserBO;
+import com.testFW.service.UserService;
+import com.testFW.util.UserUtil;
+
 /**
  * 系统响应处理类
  * 
@@ -21,7 +25,12 @@ import org.springframework.stereotype.Component;
 public class SystemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(SystemServlet.class);
+	private UserService userService;
 
+	public void setUserService(UserService service) {
+		this.userService = service;
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -41,7 +50,7 @@ public class SystemServlet extends HttpServlet {
 		}else if ("exception".equals(fun)) {
 			targetpath = "/jsp/exception.jsp";
 		}else if ("mainpage".equals(fun)) {
-			targetpath = "/jsp/mainPage.jsp";
+			targetpath = showMainPage(req, resp);
 		}else if ("diary".equals(fun)) {
 			targetpath = showDiary(req, resp);
 		}else if ("picture".equals(fun)) {
@@ -57,9 +66,31 @@ public class SystemServlet extends HttpServlet {
 			}
 		}
 		
+		UserBO user = UserUtil.getUser(req, resp);
 		req.setAttribute("fun", fun);
+		req.setAttribute("loginUser", user);
 		RequestDispatcher rd = req.getRequestDispatcher(targetpath);
 		rd.forward(req, resp);
+	}
+	
+	/**
+	 * 主页业务处理
+	 * @param req
+	 * @param resp
+	 */
+	private String showMainPage(HttpServletRequest req, HttpServletResponse resp) {
+		String param = req.getParameter("p1");
+		UserBO user = new UserBO();
+		/*
+		 * 默认访问kalor的主页
+		 */
+		if(param==null) {
+			param = "1";
+		}
+		//查询访问用户信息，返回前台
+		user = userService.getUserByID(param);
+		req.setAttribute("visitedUser", user);
+		return "/jsp/mainPage.jsp";
 	}
 	
 	/**

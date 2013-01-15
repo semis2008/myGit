@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.testFW.service.UserService;
+import com.testFW.util.StringUtil;
 
 /**
  * 用户相关处理类
@@ -41,13 +42,13 @@ public class UserServlet extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		String fun = (String) req.getParameter("fun");
 		if ("regist".equals(fun)) {
-			registUser(req, resp);
+			userRegist(req, resp);
 		}
 		if ("login".equals(fun)) {
-			registUser(req, resp);
+			userLogin(req, resp);
 		}
 		if ("findpass".equals(fun)) {
-			registUser(req, resp);
+			userRegist(req, resp);
 		}
 	}
 
@@ -58,7 +59,7 @@ public class UserServlet extends HttpServlet {
 	 * @return
 	 * @throws IOException 
 	 */
-	private void registUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void userRegist(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		PrintWriter out = resp.getWriter();
 		String email = req.getParameter("email");
 		String pass = req.getParameter("pass");
@@ -69,7 +70,7 @@ public class UserServlet extends HttpServlet {
 		 * 验证邮箱是否已经被注册 
 		 */
 		boolean email_result = userService.verifyEmail(email);
-		if(!email_result) {
+		if(email_result) {
 			msg = "email_error";
 			out.print(msg);
 			out.flush();
@@ -99,6 +100,41 @@ public class UserServlet extends HttpServlet {
 			msg = "system_error";
 		}
 		
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 用户登录
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws IOException 
+	 */
+	private void userLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		PrintWriter out = resp.getWriter();
+		String email = req.getParameter("email");
+		String pass = req.getParameter("pass");
+		String msg = "";
+		/*
+		 * 验证邮箱是否存在 
+		 */
+		boolean email_result = userService.verifyEmail(email);
+		if(!email_result) {
+			msg = "email_error";
+			out.print(msg);
+			out.flush();
+			out.close();
+			return;
+		}
+		
+		/*
+		 * 登录
+		 */
+		pass = StringUtil.passEncrypt(pass);
+		msg = userService.userLogin(req, resp);
+
 		out.print(msg);
 		out.flush();
 		out.close();

@@ -1,9 +1,15 @@
 package com.testFW.service.impl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.testFW.bo.InvitationCodeBO;
 import com.testFW.bo.UserBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
+import com.testFW.util.DateUtil;
+import com.testFW.util.StringUtil;
+import com.testFW.util.UserUtil;
 
 /**
  * 用户业务处理接口实现类
@@ -33,6 +39,7 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public boolean regist(String email, String name, String pass) {
+		pass = StringUtil.passEncrypt(pass);
 		int result = userDao.insertUser(email,name,pass);
 		if(result>0){
 			return true;	
@@ -45,10 +52,34 @@ public class UserServiceImpl implements UserService{
 	public boolean verifyEmail(String email) {
 		UserBO bo = userDao.queryUserByEmail(email);
 		if(bo!=null&&bo.getId()>0) {
-			return false;
-		}else {
 			return true;
+		}else {
+			return false;
 		}
+	}
+	@Override
+	public String userLogin(HttpServletRequest req, HttpServletResponse resp) {
+		String email = req.getParameter("email");
+		String pass = req.getParameter("pass");
+		pass = StringUtil.passEncrypt(pass);
+		UserBO bo = userDao.queryUser(email,pass);
+		if(bo!=null&&bo.getId()>0) {
+			//更新登录日期
+			int time_result = userDao.updateLoginTime(email);
+			if(time_result<1) {
+				return "system_error";
+			}else {
+				//更新session
+				UserUtil.addUserSession(req, bo);
+				return "success";
+			}
+		}else {
+			return "pass_error";
+		}
+	}
+	@Override
+	public UserBO getUserByID(String id) {
+		return userDao.queryUserByID(id);
 	}
 	
 }

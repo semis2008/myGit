@@ -1,5 +1,10 @@
 package com.testFW.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.testFW.bo.UserBO;
+
 /**
  * 用户业务处理接口
  * @author Kalor
@@ -22,10 +27,24 @@ public interface UserService {
 	boolean regist(String email,String name,String pass);
 	
 	/**
-	 * 验证邮箱是否被注册
+	 * 验证邮箱是否存在
 	 * @param email
-	 * @return
+	 * @return 邮箱存在，返回true;邮箱不存在，返回false
 	 */
 	boolean verifyEmail(String email);
 	
+	/**
+	 * 用户登录。验证帐号密码、更新登录信息（login_time和session）
+	 * @param email 注册邮箱
+	 * @param pass 密码
+	 * @return 密码错误，返回pass_error;登录失败，返回system_error;登录成功，返回success
+	 */
+	String userLogin(HttpServletRequest req, HttpServletResponse resp);
+	
+	/**
+	 * 依据用户id查询用户信息
+	 * @param id 用户id
+	 * @return 用户实体类
+	 */
+	UserBO getUserByID(String id);
 }
