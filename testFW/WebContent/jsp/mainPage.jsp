@@ -40,7 +40,19 @@
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 
 <script language="javascript" type="text/javascript">
-	$(function(){
+	$(function() {
+		$(".navi_news").hover(function() {
+			$(".navi_news").addClass("on");
+			$(".navi_reply").removeClass("on");
+			$(".topbar_news").show();
+			$(".topbar_reply").hide();
+		});
+		$(".navi_reply").hover(function() {
+			$(".navi_news").removeClass("on");
+			$(".navi_reply").addClass("on");
+			$(".topbar_news").hide();
+			$(".topbar_reply").show();
+		});
 		$('.small_search').click(function() {
 			if (this.value == this.defaultValue) {
 				this.value = '';
@@ -100,28 +112,23 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
 				<div class="main">
-					<div class="top_bar"></div>
 					<div class="group" id="paging">
 						<%
 							if (!hasLogin) {
@@ -131,7 +138,8 @@
 						<%
 							} else {
 						%>
-						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+						<a
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
 							title="点击进入主页"><%=user.getName()%></a> <a href="#"
 							onclick="userQuit();" title="点击退出">退出</a>
 						<%
@@ -140,84 +148,179 @@
 						<a class="fancybox-iframe"
 							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
 					</div>
-					<div id="foreword">
-						<div id="sidebar_top">
-							<h1>卡莱尔</h1>
-							<h2>测试人员</h2>
-							<div id="picture-profile">
-								<img alt="Ricardo Castillo"
-									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/profile.jpg">
-							</div>
+					<div class="topbar_left">
+						<h1>卡莱尔</h1>
+						<h2>测试人员</h2>
+						<div id="picture-profile">
+							<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/profile.jpg" />
+						</div>
+					</div>
+					<div class="topbar_right">
+						<div class="topbar_info">
 							<ul>
-								<li>加入日期：<a href="#">2012/12/20</a></li>
-								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a></li>
-								<li>图册：<a href="#"><em>9</em>&nbsp;集</a></li>
-								<li>专修：<a href="#">java,C++</a></li>
-								<li>联系方式：<a href="#">不公开</a></li>
+								<li>加入日期：<a href="#">2012/12/20</a>
+								</li>
+								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a>
+								</li>
+								<li>图册：<a href="#"><em>9</em>&nbsp;集</a>
+								</li>
+								<li>专修：<a href="#">java,C++</a>
+								</li>
+								<li>联系方式：<a href="#">不公开</a>
+								</li>
 							</ul>
 						</div>
-					</div>
-					<div class="content">
-						<div id="content-gallery">
-							<div class="gallery-item" id="post-116">
-								<h2>
-									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
-										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
-								</h2>
+						<div class="topbar_msg">
+							<div class="topbar_navi">
+								<a href="#" title="回复" class="navi_reply"></a> <a href="#"
+									title="动态" class="navi_news on"></a>
 							</div>
-							<div class="gallery-item" id="post-134">
-								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
-									class="" title="测试缩略图标题~~~~test pic-sc title"
-									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
-								</a>
-								<h2>测试图册缩略图</h2>
-							</div>
-							<div class="gallery-item" id="post-116">
-								<h2>
-									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
-										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
-								</h2>
-							</div>
-							<div class="gallery-item" id="post-134">
-								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
-									class="" title="测试缩略图标题~~~~test pic-sc title"
-									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
-								</a>
-								<h2>测试图册缩略图</h2>
-							</div>
-							<div class="gallery-item" id="post-116">
-								<h2>
-									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
-										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
-								</h2>
-							</div>
-							<div class="gallery-item" id="post-134">
-								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
-									class="" title="测试缩略图标题~~~~test pic-sc title"
-									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
-								</a>
-								<h2>测试图册缩略图</h2>
-							</div>
-							<div class="gallery-item" id="post-116">
-								<h2>
-									<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
-										<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
-								</h2>
-							</div>
-							<div class="gallery-item" id="post-134">
-								<a title="测试图册缩略图" href="#"> <img width="219" height="219"
-									class="" title="测试缩略图标题~~~~test pic-sc title"
-									src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
-										<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
-								</a>
-								<h2>测试图册缩略图</h2>
+							<div class="topbar_content">
+								<div class="topbar_news">
+									<ul>
+										<li>
+											<div class="news_cont">
+												<b>Kalor</b>在<em>16分钟前</em>发表了日志<a href="#">《关于12306网站设计的一点感想》</a><span>[12评/45阅]</span>
+											</div></li>
+										<li>
+											<div class="news_cont">
+												<b>Kalor</b>在<em>3小时前</em>上传了1张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
+											</div></li>
+										<li>
+											<div class="news_cont">
+												<b>Kalor</b>在<em>3小时前</em>上传了3张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
+											</div></li>
+										<li>
+											<div class="news_cont">
+												<b>Kalor</b>在<em>12小时前</em>发表了日志<a href="#">《天空从来都不是蓝色的》</a><span>[67评/122阅]</span>
+											</div></li>
+										<li>
+											<div class="news_cont">
+												<b>Kalor</b>在<em>14小时前</em>发表了日志<a href="#">《岁末，碎末》</a><span>[67评/122阅]</span>
+											</div></li>
+									</ul>
+								</div>
+								<div class="topbar_reply">
+									<ul>
+										<li><img
+											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
+											alt="" />
+											<div class="reply_r">
+												<a href="" class="name">水晶</a>
+												<p class="time">
+													<em>12/</em>21
+												</p>
+												<p class="cont">:&nbsp;首页重新设计了？快点吧...</p>
+											</div>
+										</li>
+										<li><img
+											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
+											alt="" />
+											<div class="reply_r">
+												<a href="" class="name">水晶</a>
+												<p class="time">
+													<em>12/</em>21
+												</p>
+												<p class="cont">:&nbsp;very cool,but not fell good....</p>
+											</div>
+										</li>
+										<li><img
+											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg"
+											alt="" />
+											<div class="reply_r">
+												<a href="" class="name">Kalor</a>
+												<p class="time">
+													<em>12/</em>21
+												</p>
+												<p class="cont">:&nbsp;信息量大了一点，然后布局合理了一些？还有别的么？</p>
+											</div>
+										</li>
+										<li><img
+											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg"
+											alt="" />
+											<div class="reply_r">
+												<a href="" class="name">蝴蝶</a>
+												<p class="time">
+													<em>12/</em>21
+												</p>
+												<p class="cont">:&nbsp;新首页比原来好在那里？反正我是没看出来..</p>
+											</div>
+										</li>
+										<li><img
+											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
+											alt="" />
+											<div class="reply_r">
+												<a href="" class="name">水晶</a>
+												<p class="time">
+													<em>12/</em>21
+												</p>
+												<p class="cont">:&nbsp;快点吧...</p>
+											</div>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-						<!-- content-gallery -->
 					</div>
+					<div id="content-gallery">
+						<div class="gallery-item" id="post-116">
+							<h2>
+								<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+									<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+							</h2>
+						</div>
+						<div class="gallery-item" id="post-134">
+							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+								class="" title="测试缩略图标题~~~~test pic-sc title"
+								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+							</a>
+							<h2>测试图册缩略图</h2>
+						</div>
+						<div class="gallery-item" id="post-116">
+							<h2>
+								<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+									<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+							</h2>
+						</div>
+						<div class="gallery-item" id="post-134">
+							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+								class="" title="测试缩略图标题~~~~test pic-sc title"
+								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+							</a>
+							<h2>测试图册缩略图</h2>
+						</div>
+						<div class="gallery-item" id="post-116">
+							<h2>
+								<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+									<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+							</h2>
+						</div>
+						<div class="gallery-item" id="post-134">
+							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+								class="" title="测试缩略图标题~~~~test pic-sc title"
+								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+							</a>
+							<h2>测试图册缩略图</h2>
+						</div>
+						<div class="gallery-item" id="post-116">
+							<h2>
+								<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题
+									<p>详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容详细内容...</p> </a>
+							</h2>
+						</div>
+						<div class="gallery-item" id="post-134">
+							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
+								class="" title="测试缩略图标题~~~~test pic-sc title"
+								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
+							</a>
+							<h2>测试图册缩略图</h2>
+						</div>
+					</div>
+					<!-- content-gallery -->
 
 					<div class="section_wrap more_padding">
 						<h3>

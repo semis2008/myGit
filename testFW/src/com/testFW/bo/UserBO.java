@@ -13,7 +13,6 @@ public class UserBO {
 	private String name;
 	private String email;
 	private String password;
-	private int gender;
 	private Date reg_time;
 	private Date logon_time;
 	private String state;
@@ -50,15 +49,6 @@ public class UserBO {
 		this.password = password;
 	}
 
-	 
-	public int getGender() {
-		return gender;
-	}
-
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
- 
 	public Date getReg_time() {
 		return reg_time;
 	}

@@ -237,13 +237,12 @@ li.active #aboutus:hover,li.active #aboutus {
 .main_wrap {
 	margin: 0;
 	padding-top:120px;
-	padding-left: 120px;
+	padding-left: 100px;
 }
 
 .main {
 	margin: 0;
 	overflow: hidden;
-	padding: 24px 0;
 	width: 100%;
 	min-height: 200px;
 }

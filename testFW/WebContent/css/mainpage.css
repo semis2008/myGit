@@ -1,21 +1,13 @@
-#foreword {
-    float: left;
-    width: 250px;
-    background-color: #9191ad;
-}
-.content {
-    margin-left: 250px;
+#content-gallery, #content-single {
     min-height: 100%;
     position: relative;
-    width: 70%;
-    margin-bottom:180px;
-    z-index: 15;
-}
-#content-gallery, #content-single {
+    margin-top:10px;
+    min-width:850px;
+    width: 90%;
+    z-index: 1;
     float: left;
     margin-bottom: 180px;
 }
-
 .gallery-item {
     float: left;
     height: 220px;
@@ -55,43 +47,60 @@
 
 .gallery-item h2 a:hover {
     background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;
-    box-shadow: 0 0 2px #CCCCCC inset;
+    box-shadow: 0 0 2px #999999 inset;
     color: #222222;
 }
 
-#sidebar_top {
+.topbar_left {
     background: none repeat scroll 0 0 #373737;
-    height: 370px;
-    margin-left: -30px;
-    position: fixed;
+    height: 100%;
+    float:left;
     width: 250px;
     z-index: 4;
 }
-#sidebar_top h1, #sidebar_top h2 {
+.topbar_left h1, .topbar_left h2 {
     display: block;
     margin: 0 auto;
     text-align: left;
     width: 80%;
 }
 
-#sidebar_top #picture-profile {
-    background: none repeat scroll 0 0 #656565;
+.topbar_left #picture-profile {
+	background: url("../img/topbar_bg.jpg") no-repeat scroll 0 0;
     text-align: center;
 }
 
-#sidebar_top #picture-profile img {
+.topbar_left #picture-profile img {
     margin: 10px 0;
 }
-#sidebar_top ul li {
-	width:90%;
-	margin:3x;
-	text-align: center;
+.topbar_right{
+	background: none repeat scroll 0 0 #373737;
+    height: 100%;
+    width: 600px;
+    float:left;
+    z-index: 4;
+    border-left:  1px solid #f3f3f3;
 }
-#sidebar_top ul li  a{
-	color: #c3c3c3;
-	text-align: center;
-	width: 80px;
-} 
+.topbar_right .topbar_info{
+	display: block;
+    text-align: left;
+    width: 100%;
+    height: 54px;
+}
+.topbar_info ul li{
+	padding:5px;
+	width: 22%;
+	float: left;
+	color: #f3f3f3;
+}
+.topbar_info ul li a{
+	color: #999;
+}
+.topbar_msg{
+	background: url("../img/topbar_bg.jpg") no-repeat scroll 0 0;
+	height: 227px;
+}
+
 .overTitle{
   	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
     bottom: 0;
@@ -101,4 +110,117 @@
     visibility:visible;
     position: absolute;
     z-index: 10;
+}
+.topbar_navi{
+	width: 90px;
+	height: 25px;
+	padding-left: 500px;
+	padding-right: 10px;
+	border-bottom:  1px solid #fafafa;
+}
+.topbar_content {
+	width: 600px;
+	height: 202px;
+}
+.topbar_navi a{
+	background: none repeat scroll 0 0 #f3f3f3;
+    cursor: pointer;
+    float: right;
+    height: 9px;
+    margin: 8px;
+    overflow: hidden;
+    width: 9px;
+}
+.navi_news.on,.navi_reply.on{
+	background-color: #25a8e0;
+} 
+.topbar_reply{
+	margin-top:6px;
+	padding-left:6px;
+	display: none;
+	font-size: 11px;
+	color: #fafafa;
+}
+
+.topbar_reply img{
+	width: 30px;
+	height: 30px;
+	float:left;
+	display: inline-block;
+}
+.topbar_reply .reply_r{
+	height: 30px;
+	display: inline-block;
+	border-bottom:  1px solid #fafafa;
+	float: left;
+}
+.topbar_reply .name{
+	color:#f3f3f3;
+	font-size:14px;
+	padding:12px 5px 0 5px;
+	border-right:  1px solid #fafafa;
+	display: inline-block;
+	float: left;
+}
+.topbar_reply .time{
+	color:#25a8e0;
+	font-size:11px;
+	padding-top:10px;
+	display: inline-block;
+	float: left;
+}
+.topbar_reply .cont{
+	color:#000;
+	padding:8px 0 0 10px;
+	font-style:oblique;
+	display: inline-block;
+	float: left;
+}
+.topbar_reply .time em{
+	font-size: 18px;
+	display: inline-block;
+}
+.topbar_reply .reply_r p{
+	margin:0;
+	display: inline-block;
+	float: left;
+}
+.topbar_reply li{
+	margin-bottom:5px;
+	width: 600px;
+	float:left;
+	display: block;
+}
+.topbar_news{
+	margin-top:6px;
+	padding-left:6px;
+	display:inline-block;
+	color: #fafafa;
+}
+.topbar_news li{
+	margin-bottom:5px;
+	height: 30px;
+	display:inline-block;
+}
+.topbar_news .news_cont{
+	font-size: 13px;
+	margin:12px 0 0 0;
+	border-bottom:  1px solid #fafafa;
+	width: auto;
+}
+.news_cont b{
+	border-right: 1px solid #fafafa;
+	margin-right: 5px;
+	color: #25A8E0;
+	padding-right: 5px;
+}
+.news_cont em{
+	margin:0 5px 0 5px;
+}
+.news_cont span{
+	font-size: 9px;
+}
+.news_cont a{
+	color: #25A8E0;
+	font-weight: normal;
 }
