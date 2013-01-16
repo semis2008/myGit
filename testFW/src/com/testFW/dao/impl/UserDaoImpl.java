@@ -52,9 +52,12 @@ public class UserDaoImpl implements UserDao{
 	public UserBO queryUserByID(String id) {
 		String sql = "select * from user where id = ?";
 		return dbUtilsTemplate.findFirst(UserBO.class, sql, id);
+	}
+	@Override
+	public int insertLeaveMsg(String email, String name, String msg,
+			String type, Long id) {
+		String sql = "insert into leavemsg (email,name,msg,leave_time,visited_user_id,type) values (?,?,?,now(),?,?)";
+		Object[] param = {email,name,msg,id,type};
+		return dbUtilsTemplate.update(sql,param);
 	} 
-	
-	
-	
-	
 }

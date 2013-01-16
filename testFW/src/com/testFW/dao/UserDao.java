@@ -60,4 +60,15 @@ public interface UserDao {
 	 * @return 用户实体类
 	 */
 	UserBO queryUserByID(String id);
+	
+	/**
+	 * 新增留言信息
+	 * @param email 留言者邮箱
+	 * @param name 留言者昵称
+	 * @param msg 留言内容
+	 * @param type 留言类型
+	 * @param id 被访问者id
+	 * @return
+	 */
+	int insertLeaveMsg(String email,String name,String msg,String type,Long id);
 }

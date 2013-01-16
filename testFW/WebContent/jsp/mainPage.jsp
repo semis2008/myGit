@@ -145,8 +145,15 @@
 						<%
 							}
 						%>
+						<%
+							if(hasLogin) {
+						%>
 						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
+						<%}else { %>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
+						<%} %>	
 					</div>
 					<div class="topbar_left">
 						<h1>卡莱尔</h1>
@@ -196,7 +203,7 @@
 											</div></li>
 										<li>
 											<div class="news_cont">
-												<b>Kalor</b>在<em>14小时前</em>发表了日志<a href="#">《岁末，碎末》</a><span>[67评/122阅]</span>
+												<b>Kalor</b>在<em>12月16日</em>发表了日志<a href="#">《岁末，碎末》</a><span>[67评/122阅]</span>
 											</div></li>
 									</ul>
 								</div>

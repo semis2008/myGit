@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService{
 				return "system_error";
 			}else {
 				//更新session
-				UserUtil.addUserSession(req, bo);
+				UserUtil.addLoginUserSession(req, bo);
 				return "success";
 			}
 		}else {
@@ -80,6 +80,33 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserBO getUserByID(String id) {
 		return userDao.queryUserByID(id);
+	}
+	@Override
+	public String leaveMsg(HttpServletRequest req, HttpServletResponse resp) {
+		String result = "";
+		UserBO visitedUser = UserUtil.getVisitedUser(req, resp);
+		String type = req.getParameter("type");
+		String msg = req.getParameter("msg");
+		String email = "";
+		String name = "";
+		if("login".equals(type)) {
+			UserBO loginUser = UserUtil.getLoginUser(req, resp);
+			email = loginUser.getEmail();
+			name = loginUser.getName();
+		}else if("logout".equals(type)) {
+			email = req.getParameter("email");
+			name = req.getParameter("name");
+		}else {
+			result = "system_error";
+			return result;
+		}
+		int num = userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId());
+		if(num<1) {
+			result = "system_error";
+		}else {
+			result = "success";
+		}
+		return result;
 	}
 	
 }

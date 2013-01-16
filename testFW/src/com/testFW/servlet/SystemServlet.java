@@ -66,7 +66,7 @@ public class SystemServlet extends HttpServlet {
 			}
 		}
 		
-		UserBO user = UserUtil.getUser(req, resp);
+		UserBO user = UserUtil.getLoginUser(req, resp);
 		req.setAttribute("fun", fun);
 		req.setAttribute("loginUser", user);
 		RequestDispatcher rd = req.getRequestDispatcher(targetpath);
@@ -89,6 +89,8 @@ public class SystemServlet extends HttpServlet {
 		}
 		//查询访问用户信息，返回前台
 		user = userService.getUserByID(param);
+		//将被访问的用户信息放入session
+		UserUtil.addVisitedUserSession(req, user);
 		req.setAttribute("visitedUser", user);
 		return "/jsp/mainPage.jsp";
 	}

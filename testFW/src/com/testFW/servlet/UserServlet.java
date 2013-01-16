@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.testFW.bo.UserBO;
 import com.testFW.service.UserService;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
@@ -50,6 +51,8 @@ public class UserServlet extends HttpServlet {
 			userRegist(req, resp);
 		} else if ("userquit".equals(fun)) {
 			userQuit(req, resp);
+		} else if ("leavemsg".equals(fun)) {
+			leaveMsg(req, resp);
 		}
 	}
 
@@ -158,6 +161,24 @@ public class UserServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String msg = "success";
 		UserUtil.quit(req, resp);
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+
+	/**
+	 * 用户留言
+	 * 
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws IOException
+	 */
+	private void leaveMsg(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String msg = userService.leaveMsg(req,resp);
 		out.print(msg);
 		out.flush();
 		out.close();

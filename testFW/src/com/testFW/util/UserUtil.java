@@ -31,12 +31,12 @@ public class UserUtil {
 	}
 	
 	/**
-	 * 添加用户session信息
+	 * 添加登录用户session信息
 	 * @param request
 	 * @param bo
 	 * @return
 	 */
-	public static boolean addUserSession(HttpServletRequest request,UserBO bo) {
+	public static boolean addLoginUserSession(HttpServletRequest request,UserBO bo) {
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", bo);
 		return true;
@@ -49,10 +49,36 @@ public class UserUtil {
 	 * @param response
 	 * @return
 	 */
-	public static UserBO getUser(HttpServletRequest request,
+	public static UserBO getLoginUser(HttpServletRequest request,
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		UserBO user = (UserBO) session.getAttribute("loginUser");
+		return user;
+	}
+
+	/**
+	 * 添加被访问用户session信息
+	 * @param request
+	 * @param bo
+	 * @return
+	 */
+	public static boolean addVisitedUserSession(HttpServletRequest request,UserBO bo) {
+		HttpSession session = request.getSession();
+		session.setAttribute("visitedUser", bo);
+		return true;
+	}
+	 
+	/**
+	 * 获取被访问用户对象,通过session
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public static UserBO getVisitedUser(HttpServletRequest request,
+			HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		UserBO user = (UserBO) session.getAttribute("visitedUser");
 		return user;
 	}
 

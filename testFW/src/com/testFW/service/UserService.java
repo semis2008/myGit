@@ -35,8 +35,8 @@ public interface UserService {
 	
 	/**
 	 * 用户登录。验证帐号密码、更新登录信息（login_time和session）
-	 * @param email 注册邮箱
-	 * @param pass 密码
+	 * @param req
+	 * @param resp
 	 * @return 密码错误，返回pass_error;登录失败，返回system_error;登录成功，返回success
 	 */
 	String userLogin(HttpServletRequest req, HttpServletResponse resp);
@@ -47,4 +47,12 @@ public interface UserService {
 	 * @return 用户实体类
 	 */
 	UserBO getUserByID(String id);
+	
+	/**
+	 * 用户留言
+	 * @param req
+	 * @param resp
+	 * @return 留言成功，返回success,留言失败，返回system_error
+	 */
+	String leaveMsg(HttpServletRequest req, HttpServletResponse resp);
 }

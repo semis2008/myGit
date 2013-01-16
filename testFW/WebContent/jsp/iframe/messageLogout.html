@@ -96,26 +96,82 @@ div#message a:link,div#message a:visited {
 	text-decoration: none;
 	text-shadow: 1px 1px 0 #FFFFFF;
 }
-.textarea{
+
+.textarea {
 	background: none repeat scroll 0 0 #fafafa;
 	border: 1px solid #EEEEEE;
 	font-size: 15px;
-	font-family:"MicroSoft yahei";
+	font-family: "MicroSoft yahei";
 	line-height: 15px;
 	margin: 0;
 	padding: 3px;
 	width: 440px;
 	height: 150px;
 }
-#result{
-	margin-bottom: 40px;
+#result {
+	margin: 20px 0 40px 0;
+	font-size: 15px;
+	font-family: "MicroSoft yahei";
+	line-height: 15px;
+}
+.tip{
+	color: red;
 }
 </style>
 <body>
 	<script type="text/javascript">
+		$("input").focus(function() {
+			$(".tip").text("");
+		});
+		$("textarea").focus(function() {
+			$(".tip").text("");
+		});
 		function leaveMsg() {
-			document.getElementById("leaveMessage").style.display = "none";//隐藏
-			document.getElementById("result").style.display = "";//显示
+			var email = $("#email").val();
+			var name = $.trim($("#name").val());
+
+			//非空验证
+			if (email == "") {
+				$("#email_tip").text("邮箱不能为空！");
+				return;
+			}
+			if (name == "") {
+				$("#name_tip").text("昵称不能为空！");
+				return;
+			}
+			//验证邮箱格式
+			var emailRegExp = new RegExp(
+					"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+			if (!emailRegExp.test(email) || email.indexOf('.') == -1) {
+				$("#email_tip").text("您输入的邮箱格式不正确！");
+				return;
+			}
+
+			var msg = $.trim($("#msg").val());
+			if (msg == "") {
+				$("#msg_tip").text("还什么都没说哦~");
+				return;
+			}
+			$.ajax({
+				type : "POST",
+				url : "/action/user/leavemsg",
+				data : {
+					email : email,
+					name : name,
+					type : "logout",
+					msg : msg
+				},
+				dataType : "text",
+				success : function(msg) {
+					if ("success" == msg) {
+						$("#result").text("留言成功~");
+					} else {
+						$("#result").text("对不起,留言失败~系统正在维护中...");
+					}
+				}
+			});
+			$("#leaveMessage").hide();
+			$("#result").show();
 		}
 	</script>
 	<div>
@@ -129,19 +185,23 @@ div#message a:link,div#message a:visited {
 				</div>
 				<div id="leaveMessage">
 					<div>
-						<label>邮箱: </label> <input type="text" value="" id="email"
-							name="email" class="textbox340">
+						<label>邮箱: <span id="email_tip" class="tip"></span>
+						</label> <input type="text" value="" id="email" name="email"
+							class="textbox340">
 					</div>
 					<div>
-						<label>姓名: </label> <input type="text" value="" id="name"
-							name="name" class="textbox340">
+						<label>昵称: <span class="tip" id="name_tip"></span>
+						</label> <input type="text" value="" id="name" name="name"
+							class="textbox340">
 					</div>
 					<div>
-						<label>想对我说: </label>
+						<label>想说写什么? <span class="tip" id="msg_tip"></span>
+						</label>
 						<textarea id="msg" name="msg" class="textarea"></textarea>
 					</div>
 					<div style="text-align: right;" class="submit clearfix">
-						<a href="#" class="buttonMsg" id="lbtnMsg" onclick="javascript:leaveMsg()">留言</a>
+						<a href="#" class="buttonMsg" id="lbtnMsg"
+							onclick="javascript:leaveMsg()">留言</a>
 					</div>
 				</div>
 				<div id="result" style="display: none;">

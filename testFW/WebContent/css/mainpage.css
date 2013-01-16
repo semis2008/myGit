@@ -216,6 +216,7 @@
 }
 .news_cont em{
 	margin:0 5px 0 5px;
+	border-bottom:  1px solid #25a8e0;
 }
 .news_cont span{
 	font-size: 9px;
