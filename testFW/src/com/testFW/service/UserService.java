@@ -54,5 +54,13 @@ public interface UserService {
 	 * @param resp
 	 * @return 留言成功，返回success,留言失败，返回system_error
 	 */
-	String leaveMsg(HttpServletRequest req, HttpServletResponse resp);
+	boolean leaveMsg(HttpServletRequest req, HttpServletResponse resp);
+	
+	/**
+	 * 更新用户详细信息
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	boolean updateInfo(HttpServletRequest req, HttpServletResponse resp);
 }

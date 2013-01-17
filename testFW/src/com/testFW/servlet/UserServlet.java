@@ -53,6 +53,8 @@ public class UserServlet extends HttpServlet {
 			userQuit(req, resp);
 		} else if ("leavemsg".equals(fun)) {
 			leaveMsg(req, resp);
+		} else if ("updateinfo".equals(fun)) {
+			updateInfo(req, resp);
 		}
 	}
 
@@ -178,7 +180,36 @@ public class UserServlet extends HttpServlet {
 	private void leaveMsg(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		PrintWriter out = resp.getWriter();
-		String msg = userService.leaveMsg(req,resp);
+		String msg = "";
+		boolean result = userService.leaveMsg(req,resp);
+		if(result) {
+			msg = "success";
+		}else {
+			msg = "system_error";
+		}
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 更新用户详细信息
+	 * 
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws IOException
+	 */
+	private void updateInfo(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String msg = "";
+		boolean result = userService.updateInfo(req,resp);
+		if(result) {
+			msg = "success";
+		}else {
+			msg = "system_error";
+		}
 		out.print(msg);
 		out.flush();
 		out.close();

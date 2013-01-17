@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.InvitationCodeBO;
 import com.testFW.bo.UserBO;
+import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
-import com.testFW.util.DateUtil;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
 
@@ -82,8 +82,7 @@ public class UserServiceImpl implements UserService{
 		return userDao.queryUserByID(id);
 	}
 	@Override
-	public String leaveMsg(HttpServletRequest req, HttpServletResponse resp) {
-		String result = "";
+	public boolean leaveMsg(HttpServletRequest req, HttpServletResponse resp) {
 		UserBO visitedUser = UserUtil.getVisitedUser(req, resp);
 		String type = req.getParameter("type");
 		String msg = req.getParameter("msg");
@@ -97,16 +96,75 @@ public class UserServiceImpl implements UserService{
 			email = req.getParameter("email");
 			name = req.getParameter("name");
 		}else {
-			result = "system_error";
-			return result;
+			return false;
 		}
 		int num = userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId());
 		if(num<1) {
-			result = "system_error";
+			return false;
 		}else {
-			result = "success";
 		}
-		return result;
+		return true;
+	}
+	
+	@Override
+	public boolean updateInfo(HttpServletRequest req, HttpServletResponse resp) {
+		
+		String name = req.getParameter("name");
+		String rel_name = req.getParameter("relname");
+		String gender = req.getParameter("gender");
+		String homeProvince = req.getParameter("homeProvince");
+		/*
+		 * 生日
+		 */
+		String birthYear = req.getParameter("birthYear");
+		String birthMonth = req.getParameter("birthMonth");
+		String birthDay = req.getParameter("birthDay");
+		String birthday = "1700-11-11";
+		if(!"".equals(birthYear)&&!"".equals(birthMonth)&&!"".equals(birthDay)) {
+			birthday = birthYear+"-"+birthMonth+"-"+birthDay;
+		}
+		
+		
+		String hobby = req.getParameter("hobby");
+		/*
+		 * 联系方式		
+		 */
+		String contact_type = req.getParameter("contact_type");
+		String contact = req.getParameter("contact");
+		String contactStr = "";
+		if(!"".equals(contact.trim())) {
+			contactStr = contact_type+"_"+contact;
+		}
+		
+		String[] publicInfo = req.getParameterValues("public");
+		String publicStr = "";
+		for(String pubInfo:publicInfo) {
+			publicStr+=pubInfo+"_";
+		}
+		UserBO user = UserUtil.getLoginUser(req, resp);
+		UserInfoBO info= userDao.queryUserInfoByUserID(user.getId());
+		/*
+		 * 昵称改变，更新user表
+		 */
+		if(!name.equals(user.getName())){
+			userDao.updateUserName(name,user.getId());
+			//更新session信息
+			user.setName(name);
+			UserUtil.addLoginUserSession(req, user);
+		}
+		int result = 0;
+		if(info!=null&&info.getId()>0) {
+			//更新
+			result = userDao.updateUserInfo(user.getId(),rel_name,gender,homeProvince,birthday,hobby,contactStr,publicStr);
+		}else {
+			//插入
+			result = userDao.insertUserInfo(user.getId(),rel_name,gender,homeProvince,birthday,hobby,contactStr,publicStr);
+		}
+		if(result<1) {
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 }

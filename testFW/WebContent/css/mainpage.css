@@ -225,3 +225,13 @@
 	color: #25A8E0;
 	font-weight: normal;
 }
+.topbar_info img{
+	position: absolute;
+	top:125px;
+	float:left;
+	left: 900px;
+	display: none;
+}
+.topbar_info:HOVER .set_info_btn{
+	display: block;
+}

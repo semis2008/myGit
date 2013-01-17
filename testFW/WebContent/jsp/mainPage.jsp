@@ -171,11 +171,25 @@
 								</li>
 								<li>图册：<a href="#"><em>9</em>&nbsp;集</a>
 								</li>
-								<li>专修：<a href="#">java,C++</a>
+								<li>兴趣：<a href="#">编程,上网,游戏</a>
 								</li>
-								<li>联系方式：<a href="#">不公开</a>
+								<li>手机：<a href="#">12312121212</a>
+								</li>
+								<li>所在地：<a href="#">北京</a>
+								</li>
+								<li>生日：<a href="#">1989-11-28</a>
+								</li>
+								<li>真实姓名：<a href="#">王宁</a>
 								</li>
 							</ul>
+							<%
+								if(visitedUser.getId()==user.getId()) {
+							%>
+							<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/setInfo.html"><img src="<%=ConstantsUtil.FW_DOMAIN %>/img/info_set.jpg" alt="设置" class="set_info_btn"/></a>
+							<%
+								}
+							%>
 						</div>
 						<div class="topbar_msg">
 							<div class="topbar_navi">
