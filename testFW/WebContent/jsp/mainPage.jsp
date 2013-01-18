@@ -1,5 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="com.testFW.util.DateUtil"%>
+<%@page import="com.testFW.util.UserUtil"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.testFW.bo.UserBO"%>
+<%@page import="com.testFW.bo.UserInfoBO"%>
 <%@page import="com.testFW.util.ConstantsUtil"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -9,6 +14,11 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
+	UserInfoBO info = (UserInfoBO)request.getAttribute("visitedUserInfo");
+	String hobbyStr = info.getHobby().replace(" ","_");
+	if(info == null) {
+		info = new UserInfoBO();
+	}
 	boolean hasLogin = false;
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
@@ -71,7 +81,30 @@
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
+		
+		//设置userinfo显示与否
+		initInfoShow();
+		
 	});
+	
+	function initInfoShow(){
+		var publicstr = $("#userinfo_iframe_publicstr").val();
+		if(publicstr.indexOf("hobby")!=-1) {
+			$("#hobby_main").show();	
+		}
+		if(publicstr.indexOf("contact")!=-1) {
+			$("#contact_main").show();	
+		}
+		if(publicstr.indexOf("birthday")!=-1) {
+			$("#birthday_main").show();	
+		}
+		if(publicstr.indexOf("relname")!=-1) {
+			$("#relname_main").show();	
+		}
+		if(publicstr.indexOf("homeprovince")!=-1) {
+			$("#homeprovince_main").show();	
+		}
+	}
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -146,50 +179,84 @@
 							}
 						%>
 						<%
-							if(hasLogin) {
+							if (hasLogin) {
 						%>
 						<a class="fancybox-iframe"
 							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-						<%}else { %>
+						<%
+							} else {
+						%>
 						<a class="fancybox-iframe"
 							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-						<%} %>	
+						<%
+							}
+						%>
 					</div>
 					<div class="topbar_left">
-						<h1>卡莱尔</h1>
-						<h2>测试人员</h2>
+						<h1><%=visitedUser.getName() %></h1>
+						<h2><%=UserUtil.getUserLevelMsg(visitedUser.getUser_level()) %></h2>
 						<div id="picture-profile">
-							<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/profile.jpg" />
+							<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/originator.jpg" />
 						</div>
 					</div>
 					<div class="topbar_right">
 						<div class="topbar_info">
 							<ul>
-								<li>加入日期：<a href="#">2012/12/20</a>
+								<li>加入日期：<a href="#"><%=DateUtil.formatDate(visitedUser.getReg_time(),2) %></a>
 								</li>
 								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a>
 								</li>
 								<li>图册：<a href="#"><em>9</em>&nbsp;集</a>
 								</li>
-								<li>兴趣：<a href="#">编程,上网,游戏</a>
+								<li id="hobby_main" style="display: none;">兴趣：<a href="#"><%=info.getHobby().replace(" ",",") %></a>
 								</li>
-								<li>手机：<a href="#">12312121212</a>
+								<%
+								if(info.getContact()!=null&&!"".equals(info.getContact())) {
+								%>
+								<li id="contact_main" style="display: none;"><%=info.getContact().split("_")[0] %>：<a href="#"><%=info.getContact().split("_")[1] %></a>
 								</li>
-								<li>所在地：<a href="#">北京</a>
+								<%
+								}
+								%>
+								<li id="homeprovince_main" style="display: none;">所在地：<a href="#"><%=info.getHome_province() %></a>
 								</li>
-								<li>生日：<a href="#">1989-11-28</a>
+								<li id="birthday_main" style="display: none;">生日：<a href="#">
+								<%if(!ConstantsUtil.BIRTHDAY_NONE.equals(info.getBirthday().toString())) {
+									out.print(DateUtil.formatDate(info.getBirthday(),2));
+								}%>								
+								</a>
 								</li>
-								<li>真实姓名：<a href="#">王宁</a>
+								<li id="relname_main" style="display: none;">真实姓名：<a href="#"><%=info.getRel_name() %></a>
 								</li>
 							</ul>
 							<%
-								if(visitedUser.getId()==user.getId()) {
+								if (visitedUser.getId() == user.getId()) {
 							%>
-							<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/setInfo.html"><img src="<%=ConstantsUtil.FW_DOMAIN %>/img/info_set.jpg" alt="设置" class="set_info_btn"/></a>
+							<a class="fancybox-iframe" id="setInfoHref"
+								href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/setInfo.html"><img
+								src="<%=ConstantsUtil.FW_DOMAIN%>/img/info_set.jpg" alt="设置"
+								class="set_info_btn" /> </a>
 							<%
 								}
 							%>
+							<!-- 隐藏域，用于iframe获取用户详细信息值 -->
+							<input id="userinfo_iframe_name" style="display: none;"
+								value="<%=user.getName() %>" /> <input
+								id="userinfo_iframe_relname" style="display: none;"
+								value="<%=info.getRel_name() %>" /> <input
+								id="userinfo_iframe_gender" style="display: none;"
+								value="<%=info.getGender() %>" /> <input
+								id="userinfo_iframe_homeprovince" style="display: none;"
+								value="<%=info.getHome_province() %>" /> <input
+								id="userinfo_iframe_birthday" style="display: none;" 
+								value="<%=info.getBirthday() %>"
+							 />
+							<input id="userinfo_iframe_hobby" style="display: none;"
+								value="<%=info.getHobby() %>" /> <input
+								id="userinfo_iframe_contact" style="display: none;"
+								value="<%=info.getContact() %>" /> <input
+								id="userinfo_iframe_publicstr" style="display: none;"
+								value="<%=info.getPublic_info() %>" />
 						</div>
 						<div class="topbar_msg">
 							<div class="topbar_navi">

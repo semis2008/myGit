@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertUser(String email, String name, String pass) {
-		String sql = "insert into user (email,name,password) values (?,?,?)";
+		String sql = "insert into user (email,name,password,reg_time,user_level) values (?,?,?,now(),1)";
 		Object[] param = { email, name, pass };
 		return dbUtilsTemplate.update(sql, param);
 	}

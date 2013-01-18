@@ -6,6 +6,6 @@ CREATE TABLE `user` (
   `reg_time` datetime DEFAULT NULL,
   `logon_time` datetime DEFAULT NULL,
   `photo` varchar(100) DEFAULT NULL,
-  `state` varchar(20) DEFAULT NULL COMMENT '状态',
+  `user_level` varchar(20) NOT NULL DEFAULT '1' COMMENT '1：注册会员，2：管理员，3：创始人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8

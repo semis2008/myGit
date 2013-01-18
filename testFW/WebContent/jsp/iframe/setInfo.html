@@ -85,6 +85,61 @@ input,button,textarea,select,optgroup,option {
 </style>
 <body>
 	<script type="text/javascript">
+		$(function(){
+			initInfo();
+		});
+		//初始化个人信息
+		function initInfo() {
+			var name = $('#userinfo_iframe_name',window.parent.document).val();
+			var relname = $('#userinfo_iframe_relname',window.parent.document).val();
+			var gender = $('#userinfo_iframe_gender',window.parent.document).val();
+			var homeprovince = $('#userinfo_iframe_homeprovince',window.parent.document).val();
+			var birthday = $('#userinfo_iframe_birthday',window.parent.document).val();
+			var hobby = $('#userinfo_iframe_hobby',window.parent.document).val();
+			var contact = $('#userinfo_iframe_contact',window.parent.document).val();
+			var publicstr = $('#userinfo_iframe_publicstr',window.parent.document).val();
+
+			$("#name").val(name);
+			$("#relname").val(relname);
+			if(gender=="1") {
+				$("#gender1").attr("checked","checked");
+			}else if(gender=="2") {
+				$("#gender2").attr("checked","checked");
+			}
+			$("#homeprovince").val(homeprovince);
+			if(birthday=="1700-11-11") {
+				birthday = "0-0-0";				
+			}
+			var year = birthday.split("-")[0];
+			var month = birthday.split("-")[1];
+			var day = birthday.split("-")[2];
+			$("#birthyear").val(year);
+			$("#birthmonth").val(month);
+			$("#birthday").val(day);
+			
+			$("#hobby").val(hobby);
+			var contact_type = contact.split("_")[0];
+			var contact_num = contact.split("_")[1];
+			$("#contact_type").val(contact_type);
+			$("#contact").val(contact_num);
+			
+			if(publicstr.indexOf("hobby")!=-1) {
+				$("#hobby_show").attr("checked",true);	
+			}
+			if(publicstr.indexOf("contact")!=-1) {
+				$("#contact_show").attr("checked",true);	
+			}
+			if(publicstr.indexOf("birthday")!=-1) {
+				$("#birthday_show").attr("checked",true);	
+			}
+			if(publicstr.indexOf("relname")!=-1) {
+				$("#relname_show").attr("checked",true);	
+			}
+			if(publicstr.indexOf("homeprovince")!=-1) {
+				$("#homeprovince_show").attr("checked",true);	
+			}
+		}
+		
 		$("input").focus(function() {
 			$(".tip").removeClass("tip");
 		});
@@ -105,6 +160,7 @@ input,button,textarea,select,optgroup,option {
 				}
 			}
 			$("#basicInfo_form").submit();
+			parent.location.reload();
 		}
 	</script>
 	<div id="basicInfo_detail" class="details-infoedit">
@@ -116,24 +172,24 @@ input,button,textarea,select,optgroup,option {
 			id="basicInfo_form">
 			<p>
 				<label for="name"> <span>昵称</span> </label> <input type="text"
-					class="input-text" id="name" value="王宁" tabindex="1" maxlength="12"
-					name="name"> <span id="name_tip">昵称必填，且长度有限制哦</span>
+					class="input-text" id="name" value="" maxlength="12"
+					name="name" /><span id="name_tip">昵称必填，且长度有限制哦</span>
 			</p>
 			<p>
 				<label for="relname"> <span>姓名</span> </label> <input type="text"
 					class="input-text" id="relname" value="" tabindex="1"
-					maxlength="12" name="relname"> <span>真实姓名,选填</span>
+					maxlength="12" name="relname"><span>真实姓名,选填</span>
 			</p>
 			<p>
 				<label for="gender"><span>性别</span> </label> <label
 					class="labelRadio" for="gender2"><input type="radio"
-					id="gender2" checked="checked" value=1 name="gender">男</label> <label
+					id="gender1" value=1 name="gender">男 </label> <label
 					class="labelRadio" for="gender1"><input type="radio"
-					id="gender1" value="2" name="gender">女</label>
+					id="gender2" value="2" name="gender">女 </label>
 				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <label for="homeprovince">
 					<span>所在地</span> </label> <select title="北京" name="homeProvince"
 					id="homeprovince" class="cur-plc">
-					<option value="" selected="selected">省份</option>
+					<option value="">省份</option>
 					<option value="北京">北京</option>
 					<option value="上海">上海</option>
 					<option value="黑龙江">黑龙江</option>
@@ -275,29 +331,29 @@ input,button,textarea,select,optgroup,option {
 						<option value="1918">1918</option>
 				</select> <select class="select" id="birthmonth" name="birthMonth"><option
 							value="" selected="selected">选择月份</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
+						<option value="01">1</option>
+						<option value="02">2</option>
+						<option value="03">3</option>
+						<option value="04">4</option>
+						<option value="05">5</option>
+						<option value="06">6</option>
+						<option value="07">7</option>
+						<option value="08">8</option>
+						<option value="09">9</option>
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option>
 				</select><select class="select" id="birthday" name="birthDay"><option
 							value="" selected="selected">选择日期</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
+						<option value="01">1</option>
+						<option value="02">2</option>
+						<option value="03">3</option>
+						<option value="04">4</option>
+						<option value="05">5</option>
+						<option value="06">6</option>
+						<option value="07">7</option>
+						<option value="08">8</option>
+						<option value="09">9</option>
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option>
@@ -324,8 +380,8 @@ input,button,textarea,select,optgroup,option {
 			</p>
 			<p>
 				<label for="hobby"> <span>兴趣</span> </label> <input type="text"
-					class="input-text" id="hobby" name="hobby" maxlength="30">
-				<span id="hobby_tip">选填,中间用空格隔开，最多可写3个</span>
+					class="input-text" id="hobby" name="hobby" maxlength="30"><span
+					id="hobby_tip">选填,中间用空格隔开，最多可写3个</span>
 			</p>
 			<p>
 				<label for="contact"> <span>联系方式</span> </label> <select
@@ -335,20 +391,21 @@ input,button,textarea,select,optgroup,option {
 					<option value="qq">QQ</option>
 					<option value="msn">MSN</option>
 				</select> <input type="text" class="input-text" id="contact" name="contact"
-					maxlength="12"> <span>填写有效的联系方式</span>
+					maxlength="12"><span>填写有效的联系方式</span>
 			</p>
 			<p>
-				<label for="public"> <span>公开信息</span> </label><span>选择公开展示的个人信息，默认全选</span>
+				<label for="public"> <span>公开信息</span> </label><span>选择公开展示的个人信息，默认全不选</span>
 			</p>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="checkbox" id="hobby" name="public" value="hobby" checked="checked" />兴趣
-				<input type="checkbox" id="contact" name="public" value="contact"
-					checked="checked" />联系方式 <input type="checkbox" id="birthday"
-					name="public" value="birthday" checked="checked" />生日 <input
-					type="checkbox" id="relname" name="public" value="relname"
-					checked="checked" />真实姓名 <input type="checkbox" id="homeprovince"
-					name="public" value="homeprovince" checked="checked" />所在地
+					type="checkbox" id="hobby_show" name="public" value="hobby"
+					 />兴趣 <input type="checkbox" id="contact_show"
+					name="public" value="contact"  />联系方式 <input
+					type="checkbox" id="birthday_show" name="public" value="birthday"
+					/>生日 <input type="checkbox" id="relname_show"
+					name="public" value="relname"  />真实姓名 <input
+					type="checkbox" id="homeprovince_show" name="public"
+					value="homeprovince"  />所在地
 			</p>
 			<div>
 				<a id="basicInfoSubmit" href="#" onclick="saveUserInfo();"

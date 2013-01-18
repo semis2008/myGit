@@ -15,7 +15,7 @@ public class UserBO {
 	private String password;
 	private Date reg_time;
 	private Date logon_time;
-	private String state;
+	private String user_level;
 
 	public Long getId() {
 		return id;
@@ -65,11 +65,12 @@ public class UserBO {
 		this.logon_time = logon_time;
 	}
 
-	public String getState() {
-		return state;
+	public String getUser_level() {
+		return user_level;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setUser_level(String user_level) {
+		this.user_level = user_level;
 	}
+
 }

@@ -96,4 +96,23 @@ public class UserUtil {
 			session.removeAttribute("loginUser");
 		}
 	}
+	
+	/**
+	 * 依据用户level代码获取相应的级别信息
+	 * @param user_level
+	 * @return
+	 */
+	public static String getUserLevelMsg(String user_level){
+		if(user_level == null) {
+			return "非法者";
+		}
+		if("1".equals(user_level)) {
+			return "注册会员";
+		}else if("2".equals(user_level)) {
+			return "管理员";
+		}else if("3".equals(user_level)) {
+			return "创始人";
+		}
+		return "非法者";
+	}
 }

@@ -3,6 +3,7 @@ package com.testFW.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -181,6 +182,7 @@ public class UserServlet extends HttpServlet {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		String msg = "";
+		req.setCharacterEncoding("utf-8");
 		boolean result = userService.leaveMsg(req,resp);
 		if(result) {
 			msg = "success";
@@ -199,19 +201,14 @@ public class UserServlet extends HttpServlet {
 	 * @param resp
 	 * @return
 	 * @throws IOException
+	 * @throws ServletException 
 	 */
 	private void updateInfo(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
-		PrintWriter out = resp.getWriter();
-		String msg = "";
+			throws IOException, ServletException {
 		boolean result = userService.updateInfo(req,resp);
-		if(result) {
-			msg = "success";
-		}else {
-			msg = "system_error";
+		if(!result) {
+			RequestDispatcher rd = req.getRequestDispatcher("/jsp/error.jsp");
+			rd.forward(req, resp);
 		}
-		out.print(msg);
-		out.flush();
-		out.close();
 	}
 }

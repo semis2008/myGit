@@ -41,7 +41,7 @@ public class DateUtil {
 	 * @param date
 	 *            日期
 	 * @param type
-	 *            1：格式：2011年11月11日 ； 2：：2011-2-2 ； 3：2011-2-2 11:45
+	 *            1：格式：2011年11月11日 ； 2：：2011/2/2 ； 3：2011/2/2 11:45
 	 * @return
 	 */
 	public static String formatDate(Date date, int type) {
@@ -55,12 +55,12 @@ public class DateUtil {
 					+ "月" + cal.get(Calendar.DAY_OF_MONTH) + "日";
 			break;
 		case 2:
-			res = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1)
-					+ "-" + cal.get(Calendar.DAY_OF_MONTH);
+			res = cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1)
+					+ "/" + cal.get(Calendar.DAY_OF_MONTH);
 			break;
 		case 3:
-			res = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1)
-					+ "-" + cal.get(Calendar.DAY_OF_MONTH) + " "
+			res = cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1)
+					+ "/" + cal.get(Calendar.DAY_OF_MONTH) + " "
 					+ cal.get(Calendar.HOUR_OF_DAY) + ":"
 					+ cal.get(Calendar.MINUTE);
 			break;

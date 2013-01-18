@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.testFW.bo.UserBO;
+import com.testFW.bo.UserInfoBO;
 import com.testFW.service.UserService;
 import com.testFW.util.UserUtil;
 
@@ -87,11 +88,15 @@ public class SystemServlet extends HttpServlet {
 		if(param==null) {
 			param = "1";
 		}
-		//查询访问用户信息，返回前台
+		//查询访问用户基本信息，返回前台
 		user = userService.getUserByID(param);
 		//将被访问的用户信息放入session
 		UserUtil.addVisitedUserSession(req, user);
+		//查询访问用户详细信息，返回前台
+		UserInfoBO info = userService.getUserInfoByID(param);
+		
 		req.setAttribute("visitedUser", user);
+		req.setAttribute("visitedUserInfo", info);
 		return "/jsp/mainPage.jsp";
 	}
 	

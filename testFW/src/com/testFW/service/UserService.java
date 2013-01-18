@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.UserBO;
+import com.testFW.bo.UserInfoBO;
 
 /**
  * 用户业务处理接口
@@ -63,4 +64,11 @@ public interface UserService {
 	 * @return
 	 */
 	boolean updateInfo(HttpServletRequest req, HttpServletResponse resp);
+	
+	/**
+	 * 依据用户id获取用户详细信息
+	 * @param userId 用户id
+	 * @return
+	 */
+	UserInfoBO getUserInfoByID(String userId);
 }

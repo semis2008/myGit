@@ -32,4 +32,10 @@ public class StringUtil {
 			return ss.substring(0, length) + "...";
 		}
 	}
+	
+	public static void main(String args[]) {
+		String testPass = "wangning";
+		System.out.println(passEncrypt(testPass));
+	}
+	
 }

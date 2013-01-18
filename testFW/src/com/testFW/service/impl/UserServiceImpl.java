@@ -8,6 +8,7 @@ import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
+import com.testFW.util.ConstantsUtil;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
 
@@ -119,11 +120,10 @@ public class UserServiceImpl implements UserService{
 		String birthYear = req.getParameter("birthYear");
 		String birthMonth = req.getParameter("birthMonth");
 		String birthDay = req.getParameter("birthDay");
-		String birthday = "1700-11-11";
+		String birthday = ConstantsUtil.BIRTHDAY_NONE;
 		if(!"".equals(birthYear)&&!"".equals(birthMonth)&&!"".equals(birthDay)) {
 			birthday = birthYear+"-"+birthMonth+"-"+birthDay;
 		}
-		
 		
 		String hobby = req.getParameter("hobby");
 		/*
@@ -138,8 +138,10 @@ public class UserServiceImpl implements UserService{
 		
 		String[] publicInfo = req.getParameterValues("public");
 		String publicStr = "";
-		for(String pubInfo:publicInfo) {
-			publicStr+=pubInfo+"_";
+		if(publicInfo!=null) {
+			for(String pubInfo:publicInfo) {
+				publicStr+=pubInfo+"_";
+			}
 		}
 		UserBO user = UserUtil.getLoginUser(req, resp);
 		UserInfoBO info= userDao.queryUserInfoByUserID(user.getId());
@@ -165,6 +167,10 @@ public class UserServiceImpl implements UserService{
 		}else{
 			return true;
 		}
+	}
+	@Override
+	public UserInfoBO getUserInfoByID(String userId) {
+		return userDao.queryUserInfoByUserID(Long.parseLong(userId));
 	}
 	
 }
