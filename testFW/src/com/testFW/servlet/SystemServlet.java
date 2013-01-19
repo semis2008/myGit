@@ -94,7 +94,6 @@ public class SystemServlet extends HttpServlet {
 		UserUtil.addVisitedUserSession(req, user);
 		//查询访问用户详细信息，返回前台
 		UserInfoBO info = userService.getUserInfoByID(param);
-		
 		req.setAttribute("visitedUser", user);
 		req.setAttribute("visitedUserInfo", info);
 		return "/jsp/mainPage.jsp";
