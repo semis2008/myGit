@@ -71,4 +71,12 @@ public interface UserService {
 	 * @return
 	 */
 	UserInfoBO getUserInfoByID(String userId);
+	
+	/**
+	 * 更新头像
+	 * @param id 头像信息
+	 * @param userId 用户id 
+	 * @return 更新失败返回fail,否则返回更新后photo路径
+	 */
+	String updatePhoto(String id, Long userId);
 }

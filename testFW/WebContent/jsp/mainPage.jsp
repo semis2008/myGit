@@ -74,6 +74,7 @@
 		$('.fancybox-iframe').fancybox({
 			'padding' : 0,
 			'margin' : 0,
+			'height' : 'auto',
 			'scrolling' : 'no',
 			'type' : 'ajax'
 		});
@@ -116,7 +117,7 @@
 			success : function(msg) {
 				location.reload();
 			}
-});
+		});
 	}
 </script>
 <title>主页</title>
@@ -148,23 +149,19 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -203,7 +200,18 @@
 						<h1><%=visitedUser.getName()%></h1>
 						<h2><%=UserUtil.getUserLevelMsg(visitedUser.getUser_level())%></h2>
 						<div id="picture-profile">
-							<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/originator.jpg" />
+							<img
+								src="<%=ConstantsUtil.FW_DOMAIN%><%=visitedUser.getPhoto()%>" />
+							<%
+								if (user.getId() == visitedUser.getId()) {
+							%>
+							<div class="setHead">
+								<a class="fancybox-iframe"
+								href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/setHead.html">编辑头像</a>
+							</div>
+							<%
+								}
+							%>
 						</div>
 					</div>
 					<div class="topbar_right">
@@ -211,8 +219,10 @@
 							<ul>
 								<li>加入日期：<a href="#"><%=DateUtil.formatDate(visitedUser.getReg_time(), 2)%></a>
 								</li>
-								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a></li>
-								<li>图册：<a href="#"><em>9</em>&nbsp;集</a></li>
+								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a>
+								</li>
+								<li>图册：<a href="#"><em>9</em>&nbsp;集</a>
+								</li>
 								<li id="hobby_main" style="display: none;">兴趣：<a href="#">
 										<%
 											if (info.getHobby() == null || "".equals(info.getHobby())) {
@@ -220,18 +230,20 @@
 											} else {
 												out.print(info.getHobby().replace(" ", ","));
 											}
-										%>
-								</a></li>
+										%> </a>
+								</li>
 								<%
 									if (info.getContact() != null && !"".equals(info.getContact())) {
 								%>
 								<li id="contact_main" style="display: none;"><%=info.getContact().split("_")[0]%>：<a
-									href="#"><%=info.getContact().split("_")[1]%></a></li>
+									href="#"><%=info.getContact().split("_")[1]%></a>
+								</li>
 								<%
 									}
 								%>
 								<li id="homeprovince_main" style="display: none;">所在地：<a
-									href="#"><%=info.getHome_province()%></a></li>
+									href="#"><%=info.getHome_province()%></a>
+								</li>
 								<li id="birthday_main" style="display: none;">生日：<a
 									href="#"> <%
  	if (info.getBirthday() != null
@@ -239,9 +251,11 @@
  					.toString())) {
  		out.print(DateUtil.formatDate(info.getBirthday(), 2));
  	}
- %> </a></li>
+ %> </a>
+								</li>
 								<li id="relname_main" style="display: none;">真实姓名：<a
-									href="#"><%=info.getRel_name()%></a></li>
+									href="#"><%=info.getRel_name()%></a>
+								</li>
 							</ul>
 							<%
 								if (visitedUser.getId() == user.getId()) {
@@ -258,23 +272,23 @@
 								value="<%=user.getName()%>" /> <input
 								id="userinfo_iframe_relname" style="display: none;"
 								value="<%if (info.getRel_name() == null) {
-									out.print("");
-								} else {
-									out.print(info.getRel_name());
-								}%>" />
-								<input id="userinfo_iframe_gender" style="display: none;"
+				out.print("");
+			} else {
+				out.print(info.getRel_name());
+			}%>" />
+							<input id="userinfo_iframe_gender" style="display: none;"
 								value="<%=info.getGender()%>" /> <input
 								id="userinfo_iframe_homeprovince" style="display: none;"
 								value="<%=info.getHome_province()%>" /> <input
 								id="userinfo_iframe_birthday" style="display: none;"
 								value="<%=info.getBirthday()%>" /> <input
 								id="userinfo_iframe_hobby" style="display: none;"
-								value="<%if(info.getHobby()==null) {
-									out.print("");
-								}else{
-									out.print(info.getHobby());
-								}%>" /> <input
-								id="userinfo_iframe_contact" style="display: none;"
+								value="<%if (info.getHobby() == null) {
+				out.print("");
+			} else {
+				out.print(info.getHobby());
+			}%>" />
+							<input id="userinfo_iframe_contact" style="display: none;"
 								value="<%=info.getContact()%>" /> <input
 								id="userinfo_iframe_publicstr" style="display: none;"
 								value="<%=info.getPublic_info()%>" />
@@ -290,28 +304,23 @@
 										<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>16分钟前</em>发表了日志<a href="#">《关于12306网站设计的一点感想》</a><span>[12评/45阅]</span>
-											</div>
-										</li>
+											</div></li>
 										<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>3小时前</em>上传了1张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
-											</div>
-										</li>
+											</div></li>
 										<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>3小时前</em>上传了3张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
-											</div>
-										</li>
+											</div></li>
 										<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>12小时前</em>发表了日志<a href="#">《天空从来都不是蓝色的》</a><span>[67评/122阅]</span>
-											</div>
-										</li>
+											</div></li>
 										<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>12月16日</em>发表了日志<a href="#">《岁末，碎末》</a><span>[67评/122阅]</span>
-											</div>
-										</li>
+											</div></li>
 									</ul>
 								</div>
 								<div class="topbar_reply">
@@ -325,7 +334,8 @@
 													<em>12/</em>21
 												</p>
 												<p class="cont">:&nbsp;首页重新设计了？快点吧...</p>
-											</div></li>
+											</div>
+										</li>
 										<li><img
 											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
 											alt="" />
@@ -335,7 +345,8 @@
 													<em>12/</em>21
 												</p>
 												<p class="cont">:&nbsp;very cool,but not fell good....</p>
-											</div></li>
+											</div>
+										</li>
 										<li><img
 											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg"
 											alt="" />
@@ -345,7 +356,8 @@
 													<em>12/</em>21
 												</p>
 												<p class="cont">:&nbsp;信息量大了一点，然后布局合理了一些？还有别的么？</p>
-											</div></li>
+											</div>
+										</li>
 										<li><img
 											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg"
 											alt="" />
@@ -355,7 +367,8 @@
 													<em>12/</em>21
 												</p>
 												<p class="cont">:&nbsp;新首页比原来好在那里？反正我是没看出来..</p>
-											</div></li>
+											</div>
+										</li>
 										<li><img
 											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
 											alt="" />
@@ -365,7 +378,8 @@
 													<em>12/</em>21
 												</p>
 												<p class="cont">:&nbsp;快点吧...</p>
-											</div></li>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</div>

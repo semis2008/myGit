@@ -68,6 +68,7 @@
 .topbar_left #picture-profile {
 	background: url("../img/topbar_bg.jpg") no-repeat scroll 0 0;
     text-align: center;
+    position: relative;
 }
 
 .topbar_left #picture-profile img {
@@ -234,4 +235,24 @@
 }
 .topbar_info:HOVER .set_info_btn{
 	display: block;
+}
+.setHead{
+	position: absolute;
+	top: 190px;
+	right: 36px;
+	padding: 3px;
+	font-size: 14px;
+	text-align: center;
+	width: 60px;
+	display:none;
+	background: #000;
+	filter: alpha(Opacity =     80);
+	-moz-opacity: 0.8;
+	opacity: 0.5;
+	z-index: 100;
+	cursor: pointer;
+	background-color: black;
+}
+#picture-profile:HOVER .setHead{
+	display: block;	
 }

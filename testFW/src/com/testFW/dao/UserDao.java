@@ -156,4 +156,12 @@ public interface UserDao {
 	int insertUserInfo(Long user_id, String rel_name, String gender,
 			String homeProvince, String birthday, String hobby,
 			String contactStr, String publicStr);
+	
+	/**
+	 * 更新用户头像
+	 * @param photoPath 头像路径
+	 * @param userId 用户id
+	 * @return
+	 */
+	boolean updatePhoto(String photoPath, Long userId);
 }

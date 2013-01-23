@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean regist(String email, String name, String pass) {
 		pass = StringUtil.passEncrypt(pass);
+		//第一次注册用户头像为系统默认
 		int result = userDao.insertUser(email,name,pass);
 		if(result>0){
 			return true;	
@@ -113,36 +114,12 @@ public class UserServiceImpl implements UserService{
 		String name = req.getParameter("name");
 		String rel_name = req.getParameter("relname");
 		String gender = req.getParameter("gender");
-		String homeProvince = req.getParameter("homeProvince");
-		/*
-		 * 生日
-		 */
-		String birthYear = req.getParameter("birthYear");
-		String birthMonth = req.getParameter("birthMonth");
-		String birthDay = req.getParameter("birthDay");
-		String birthday = ConstantsUtil.BIRTHDAY_NONE;
-		if(!"".equals(birthYear)&&!"".equals(birthMonth)&&!"".equals(birthDay)) {
-			birthday = birthYear+"-"+birthMonth+"-"+birthDay;
-		}
-		
+		String homeProvince = req.getParameter("homeprovince");
+		String birthday = req.getParameter("birth_str");
 		String hobby = req.getParameter("hobby");
-		/*
-		 * 联系方式		
-		 */
-		String contact_type = req.getParameter("contact_type");
-		String contact = req.getParameter("contact");
-		String contactStr = "";
-		if(!"".equals(contact.trim())) {
-			contactStr = contact_type+"_"+contact;
-		}
-		
-		String[] publicInfo = req.getParameterValues("public");
-		String publicStr = "";
-		if(publicInfo!=null) {
-			for(String pubInfo:publicInfo) {
-				publicStr+=pubInfo+"_";
-			}
-		}
+		String contactStr = req.getParameter("contact_str");
+		String publicStr = req.getParameter("public_str");
+
 		UserBO user = UserUtil.getLoginUser(req, resp);
 		UserInfoBO info= userDao.queryUserInfoByUserID(user.getId());
 		/*
@@ -171,6 +148,22 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserInfoBO getUserInfoByID(String userId) {
 		return userDao.queryUserInfoByUserID(Long.parseLong(userId));
+	}
+	@Override
+	public String updatePhoto(String id,Long userId) {
+		String photoPath = "";
+		if("anime".equals(id.split("_")[0])) {
+			photoPath = "/img/head/default/anime/"+id.split("_")[1]+".jpg"; 
+		}
+		if("animal".equals(id.split("_")[0])) {
+			photoPath = "/img/head/default/animal/"+id.split("_")[1]+".jpg"; 
+		}
+		boolean result = userDao.updatePhoto(photoPath,userId);
+		if(result) {
+			return photoPath;
+		}else {
+			return "fail";
+		}
 	}
 	
 }

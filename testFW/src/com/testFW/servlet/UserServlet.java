@@ -56,6 +56,8 @@ public class UserServlet extends HttpServlet {
 			leaveMsg(req, resp);
 		} else if ("updateinfo".equals(fun)) {
 			updateInfo(req, resp);
+		} else if ("updatephoto".equals(fun)) {
+			updatePhoto(req, resp);
 		}
 	}
 
@@ -210,5 +212,25 @@ public class UserServlet extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/jsp/error.jsp");
 			rd.forward(req, resp);
 		}
+	}
+	
+	/**
+	 * 更新头像
+	 * 
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws IOException
+	 */
+	private void updatePhoto(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String msg = "";
+		String id = req.getParameter("id");
+		UserBO user = UserUtil.getLoginUser(req, resp);
+		msg = userService.updatePhoto(id,user.getId());
+		out.print(msg);
+		out.flush();
+		out.close();
 	}
 }

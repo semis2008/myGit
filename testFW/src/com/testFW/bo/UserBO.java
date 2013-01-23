@@ -15,6 +15,7 @@ public class UserBO {
 	private String password;
 	private Date reg_time;
 	private Date logon_time;
+	private String photo;
 	private String user_level;
 
 	public Long getId() {
@@ -55,6 +56,13 @@ public class UserBO {
 
 	public void setReg_time(Date reg_time) {
 		this.reg_time = reg_time;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public Date getLogon_time() {

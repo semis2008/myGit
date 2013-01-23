@@ -11,4 +11,5 @@ public class ConstantsUtil {
 	//生日未设置时保存
 	public static String BIRTHDAY_NONE = "1700-11-11";
 	public static final String SALT = "a86aff6cf0a1";
+	public static final String DEFAULT_HEAD_PHOTO = "/img/dead/default/default.jpg";
 }

@@ -1,126 +1,75 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>新手教程：CSS+DIV等宽格子堆砌瀑布流效果_酷站代码丨www.5icool.org</title>
-<style>
-* {
-	padding: 0;
-	margin: 0;
-}
-
-#wrap {
-	position: relative;
-	zoom: 1;
-	margin: 0px auto;
-}
-
-#wrap li {
-	width: 250px;
-	float: left;
-	list-style: none;
-}
-
-.boxCont {
-	position: relative;
-	margin: 15px;
-	border: 1px solid #ccc;
-	background: #eee;
-	background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff),
-		to(#f3f3f3), color-stop(.1, #fff) );
-	background: -webkit-linear-gradient(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
-	background: -moz-linear-gradient(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
-	background: -o-linear-gradient(0 0 270deg, #f3f3f3, #f3f3f3 10%, #fff);
-	-webkit-border-radius: 60px/5px;
-	-moz-border-radius: 60px/5px;
-	border-radius: 60px/5px;
-	-webkit-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
-	-moz-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
-	box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
-}
-
-.boxCont:before {
-	content: '';
-	width: 50px;
-	height: 50px;
-	top: 0;
-	right: 0;
-	position: absolute;
-	display: inline-block;
-	z-index: -1;
-	-webkit-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
-	box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
-	-webkit-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
-	-moz-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
-	-o-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
-	transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
-}
-
-.boxCont:after {
-	content: '';
-	width: 100px;
-	height: 100px;
-	top: 0;
-	left: 0;
-	position: absolute;
-	z-index: -1;
-	display: inline-block;
-	-webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
-	-webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
-	-moz-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
-	-o-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
-	transform: rotate(2deg) translate(20px, 25px) skew(20deg);
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>     
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />     
+<title>本地图片预览</title>     
+<style type="text/css">
+#preview{width:100px;height:100px;border:1px solid #000;overflow:hidden;}
+#imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
 </style>
-</head>
-<body>
-	<ul id="wrap"></ul>
-</body>
 <script type="text/javascript">
-	var $id = function(o) {
-		return document.getElementById(o) || o
-	};
-	function sort(el) {
-		var h = [];
-		var box = el.getElementsByTagName("li");
-		var minH = box[0].offsetHeight, boxW = box[0].offsetWidth, boxH, n = document.documentElement.offsetWidth
-				/ boxW | 0; //计算页面能排下多少Pin
-		el.style.width = n * boxW + "px";
-		for ( var i = 0; i < box.length; i++) {
-			boxh = box[i].offsetHeight; //获取每个Pin的高度
-			if (i < n) { //第一行Pin以浮动排列，不需绝对定位
-				h[i] = boxh;
-				box[i].style.position = '';
-			} else {
-				minH = Math.min.apply({}, h); //取得各列累计高度最低的一列
-				minKey = getarraykey(h, minH);
-				h[minKey] += boxh; //加上新高度后更新高度值
-				box[i].style.position = 'absolute';
-				box[i].style.top = minH + 'px';
-				box[i].style.left = (minKey * boxW) + 'px';
-			}
+function previewImage(file)
+{
+  var MAXWIDTH  = 100;
+  var MAXHEIGHT = 100;
+  var div = document.getElementById('preview');
+  if (file.files && file.files[0])
+  {
+  	div.innerHTML = '<img id=imghead>';
+  	var img = document.getElementById('imghead');
+  	img.onload = function(){
+  	  var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+  	  img.width = rect.width;
+  	  img.height = rect.height;
+  	  img.style.marginLeft = rect.left+'px';
+  	  img.style.marginTop = rect.top+'px';
+  	}
+  	var reader = new FileReader();
+  	reader.onload = function(evt){img.src = evt.target.result;}
+  	reader.readAsDataURL(file.files[0]);
+  }
+  else
+  {
+    var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+    file.select();
+    var src = document.selection.createRange().text;
+    div.innerHTML = '<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+    status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+    div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;margin-left:"+rect.left+"px;"+sFilter+src+"\"'></div>";
+  }
+}
+function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+	var param = {top:0, left:0, width:width, height:height};
+	if( width>maxWidth || height>maxHeight )
+	{
+		rateWidth = width / maxWidth;
+		rateHeight = height / maxHeight;
+		
+		if( rateWidth > rateHeight )
+		{
+			param.width =  maxWidth;
+			param.height = Math.round(height / rateWidth);
+		}else
+		{
+			param.width = Math.round(width / rateHeight);
+			param.height = maxHeight;
 		}
-	};
-	/* 返回数组中某一值的对应项数 */
-	function getarraykey(s, v) {
-		for (k in s) {
-			if (s[k] == v) {
-				return k;
-			}
-		}
-	};
-	/* 随机创建Pin */
-	var pin = '';
-	for (i = 0; i < 30; i++) {
-		height = Math.floor(Math.random() * 200 + 200);
-		pin += '<li><div class="boxCont" style="height:' + height + 'px;"></div></li>';
-	};
-	$id("wrap").innerHTML = pin;
-	window.onload = window.onresize = function() {
-		sort($id("wrap"));
-	};
-</script>
-</html>
+	}
+	
+	param.left = Math.round((maxWidth - param.width) / 2);
+	param.top = Math.round((maxHeight - param.height) / 2);
+	return param;
+}
+</script>     
+</head>     
+<body>
+<div id="preview">
+	<img id="imghead" width=100 height=100 border=0 src='../images/head01_big.jpg'>
+</div>
+    <br/>     
+    <input type="file" onchange="previewImage(this)" />     
+</body>     
+</html>     

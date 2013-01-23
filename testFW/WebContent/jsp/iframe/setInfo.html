@@ -85,30 +85,37 @@ input,button,textarea,select,optgroup,option {
 </style>
 <body>
 	<script type="text/javascript">
-		$(function(){
+		$(function() {
 			initInfo();
 		});
 		//初始化个人信息
 		function initInfo() {
-			var name = $('#userinfo_iframe_name',window.parent.document).val();
-			var relname = $('#userinfo_iframe_relname',window.parent.document).val();
-			var gender = $('#userinfo_iframe_gender',window.parent.document).val();
-			var homeprovince = $('#userinfo_iframe_homeprovince',window.parent.document).val();
-			var birthday = $('#userinfo_iframe_birthday',window.parent.document).val();
-			var hobby = $('#userinfo_iframe_hobby',window.parent.document).val();
-			var contact = $('#userinfo_iframe_contact',window.parent.document).val();
-			var publicstr = $('#userinfo_iframe_publicstr',window.parent.document).val();
+			var name = $('#userinfo_iframe_name', window.parent.document).val();
+			var relname = $('#userinfo_iframe_relname', window.parent.document)
+					.val();
+			var gender = $('#userinfo_iframe_gender', window.parent.document)
+					.val();
+			var homeprovince = $('#userinfo_iframe_homeprovince',
+					window.parent.document).val();
+			var birthday = $('#userinfo_iframe_birthday',
+					window.parent.document).val();
+			var hobby = $('#userinfo_iframe_hobby', window.parent.document)
+					.val();
+			var contact = $('#userinfo_iframe_contact', window.parent.document)
+					.val();
+			var publicstr = $('#userinfo_iframe_publicstr',
+					window.parent.document).val();
 
 			$("#name").val(name);
 			$("#relname").val(relname);
-			if(gender=="1") {
-				$("#gender1").attr("checked","checked");
-			}else if(gender=="2") {
-				$("#gender2").attr("checked","checked");
+			if (gender == "1") {
+				$("#gender1").attr("checked", "checked");
+			} else if (gender == "2") {
+				$("#gender2").attr("checked", "checked");
 			}
 			$("#homeprovince").val(homeprovince);
-			if(birthday=="1700-11-11") {
-				birthday = "0-0-0";				
+			if (birthday == "1700-11-11") {
+				birthday = "0-0-0";
 			}
 			var year = birthday.split("-")[0];
 			var month = birthday.split("-")[1];
@@ -116,30 +123,30 @@ input,button,textarea,select,optgroup,option {
 			$("#birthyear").val(year);
 			$("#birthmonth").val(month);
 			$("#birthday").val(day);
-			
+
 			$("#hobby").val(hobby);
 			var contact_type = contact.split("_")[0];
 			var contact_num = contact.split("_")[1];
 			$("#contact_type").val(contact_type);
 			$("#contact").val(contact_num);
-			
-			if(publicstr.indexOf("hobby")!=-1) {
-				$("#hobby_show").attr("checked",true);	
+
+			if (publicstr.indexOf("hobby") != -1) {
+				$("#hobby_show").attr("checked", true);
 			}
-			if(publicstr.indexOf("contact")!=-1) {
-				$("#contact_show").attr("checked",true);	
+			if (publicstr.indexOf("contact") != -1) {
+				$("#contact_show").attr("checked", true);
 			}
-			if(publicstr.indexOf("birthday")!=-1) {
-				$("#birthday_show").attr("checked",true);	
+			if (publicstr.indexOf("birthday") != -1) {
+				$("#birthday_show").attr("checked", true);
 			}
-			if(publicstr.indexOf("relname")!=-1) {
-				$("#relname_show").attr("checked",true);	
+			if (publicstr.indexOf("relname") != -1) {
+				$("#relname_show").attr("checked", true);
 			}
-			if(publicstr.indexOf("homeprovince")!=-1) {
-				$("#homeprovince_show").attr("checked",true);	
+			if (publicstr.indexOf("homeprovince") != -1) {
+				$("#homeprovince_show").attr("checked", true);
 			}
 		}
-		
+
 		$("input").focus(function() {
 			$(".tip").removeClass("tip");
 		});
@@ -159,8 +166,56 @@ input,button,textarea,select,optgroup,option {
 					return;
 				}
 			}
-			$("#basicInfo_form").submit();
-			parent.location.reload();
+			/*
+			 * 异步提交并刷新
+			 */
+			var name = $("#basicInfo_detail #name").val();
+			var relname = $("#basicInfo_detail #relname").val();
+			var gender = $('input[name="gender"]:checked').val();
+			var homeprovince = $("#basicInfo_detail #homeprovince").val();
+			var birthyear = $("#basicInfo_detail #birthyear").val();
+			var birthmonth = $("#basicInfo_detail #birthmonth").val();
+			var birthday = $("#basicInfo_detail #birthday").val();
+			
+			var hobby = $("#basicInfo_detail #hobby").val();
+			var contact_type = $("#basicInfo_detail #contact_type").val();
+			var contact = $("#basicInfo_detail #contact").val();
+			var birth_str = "";
+			if(birthyear!=""&&birthmonth!=""&&birthday!="") {
+				birth_str = birthyear+"-"+birthmonth+"-"+birthday;
+			}
+			var contact_str = "";
+			if(contact!="") {
+				contact_str = contact_type + "_" + contact;
+			}
+			/*
+			* 获取公开信息checkbox的值，由于jquery存在bug，使用标准js
+			*/
+			var public_str = "";
+			var obj = document.getElementsByName('public');
+			for ( var i = 0; i < obj.length; i++) {
+				if (obj[i].checked) {
+					public_str += obj[i].value + '_';
+				}
+			}
+			$.ajax({
+				type : "POST",
+				url : "/action/user/updateinfo",
+				data : {
+					name : name,
+					relname : relname,
+					gender : gender,
+					homeprovince : homeprovince,
+					birth_str : birth_str,
+					hobby :hobby,
+					contact_str : contact_str,
+					public_str : public_str
+				},
+				dataType : "text",
+				success : function(msg) {
+					 parent.location.reload();
+				}
+			});
 		}
 	</script>
 	<div id="basicInfo_detail" class="details-infoedit">
@@ -168,251 +223,245 @@ input,button,textarea,select,optgroup,option {
 			<span class="icon-box"><img
 				src="http://a.xnimg.cn/apps/profile2/res/info/basic.png"> </span>基本信息
 		</h4>
-		<form class="panel" action="/action/user/updateinfo" method="post"
-			id="basicInfo_form">
-			<p>
-				<label for="name"> <span>昵称</span> </label> <input type="text"
-					class="input-text" id="name" value="" maxlength="12"
-					name="name" /><span id="name_tip">昵称必填，且长度有限制哦</span>
-			</p>
-			<p>
-				<label for="relname"> <span>姓名</span> </label> <input type="text"
-					class="input-text" id="relname" value="" tabindex="1"
-					maxlength="12" name="relname"><span>真实姓名,选填</span>
-			</p>
-			<p>
-				<label for="gender"><span>性别</span> </label> <label
-					class="labelRadio" for="gender2"><input type="radio"
-					id="gender1" value=1 name="gender">男 </label> <label
-					class="labelRadio" for="gender1"><input type="radio"
-					id="gender2" value="2" name="gender">女 </label>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <label for="homeprovince">
-					<span>所在地</span> </label> <select title="北京" name="homeProvince"
-					id="homeprovince" class="cur-plc">
-					<option value="">省份</option>
-					<option value="北京">北京</option>
-					<option value="上海">上海</option>
-					<option value="黑龙江">黑龙江</option>
-					<option value="吉林">吉林</option>
-					<option value="辽宁">辽宁</option>
-					<option value="天津">天津</option>
-					<option value="安徽">安徽</option>
-					<option value="江苏">江苏</option>
-					<option value="浙江">浙江</option>
-					<option value="陕西">陕西</option>
-					<option value="湖北">湖北</option>
-					<option value="广东">广东</option>
-					<option value="湖南">湖南</option>
-					<option value="甘肃">甘肃</option>
-					<option value="四川">四川</option>
-					<option value="山东">山东</option>
-					<option value="福建">福建</option>
-					<option value="河南">河南</option>
-					<option value="重庆">重庆</option>
-					<option value="云南">云南</option>
-					<option value="河北">河北</option>
-					<option value="江西">江西</option>
-					<option value="山西">山西</option>
-					<option value="贵州">贵州</option>
-					<option value="广西">广西</option>
-					<option value="内蒙古">内蒙古</option>
-					<option value="宁夏">宁夏</option>
-					<option value="青海">青海</option>
-					<option value="新疆">新疆</option>
-					<option value="海南">海南</option>
-					<option value="西藏">西藏</option>
-					<option value="香港">香港</option>
-					<option value="澳门">澳门</option>
-					<option value="台湾">台湾</option>
-					<option value="其它国家">其它国家</option>
-				</select>
-			</p>
-			<p></p>
-			<p>
-				<label style=""> <span>生日</span> </label> <span style=""
-					id="birthDaySunSelect"> <select class="select"
-					id="birthyear" name="birthYear"><option value=""
-							selected="selected">选择年</option>
-						<option value="2013">2013</option>
-						<option value="2012">2012</option>
-						<option value="2011">2011</option>
-						<option value="2010">2010</option>
-						<option value="2009">2009</option>
-						<option value="2008">2008</option>
-						<option value="2007">2007</option>
-						<option value="2006">2006</option>
-						<option value="2005">2005</option>
-						<option value="2004">2004</option>
-						<option value="2003">2003</option>
-						<option value="2002">2002</option>
-						<option value="2001">2001</option>
-						<option value="2000">2000</option>
-						<option value="1999">1999</option>
-						<option value="1998">1998</option>
-						<option value="1997">1997</option>
-						<option value="1996">1996</option>
-						<option value="1995">1995</option>
-						<option value="1994">1994</option>
-						<option value="1993">1993</option>
-						<option value="1992">1992</option>
-						<option value="1991">1991</option>
-						<option value="1990">1990</option>
-						<option value="1989">1989</option>
-						<option value="1988">1988</option>
-						<option value="1987">1987</option>
-						<option value="1986">1986</option>
-						<option value="1985">1985</option>
-						<option value="1984">1984</option>
-						<option value="1983">1983</option>
-						<option value="1982">1982</option>
-						<option value="1981">1981</option>
-						<option value="1980">1980</option>
-						<option value="1979">1979</option>
-						<option value="1978">1978</option>
-						<option value="1977">1977</option>
-						<option value="1976">1976</option>
-						<option value="1975">1975</option>
-						<option value="1974">1974</option>
-						<option value="1973">1973</option>
-						<option value="1972">1972</option>
-						<option value="1971">1971</option>
-						<option value="1970">1970</option>
-						<option value="1969">1969</option>
-						<option value="1968">1968</option>
-						<option value="1967">1967</option>
-						<option value="1966">1966</option>
-						<option value="1965">1965</option>
-						<option value="1964">1964</option>
-						<option value="1963">1963</option>
-						<option value="1962">1962</option>
-						<option value="1961">1961</option>
-						<option value="1960">1960</option>
-						<option value="1959">1959</option>
-						<option value="1958">1958</option>
-						<option value="1957">1957</option>
-						<option value="1956">1956</option>
-						<option value="1955">1955</option>
-						<option value="1954">1954</option>
-						<option value="1953">1953</option>
-						<option value="1952">1952</option>
-						<option value="1951">1951</option>
-						<option value="1950">1950</option>
-						<option value="1949">1949</option>
-						<option value="1948">1948</option>
-						<option value="1947">1947</option>
-						<option value="1946">1946</option>
-						<option value="1945">1945</option>
-						<option value="1944">1944</option>
-						<option value="1943">1943</option>
-						<option value="1942">1942</option>
-						<option value="1941">1941</option>
-						<option value="1940">1940</option>
-						<option value="1939">1939</option>
-						<option value="1938">1938</option>
-						<option value="1937">1937</option>
-						<option value="1936">1936</option>
-						<option value="1935">1935</option>
-						<option value="1934">1934</option>
-						<option value="1933">1933</option>
-						<option value="1932">1932</option>
-						<option value="1931">1931</option>
-						<option value="1930">1930</option>
-						<option value="1929">1929</option>
-						<option value="1928">1928</option>
-						<option value="1927">1927</option>
-						<option value="1926">1926</option>
-						<option value="1925">1925</option>
-						<option value="1924">1924</option>
-						<option value="1923">1923</option>
-						<option value="1922">1922</option>
-						<option value="1921">1921</option>
-						<option value="1920">1920</option>
-						<option value="1919">1919</option>
-						<option value="1918">1918</option>
-				</select> <select class="select" id="birthmonth" name="birthMonth"><option
-							value="" selected="selected">选择月份</option>
-						<option value="01">1</option>
-						<option value="02">2</option>
-						<option value="03">3</option>
-						<option value="04">4</option>
-						<option value="05">5</option>
-						<option value="06">6</option>
-						<option value="07">7</option>
-						<option value="08">8</option>
-						<option value="09">9</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-				</select><select class="select" id="birthday" name="birthDay"><option
-							value="" selected="selected">选择日期</option>
-						<option value="01">1</option>
-						<option value="02">2</option>
-						<option value="03">3</option>
-						<option value="04">4</option>
-						<option value="05">5</option>
-						<option value="06">6</option>
-						<option value="07">7</option>
-						<option value="08">8</option>
-						<option value="09">9</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-						<option value="13">13</option>
-						<option value="14">14</option>
-						<option value="15">15</option>
-						<option value="16">16</option>
-						<option value="17">17</option>
-						<option value="18">18</option>
-						<option value="19">19</option>
-						<option value="20">20</option>
-						<option value="21">21</option>
-						<option value="22">22</option>
-						<option value="23">23</option>
-						<option value="24">24</option>
-						<option value="25">25</option>
-						<option value="26">26</option>
-						<option value="27">27</option>
-						<option value="28">28</option>
-						<option value="29">29</option>
-						<option value="30">30</option>
-						<option value="31">31</option>
-				</select> </span>
-			</p>
-			<p>
-				<label for="hobby"> <span>兴趣</span> </label> <input type="text"
-					class="input-text" id="hobby" name="hobby" maxlength="30"><span
-					id="hobby_tip">选填,中间用空格隔开，最多可写3个</span>
-			</p>
-			<p>
-				<label for="contact"> <span>联系方式</span> </label> <select
-					class="select" id="contact_type" name="contact_type"><option
-						value="phone" selected="selected">手机</option>
-					<option value="email">email</option>
-					<option value="qq">QQ</option>
-					<option value="msn">MSN</option>
-				</select> <input type="text" class="input-text" id="contact" name="contact"
-					maxlength="12"><span>填写有效的联系方式</span>
-			</p>
-			<p>
-				<label for="public"> <span>公开信息</span> </label><span>选择公开展示的个人信息，默认全不选</span>
-			</p>
-			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-					type="checkbox" id="hobby_show" name="public" value="hobby"
-					 />兴趣 <input type="checkbox" id="contact_show"
-					name="public" value="contact"  />联系方式 <input
-					type="checkbox" id="birthday_show" name="public" value="birthday"
-					/>生日 <input type="checkbox" id="relname_show"
-					name="public" value="relname"  />真实姓名 <input
-					type="checkbox" id="homeprovince_show" name="public"
-					value="homeprovince"  />所在地
-			</p>
-			<div>
-				<a id="basicInfoSubmit" href="#" onclick="saveUserInfo();"
-					class="buttonV2">保存</a> <input type="reset" class="buttonV2"
-					id="basicInfoReset" value="清空">
-			</div>
-		</form>
+		<p>
+			<label for="name"> <span>昵称</span> </label> <input type="text"
+				class="input-text" id="name" maxlength="12" name="name" /><span
+				id="name_tip">昵称必填，且长度有限制哦</span>
+		</p>
+		<p>
+			<label for="relname"> <span>姓名</span> </label> <input type="text"
+				class="input-text" id="relname" tabindex="1" maxlength="12"
+				name="relname"><span>真实姓名,选填</span>
+		</p>
+		<p>
+			<label for="gender"><span>性别</span> </label> <label
+				class="labelRadio" for="gender2"><input type="radio"
+				id="gender1" value=1 name="gender">男 </label> <label
+				class="labelRadio" for="gender1"><input type="radio"
+				id="gender2" value="2" name="gender">女 </label>
+			&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <label for="homeprovince">
+				<span>所在地</span> </label> <select title="北京" name="homeProvince"
+				id="homeprovince" class="cur-plc">
+				<option value="">省份</option>
+				<option value="北京">北京</option>
+				<option value="上海">上海</option>
+				<option value="黑龙江">黑龙江</option>
+				<option value="吉林">吉林</option>
+				<option value="辽宁">辽宁</option>
+				<option value="天津">天津</option>
+				<option value="安徽">安徽</option>
+				<option value="江苏">江苏</option>
+				<option value="浙江">浙江</option>
+				<option value="陕西">陕西</option>
+				<option value="湖北">湖北</option>
+				<option value="广东">广东</option>
+				<option value="湖南">湖南</option>
+				<option value="甘肃">甘肃</option>
+				<option value="四川">四川</option>
+				<option value="山东">山东</option>
+				<option value="福建">福建</option>
+				<option value="河南">河南</option>
+				<option value="重庆">重庆</option>
+				<option value="云南">云南</option>
+				<option value="河北">河北</option>
+				<option value="江西">江西</option>
+				<option value="山西">山西</option>
+				<option value="贵州">贵州</option>
+				<option value="广西">广西</option>
+				<option value="内蒙古">内蒙古</option>
+				<option value="宁夏">宁夏</option>
+				<option value="青海">青海</option>
+				<option value="新疆">新疆</option>
+				<option value="海南">海南</option>
+				<option value="西藏">西藏</option>
+				<option value="香港">香港</option>
+				<option value="澳门">澳门</option>
+				<option value="台湾">台湾</option>
+				<option value="其它国家">其它国家</option>
+			</select>
+		</p>
+		<p></p>
+		<p>
+			<label style=""> <span>生日</span> </label> <span style=""
+				id="birthDaySunSelect"> <select class="select" id="birthyear"
+				name="birthYear"><option value="" selected="selected">选择年</option>
+					<option value="2013">2013</option>
+					<option value="2012">2012</option>
+					<option value="2011">2011</option>
+					<option value="2010">2010</option>
+					<option value="2009">2009</option>
+					<option value="2008">2008</option>
+					<option value="2007">2007</option>
+					<option value="2006">2006</option>
+					<option value="2005">2005</option>
+					<option value="2004">2004</option>
+					<option value="2003">2003</option>
+					<option value="2002">2002</option>
+					<option value="2001">2001</option>
+					<option value="2000">2000</option>
+					<option value="1999">1999</option>
+					<option value="1998">1998</option>
+					<option value="1997">1997</option>
+					<option value="1996">1996</option>
+					<option value="1995">1995</option>
+					<option value="1994">1994</option>
+					<option value="1993">1993</option>
+					<option value="1992">1992</option>
+					<option value="1991">1991</option>
+					<option value="1990">1990</option>
+					<option value="1989">1989</option>
+					<option value="1988">1988</option>
+					<option value="1987">1987</option>
+					<option value="1986">1986</option>
+					<option value="1985">1985</option>
+					<option value="1984">1984</option>
+					<option value="1983">1983</option>
+					<option value="1982">1982</option>
+					<option value="1981">1981</option>
+					<option value="1980">1980</option>
+					<option value="1979">1979</option>
+					<option value="1978">1978</option>
+					<option value="1977">1977</option>
+					<option value="1976">1976</option>
+					<option value="1975">1975</option>
+					<option value="1974">1974</option>
+					<option value="1973">1973</option>
+					<option value="1972">1972</option>
+					<option value="1971">1971</option>
+					<option value="1970">1970</option>
+					<option value="1969">1969</option>
+					<option value="1968">1968</option>
+					<option value="1967">1967</option>
+					<option value="1966">1966</option>
+					<option value="1965">1965</option>
+					<option value="1964">1964</option>
+					<option value="1963">1963</option>
+					<option value="1962">1962</option>
+					<option value="1961">1961</option>
+					<option value="1960">1960</option>
+					<option value="1959">1959</option>
+					<option value="1958">1958</option>
+					<option value="1957">1957</option>
+					<option value="1956">1956</option>
+					<option value="1955">1955</option>
+					<option value="1954">1954</option>
+					<option value="1953">1953</option>
+					<option value="1952">1952</option>
+					<option value="1951">1951</option>
+					<option value="1950">1950</option>
+					<option value="1949">1949</option>
+					<option value="1948">1948</option>
+					<option value="1947">1947</option>
+					<option value="1946">1946</option>
+					<option value="1945">1945</option>
+					<option value="1944">1944</option>
+					<option value="1943">1943</option>
+					<option value="1942">1942</option>
+					<option value="1941">1941</option>
+					<option value="1940">1940</option>
+					<option value="1939">1939</option>
+					<option value="1938">1938</option>
+					<option value="1937">1937</option>
+					<option value="1936">1936</option>
+					<option value="1935">1935</option>
+					<option value="1934">1934</option>
+					<option value="1933">1933</option>
+					<option value="1932">1932</option>
+					<option value="1931">1931</option>
+					<option value="1930">1930</option>
+					<option value="1929">1929</option>
+					<option value="1928">1928</option>
+					<option value="1927">1927</option>
+					<option value="1926">1926</option>
+					<option value="1925">1925</option>
+					<option value="1924">1924</option>
+					<option value="1923">1923</option>
+					<option value="1922">1922</option>
+					<option value="1921">1921</option>
+					<option value="1920">1920</option>
+					<option value="1919">1919</option>
+					<option value="1918">1918</option>
+			</select> <select class="select" id="birthmonth" name="birthMonth"><option
+						value="" selected="selected">选择月份</option>
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+			</select><select class="select" id="birthday" name="birthDay"><option
+						value="" selected="selected">选择日期</option>
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+			</select> </span>
+		</p>
+		<p>
+			<label for="hobby"> <span>兴趣</span> </label> <input type="text"
+				class="input-text" id="hobby" name="hobby" maxlength="30"><span
+				id="hobby_tip">选填,中间用空格隔开，最多可写3个</span>
+		</p>
+		<p>
+			<label for="contact"> <span>联系方式</span> </label> <select
+				class="select" id="contact_type" name="contact_type"><option
+					value="phone" selected="selected">手机</option>
+				<option value="email">email</option>
+				<option value="qq">QQ</option>
+				<option value="msn">MSN</option>
+			</select> <input type="text" class="input-text" id="contact" name="contact"
+				maxlength="12"><span>填写有效的联系方式</span>
+		</p>
+		<p>
+			<label for="public"> <span>公开信息</span> </label><span>选择公开展示的个人信息，默认全不选</span>
+		</p>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+				type="checkbox" id="hobby_show" name="public" value="hobby" />兴趣 <input
+				type="checkbox" id="contact_show" name="public" value="contact" />联系方式
+			<input type="checkbox" id="birthday_show" name="public"
+				value="birthday" />生日 <input type="checkbox" id="relname_show"
+				name="public" value="relname" />真实姓名 <input type="checkbox"
+				id="homeprovince_show" name="public" value="homeprovince" />所在地
+		</p>
+		<div>
+			<a id="basicInfoSubmit" href="#" onclick="saveUserInfo();"
+				class="buttonV2">保存</a> <input type="reset" class="buttonV2"
+				id="basicInfoReset" value="清空">
+		</div>
 	</div>
 </body>
 </html>

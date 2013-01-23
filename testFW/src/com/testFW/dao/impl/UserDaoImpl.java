@@ -5,6 +5,7 @@ import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.dao.template.DbUtilsTemplate;
+import com.testFW.util.ConstantsUtil;
 import com.testFW.util.StringUtil;
 
 /**
@@ -34,8 +35,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertUser(String email, String name, String pass) {
-		String sql = "insert into user (email,name,password,reg_time,user_level) values (?,?,?,now(),1)";
-		Object[] param = { email, name, pass };
+		String sql = "insert into user (email,name,password,reg_time,photo,user_level) values (?,?,?,now(),?,1)";
+		Object[] param = { email, name, pass, ConstantsUtil.DEFAULT_HEAD_PHOTO};
 		return dbUtilsTemplate.update(sql, param);
 	}
 
@@ -103,5 +104,17 @@ public class UserDaoImpl implements UserDao {
 		Object[] param = { user_id, rel_name, gender, birthday, homeProvince,
 				hobby, contactStr, publicStr };
 		return dbUtilsTemplate.update(sql, param);
+	}
+
+	@Override
+	public boolean updatePhoto(String photoPath, Long userId) {
+		String sql = "update user set photo = ? where id = ?";
+		Object[] param = {photoPath,userId};
+		int result = dbUtilsTemplate.update(sql, param);
+		if(result<1) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 }

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑头像</title>
+<style type="text/css">
+img {
+	border: none;
+}
+
+a {
+	margin: 0;
+	text-decoration: none;
+	color: #3deeee;
+	text-decoration: none;
+}
+
+div.items {
+	width: 730px;
+	height: 425px;
+}
+
+.items .item {
+	display: block;
+	width: 177px;
+	height: 205px;
+	border: 2px solid #666;
+	float: left;
+	position: relative;
+	cursor: default;
+}
+
+.clear {
+	clear: both;
+}
+
+.items .item .caption {
+	position: absolute;
+	top: 180px;
+	right: 0px;
+	padding: 3px;
+	font-size: 14px;
+	text-align: center;
+	width: 40px;
+	display: none;
+	background: #000;
+	filter: alpha(Opacity =     80);
+	-moz-opacity: 0.8;
+	opacity: 0.5;
+	z-index: 100;
+	cursor: pointer;
+	background-color: black;
+}
+
+.items .item .caption:HOVER {
+	color: red;
+}
+
+.effect {
+	box-shadow: 0 0 10px #444;
+	-moz-box-shadow: 0 0 10px #444;
+	-webkit-box-shadow: 0 0 10px #444;
+}
+
+.clearfix:after {
+	clear: both;
+	content: " ";
+	display: block;
+}
+
+.buttonV2 {
+	background: -moz-linear-gradient(center top, #FFFFFF 5%, #F0F0F0 100%)
+		repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #D1D1D1;
+	border-radius: 16px 16px 16px 16px;
+	box-shadow: 0 1px 3px 0 #DEDEDE;
+	color: #666666 !important;
+	display: inline-block;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-right: 15px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #FFFFFF;
+	padding: 6px 15px;
+}
+
+.tip {
+	color: red;
+}
+
+#title {
+	margin: 10px;
+	font-size: 13px;
+	width: 730px;
+	font-family: "Microsoft yahei";
+	padding-bottom: 5px;
+	border-bottom: 1px solid #131313;
+}
+
+#uploadHead {
+	margin: 10px;
+	display: none;
+}
+
+#systemHead {
+	margin: 10px;
+}
+
+#systemTitle {
+	margin: 10px;
+	padding: 5px;
+	height: 20px;
+	font-size: 13px;
+	font-family: "Microsoft yahei";
+	font-size: 13px;
+}
+
+#systemTitle b {
+	margin-left: 5%;
+	width: 80%;
+	float: left;
+	display: inline-block;
+}
+
+#systemTitle a {
+	float: right;
+	margin-right: 5%;
+	text-align: right;
+	width: 10%;
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.items .item').each(function() {
+				$(this).append('<span class="caption">使用</span>');
+			});
+			/*
+			 * 使用所选图片作为头像
+			 */
+			$('.items .caption').click(function() {
+				var id = $(this).parent().attr("id");
+				
+				$.ajax({
+					type : "POST",
+					url : "/action/user/updatephoto",
+					data : {
+						id : id
+					},
+					dataType : "text",
+					success : function(msg) {
+						if(msg!="fail") {
+							$("#picture-profile img").attr("src",msg);
+						}else {
+							$(".tip").text("头像设置失败！");
+						}
+					}
+				});
+			});
+			$('.items .item').hover(function() {
+				$(this).siblings().css({
+					'opacity' : '0.1'
+				});
+				$(this).css({
+					'opacity' : '1.0'
+				}).addClass('effect');
+				$(this).children('.caption').show();
+			}, function() {
+				//hide the caption
+				$(this).children('.caption').hide();
+				$(".tip").text("");
+			});
+			$('.items').mouseleave(function() {
+				$(this).children().fadeTo('100', '1.0').removeClass('effect');
+			});
+		});
+
+		function showSystemHead() {
+			$("#systemHead").show();
+			$("#uploadHead").hide();
+		}
+		function showUploadHead() {
+			$("#systemHead").hide();
+			$("#uploadHead").show();
+		}
+		function changeSysHead() {
+			$("#anime_items").toggle();
+			$("#animal_items").toggle();
+		}
+	</script>
+	<div class="headDiv">
+		<div id="title">
+			选择使用<a href="#" onclick="showSystemHead()">系统头像</a>，还是<a href="#"
+				onclick="showUploadHead()">自己上传</a>呢？
+		</div>
+		<div id="uploadHead">
+			<h1>Comming soon!</h1>
+		</div>
+		<div id="systemHead">
+			<div id="systemTitle">
+				<b>系统头像<span class="tip"></span></b><a href="#" onclick="changeSysHead()">《换一换》</a>
+			</div>
+				<div id="anime_items" class="items">
+					<a class="item" href="#" id="anime_1"> <img
+						src="/img/head/default/anime/1.jpg" width="177" height="205" /> </a>
+					<a id="anime_2" class="item" href="#"> <img
+						src="/img/head/default/anime/2.jpg" width="177" height="205" /> </a>
+					<a class="item" href="#" id="anime_3"> <img
+						src="/img/head/default/anime/3.jpg" width="177" height="205" /> </a>
+					<a id="anime_4" class="item" href="#"> <img
+						src="/img/head/default/anime/4.jpg" width="177" height="205" /> </a>
+					<a class="item" href="#" id="anime_5"> <img
+						src="/img/head/default/anime/5.jpg" width="177" height="205" /> </a>
+					<a id="anime_6" class="item" href="#"> <img
+						src="/img/head/default/anime/6.jpg" width="177" height="205" /> </a>
+					<a class="item" href="#" id="anime_7"> <img
+						src="/img/head/default/anime/7.jpg" width="177" height="205" /> </a>
+					<a id="anime_8" class="item" href="#"> <img
+						src="/img/head/default/anime/8.jpg" width="177" height="205" /> </a>
+				</div>
+				<div id="animal_items" class="items" style="display: none;">
+					<a class="item" href="#" id="animal_1"> <img
+						src="/img/head/default/animal/1.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_2"> <img
+						src="/img/head/default/animal/2.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_3"> <img
+						src="/img/head/default/animal/3.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_4"> <img
+						src="/img/head/default/animal/4.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_5"> <img
+						src="/img/head/default/animal/5.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_6"> <img
+						src="/img/head/default/animal/6.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_7"> <img
+						src="/img/head/default/animal/7.jpg" width="177" height="205" />
+					</a> <a class="item" href="#" id="animal_8"> <img
+						src="/img/head/default/animal/8.jpg" width="177" height="205" />
+					</a>
+				</div>
+			</div>
+
+	</div>
+</body>
+</html>
