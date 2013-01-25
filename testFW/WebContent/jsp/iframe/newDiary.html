@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>发表日志</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="http://www.easyfw.com/css/plugin/tinyEditor/tinyeditor.css">
+<script
+	src="http://www.easyfw.com/js/plugin/tinyEditor/tiny.editor.packed.js"></script>
+</head>
+<style rel="stylesheet" type="text/css">
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-block;
+}
+#newDiary{
+	padding: 10px;
+}
+#branding {
+	display:inline-block;
+	height: 45px;
+	padding: 10px;
+}	
+#branding h7{
+	float:left;
+	display:inline-block;
+	margin: 15px 0 0 20px;
+}	
+
+.buttonMsg {
+	background: -moz-linear-gradient(center top, #FFFFFF 5%, #F0F0F0 100%)
+		repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #D1D1D1;
+	border-radius: 16px 16px 16px 16px;
+	box-shadow: 0 1px 3px 0 #DEDEDE;
+	color: #666666 !important;
+	display: inline-block;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #FFFFFF;
+}
+#draftDiary{
+	width: 100%;
+}
+.tip {
+	color: red;
+}
+#result{
+	width: 60%;
+	float: left;
+}
+#submitDiary{
+	width: 40%;
+	float: right;
+	margin-bottom: 20px;
+}
+.diaryTitle{
+	border: 1px solid #ccc;
+	font-size: 14px;
+	padding: 5px;
+}
+#diary_title{
+	width: 50%;
+}
+#diary_tags{
+	width: 20%;
+}
+.info{
+	font-size: 13px;
+}
+</style>
+<body>
+	<script type="text/javascript">
+		$('input.fixedTip').aToolTip();
+		var editor = new TINY.editor.edit('editor', {
+			id : 'tinyeditor',
+			width : 584,
+			height : 175,
+			cssclass : 'tinyeditor',
+			controlclass : 'tinyeditor-control',
+			rowclass : 'tinyeditor-header',
+			dividerclass : 'tinyeditor-divider',
+			controls : [ 'bold', 'italic', 'underline', 'strikethrough', '|',
+					'subscript', 'superscript', '|', 'orderedlist',
+					'unorderedlist', '|', 'outdent', 'indent', '|',
+					'leftalign', 'centeralign', 'rightalign', 'blockjustify',
+					'|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size',
+					'style', '|', 'image', 'hr', 'link', 'unlink' ],
+			footer : true,
+			fonts : [ '黑体', '楷体', '微软雅黑', 'Verdana', 'Arial', 'Georgia',
+					'Trebuchet MS' ],
+			xhtml : true,
+			cssfile : 'custom.css',
+			bodyid : 'editor',
+			footerclass : 'tinyeditor-footer',
+			toggle : {
+				text : '',
+				activetext : '',
+				cssclass : 'toggle'
+			},
+			resize : {
+				cssclass : 'resize'
+			}
+		});
+		/*
+		* 发表日志
+		*/
+		function commitDiary() {
+			editor.post();
+			var diaryContent = editor.t.value;
+			if(diaryContent=="") {
+				$("#result").text("内容不能为空！");
+				showResult();
+			}
+			var title = $("#diary_title").val();
+			var tags = $("#diary_tags").val();
+			if($.trim(title)=="") {
+				$("#result").text("标题不能为空！");
+				showResult();
+			}
+			$.ajax({
+				type : "POST",
+				url : "/action/diary/newdiary",
+				data : {
+					title : title,
+					tags : tags,
+					diaryContent : diaryContent 
+				},
+				dataType : "text",
+				success : function(msg) {
+					if("fail"==msg) {
+						$("#result").text("日志发布失败！系统正在维护...");
+						showResult();
+					}else {
+						$("#result").html("发布成功！点击查看<a target='_self' href='../system/diary/"+msg+"'>日志详情</a>~");
+						$("#result").addClass("info");
+						$("#result").show();
+					}
+				}
+			});
+		}
+		
+		function showResult() {
+			$("#result").addClass("tip");
+			$("#result").fadeIn(1000);
+			$("#result").fadeOut(2000);
+		}
+	</script>
+	<div>
+		<div id="newDiary">
+			<div class="clearfix" id="branding">
+				<img
+					style="border-width: 0px; float: left; max-width: 260px; max-height: 60px;"
+					src="../../img/easyfw.png" id="imgLogo">
+					<h7>发表日志</h7>
+					<span id="diary_title_tip"></span>
+			</div>
+			<div id="draftDiary">
+				<div class="diaryTitle">
+				日志标题：<input type="text" value="" id="diary_title">	
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				标签：<input type="text" id="diary_tags" class="fixedTip" title="最多输入3个，用空格隔开">
+				</div>
+				<div>
+					<textarea id="tinyeditor" style="width: 400px; height: 200px"></textarea>
+				</div>
+				<div id="result"></div>
+				<div id="submitDiary" style="text-align: right;" class="clearfix">
+					<a href="#" class="buttonMsg" id="commitDiary"
+						onclick="javascript:commitDiary()">提交</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

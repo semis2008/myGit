@@ -4,4 +4,7 @@
 	<bean id="UserService" class="com.testFW.service.impl.UserServiceImpl">
 		<property name="userDao" ref="UserDao" />
 	</bean>
+	<bean id="DiaryService" class="com.testFW.service.impl.DiaryServiceImpl">
+		<property name="diaryDao" ref="DiaryDao" />
+	</bean>
 </beans>

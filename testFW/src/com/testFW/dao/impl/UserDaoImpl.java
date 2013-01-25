@@ -6,7 +6,6 @@ import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.dao.template.DbUtilsTemplate;
 import com.testFW.util.ConstantsUtil;
-import com.testFW.util.StringUtil;
 
 /**
  * 用户数据操作接口实现类

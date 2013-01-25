@@ -82,6 +82,10 @@
 		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>Diary</servlet-name>
+		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>System</servlet-name>
 		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
 	</servlet>
@@ -98,6 +102,10 @@
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
 		<url-pattern>/user.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Diary</servlet-name>
+		<url-pattern>/diary.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>System</servlet-name>
