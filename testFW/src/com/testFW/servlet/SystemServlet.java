@@ -54,6 +54,8 @@ public class SystemServlet extends HttpServlet {
 			targetpath = showMainPage(req, resp);
 		}else if ("diary".equals(fun)) {
 			targetpath = showDiary(req, resp);
+		}else if ("diarydetail".equals(fun)) {
+			targetpath = showDiaryDetail(req, resp);
 		}else if ("picture".equals(fun)) {
 			targetpath = showPicture(req, resp); 
 		}else if ("aboutus".equals(fun)) {
@@ -106,11 +108,22 @@ public class SystemServlet extends HttpServlet {
 	 */
 	private String showDiary(HttpServletRequest req, HttpServletResponse resp) {
 		String param = req.getParameter("p1");
-		if(param==null) {
-			return "/jsp/diaryPage.jsp";
-		}else{
-			return "/jsp/diaryDetail.jsp";
-		}
+		/*
+		 * 参数是页数，获取日志列表
+		 */
+		return "/jsp/diaryPage.jsp";
+	}
+	/**
+	 * 日志详情业务处理
+	 * @param req
+	 * @param resp
+	 */
+	private String showDiaryDetail(HttpServletRequest req, HttpServletResponse resp) {
+		String param = req.getParameter("p1");
+		/*
+		 * 参数是日志id,获取日志详情信息
+		 */
+		return "/jsp/diaryDetail.jsp";
 	}
 	
 	/**

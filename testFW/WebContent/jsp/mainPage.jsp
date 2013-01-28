@@ -395,7 +395,7 @@
 						<div class="gallery-item" id="post-134">
 							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 								class="" title="测试缩略图标题~~~~test pic-sc title"
-								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/anime/1.jpg">
 									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 							</a>
 							<h2>测试图册缩略图</h2>
@@ -409,7 +409,7 @@
 						<div class="gallery-item" id="post-134">
 							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 								class="" title="测试缩略图标题~~~~test pic-sc title"
-								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/anime/1.jpg">
 									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 							</a>
 							<h2>测试图册缩略图</h2>
@@ -423,7 +423,7 @@
 						<div class="gallery-item" id="post-134">
 							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 								class="" title="测试缩略图标题~~~~test pic-sc title"
-								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/anime/1.jpg">
 									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 							</a>
 							<h2>测试图册缩略图</h2>
@@ -437,7 +437,7 @@
 						<div class="gallery-item" id="post-134">
 							<a title="测试图册缩略图" href="#"> <img width="219" height="219"
 								class="" title="测试缩略图标题~~~~test pic-sc title"
-								src="http://www.press75.com/themes/blocco/files/2011/09/exit-219x219.jpg">
+								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/anime/1.jpg">
 									<div class="overTitle">ce阿打算打算打算打算打算打算的asdaasdasdasd爱上大声大声道</div>
 							</a>
 							<h2>测试图册缩略图</h2>

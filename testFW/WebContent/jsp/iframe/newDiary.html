@@ -115,38 +115,44 @@
 		* 发表日志
 		*/
 		function commitDiary() {
+			var commit = true;
 			editor.post();
 			var diaryContent = editor.t.value;
 			if(diaryContent=="") {
 				$("#result").text("内容不能为空！");
 				showResult();
+				commit = false;
 			}
 			var title = $("#diary_title").val();
 			var tags = $("#diary_tags").val();
 			if($.trim(title)=="") {
 				$("#result").text("标题不能为空！");
 				showResult();
+				commit = false;				
 			}
-			$.ajax({
-				type : "POST",
-				url : "/action/diary/newdiary",
-				data : {
-					title : title,
-					tags : tags,
-					diaryContent : diaryContent 
-				},
-				dataType : "text",
-				success : function(msg) {
-					if("fail"==msg) {
-						$("#result").text("日志发布失败！系统正在维护...");
-						showResult();
-					}else {
-						$("#result").html("发布成功！点击查看<a target='_self' href='../system/diary/"+msg+"'>日志详情</a>~");
-						$("#result").addClass("info");
-						$("#result").show();
+			if(commit) {
+				$.ajax({
+					type : "POST",
+					url : "/action/diary/newdiary",
+					data : {
+						title : title,
+						tags : tags,
+						diaryContent : diaryContent 
+					},
+					dataType : "text",
+					success : function(msg) {
+						if("fail"==msg) {
+							$("#result").text("日志发布失败！系统正在维护...");
+							showResult();
+							return;
+						}else {
+							$("#result").html("发布成功！点击查看<a target='_self' href='../system/diary/"+msg+"'>日志详情</a>~");
+							$("#result").addClass("info");
+							$("#result").show();
+						}
 					}
-				}
-			});
+				});
+			}
 		}
 		
 		function showResult() {
