@@ -18,6 +18,5 @@ public class FwTest extends TestCase {
 		String targetURL = currentURL.substring(currentURL.indexOf("/", 1));
 		logger.info("currentURL:"+currentURL);
 		logger.info("targetURL:"+targetURL);
-				
 	}
 }

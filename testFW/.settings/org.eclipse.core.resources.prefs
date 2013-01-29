@@ -1,5 +1,6 @@
-#Tue Jan 29 12:35:52 CST 2013
+#Tue Jan 29 16:08:48 CST 2013
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/conf/c3p0.properties=UTF-8
 encoding//WebContent/jsp/iframe/setInfo.html=UTF-8
+encoding//src/com/testFW/servlet/SystemServlet.java=UTF-8
 encoding//src/com/testFW/test/FwTest.java=gbk

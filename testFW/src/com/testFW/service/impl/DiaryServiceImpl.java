@@ -1,8 +1,12 @@
 package com.testFW.service.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.testFW.bo.DiaryBO;
 import com.testFW.bo.UserBO;
 import com.testFW.dao.DiaryDao;
 import com.testFW.service.DiaryService;
@@ -29,7 +33,19 @@ public class DiaryServiceImpl implements DiaryService{
 		if(!"".equals(tags.trim())) {
 			tags = tags.replace(" ", "_");
 		}
-		return diaryDao.insertDiary(title,tags,diaryContent,user.getId());
+		return diaryDao.insertDiary(title,tags,diaryContent,user.getId(),user.getName());
+	}
+
+	@Override
+	public List<DiaryBO> getDiaryList(HttpServletRequest req,
+			HttpServletResponse resp) {
+		String pageNum = req.getParameter("p1");
+		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
+		if(pageNum==null||pageNum.equals("")) {
+			pageNum = "1";
+		}
+		int page = Integer.parseInt(pageNum);
+		return diaryDao.queryDiaryList(visitUser.getId(), 10*(page-1), 10*page);
 	}
 	 
 }

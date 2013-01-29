@@ -1,6 +1,7 @@
 package com.testFW.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.testFW.bo.DiaryBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
+import com.testFW.service.DiaryService;
 import com.testFW.service.UserService;
 import com.testFW.util.UserUtil;
 
@@ -27,7 +30,11 @@ public class SystemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(SystemServlet.class);
 	private UserService userService;
-
+	private DiaryService diaryService;
+	
+	public void setDiaryService(DiaryService diaryService) {
+		this.diaryService = diaryService;
+	}
 	public void setUserService(UserService service) {
 		this.userService = service;
 	}
@@ -107,10 +114,11 @@ public class SystemServlet extends HttpServlet {
 	 * @param resp
 	 */
 	private String showDiary(HttpServletRequest req, HttpServletResponse resp) {
-		String param = req.getParameter("p1");
 		/*
 		 * 参数是页数，获取日志列表
 		 */
+		List<DiaryBO> diaries = diaryService.getDiaryList(req,resp);
+		req.setAttribute("diaries", diaries);
 		return "/jsp/diaryPage.jsp";
 	}
 	/**
