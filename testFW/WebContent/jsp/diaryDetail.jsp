@@ -83,22 +83,22 @@
 		<div class="container">
 			<div class="sidebar">
 				<ul class="side_nav">
-					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
+					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
-					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
+					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
-					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
+						title="查看日志" id="diary">日志</a>
+					</li>
+					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
-					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
+						title="查看图册信息" id="picture">图册</a>
+					</li>
+					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -124,9 +124,12 @@
 					<div class="artical" id="post-1">
 						<div class="art-cats">
 							<ul>
-								<li class="blogNum"><a title="测试博文" href="#">1</a></li>
-								<li class="tag"><a title="标签1" href="#">标签one</a></li>
-								<li class="tag"><a title="标签2" href="#">标签two</a></li>
+								<li class="blogNum"><a title="测试博文" href="#">1</a>
+								</li>
+								<li class="tag"><a title="标签1" href="#">标签one</a>
+								</li>
+								<li class="tag"><a title="标签2" href="#">标签two</a>
+								</li>
 							</ul>
 						</div>
 						<div class="art-header">

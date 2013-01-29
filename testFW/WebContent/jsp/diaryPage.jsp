@@ -66,14 +66,14 @@
 				<form method="post" id="sForm"
 					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
 					<input name="s" id="s" value="站内搜索" class="small_search"
-						type="text"  />
+						type="text" />
 				</form>
 			</div>
 			<h1>
 				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
 					title="testFW Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png"
-					alt="TestFW Logo" /> </a>
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png" alt="TestFW Logo" />
+				</a>
 			</h1>
 			<p>
 				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -83,21 +83,22 @@
 		<div class="container">
 			<div class="sidebar">
 				<ul class="side_nav">
-					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
+					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
-					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
-					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture" title="查看图册信息"
-						id="picture">图册</a></li>
-					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
-						class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus" title="关于我以及本站"
-						id="aboutus">about</a></li>
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
+					<li class="active"><a class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
+						title="查看日志" id="diary">日志</a>
+					</li>
+					<li><a class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
+						title="查看图册信息" id="picture">图册</a>
+					</li>
+					<li><a class="fixedTip"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -139,17 +140,16 @@
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="测试博文" href="#">1</a>
-									</li>
-									<li class="tag"><a title="标签1" href="#">标签one</a>
-									</li>
-									<li class="tag"><a title="标签2" href="#">标签two</a>
-									</li>
+									<li class="blogNum"><a title="测试博文" href="#">1</a></li>
+									<li class="tag"><a title="标签1" href="#">标签one</a></li>
+									<li class="tag"><a title="标签2" href="#">标签two</a></li>
 								</ul>
 							</div>
 							<div class="art-header">
 								<h1 class="art-title">
-									<a title="测试博文标题" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test blog-title</a>
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
 								</h1>
 								<p class="comment-count">
 									<a title="测试博文回复数" href="#">3</a>
@@ -164,32 +164,28 @@
 								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
 									joined the bbPress core commit team this week after
 									contributing to the project since the plugin version of bbPress
-									was introduced. bbPress lead John James Jacoby said,
-								</p>
+									was introduced. bbPress lead John James Jacoby said,</p>
 								<p>
 									<a class="more-link"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">查看全文
-										<span>↓</span>
-									</a>
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
 								</p>
 							</div>
 						</div>
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="测试博文" href="#">2</a>
-									</li>
-									<li class="tag"><a title="标签1" href="#">标签one</a>
-									</li>
-									<li class="tag"><a title="标签2" href="#">标签two</a>
-									</li>
-									<li class="tag"><a title="标签2" href="#">标签two</a>
-									</li>
+									<li class="blogNum"><a title="测试博文" href="#">2</a></li>
+									<li class="tag"><a title="标签1" href="#">标签one</a></li>
+									<li class="tag"><a title="标签2" href="#">标签two</a></li>
+									<li class="tag"><a title="标签2" href="#">标签two</a></li>
 								</ul>
 							</div>
 							<div class="art-header">
 								<h1 class="art-title">
-									<a title="测试博文标题" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test blog-title</a>
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
 								</h1>
 								<p class="comment-count">
 									<a title="测试博文回复数" href="#">3</a>
@@ -201,24 +197,14 @@
 								</div>
 							</div>
 							<div class="art-content">
-							<!-- 
-								<div style="width: 610px" class="" id="attachment_42042">
-									<a href="#"><img width="600" height="240"
-										src="http://cdn4.wpcandy.com/wp-content/uploads/2012/12/bbpress-jennifer-m-dodd.jpg">
-									</a>
-									<p class="wp-caption-text">Photo credit: Jennifer Dodd</p>
-								</div>
-							 -->
 								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
 									joined the bbPress core commit team this week after
 									contributing to the project since the plugin version of bbPress
-									was introduced. bbPress lead John James Jacoby said,
-								</p>
+									was introduced. bbPress lead John James Jacoby said,</p>
 								<p>
 									<a class="more-link"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">查看全文
-										<span>↓</span>
-									</a>
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
 								</p>
 							</div>
 						</div>
@@ -228,10 +214,9 @@
 					<h3>
 						<strong>1989</strong> Keep learning &amp; Remain Modest.
 					</h3>
-					<small>&copy; Copyright 2012 TestFW. All rights
-						reserved.  Designed by <a target="_blank"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a>
-					</small><br><br>
+					<small>&copy; Copyright 2012 TestFW. All rights reserved.
+						Designed by <a target="_blank"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
 				</div>
 			</div>
 		</div>
