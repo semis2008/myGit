@@ -1,0 +1,62 @@
+.m-floatBar {
+	bottom: 150px;
+	height: 45px;
+	position: fixed;
+	right: 0;
+	width: 149px;
+}
+.m-floatBar .m-top-spacial {
+	background: url("/img/common/top0.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	height: 45px;
+	position: absolute;
+	right: -45px;
+	transition-property: right;
+	width: 45px;
+}
+
+.f-trans {
+	transition-duration: 0.2s;
+	transition-property: all;
+	transition-timing-function: linear;
+}
+
+.m-floatBar .m-front {
+	background: url("/img/common/next0.png") no-repeat scroll 0 0
+		transparent;
+	cursor: pointer;
+	height: 45px;
+	position: absolute;
+	right: -45px;
+	top: 0;
+	transition-duration: 0.4s;
+	transition-property: right;
+	width: 45px;
+}
+
+.m-floatBar .m-back {
+	background: url("/img/common/prev0.png") no-repeat scroll 0 0
+		transparent;
+	cursor: pointer;
+	height: 45px;
+	position: absolute;
+	right: -45px;
+	transition-duration: 0.6s;
+	transition-property: right;
+	width: 45px;
+}
+
+.m-floatBar .m-top-spacial:hover {
+	background: url("/img/common/top1.png")
+		no-repeat scroll 0 0 transparent;
+}
+
+.m-floatBar .m-back:hover {
+	background: url("/img/common/prev1.png")
+		no-repeat scroll 0 0 transparent;
+}
+
+.m-floatBar .m-front:hover {
+	background: url("/img/common/next1.png")
+		no-repeat scroll 0 0 transparent;
+}

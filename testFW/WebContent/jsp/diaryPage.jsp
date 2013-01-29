@@ -14,6 +14,9 @@
 	} else {
 		hasLogin = true;
 	}
+
+	String hasNext = "yes";
+	String hasPre = "yes";
 %>
 <html>
 <head>
@@ -26,6 +29,11 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
+<!-- floatbar css -->
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/common/floatbar.css"
+	rel="stylesheet" media="screen" />
+
 <script language="javascript" type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -34,6 +42,10 @@
 <!-- aToolTip js -->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
+<!-- floatbar js -->
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/common/floatbar.js"></script>
+
 
 <script language="javascript" type="text/javascript">
 	$(function() {
@@ -60,11 +72,6 @@
 <title>日志</title>
 </head>
 <body>
-	<jsp:include page="/jsp/common/floatBar.jsp" >
-		<jsp:param name="hasPre" value="yes" /> 
-		<jsp:param name="hasNext" value="yes" />
-		<jsp:param name="pageNum" value="1" />
-	</jsp:include> 
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -86,6 +93,24 @@
 			</p>
 		</div>
 		<div class="container">
+			<div class="m-floatBar">
+				<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
+					class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
+				<%
+					if ("yes".equals(hasNext)) {
+				%>
+				<a id="J-nextGroup" title="下一页" class="m-front f-trans"
+					style="z-index: 10; right: 20px;" />
+				<%
+					}
+					if ("yes".equals(hasPre)) {
+				%>
+				<a id="J-preGroup" title="上一页" class="m-back f-trans"
+					style="z-index: 10; right: 85px;" />
+				<%
+					}
+				%>
+			</div>
 			<div class="sidebar">
 				<ul class="side_nav">
 					<li><a class="fixedTip"
@@ -480,7 +505,7 @@
 								</p>
 							</div>
 						</div>
-						
+
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
