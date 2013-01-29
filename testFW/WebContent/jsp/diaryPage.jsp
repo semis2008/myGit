@@ -60,6 +60,11 @@
 <title>日志</title>
 </head>
 <body>
+	<jsp:include page="/jsp/common/floatBar.jsp" >
+		<jsp:param name="hasPre" value="yes" /> 
+		<jsp:param name="hasNext" value="yes" />
+		<jsp:param name="pageNum" value="1" />
+	</jsp:include> 
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -85,20 +90,16 @@
 				<ul class="side_nav">
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -140,9 +141,12 @@
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="测试博文" href="#">1</a></li>
-									<li class="tag"><a title="标签1" href="#">标签one</a></li>
-									<li class="tag"><a title="标签2" href="#">标签two</a></li>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
 								</ul>
 							</div>
 							<div class="art-header">
@@ -175,10 +179,319 @@
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="测试博文" href="#">2</a></li>
-									<li class="tag"><a title="标签1" href="#">标签one</a></li>
-									<li class="tag"><a title="标签2" href="#">标签two</a></li>
-									<li class="tag"><a title="标签2" href="#">标签two</a></li>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">1</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+								</ul>
+							</div>
+							<div class="art-header">
+								<h1 class="art-title">
+									<a title="测试博文标题"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
+										blog-title</a>
+								</h1>
+								<p class="comment-count">
+									<a title="测试博文回复数" href="#">3</a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								</div>
+							</div>
+							<div class="art-content">
+								<p>测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容 Jennifer M. Dodd
+									joined the bbPress core commit team this week after
+									contributing to the project since the plugin version of bbPress
+									was introduced. bbPress lead John James Jacoby said,</p>
+								<p>
+									<a class="more-link"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										<span>↓</span> </a>
+								</p>
+							</div>
+						</div>
+						
+						<div class="artical" id="post-1">
+							<div class="art-cats">
+								<ul>
+									<li class="blogNum"><a title="测试博文" href="#">2</a>
+									</li>
+									<li class="tag"><a title="标签1" href="#">标签one</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
+									<li class="tag"><a title="标签2" href="#">标签two</a>
+									</li>
 								</ul>
 							</div>
 							<div class="art-header">
