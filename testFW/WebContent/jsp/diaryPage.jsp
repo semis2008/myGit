@@ -54,8 +54,6 @@
 <!-- floatbar js -->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/common/floatbar.js"></script>
-
-
 <script language="javascript" type="text/javascript">
 	$(function() {
 		$('.small_search').click(function() {
@@ -102,24 +100,6 @@
 			</p>
 		</div>
 		<div class="container">
-			<div class="m-floatBar">
-				<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
-					class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
-				<%
-					if ("yes".equals(hasNext)) {
-				%>
-				<a id="J-nextGroup" title="下一页" class="m-front f-trans"
-					style="z-index: 10; right: 20px;" />
-				<%
-					}
-					if ("yes".equals(hasPre)) {
-				%>
-				<a id="J-preGroup" title="上一页" class="m-back f-trans"
-					style="z-index: 10; right: 85px;" />
-				<%
-					}
-				%>
-			</div>
 			<div class="sidebar">
 				<ul class="side_nav">
 					<li><a class="fixedTip"
@@ -231,6 +211,14 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="m-floatBar">
+				<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
+					class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
+				<a id="J-nextGroup" title="下一页" class="m-front f-trans"
+					style="z-index: 10; right: 20px;" />
+				<a id="J-preGroup" title="上一页" class="m-back f-trans"
+					style="z-index: 10; right: 85px;" />
 	</div>
 </body>
 </html>
