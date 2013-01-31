@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="java.util.Calendar"%>
 <%@page import="com.testFW.util.StringUtil"%>
 <%@page import="com.testFW.util.DateUtil"%>
 <%@page import="java.util.ArrayList"%>
@@ -161,7 +162,7 @@
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="<%=diary.getTitle() %>" href="#"><%=diary.getId() %></a>
+									<li class="blogNum"><a title="<%=diary.getTitle() %>" href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(Calendar.DAY_OF_MONTH) %></a>
 									</li>
 									<%
 									String[] tags = diary.getTags().split("_");
@@ -175,7 +176,7 @@
 							<div class="art-header">
 								<h1 class="art-title">
 									<a title="<%=diary.getTitle() %>"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1"><%=diary.getTitle() %>
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId() %>"><%=diary.getTitle() %>
 										 </a>
 								</h1>
 								<p class="comment-count">
@@ -191,7 +192,7 @@
 								<p><%=StringUtil.cutString(diary.getContent(),200) %></p>
 								<p>
 									<a class="more-link"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/1">查看全文
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId() %>">查看全文
 										<span>↓</span> </a>
 								</p>
 							</div>

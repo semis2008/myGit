@@ -66,7 +66,7 @@ public class DbUtilsTemplate {
      * 执行sql语句 
      * @param sql sql语句 
      * @param params 参数数组 
-     * @return 受影响的行数 
+     * @return 受影响的行数
      */ 
     public int update(String sql, Object[] params) { 
         queryRunner = new QueryRunner(dataSource); 
@@ -75,14 +75,31 @@ public class DbUtilsTemplate {
             if (params == null) { 
                 affectedRows = queryRunner.update(sql); 
             } else { 
-                affectedRows = queryRunner.update(sql, params); 
+                affectedRows = queryRunner.update(sql, params);
             } 
         } catch (SQLException e) { 
             LOG.error("Error occured while attempting to update data", e); 
         } 
-        return affectedRows; 
+        return affectedRows;
     } 
       
+    /**
+     * 获取上一次操作所影响的主键，用于插入insert
+     * @return
+     * @throws SQLException
+     */
+    public Long getLastActPriId() {
+    	Long id = 0l;
+    	try {
+			id = (Long) queryRunner.query("SELECT LAST_INSERT_ID()", new ScalarHandler(1));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+    	return id;
+    }
+    
+    
     /** 
      * 执行批量sql语句 
      * @param sql sql语句 

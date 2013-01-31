@@ -17,7 +17,8 @@ public interface DiaryDao {
 	 * @param tags 标签
 	 * @param diaryContent 日志内容
 	 * @param userId 作者id
-	 * @return 受影响的行数
+	 * @param userName 作者姓名
+	 * @return 受影响的行的主键
 	 */
 	 int insertDiary(String title,String tags,String diaryContent,Long userId,String userName);
 	 

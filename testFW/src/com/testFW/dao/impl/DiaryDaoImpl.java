@@ -24,7 +24,8 @@ public class DiaryDaoImpl implements DiaryDao {
 			Long userId,String userName) {
 		String sql = "insert into diary(title,content,author_id,author_name,publish_time,tags) values (?,?,?,?,now(),?)";
 		Object[] params = {title,diaryContent,userId,userName,tags};
-		return dbUtilsTemplate.update(sql, params);
+		dbUtilsTemplate.update(sql, params);
+		return Integer.parseInt(dbUtilsTemplate.getLastActPriId()+"");
 	}
 
 	@Override

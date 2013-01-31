@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import org.codehaus.xfire.transport.Session;
 import org.springframework.stereotype.Component;
 
 import com.testFW.bo.DiaryBO;
@@ -114,6 +115,14 @@ public class SystemServlet extends HttpServlet {
 	 * @param resp
 	 */
 	private String showDiary(HttpServletRequest req, HttpServletResponse resp) {
+		/*
+		 * 首次访问设置访问用户 
+		 */
+		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
+		if(visitUser == null) {
+			visitUser = userService.getUserByID("1");
+		}
+		req.getSession().setAttribute("visitedUser", visitUser);
 		/*
 		 * 参数是页数，获取日志列表
 		 */

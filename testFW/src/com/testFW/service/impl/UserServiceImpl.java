@@ -8,7 +8,6 @@ import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
-import com.testFW.util.ConstantsUtil;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
 
