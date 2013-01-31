@@ -14,8 +14,9 @@
 	if (fun == null)
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
-	List<DiaryBO> diaryList = (List<DiaryBO>)request.getAttribute("diaries");
-	if(diaryList==null) {
+	List<DiaryBO> diaryList = (List<DiaryBO>) request
+			.getAttribute("diaries");
+	if (diaryList == null) {
 		diaryList = new ArrayList<DiaryBO>();
 	}
 	boolean hasLogin = false;
@@ -24,9 +25,14 @@
 	} else {
 		hasLogin = true;
 	}
-
-	String hasNext = "yes";
-	String hasPre = "yes";
+	Integer currentPage = (Integer)request.getAttribute("currentPage");
+	if(currentPage == null) {
+		currentPage = 1;
+	}
+	Integer totalPage = (Integer)request.getAttribute("totalPage");
+	if(totalPage == null) {
+		totalPage = 1;
+	}
 %>
 <html>
 <head>
@@ -105,16 +111,20 @@
 				<ul class="side_nav">
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
 					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
+						title="查看日志" id="diary">日志</a>
+					</li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
+						title="查看图册信息" id="picture">图册</a>
+					</li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -154,52 +164,58 @@
 					</div>
 					<div class="articles">
 						<%
-						if(diaryList.size()==0) {
-							out.print("<h3> 没有日志可供查看~~</h3>");
-						}else {
-							for(DiaryBO diary:diaryList) {						
+							if (diaryList.size() == 0) {
+								out.print("<h3> 没有日志可供查看~~</h3>");
+							} else {
+								for (DiaryBO diary : diaryList) {
 						%>
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="<%=diary.getTitle() %>" href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(Calendar.DAY_OF_MONTH) %></a>
+									<li class="blogNum"><a title="<%=diary.getTitle()%>"
+										href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())
+							.get(Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time())
+							.get(Calendar.DAY_OF_MONTH)%></a></li>
+									<%
+										String[] tags = diary.getTags().split("_");
+												for (String tag : tags) {
+									%>
+									<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a>
 									</li>
 									<%
-									String[] tags = diary.getTags().split("_");
-									for(String tag:tags) {
+										}
 									%>
-									<li class="tag"><a title="<%=tag %>" href="#"><%=tag %></a>
-									</li>
-									<%} %>
 								</ul>
 							</div>
 							<div class="art-header">
 								<h1 class="art-title">
-									<a title="<%=diary.getTitle() %>"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId() %>"><%=diary.getTitle() %>
-										 </a>
+									<a title="<%=diary.getTitle()%>"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>"><%=diary.getTitle()%>
+									</a>
 								</h1>
 								<p class="comment-count">
-									<a title="回复数" href="#"><%=diary.getReply() %></a>
+									<a title="回复数" href="#"><%=diary.getReply()%></a>
 								</p>
 								<div class="art-meta">
-									Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(),3) %></a><span
+									Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span
 										class="byline"> by <span class="author"><a
-											title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name() %></a> </span> </span>
+											title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
+									</span>
 								</div>
 							</div>
 							<div class="art-content">
-								<p><%=StringUtil.cutString(diary.getContent(),200) %></p>
+								<p><%=StringUtil.cutString(diary.getContent(), 200)%></p>
 								<p>
 									<a class="more-link"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId() %>">查看全文
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>">查看全文
 										<span>↓</span> </a>
 								</p>
 							</div>
 						</div>
 						<%
 							}
-						}%>
+							}
+						%>
 					</div>
 				</div>
 				<div class="section_wrap more_padding">
@@ -214,12 +230,16 @@
 		</div>
 	</div>
 	<div class="m-floatBar">
-				<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
-					class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
-				<a id="J-nextGroup" title="下一页" class="m-front f-trans"
-					style="z-index: 10; right: 20px;" />
-				<a id="J-preGroup" title="上一页" class="m-back f-trans"
-					style="z-index: 10; right: 85px;" />
+		<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
+			class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
+		<a id="J-nextGroup" title="下一页" class="m-front f-trans"
+			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage + 1%>"
+			style="z-index: 10; right: 20px;" /> <a id="J-preGroup" title="上一页"
+			class="m-back f-trans"
+			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage - 1%>"
+			style="z-index: 10; right: 85px;" /> <input type="hidden"
+			id="totalPage" value="<%=totalPage %>" /> <input type="hidden" id="currentPage"
+			value="<%=currentPage %>" />
 	</div>
 </body>
 </html>

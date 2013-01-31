@@ -31,4 +31,11 @@ public interface DiaryDao {
 	  */
 	 List<DiaryBO> queryDiaryList(Long userId,int start,int end);
 	 
+	 /**
+	  * 查询指定用户的日志总数
+	  * @param userId 用户id
+	  * @return 日志总数
+	  */
+	 int queryDiaryNumByUserId(Long userId);
+	 
 }

@@ -1,3 +1,20 @@
+$(function(){
+	var totalPage = $("#totalPage").val();
+	var currentPage = $("#currentPage").val();
+	if(currentPage == totalPage) {
+		hideNextBtn();
+	}
+	if(currentPage == 1) {
+		hidePreBtn();
+	}
+	
+});
+function hideNextBtn() {
+	$("#J-nextGroup").hide();
+}
+function hidePreBtn() {
+	$("#J-preGroup").hide();
+}
 $(window).scroll(function() {
 	var t = $(document).scrollTop();
 	if (t >= 300) {

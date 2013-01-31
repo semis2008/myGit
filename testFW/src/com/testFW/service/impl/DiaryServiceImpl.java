@@ -38,13 +38,21 @@ public class DiaryServiceImpl implements DiaryService{
 	@Override
 	public List<DiaryBO> getDiaryList(HttpServletRequest req,
 			HttpServletResponse resp) {
-		String pageNum = req.getParameter("p1");
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
+		String pageNum = req.getParameter("p1");
 		if(pageNum==null||pageNum.equals("")) {
 			pageNum = "1";
 		}
-		int page = Integer.parseInt(pageNum);
-		return diaryDao.queryDiaryList(visitUser.getId(), 10*(page-1), 10*page);
+		int currentPage = Integer.parseInt(pageNum);
+		/*
+		 * 获取日志总页数
+		 */
+		int totalDiary = diaryDao.queryDiaryNumByUserId(visitUser.getId()); 
+		int totalPage = totalDiary/10+1;
+		
+		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("totalPage", totalPage);
+		return diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
 	}
 	 
 }

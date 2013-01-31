@@ -1,6 +1,7 @@
 package com.testFW.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.testFW.bo.DiaryBO;
 import com.testFW.dao.DiaryDao;
@@ -33,6 +34,14 @@ public class DiaryDaoImpl implements DiaryDao {
 		String sql = "select * from diary where author_id = ? limit ?,?";
 		Object[] param = {userId,start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
+	}
+
+	@Override
+	public int queryDiaryNumByUserId(Long userId) {
+		String sql = "select count(*) totalNum from diary where author_id = ?";
+		Map<String,Object> result = dbUtilsTemplate.findFirst(sql, userId);
+		return Integer.parseInt((Long)result.get("totalNum")+"");
+		
 	}
 
 }
