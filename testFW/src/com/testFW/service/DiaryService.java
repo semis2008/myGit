@@ -29,4 +29,19 @@ public interface DiaryService {
 	  * @return 日志列表
 	  */
 	 List<DiaryBO> getDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 
+	 /**
+	  * 获取最新日志列表 (取前5条)
+	  * @param req
+	  * @param resp
+	  * @return
+	  */
+	 List<DiaryBO> getNewDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 
+	 /**
+	  * 通过日志id获取日志信息
+	  * @param diaryId 日志id
+	  * @return 日志实体类
+	  */
+	 DiaryBO getDiaryByID(String diaryId);
 }

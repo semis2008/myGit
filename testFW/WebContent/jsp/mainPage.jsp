@@ -1,11 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<%@page import="com.testFW.util.DateUtil"%>
-<%@page import="com.testFW.util.UserUtil"%>
-<%@page import="java.net.URLDecoder"%>
-<%@page import="java.net.URLEncoder"%>
-<%@page import="com.testFW.bo.UserBO"%>
-<%@page import="com.testFW.bo.UserInfoBO"%>
-<%@page import="com.testFW.util.ConstantsUtil"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.testFW.util.*"%>
+<%@page import="com.testFW.bo.*"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
@@ -14,6 +12,9 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
+	List<LeaveMsgBO> leaveMsgList = (List<LeaveMsgBO>)request.getAttribute("leaveMsgList");
+	List<DiaryBO> newDiaryList = (List<DiaryBO>)request.getAttribute("newDiaryList");
+	
 	UserInfoBO info = (UserInfoBO) request
 			.getAttribute("visitedUserInfo");
 	String hobbyStr = "";
@@ -25,6 +26,12 @@
 	boolean hasLogin = false;
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
+	}
+	if(leaveMsgList == null) {
+		leaveMsgList = new ArrayList<LeaveMsgBO>();
+	}
+	if(newDiaryList == null) {
+		newDiaryList = new ArrayList<DiaryBO>();
 	}
 	if (user == null) {
 		user = new UserBO();
@@ -294,12 +301,19 @@
 							<div class="topbar_content">
 								<div class="topbar_news">
 									<ul>
+									<%
+									for(DiaryBO newDiary:newDiaryList) {
+									%>
 										<li>
 											<div class="news_cont">
-												<b>Kalor</b>在<em>16分钟前</em>发表了日志<a href="#">《关于12306网站设计的一点感想》</a><span>[12评/45阅]</span>
+												<b><%=newDiary.getAuthor_name() %></b>在<em>16分钟前</em>发表了日志<a href="#">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
 											</div>
 										</li>
-										<li>
+										<%
+										}
+									%>
+									<!-- 
+									<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>3小时前</em>上传了1张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
 											</div>
@@ -319,60 +333,27 @@
 												<b>Kalor</b>在<em>12月16日</em>发表了日志<a href="#">《岁末，碎末》</a><span>[67评/122阅]</span>
 											</div>
 										</li>
+									 -->
 									</ul>
 								</div>
 								<div class="topbar_reply">
 									<ul>
+									<%
+									for(LeaveMsgBO leaveMsg:leaveMsgList) {									
+									%>
 										<li><img
 											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
 											alt="" />
 											<div class="reply_r">
-												<a href="" class="name">水晶</a>
+												<a href="" class="name"><%=leaveMsg.getName() %></a>
 												<p class="time">
-													<em>12/</em>21
+													<em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.DAY_OF_MONTH) %>
 												</p>
-												<p class="cont">:&nbsp;首页重新设计了？快点吧...</p>
+												<p class="cont">:&nbsp;<%=leaveMsg.getMsg() %>.</p>
 											</div></li>
-										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
-											alt="" />
-											<div class="reply_r">
-												<a href="" class="name">水晶</a>
-												<p class="time">
-													<em>12/</em>21
-												</p>
-												<p class="cont">:&nbsp;very cool,but not fell good....</p>
-											</div></li>
-										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg"
-											alt="" />
-											<div class="reply_r">
-												<a href="" class="name">Kalor</a>
-												<p class="time">
-													<em>12/</em>21
-												</p>
-												<p class="cont">:&nbsp;信息量大了一点，然后布局合理了一些？还有别的么？</p>
-											</div></li>
-										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg"
-											alt="" />
-											<div class="reply_r">
-												<a href="" class="name">蝴蝶</a>
-												<p class="time">
-													<em>12/</em>21
-												</p>
-												<p class="cont">:&nbsp;新首页比原来好在那里？反正我是没看出来..</p>
-											</div></li>
-										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
-											alt="" />
-											<div class="reply_r">
-												<a href="" class="name">水晶</a>
-												<p class="time">
-													<em>12/</em>21
-												</p>
-												<p class="cont">:&nbsp;快点吧...</p>
-											</div></li>
+											<%
+											}
+									%>
 									</ul>
 								</div>
 							</div>

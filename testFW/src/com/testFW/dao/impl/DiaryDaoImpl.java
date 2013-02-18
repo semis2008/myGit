@@ -44,4 +44,10 @@ public class DiaryDaoImpl implements DiaryDao {
 		
 	}
 
+	@Override
+	public DiaryBO queryDiaryById(Long diaryId) {
+		String sql = "select * from diary where id = ?";
+		return dbUtilsTemplate.findFirst(DiaryBO.class, sql,diaryId);
+	}
+
 }

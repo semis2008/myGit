@@ -1,6 +1,9 @@
 package com.testFW.dao;
 
+import java.util.List;
+
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 
@@ -164,4 +167,13 @@ public interface UserDao {
 	 * @return
 	 */
 	boolean updatePhoto(String photoPath, Long userId);
+	
+	/**
+	 * 获取给指定用户的留言信息
+	 * @param userId 用户id
+	 * @param start 起始位置
+	 * @param end 结束位置
+	 * @return 留言列表
+	 */
+	List<LeaveMsgBO> getLeaveMsgList(Long userId,int start,int end);
 }

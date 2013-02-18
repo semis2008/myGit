@@ -70,5 +70,24 @@ public class DateUtil {
 		}
 		return res;
 	}
+	
+	/**
+	 * 获取所给时间到目前为止的友好的显示信息
+	 * 一小时之内：XX分钟；24小时之内：XX小时；1天之内：X月X日
+	 * @param date 所给时间
+	 * @return 友好的显示信息
+	 */
+	public static String getPassedTime(Date date) {
+		if (date == null)
+			return "";
+		Calendar cal = dateToCalendar(date);
+		//TODO 添加主要逻辑
+		return "";
+	}
 
+	public static void main(String args[]) {
+		Calendar now = getTimeNow();
+		
+		System.out.print(now.getTimeInMillis());
+	}
 }

@@ -13,6 +13,7 @@ import org.codehaus.xfire.transport.Session;
 import org.springframework.stereotype.Component;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.service.DiaryService;
@@ -104,6 +105,14 @@ public class SystemServlet extends HttpServlet {
 		UserUtil.addVisitedUserSession(req, user);
 		//查询访问用户详细信息，返回前台
 		UserInfoBO info = userService.getUserInfoByID(param);
+		//获取用户的最新日志信息
+		//FIXME 最新图册信息需要在开发完图册模块之后再开发
+		List<DiaryBO> newDiaryList = diaryService.getNewDiaryList(req,resp);
+		//获取给该用户的留言 
+		List<LeaveMsgBO> leaveMsgList = userService.getLeaveMsgList(req,resp); 
+		
+		req.setAttribute("leaveMsgList", leaveMsgList);
+		req.setAttribute("newDiaryList", newDiaryList);
 		req.setAttribute("visitedUser", user);
 		req.setAttribute("visitedUserInfo", info);
 		return "/jsp/mainPage.jsp";
@@ -140,6 +149,11 @@ public class SystemServlet extends HttpServlet {
 		/*
 		 * 参数是日志id,获取日志详情信息
 		 */
+		//获取日志主要内容
+		DiaryBO diary = diaryService.getDiaryByID(param);
+		//TODO 获取日志回复信息
+		
+		req.setAttribute("diary", diary);
 		return "/jsp/diaryDetail.jsp";
 	}
 	

@@ -54,5 +54,17 @@ public class DiaryServiceImpl implements DiaryService{
 		req.setAttribute("totalPage", totalPage);
 		return diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
 	}
+
+	@Override
+	public List<DiaryBO> getNewDiaryList(HttpServletRequest req,
+			HttpServletResponse resp) {
+		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
+		return diaryDao.queryDiaryList(visitUser.getId(),0,5);
+	}
+
+	@Override
+	public DiaryBO getDiaryByID(String diaryId) {
+		return diaryDao.queryDiaryById(Long.parseLong(diaryId));
+	}
 	 
 }

@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="java.util.Calendar"%>
+<%@page import="com.testFW.util.DateUtil"%>
+<%@page import="com.testFW.bo.DiaryBO"%>
 <%@page import="com.testFW.util.ConstantsUtil"%>
 <%@page import="com.testFW.bo.UserBO"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
@@ -8,6 +11,10 @@
 	if (fun == null)
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
+	DiaryBO diary = (DiaryBO)request.getAttribute("diary");
+	if(diary == null) {
+		diary = new DiaryBO();
+	}
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
@@ -123,38 +130,40 @@
 					</div>
 					<div class="artical" id="post-1">
 						<div class="art-cats">
-							<ul>
-								<li class="blogNum"><a title="测试博文" href="#">1</a>
-								</li>
-								<li class="tag"><a title="标签1" href="#">标签one</a>
-								</li>
-								<li class="tag"><a title="标签2" href="#">标签two</a>
-								</li>
-							</ul>
-						</div>
-						<div class="art-header">
-							<h1 class="art-title">
-								<a title="测试博文标题"
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/1">测试博文标题test
-									blog-title</a>
-							</h1>
-							<p class="comment-count">
-								<a title="测试博文回复数" href="#">3</a>
-							</p>
-							<div class="art-meta">
-								Posted on <a title="12:10 pm" href="#">December 14, 2012</a><span
-									class="byline"> by <span class="author"><a
-										title="查看他发布的所有博文" href="#">作者1</a> </span> </span>
+								<ul>
+									<li class="blogTime"><a title="<%=diary.getTitle()%>"
+										href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())
+							.get(Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time())
+							.get(Calendar.DAY_OF_MONTH)%></a></li>
+									<%
+										String[] tags = diary.getTags().split("_");
+												for (String tag : tags) {
+									%>
+									<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a>
+									</li>
+									<%
+										}
+									%>
+								</ul>
 							</div>
-						</div>
+						<div class="art-header">
+								<h1 class="art-title">
+									<a title="<%=diary.getTitle()%>"
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>"><%=diary.getTitle()%>
+									</a>
+								</h1>
+								<p class="comment-count">
+									<a title="回复数" href="#"><%=diary.getReply()%></a>
+								</p>
+								<div class="art-meta">
+									Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span
+										class="byline"> by <span class="author"><a
+											title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
+									</span>
+								</div>
+							</div>
 						<div class="art-content">
-							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容测试博文内容
-								Jennifer M. Dodd joined the bbPress 按时大大大大大顶顶顶顶顶顶顶顶顶顶
-								按时大大大大大顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶 按时大大大大大顶顶顶顶顶顶顶顶顶顶的 core commit team this
-								week after contributing to the project since the plugin version
-								of bbPress was introduced. bbPress lead John James Jacoby said,</p>
-							<p>asddddddddddddddddddddddddddddddddddddddddddddddddddd
-								asdassssssssssss</p>
+							<p><%=diary.getContent() %></p>
 						</div>
 					</div>
 					<div id="comments">

@@ -1,8 +1,11 @@
 package com.testFW.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 
@@ -79,4 +82,12 @@ public interface UserService {
 	 * @return 更新失败返回fail,否则返回更新后photo路径
 	 */
 	String updatePhoto(String id, Long userId);
+	
+	/**
+	 * 获取给用户的留言（取前5条）
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	List<LeaveMsgBO> getLeaveMsgList(HttpServletRequest req, HttpServletResponse resp);
 }

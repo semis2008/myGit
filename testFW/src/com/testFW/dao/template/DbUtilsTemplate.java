@@ -93,7 +93,6 @@ public class DbUtilsTemplate {
     	try {
 			id = (Long) queryRunner.query("SELECT LAST_INSERT_ID()", new ScalarHandler(1));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     	return id;

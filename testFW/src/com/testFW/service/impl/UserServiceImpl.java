@@ -1,9 +1,12 @@
 package com.testFW.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
@@ -163,6 +166,13 @@ public class UserServiceImpl implements UserService{
 		}else {
 			return "fail";
 		}
+	}
+	
+	@Override
+	public List<LeaveMsgBO> getLeaveMsgList(HttpServletRequest req,
+			HttpServletResponse resp) {
+		UserBO visitedUser = UserUtil.getVisitedUser(req, resp);
+		return userDao.getLeaveMsgList(visitedUser.getId(),0,5);
 	}
 	
 }

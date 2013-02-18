@@ -1,8 +1,10 @@
 .artical{
-    width: 70%;
+	width: 70%;
     float: left;
-    padding:22px 25px;
-    border-bottom: 1px solid #BBBBBB;
+    margin: 0;
+    padding: 22px 25px;
+    clear: both;
+    margin: 0 0 48px;
 }
  
 div.art-cats {
@@ -13,16 +15,16 @@ div.art-cats {
     margin-top: 2px;
     text-align: center;
     text-transform: uppercase;
-    width: 48px;
+    width: 58px;
 }
 
 div.art-cats li {
     list-style-type: none;
     margin-bottom: 1px;
 }
-div.art-cats li.blogNum a {
-	font-size:25px;
-	padding: 10px;
+div.art-cats li.blogTime a {
+	font-size:11px;
+	padding: 10px 4px 10px 4px;
 }
 div.art-cats li a {
     background-color: #262626;
@@ -30,6 +32,10 @@ div.art-cats li a {
     display: block;
     padding-top: 40px;
     text-decoration: none;
+}
+div.art-cats em{
+	font-size: 18px;
+	display: inline-block;
 }
 div.art-cats li.tag a {
     line-height: 14px;
@@ -78,21 +84,8 @@ div.art-cats li.tag a {
     width: 540px;
 }
 
-
 .art-header .art-meta a {
     color: #909090;
-    text-decoration: none;
-}
-a.more-link{
-    background: none repeat scroll 0 0 #25A8E0;
-    border-right: 1px solid #1E86B3;
-    border-top: 1px solid #1E86B3;
-    clear: both;
-    color: #FFFFFF !important;
-    display: block;
-    float: left;
-    margin: 0 15px 18px 0;
-    padding: 4px 6px;
     text-decoration: none;
 }
 #comments {

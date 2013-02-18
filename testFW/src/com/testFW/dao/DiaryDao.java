@@ -38,4 +38,10 @@ public interface DiaryDao {
 	  */
 	 int queryDiaryNumByUserId(Long userId);
 	 
+	 /**
+	  * 根据日志id获取日志主要信息
+	  * @param diaryId 日志id
+	  * @return 日志实体类
+	  */
+	 DiaryBO queryDiaryById(Long diaryId);
 }

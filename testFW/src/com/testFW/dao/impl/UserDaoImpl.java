@@ -1,6 +1,9 @@
 package com.testFW.dao.impl;
 
+import java.util.List;
+
 import com.testFW.bo.InvitationCodeBO;
+import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
@@ -115,5 +118,11 @@ public class UserDaoImpl implements UserDao {
 		}else {
 			return true;
 		}
+	}
+
+	@Override
+	public List<LeaveMsgBO> getLeaveMsgList(Long userId, int start, int end) {
+		String sql = "select * from leavemsg where visited_user_id = ? order by leave_time desc limit 0,5";
+		return dbUtilsTemplate.find(LeaveMsgBO.class, sql, userId);
 	}
 }

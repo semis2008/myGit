@@ -172,7 +172,7 @@
 						<div class="artical" id="post-1">
 							<div class="art-cats">
 								<ul>
-									<li class="blogNum"><a title="<%=diary.getTitle()%>"
+									<li class="blogTime"><a title="<%=diary.getTitle()%>"
 										href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())
 							.get(Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time())
 							.get(Calendar.DAY_OF_MONTH)%></a></li>
