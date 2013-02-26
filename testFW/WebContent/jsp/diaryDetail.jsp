@@ -120,13 +120,28 @@
 						<%
 							} else {
 						%>
-						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-							title="点击进入主页"><%=user.getName()%></a>
+						<a
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+							title="点击进入主页"><%=user.getName()%></a> <a href="#"
+							onclick="userQuit();" title="点击退出">退出</a>
 						<%
 							}
 						%>
+						<%
+							if (hasLogin) {
+						%>
 						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/newDiary.html">发表日志</a>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
+						<%
+							} else {
+						%>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
+						<%
+							}
+						%>
 					</div>
 					<div class="artical" id="post-1">
 						<div class="art-cats">
@@ -168,28 +183,19 @@
 					</div>
 					<div id="comments">
 						<h2 class="comments-title">
-							日志“<a href="#">测试博文标题test blog-title</a>”有7条回复
+							日志“<a href="#"><%=diary.getTitle() %></a>”
+							<%
+							if(diary.getReply()==0l) {
+							%>
+							还没有被评论过，来做第一个<a href="#">评论</a>的吧~
+							<%
+							}else {
+							%>
+							有<%=diary.getReply() %>条回复
+							<%
+							} 
+							%>
 						</h2>
-						<div class="cmt head">
-							<div class="user">
-								<img alt="#"
-									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-								<textarea id="cmt_area">发表回复...</textarea>
-								<div class="proceed">
-									<button class="btn" type="submit">回复</button>
-								</div>
-							</div>
-							<div class="guest">
-								<img alt="#"
-									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
-								<textarea id="cmt_area">发表回复...</textarea>
-								<div class="proceed">
-									<button class="btn" type="submit">回复</button>
-								</div>
-								<input type="text" value="name" /><input type="text"
-									value="email" /><input type="text" value="webSite" />
-							</div>
-						</div>
 						<div id="comment-1" class="cmt top">
 							<img alt="#"
 								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg" />
@@ -197,26 +203,6 @@
 								<a href="#" class="name">Kalor</a><a href="#" class="reply">回复</a>
 								<p class="time">08.07 12:45</p>
 								<div>在这里，直接和我说话吧</div>
-							</div>
-							<div id="reply-2" class="cmt replyForm">
-								<div class="user">
-									<img alt="#"
-										src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-									<textarea id="cmt_area">发表回复...</textarea>
-									<div class="proceed">
-										<button class="btn" type="submit">回复</button>
-									</div>
-								</div>
-								<div class="guest">
-									<img alt="#"
-										src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
-									<textarea id="cmt_area">发表回复...</textarea>
-									<div class="proceed">
-										<button class="btn" type="submit">回复</button>
-									</div>
-									<input type="text" value="name" /><input type="text"
-										value="email" /><input type="text" value="webSite" />
-								</div>
 							</div>
 							<div id="comment-2" class="cmt child">
 								<img alt="#"
@@ -274,6 +260,30 @@
 										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+						<div class="cmt head" id="reply-div">
+							<div class="quote">
+								
+							</div>
+						
+							<div class="user">
+								<img alt="#"
+									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
+								<textarea id="cmt_area">发表回复...</textarea>
+								<div class="proceed">
+									<button class="btn" type="submit">回复</button>
+								</div>
+							</div>
+							<div class="guest">
+								<img alt="#"
+									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
+								<textarea id="cmt_area">发表回复...</textarea>
+								<div class="proceed">
+									<button class="btn" type="submit">回复</button>
+								</div>
+								<input type="text" value="name" /><input type="text"
+									value="email" /><input type="text" value="webSite" />
 							</div>
 						</div>
 					</div>

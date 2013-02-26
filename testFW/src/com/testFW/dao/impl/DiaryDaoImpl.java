@@ -31,7 +31,7 @@ public class DiaryDaoImpl implements DiaryDao {
 
 	@Override
 	public List<DiaryBO> queryDiaryList(Long userId, int start, int end) {
-		String sql = "select * from diary where author_id = ? limit ?,?";
+		String sql = "select * from diary where author_id = ? order by publish_time desc limit ?,?";
 		Object[] param = {userId,start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
