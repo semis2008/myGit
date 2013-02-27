@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.UserBO;
 import com.testFW.dao.DiaryDao;
 import com.testFW.dao.template.DbUtilsTemplate;
 
@@ -48,6 +49,18 @@ public class DiaryDaoImpl implements DiaryDao {
 	public DiaryBO queryDiaryById(Long diaryId) {
 		String sql = "select * from diary where id = ?";
 		return dbUtilsTemplate.findFirst(DiaryBO.class, sql,diaryId);
+	}
+
+	@Override
+	public int insertReply(String diaryId, String parentId, String reply,
+			UserBO user) {
+		return 0;
+	}
+
+	@Override
+	public int insertReply(String diaryId, String parentId, String reply,
+			String name, String email, String website) {
+		return 0;
 	}
 
 }

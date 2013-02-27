@@ -82,5 +82,30 @@ public class DiaryServiceImpl implements DiaryService{
 	public DiaryBO getDiaryByID(String diaryId) {
 		return diaryDao.queryDiaryById(Long.parseLong(diaryId));
 	}
+
+	@Override
+	public int newGuestReply(HttpServletRequest req, HttpServletResponse resp) {
+		String reply = req.getParameter("reply");
+		String name = req.getParameter("name");
+		String email = req.getParameter("email");
+		String website = req.getParameter("website");
+		String diaryId = req.getParameter("diaryid");
+		String parentId = req.getParameter("replyid");
+		 
+		return diaryDao.insertReply(diaryId,parentId,reply,name,email,website);
+	}
+
+	@Override
+	public int newUserReply(HttpServletRequest req, HttpServletResponse resp) {
+		String reply = req.getParameter("reply");
+		String name = req.getParameter("name");
+		String email = req.getParameter("email");
+		String website = req.getParameter("website");
+		String diaryId = req.getParameter("diaryid");
+		String parentId = req.getParameter("replyid");
+		UserBO user = UserUtil.getLoginUser(req, resp);
+		 
+		return diaryDao.insertReply(diaryId,parentId,reply,user);
+	}
 	 
 }

@@ -23,6 +23,21 @@ public interface DiaryService {
 	 int newDiary(HttpServletRequest req, HttpServletResponse resp);
 	 
 	 /**
+	  * 登录用户发表回复
+	  * @param req
+	  * @param resp
+	  * @return
+	  */
+	 int newUserReply(HttpServletRequest req, HttpServletResponse resp);
+	 
+	 /**
+	  * 游客发表回复
+	  * @param req
+	  * @param resp
+	  * @return
+	  */
+	 int newGuestReply(HttpServletRequest req, HttpServletResponse resp);
+	 /**
 	  * 获取日志列表
 	  * @param req
 	  * @param resp

@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 import com.testFW.service.DiaryService;
 
 /**
- * 日志相关处理类 
+ * 日志相关处理类
+ * 
  * @author kalor
  * @time 2013-1-24 at 下午04:11:17
  */
@@ -23,7 +24,7 @@ public class DiaryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(DiaryServlet.class);
 	private DiaryService diaryService;
-	
+
 	public void setDiaryService(DiaryService diaryService) {
 		this.diaryService = diaryService;
 	}
@@ -41,11 +42,14 @@ public class DiaryServlet extends HttpServlet {
 		String fun = (String) req.getParameter("fun");
 		if ("newdiary".equals(fun)) {
 			newDiary(req, resp);
-		}  
+		} else if ("newreply".equals(fun)) {
+			newReply(req, resp);
+		}
 	}
-	 
+
 	/**
-	 * 发布日志 
+	 * 发布日志
+	 * 
 	 * @param req
 	 * @param resp
 	 * @throws IOException
@@ -53,17 +57,43 @@ public class DiaryServlet extends HttpServlet {
 	private void newDiary(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		PrintWriter out = resp.getWriter();
-		int result = diaryService.newDiary(req,resp);
+		int result = diaryService.newDiary(req, resp);
 		String msg = "";
-		if(result<1) {
+		if (result < 1) {
 			msg = "fail";
-		}else {
-			msg = result+"";
-		}		 
+		} else {
+			msg = result + "";
+		}
 		out.print(msg);
 		out.flush();
 		out.close();
 	}
-	
-	 
+
+	/**
+	 * 新建回复
+	 * @param req
+	 * @param resp
+	 * @throws IOException
+	 */
+	private void newReply(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String type = req.getParameter("type");
+		int result = 0;
+		if("user".equals(type)) {
+			result = diaryService.newUserReply(req, resp);
+		} else if("guest".equals(type)) {
+			result = diaryService.newGuestReply(req, resp);
+		}
+		String msg = "";
+		if (result < 1) {
+			msg = "fail";
+		} else {
+			msg = "success";
+		}
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+
 }

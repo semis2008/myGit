@@ -3,6 +3,7 @@ package com.testFW.dao;
 import java.util.List;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.UserBO;
 
 /**
  * 日志数据处理接口 
@@ -21,6 +22,28 @@ public interface DiaryDao {
 	 * @return 受影响的行的主键
 	 */
 	 int insertDiary(String title,String tags,String diaryContent,Long userId,String userName);
+	 
+	 /**
+	  * 插入新回复
+	  * @param diaryId 日志id
+	  * @param parentId 上级id 0为回复的日志，其余为回复的日志回复
+	  * @param reply 回复内容
+	  * @param user 用户
+	  * @return
+	  */
+	 int insertReply(String diaryId,String parentId,String reply,UserBO user);
+	 
+	 /**
+	  * 插入新回复
+	  * @param diaryId 日志id
+	  * @param parentId 上级id 0为回复的日志，其余为回复的日志回复
+	  * @param reply 回复内容
+	  * @param name 姓名
+	  * @param email 邮箱
+	  * @param website 网站
+	  * @return
+	  */
+	 int insertReply(String diaryId,String parentId,String reply,String name,String email,String website);
 	 
 	 /**
 	  * 查询日志列表
