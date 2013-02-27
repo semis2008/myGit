@@ -101,8 +101,8 @@
 			</div>
 			<h1>
 				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-					title="testFW Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/easyfw.png" alt="TestFW Logo" />
+					title="wnJava Logo"><img
+					src="<%=ConstantsUtil.FW_DOMAIN%>/img/logo.png" alt="wnJava Logo" />
 				</a>
 			</h1>
 			<p>
