@@ -7,7 +7,7 @@ package com.testFW.util;
  *
  */
 public class ConstantsUtil {
-	public static String FW_DOMAIN = "http://www.easyFW.com";
+	public static String FW_DOMAIN = "http://semis2008.m3.fjjsp01.com";
 	//生日未设置时保存
 	public static String BIRTHDAY_NONE = "1700-11-11";
 	public static final String SALT = "a86aff6cf0a1";

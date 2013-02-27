@@ -44,8 +44,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/css/mainpage.css" rel="stylesheet" type="text/css" />
-<script language="javascript" type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
+
+<!-- google jquery link 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
+
+<script language="javascript" type="text/javascript" 
+ 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script> 
 <!-- aToolTip css -->
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
@@ -306,7 +310,7 @@
 									%>
 										<li>
 											<div class="news_cont">
-												<b><%=newDiary.getAuthor_name() %></b>在<em>16分钟前</em>发表了日志<a href="#">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
+												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %>前</em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
 											</div>
 										</li>
 										<%

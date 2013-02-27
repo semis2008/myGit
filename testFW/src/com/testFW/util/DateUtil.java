@@ -2,9 +2,11 @@ package com.testFW.util;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * 日期工具类
+ * 
  * @author Kalor
  * @time 2012-12-17
  */
@@ -70,24 +72,54 @@ public class DateUtil {
 		}
 		return res;
 	}
-	
+
 	/**
-	 * 获取所给时间到目前为止的友好的显示信息
-	 * 一小时之内：XX分钟；24小时之内：XX小时；1天之内：X月X日
-	 * @param date 所给时间
+	 * 获取所给时间到目前为止的友好的显示信息 一小时之内：XX分钟；24小时之内：XX小时；1天之内：X月X日
+	 * 
+	 * @param date
+	 *            所给时间
 	 * @return 友好的显示信息
 	 */
 	public static String getPassedTime(Date date) {
 		if (date == null)
 			return "";
 		Calendar cal = dateToCalendar(date);
-		//TODO 添加主要逻辑
-		return "";
+		// TODO 添加主要逻辑
+		int publishMonth = cal.get(Calendar.MONTH) + 1;
+		int publishDay = cal.get(Calendar.DAY_OF_MONTH);
+		int publishHour = cal.get(Calendar.HOUR_OF_DAY);
+		int publishMin = cal.get(Calendar.MINUTE);
+
+		Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00")); // 获取东八区时间
+		int month = c.get(Calendar.MONTH) + 1;
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		int hour = c.get(Calendar.HOUR_OF_DAY);
+		int min = c.get(Calendar.MINUTE);
+
+		/*
+		 * 1小时内返回 ‘XXX分钟’
+		 */
+		if (publishMonth == month && publishDay == day && publishHour == hour) {
+			return min - publishMin + "分钟";
+		}
+
+		/*
+		 * 24小时之内返回 ‘XXX小时’
+		 */
+		if (publishMonth == month
+				&& (publishDay == day || publishDay == day - 1
+						&& hour < publishHour)) {
+			if (publishDay == day)
+				return hour - publishHour + "小时";
+			if (publishDay == day - 1)
+				return 24 - (publishHour - hour) + "小时";
+		}
+		return publishMonth + "月" + publishDay + "日";
 	}
 
 	public static void main(String args[]) {
 		Calendar now = getTimeNow();
-		
+
 		System.out.print(now.getTimeInMillis());
 	}
 }

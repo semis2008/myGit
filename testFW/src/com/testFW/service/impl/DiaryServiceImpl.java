@@ -1,5 +1,6 @@
 package com.testFW.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,22 @@ public class DiaryServiceImpl implements DiaryService{
 		
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("totalPage", totalPage);
-		return diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
+		List<DiaryBO> diaryList = diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
+		/*
+		 * 置顶业务处理
+		 */
+		List<DiaryBO> afterDiaryList = new ArrayList<DiaryBO>();
+		if(UserUtil.getVisitedUser(req, resp).getUser_level().equals("3")) {
+			for(DiaryBO diary:diaryList) {
+				if(diary.getTags().contains("置顶")) {
+					afterDiaryList.add(diary);
+					diaryList.remove(diary);
+					break;
+				}
+			}
+			afterDiaryList.addAll(diaryList);
+		}
+		return afterDiaryList;
 	}
 
 	@Override

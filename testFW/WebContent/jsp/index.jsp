@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <%
-	response.sendRedirect("http://www.easyfw.com/action/system/mainpage");
+	response.sendRedirect("http://semis2008.m3.fjjsp01.com/action/system/mainpage");
 %>
 <body>
 </body>
