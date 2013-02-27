@@ -145,13 +145,15 @@
 					<div class="aboutProcess">
 						<div class="timeline">
 							<ul class="events">
-								<li style="width: 20%; left: 5%;">构建开发环境<em>(12/07~14)</em>
+								<li style="width: 15%; left: 5%;">构建开发环境<em>(12/07~14)</em>
 								</li>
-								<li style="width: 22%; left: 15%;">完成主体框架<em>(12/10~19)</em>
+								<li style="width: 15%; left: 15%;">完成主体框架<em>(12/10~19)</em>
 								</li>
-								<li style="width: 24%; left: 28.4%;">前台页面设计<em>(12/18~1/13)</em>
+								<li style="width: 24%; left: 24%;">前台页面设计<em>(12/18~1/13)</em>
 								</li>
-								<li style="width: 22%; left: 44%;">逻辑功能实现<em>(1/14~now)</em>
+								<li style="width: 36%; left: 35%;">逻辑功能实现<em>(1/14~now)</em>
+								</li>
+								<li style="width: 21%; left: 50%;">beta版上线<em>(2/26~now)</em>
 								</li>
 							</ul>
 							<ul class="intervals">
@@ -159,6 +161,7 @@
 								<li>2012-12-10</li>
 								<li>2012-12-20</li>
 								<li>2012-1-13</li>
+								<li>2012-2-26</li>
 								<li class="last">now</li>
 							</ul>
 							<!-- end .intervals -->

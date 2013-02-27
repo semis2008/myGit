@@ -100,7 +100,7 @@ public class DateUtil {
 		 * 1小时内返回 ‘XXX分钟’
 		 */
 		if (publishMonth == month && publishDay == day && publishHour == hour) {
-			return min - publishMin + "分钟";
+			return min - publishMin + "分钟前";
 		}
 
 		/*
@@ -110,9 +110,9 @@ public class DateUtil {
 				&& (publishDay == day || publishDay == day - 1
 						&& hour < publishHour)) {
 			if (publishDay == day)
-				return hour - publishHour + "小时";
+				return hour - publishHour + "小时前";
 			if (publishDay == day - 1)
-				return 24 - (publishHour - hour) + "小时";
+				return 24 - (publishHour - hour) + "小时前";
 		}
 		return publishMonth + "月" + publishDay + "日";
 	}

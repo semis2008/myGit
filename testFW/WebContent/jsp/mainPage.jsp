@@ -310,7 +310,7 @@
 									%>
 										<li>
 											<div class="news_cont">
-												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %>前</em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
+												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %></em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
 											</div>
 										</li>
 										<%

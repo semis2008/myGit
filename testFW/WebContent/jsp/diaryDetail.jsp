@@ -66,7 +66,22 @@
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
+		
+		//回复div的js效果
+		$('.cmt_area').focus(function () {
+			var value = $('.cmt_area').text();
+			if(value == '发表回复...') {
+				$('.cmt_area').text('');
+			}
+		});
+		$('.cmt_area').blur(function () {
+			var value = $('.cmt_area').text();
+			if(value == '') {
+				$('.cmt_area').text('发表回复...');
+			}
+		});
 	});
+	
 </script>
 <title>日志详情</title>
 </head>
@@ -186,20 +201,20 @@
 						</div>
 					</div>
 					<div id="comments">
-						<h2 class="comments-title">
+						<div class="comments-title">
 							日志“<a href="#"><%=diary.getTitle() %></a>”
 							<%
 							if(diary.getReply()==0l) {
 							%>
-							还没有被评论过，来做第一个<a href="#">评论</a>的吧~
+							还没有人回复哦，来做第一个<a href="#reply-div">回复</a>的吧~
+							</div>
 							<%
 							}else {
 							%>
 							有<%=diary.getReply() %>条回复
-							<%
-							} 
-							%>
-						</h2>
+						</div>
+						
+						
 						<div id="comment-1" class="cmt top">
 							<img alt="#"
 								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg" />
@@ -266,29 +281,36 @@
 								</div>
 							</div>
 						</div>
+						<%
+							} 
+						%>
 						<div class="cmt head" id="reply-div">
-							<div class="quote">
+							<div class="quote" style="display: none;">
 								
 							</div>
-						
+							<%
+							if(hasLogin) {
+							%>
 							<div class="user">
 								<img alt="#"
 									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-								<textarea id="cmt_area">发表回复...</textarea>
+								<textarea class="cmt_area">发表回复...</textarea>
 								<div class="proceed">
-									<button class="btn" type="submit">回复</button>
+									<button class="btn" type="submit" onclick="commitReplyLogin()">回复</button>
 								</div>
 							</div>
+							<%}else { %>
 							<div class="guest">
 								<img alt="#"
 									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
-								<textarea id="cmt_area">发表回复...</textarea>
+								<textarea class="cmt_area">发表回复...</textarea>
 								<div class="proceed">
-									<button class="btn" type="submit">回复</button>
+									<button class="btn" type="submit" onclick="commitReplyLogin()">回复</button>
 								</div>
 								<input type="text" value="name" /><input type="text"
 									value="email" /><input type="text" value="webSite" />
 							</div>
+							<%} %>
 						</div>
 					</div>
 				</div>

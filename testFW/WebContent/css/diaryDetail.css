@@ -99,7 +99,8 @@ div.art-cats li.tag a {
     font-size: 18px;
     font-weight: bold;
     line-height: 24px;
-    margin: 5px 0 24px;
+    margin-bottom: 5px 0 24px;
+    height: 40px;
 }
 #comments .cmt.top {
 	border-bottom: 1px solid #cccccc;
