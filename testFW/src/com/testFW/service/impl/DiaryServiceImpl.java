@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.DiaryReplyBO;
 import com.testFW.bo.UserBO;
 import com.testFW.dao.DiaryDao;
 import com.testFW.service.DiaryService;
@@ -90,22 +91,30 @@ public class DiaryServiceImpl implements DiaryService{
 		String email = req.getParameter("email");
 		String website = req.getParameter("website");
 		String diaryId = req.getParameter("diaryid");
-		String parentId = req.getParameter("replyid");
+		String parentId = req.getParameter("parentid");
 		 
-		return diaryDao.insertReply(diaryId,parentId,reply,name,email,website);
+		int result = diaryDao.insertReply(diaryId,parentId,reply,name,email,website);
+		/*
+		 * 更新日志回复数
+		 */
+		diaryDao.updateDiaryReplyNum(diaryId);
+		
+		return result;
 	}
 
 	@Override
 	public int newUserReply(HttpServletRequest req, HttpServletResponse resp) {
 		String reply = req.getParameter("reply");
-		String name = req.getParameter("name");
-		String email = req.getParameter("email");
-		String website = req.getParameter("website");
 		String diaryId = req.getParameter("diaryid");
-		String parentId = req.getParameter("replyid");
+		String parentId = req.getParameter("parentid");
 		UserBO user = UserUtil.getLoginUser(req, resp);
 		 
 		return diaryDao.insertReply(diaryId,parentId,reply,user);
+	}
+
+	@Override
+	public List<DiaryReplyBO> getDiaryReplyById(String diaryid) {
+		return  diaryDao.queryDiaryReplyById(diaryid);
 	}
 	 
 }

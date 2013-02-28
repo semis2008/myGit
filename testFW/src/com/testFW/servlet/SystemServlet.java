@@ -13,6 +13,7 @@ import org.codehaus.xfire.transport.Session;
 import org.springframework.stereotype.Component;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.DiaryReplyBO;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
@@ -151,8 +152,10 @@ public class SystemServlet extends HttpServlet {
 		 */
 		//获取日志主要内容
 		DiaryBO diary = diaryService.getDiaryByID(param);
-		//TODO 获取日志回复信息
+		//获取日志回复信息
+		List<DiaryReplyBO> replies = diaryService.getDiaryReplyById(param);
 		
+		req.setAttribute("replies", replies);
 		req.setAttribute("diary", diary);
 		return "/jsp/diaryDetail.jsp";
 	}

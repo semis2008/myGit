@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.testFW.bo.DiaryReplyBO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="com.testFW.util.DateUtil"%>
 <%@page import="com.testFW.bo.DiaryBO"%>
@@ -12,6 +15,10 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	DiaryBO diary = (DiaryBO) request.getAttribute("diary");
+	List<DiaryReplyBO> replies = (List<DiaryReplyBO>)request.getAttribute("replies");
+	if(replies == null) {
+		replies = new ArrayList<DiaryReplyBO>();
+	}
 	if (diary == null) {
 		diary = new DiaryBO();
 	}
@@ -92,13 +99,13 @@
 		});
 	});
 
-	//游客回复
-	function commitReplyGuest() {
-		var content = $('.cmt_area').text();
+	//游客回复,parentidw：回复日志：0，回复评论：评论id
+	function commitReplyGuest(parentid) {
+		var content = $('.cmt_area').val();
 		var name = $("#guest_name").val();
 		var email = $("#guest_email").val();
 		var website = $("#guest_website").val();
-		if ($.trim(content == '' || $.trim(name) == '' || $.trim(email) == '')) {
+		if ($.trim(content) == '' || $.trim(name) == '' || $.trim(email) == '') {
 			return;
 		}
 		var emailRegExp = new RegExp(
@@ -110,19 +117,27 @@
 		if(website == 'webSite') {
 			website = '';
 		}
+		var diaryid = $("#diaryId").val();
 		$.ajax({
 			type : "POST",
 			url : "/action/diary/newreply",
 			dataType : "text",
 			data : {
-				content : content,
+				diaryid : diaryid,
+				parentid : parentid,
+				type : "guest",
+				reply : content,
 				name : name,
 				email : email,
 				website : website
 			},
 			success : function(msg) {
 				//刷新回复列表，清空回复信息
-								
+				if(msg=='fail') {
+					alert("回复失败！");
+				}else if(msg == 'success') {
+					alert("回复成功！");
+				}				
 			}
 		});
 	}
@@ -322,7 +337,9 @@
 						}
 					%>
 					<div class="cmt head" id="reply-div">
-						<div class="quote" style="display: none;"></div>
+						<div class="quote" style="display: none;">
+						
+						</div>
 						<%
 							if (hasLogin) {
 						%>
@@ -331,7 +348,7 @@
 								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
-								<button class="btn" type="submit" onclick="commitReplyUser()">回复</button>
+								<button class="btn" type="submit" onclick="commitReplyUser(0)">回复</button>
 							</div>
 						</div>
 						<%
@@ -342,7 +359,7 @@
 								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
-								<button class="btn" type="submit" onclick="commitReplyGuest()">回复</button>
+								<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
 							</div>
 							<input type="text" id="guest_name" value="name" /><input
 								type="text" id="guest_email" value="email" /><input type="text"
@@ -354,6 +371,8 @@
 					</div>
 				</div>
 			</div>
+			<!-- 隐藏域，提供日志id信息 -->
+			<input id="diaryId" value="<%=diary.getId() %>" type="hidden"/>
 			<div class="section_wrap more_padding">
 				<h3>
 					<strong>1989</strong> Keep learning &amp; Remain Modest.

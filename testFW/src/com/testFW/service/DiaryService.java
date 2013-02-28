@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.DiaryReplyBO;
 
 /**
  * 日志业务处理类 
@@ -59,4 +60,11 @@ public interface DiaryService {
 	  * @return 日志实体类
 	  */
 	 DiaryBO getDiaryByID(String diaryId);
+	 
+	 /**
+	  * 获取指定日志的所有回复
+	  * @param diaryid 日志id
+	  * @return
+	  */
+	 List<DiaryReplyBO> getDiaryReplyById(String diaryid);
 }

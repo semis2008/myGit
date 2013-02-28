@@ -3,6 +3,7 @@ package com.testFW.dao;
 import java.util.List;
 
 import com.testFW.bo.DiaryBO;
+import com.testFW.bo.DiaryReplyBO;
 import com.testFW.bo.UserBO;
 
 /**
@@ -67,4 +68,18 @@ public interface DiaryDao {
 	  * @return 日志实体类
 	  */
 	 DiaryBO queryDiaryById(Long diaryId);
+	 
+	 /**
+	  * 获取指定日志的回复信息
+	  * @param diaryid 日志id
+	  * @return 日志回复信息list
+	  */
+	 List<DiaryReplyBO> queryDiaryReplyById(String diaryid);
+	 
+	 /**
+	  * 日志回复数加一
+	  * @param diaryid 日志id
+	  * @return 
+	  */
+	 int updateDiaryReplyNum(String diaryid);
 }
