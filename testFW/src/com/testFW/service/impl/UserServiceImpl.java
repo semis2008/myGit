@@ -11,6 +11,7 @@ import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.service.UserService;
+import com.testFW.util.ConstantsUtil;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
 
@@ -92,22 +93,24 @@ public class UserServiceImpl implements UserService{
 		String msg = req.getParameter("msg");
 		String email = "";
 		String name = "";
+		int num = 0;
 		if("login".equals(type)) {
 			UserBO loginUser = UserUtil.getLoginUser(req, resp);
 			email = loginUser.getEmail();
 			name = loginUser.getName();
+			userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId(),loginUser.getId(),loginUser.getPhoto());
 		}else if("logout".equals(type)) {
 			email = req.getParameter("email");
 			name = req.getParameter("name");
+			userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId(),null,ConstantsUtil.DEFAULT_HEAD_PHOTO);
 		}else {
 			return false;
 		}
-		int num = userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId());
 		if(num<1) {
 			return false;
 		}else {
+			return true;
 		}
-		return true;
 	}
 	
 	@Override

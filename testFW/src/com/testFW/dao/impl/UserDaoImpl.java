@@ -69,9 +69,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertLeaveMsg(String email, String name, String msg,
-			String type, Long id) {
-		String sql = "insert into leavemsg (email,name,msg,leave_time,visited_user_id,type) values (?,?,?,now(),?,?)";
-		Object[] param = { email, name, msg, id, type };
+			String type, Long visitedUserId, Long userId, String userPhoto) {
+		String sql = "insert into leavemsg (email,name,msg,leave_time,visited_user_id,user_id,user_photo,type) values (?,?,?,now(),?,?,?,?)";
+		Object[] param = { email, name, msg, visitedUserId,userId, userPhoto, type };
 		return dbUtilsTemplate.update(sql, param);
 	}
 

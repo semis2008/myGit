@@ -170,13 +170,13 @@
 					</div>
 				</div>
 				<div class="section_wrap more_padding">
-					<h3>
-						<strong>1989</strong> Keep learning &amp; Remain Modest.
-					</h3>
-					<small>&copy; Copyright 2012 TestFW. All rights reserved.
-						Designed by <a target="_blank"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
-				</div>
+				<h3>
+					<strong>1989</strong> Keep learning &amp; Remain Modest.
+				</h3>
+				<small>&copy; Copyright 2013 WnJava. All rights reserved.
+					Designed by <a target="_blank"
+					href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
+			</div>
 			</div>
 		</div>
 	</div>

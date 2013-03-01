@@ -346,10 +346,20 @@
 									for(LeaveMsgBO leaveMsg:leaveMsgList) {									
 									%>
 										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg"
+											src="<%=ConstantsUtil.FW_DOMAIN+leaveMsg.getUser_photo() %>"
 											alt="" />
 											<div class="reply_r">
-												<a href="" class="name"><%=leaveMsg.getName() %></a>
+												<%
+													if("login".equals(leaveMsg.getType())) {
+												%>
+													<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=leaveMsg.getUser_id() %>" class="name"><%=leaveMsg.getName() %></a>		
+												<% 
+													}else {
+												%>	
+													<a href="#" class="name"><%=leaveMsg.getName() %></a>
+												<%
+													}
+												%>
 												<p class="time">
 													<em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.DAY_OF_MONTH) %>
 												</p>
@@ -427,9 +437,9 @@
 						<h3>
 							<strong>1989</strong> Keep learning &amp; Remain Modest.
 						</h3>
-						<small>&copy; Copyright 2012 TestFW. All rights reserved.
+						<small>&copy; Copyright 2013 WnJava. All rights reserved.
 							Designed by <a target="_blank"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
 					</div>
 				</div>
 			</div>

@@ -216,11 +216,11 @@ lTip();
 				</div>
 				<div class="section_wrap more_padding">
 					<h3>
-						<strong>1989</strong> Keep Learning &amp; Remain Modest.
+						<strong>1989</strong> Keep learning &amp; Remain Modest.
 					</h3>
-					<small>&copy; Copyright 2012 TestFW. All rights reserved.
+					<small>&copy; Copyright 2013 WnJava. All rights reserved.
 						Designed by <a target="_blank"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
 				</div>
 			</div>
 		</div>

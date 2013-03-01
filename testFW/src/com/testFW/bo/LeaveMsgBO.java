@@ -14,8 +14,22 @@ public class LeaveMsgBO {
 	private String msg;
 	private Date leave_time;
 	private Long visited_user_id;
+	private Long user_id;
+	private String user_photo;
 	private String type;
 	
+	public Long getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
+	public String getUser_photo() {
+		return user_photo;
+	}
+	public void setUser_photo(String user_photo) {
+		this.user_photo = user_photo;
+	}
 	public Long getId() {
 		return id;
 	}

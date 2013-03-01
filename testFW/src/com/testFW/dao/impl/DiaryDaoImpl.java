@@ -72,8 +72,8 @@ public class DiaryDaoImpl implements DiaryDao {
 	}
 
 	@Override
-	public List<DiaryReplyBO> queryDiaryReplyById(String diaryid) {
-		String sql =  "select * form diary_reply where diary_id = ?";
+	public List<DiaryReplyBO> queryDiaryReplyById(Long diaryid) {
+		String sql =  "select * from diary_reply where diary_id=?";
 		return dbUtilsTemplate.find(DiaryReplyBO.class, sql, diaryid);
 	}
 
@@ -82,5 +82,4 @@ public class DiaryDaoImpl implements DiaryDao {
 		String sql = "update diary set reply = reply+1 where id = ?";
 		return dbUtilsTemplate.update(sql, diaryid);
 	}
-
 }

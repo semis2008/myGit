@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="com.testFW.util.UserUtil"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.testFW.bo.DiaryReplyBO"%>
 <%@page import="java.util.List"%>
@@ -138,6 +139,16 @@
 				}else if(msg == 'success') {
 					alert("回复成功！");
 				}				
+			}
+		});
+	}
+	function userQuit() {
+		$.ajax({
+			type : "POST",
+			url : "/action/user/userquit",
+			dataType : "text",
+			success : function(msg) {
+				location.reload();
 			}
 		});
 	}
@@ -345,7 +356,7 @@
 						%>
 						<div class="user">
 							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
+								src="<%=ConstantsUtil.FW_DOMAIN%><%=user.getPhoto() %>" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
 								<button class="btn" type="submit" onclick="commitReplyUser(0)">回复</button>
@@ -356,7 +367,7 @@
 						%>
 						<div class="guest">
 							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser.jpg" />
+								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/default/defaultGuest.jpg" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
 								<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
@@ -377,9 +388,9 @@
 				<h3>
 					<strong>1989</strong> Keep learning &amp; Remain Modest.
 				</h3>
-				<small>&copy; Copyright 2012 TestFW. All rights reserved.
+				<small>&copy; Copyright 2013 WnJava. All rights reserved.
 					Designed by <a target="_blank"
-					href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
+					href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
 			</div>
 		</div>
 	</div>

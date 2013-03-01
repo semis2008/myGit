@@ -114,7 +114,7 @@ public class DiaryServiceImpl implements DiaryService{
 
 	@Override
 	public List<DiaryReplyBO> getDiaryReplyById(String diaryid) {
-		return  diaryDao.queryDiaryReplyById(diaryid);
+		return  diaryDao.queryDiaryReplyById(Long.parseLong(diaryid));
 	}
 	 
 }

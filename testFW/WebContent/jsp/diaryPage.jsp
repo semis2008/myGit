@@ -86,6 +86,16 @@
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
 	});
+	function userQuit() {
+		$.ajax({
+			type : "POST",
+			url : "/action/user/userquit",
+			dataType : "text",
+			success : function(msg) {
+				location.reload();
+			}
+		});
+	}
 </script>
 <title>日志</title>
 </head>
@@ -226,9 +236,9 @@
 					<h3>
 						<strong>1989</strong> Keep learning &amp; Remain Modest.
 					</h3>
-					<small>&copy; Copyright 2012 TestFW. All rights reserved.
+					<small>&copy; Copyright 2013 WnJava. All rights reserved.
 						Designed by <a target="_blank"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/user/1">Kalor</a> </small><br><br>
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
 				</div>
 			</div>
 		</div>

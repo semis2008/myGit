@@ -74,7 +74,7 @@ public interface DiaryDao {
 	  * @param diaryid 日志id
 	  * @return 日志回复信息list
 	  */
-	 List<DiaryReplyBO> queryDiaryReplyById(String diaryid);
+	 List<DiaryReplyBO> queryDiaryReplyById(Long diaryid);
 	 
 	 /**
 	  * 日志回复数加一

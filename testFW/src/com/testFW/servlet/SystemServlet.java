@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import org.codehaus.xfire.transport.Session;
 import org.springframework.stereotype.Component;
 
 import com.testFW.bo.DiaryBO;

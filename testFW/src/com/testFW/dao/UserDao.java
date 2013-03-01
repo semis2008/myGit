@@ -97,8 +97,8 @@ public interface UserDao {
 	 *            被访问者id
 	 * @return
 	 */
-	int insertLeaveMsg(String email, String name, String msg, String type,
-			Long id);
+	int insertLeaveMsg(String email, String name, String msg,
+			String type, Long visitedUserId, Long userId, String userPhoto);
 
 	/**
 	 * 依据用户id查询用户详细信息

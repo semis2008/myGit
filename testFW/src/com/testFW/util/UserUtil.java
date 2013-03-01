@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.testFW.bo.UserBO;
+import com.testFW.bo.UserInfoBO;
 
 /**
  * 用户工具类--session相关
@@ -81,7 +82,7 @@ public class UserUtil {
 		UserBO user = (UserBO) session.getAttribute("visitedUser");
 		return user;
 	}
-
+	 
 	/**
 	 * 用户手动退出
 	 * 
