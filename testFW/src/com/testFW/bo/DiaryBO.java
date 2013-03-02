@@ -10,8 +10,20 @@ public class DiaryBO{
 	private String author_name;
 	private Date publish_time;
 	private String tags;
-	private Long read;
-	private Long reply;
+	private Long read_num;
+	public Long getRead_num() {
+		return read_num;
+	}
+	public void setRead_num(Long read_num) {
+		this.read_num = read_num;
+	}
+	public Long getReply_num() {
+		return reply_num;
+	}
+	public void setReply_num(Long reply_num) {
+		this.reply_num = reply_num;
+	}
+	private Long reply_num;
 	private String status;
 	public Long getId() {
 		return id;
@@ -51,19 +63,7 @@ public class DiaryBO{
 	}
 	public String getTags() {
 		return tags;
-	}
-	public Long getRead() {
-		return read;
-	}
-	public void setRead(Long read) {
-		this.read = read;
-	}
-	public Long getReply() {
-		return reply;
-	}
-	public void setReply(Long reply) {
-		this.reply = reply;
-	}
+	} 
 	public void setTags(String tags) {
 		this.tags = tags;
 	}

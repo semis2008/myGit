@@ -142,6 +142,30 @@
 			}
 		});
 	}
+	//会员回复,parentidw：回复日志：0，回复评论：评论id
+	function commitReplyUser(parentid) {
+		var content = $('.cmt_area').val();
+		var diaryid = $("#diaryId").val();
+		$.ajax({
+			type : "POST",
+			url : "/action/diary/newreply",
+			dataType : "text",
+			data : {
+				diaryid : diaryid,
+				parentid : parentid,
+				type : "user",
+				reply : content
+			},
+			success : function(msg) {
+				//刷新回复列表，清空回复信息
+				if(msg=='fail') {
+					alert("回复失败！");
+				}else if(msg == 'success') {
+					alert("回复成功！");
+				}				
+			}
+		});
+	}
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -253,7 +277,7 @@
 								</a>
 							</h1>
 							<p class="comment-count">
-								<a title="回复数" href="#"><%=diary.getReply()%></a>
+								<a title="回复数" href="#"><%=diary.getReply_num()%></a>
 							</p>
 							<div class="art-meta">
 								Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span
@@ -269,84 +293,40 @@
 						<div class="comments-title">
 							日志“<a href="#"><%=diary.getTitle()%></a>”
 							<%
-							if (diary.getReply() == 0l) {
+							if (diary.getReply_num() == 0l) {
 						%>
 							还没有人回复哦，来做第一个<a href="#reply-div">回复</a>的吧~
 						</div>
 						<%
 							} else {
 						%>
-						有<%=diary.getReply()%>条回复
-					</div>
-					<div id="comment-1" class="cmt top">
-						<img alt="#"
-							src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg" />
-						<div class="commentR">
-							<a href="#" class="name">Kalor</a><a href="#" class="reply">回复</a>
-							<p class="time">08.07 12:45</p>
-							<div>在这里，直接和我说话吧</div>
-						</div>
-						<div id="comment-2" class="cmt child">
-							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-							<div class="commentR">
-								<a href="" class="name">水晶</a><a rel="188" href="#"
-									class="reply">回复</a>
-								<p class="time">09.15 03:49</p>
-								<div>
-									<a class="parent" href="#comment-1">@Kalor</a>&nbsp;&nbsp;快点吧
-								</div>
-							</div>
-							<div id="comment-2" class="cmt child">
-								<img alt="#"
-									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg" />
-								<div class="commentR">
-									<a href="" class="name">馒头</a><a rel="188" href="#"
-										class="reply">回复</a>
-									<p class="time">09.15 03:49</p>
-									<div class="txt">
-										<a class="parent" href="#comment-1">@Kalor</a>&nbsp;&nbsp;快点吧
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="comment-1" class="cmt top">
-						<img alt="#"
-							src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_boy.jpg" />
-						<div class="commentR">
-							<a href="#" class="name">Kalor</a><a href="#" class="reply">回复</a>
-							<p class="time">08.07 12:45</p>
-							<div>在这里，直接和assssssssssssdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss我说话吧</div>
-						</div>
-						<div id="comment-2" class="cmt child">
-							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-							<div class="commentR">
-								<a href="" class="name">水晶</a><a rel="188" href="#"
-									class="reply">回复</a>
-								<p class="time">09.15 03:49</p>
-								<div>
-									<a class="parent" href="#comment-1">@Kalor</a>&nbsp;&nbsp;快点adsasdasda啊水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水水吧
-								</div>
-							</div>
-							<div id="comment-2" class="cmt child">
-								<img alt="#"
-									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/mini/defaultUser_girl.jpg" />
-								<div class="commentR">
-									<a href="" class="name">水晶</a><a rel="188" href="#"
-										class="reply">回复</a>
-									<p class="time">09.15 03:49</p>
-									<div class="txt">
-										<a class="parent" href="#comment-1">@Kalor</a>&nbsp;&nbsp;快点吧
-									</div>
-								</div>
-							</div>
-						</div>
+						有<%=diary.getReply_num()%>条回复
 					</div>
 					<%
-						}
+						for(DiaryReplyBO reply:replies) {
+							if(reply.getParent_id()==0l) {
 					%>
+					<div id="comment<%=reply.getId() %>" class="cmt top">
+					<%
+							}else if(reply.getParent_id()>0l) {
+					%>
+					<div id="comment-2" class="cmt child">
+					<%
+							}
+					%>
+						<img alt="#"
+							src="<%=ConstantsUtil.FW_DOMAIN+reply.getUser_photo() %>" />
+						<div class="commentR">
+							<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=reply.getUser_id() %>" class="name"><%=reply.getUser_name() %></a><a href="#" class="reply">回复</a>
+							<p class="time"><%=DateUtil.formatDate(reply.getReply_time(),3) %></p>
+							<div><%=reply.getReply() %></div>
+						</div>
+					</div>	
+						<%
+							}
+						}
+						%>
+						
 					<div class="cmt head" id="reply-div">
 						<div class="quote" style="display: none;">
 						
@@ -359,7 +339,7 @@
 								src="<%=ConstantsUtil.FW_DOMAIN%><%=user.getPhoto() %>" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
-								<button class="btn" type="submit" onclick="commitReplyUser(0)">回复</button>
+								<button class="btn" type="submit" onclick="commitReplyUser()">回复</button>
 							</div>
 						</div>
 						<%
@@ -367,7 +347,7 @@
 						%>
 						<div class="guest">
 							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/default/defaultGuest.jpg" />
+								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/defaultGuest.jpg" />
 							<textarea class="cmt_area">发表回复...</textarea>
 							<div class="proceed">
 								<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>

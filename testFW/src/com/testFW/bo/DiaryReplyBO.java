@@ -17,6 +17,7 @@ public class DiaryReplyBO {
 	private String website;
 	private Date reply_time;
 	private Long parent_id;
+	private String user_photo;
 	private int type;
 	
 	public Long getId() {
@@ -24,6 +25,12 @@ public class DiaryReplyBO {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getUser_photo() {
+		return user_photo;
+	}
+	public void setUser_photo(String user_photo) {
+		this.user_photo = user_photo;
 	}
 	public Long getDiary_id() {
 		return diary_id;

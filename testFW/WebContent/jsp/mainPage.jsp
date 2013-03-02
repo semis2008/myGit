@@ -310,7 +310,7 @@
 									%>
 										<li>
 											<div class="news_cont">
-												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %></em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply() %>评/<%=newDiary.getRead() %>阅]</span>
+												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %></em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply_num() %>评/<%=newDiary.getRead_num() %>阅]</span>
 											</div>
 										</li>
 										<%
@@ -373,7 +373,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="content-gallery">
+					<div id="content-gallery" style="display: none;">
 						<div class="gallery-item" id="post-116">
 							<h2>
 								<a title="测试瀑布流日志标题" href="#">测试瀑布流日志标题

@@ -116,5 +116,10 @@ public class DiaryServiceImpl implements DiaryService{
 	public List<DiaryReplyBO> getDiaryReplyById(String diaryid) {
 		return  diaryDao.queryDiaryReplyById(Long.parseLong(diaryid));
 	}
+
+	@Override
+	public int updateDiaryRead(String diaryid) {
+		return diaryDao.updateDiaryRead(diaryid);
+	}
 	 
 }

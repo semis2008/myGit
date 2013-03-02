@@ -80,9 +80,22 @@ public class UserUtil {
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		UserBO user = (UserBO) session.getAttribute("visitedUser");
+		if(user==null) {
+			user = buildAdminUser();
+		}
 		return user;
 	}
 	 
+	private static UserBO buildAdminUser() {
+		UserBO user = new UserBO();
+		user.setId(1l);
+		user.setEmail("semis2008@126.com");
+		user.setName("偷懒的熊");
+		user.setUser_level("3");
+		user.setPhoto("/img/head/default/anime/5.jpg");
+		return user;
+	}
+	
 	/**
 	 * 用户手动退出
 	 * 

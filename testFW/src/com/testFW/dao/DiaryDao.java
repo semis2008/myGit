@@ -82,4 +82,11 @@ public interface DiaryDao {
 	  * @return 
 	  */
 	 int updateDiaryReplyNum(String diaryid);
+	 
+	 /**
+	  * 更新日志阅读数
+	  * @param diaryid 日志id 
+	  * @return
+	  */
+	 int updateDiaryRead(String diaryid);
 }

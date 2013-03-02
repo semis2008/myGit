@@ -208,7 +208,7 @@
 									</a>
 								</h1>
 								<p class="comment-count">
-									<a title="回复数" href="#"><%=diary.getReply()%></a>
+									<a title="回复数" href="#"><%=diary.getReply_num()%></a>
 								</p>
 								<div class="art-meta">
 									Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span

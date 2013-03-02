@@ -169,24 +169,24 @@ lTip();
 								class="fixedTip" title="点击标记该相册为喜爱">Like</a> </span>
 						</div>
 						<p>
-							<a class="fancybox-thumbs" title="这是测试图册的封面"
-								data-fancybox-group="thumb1" href="<%=imgPath%>4_b.jpg"><img
+							<a id="album1" class="fancybox-thumbs" title="这是测试图册的封面"
+								data-fancybox-group="thumb1" href="<%=imgPath%>1_1.jpg"><img
 								width="200" height="200" class="aligncenter size-medium"
-								src="<%=imgPath%>4_s.jpg" alt="这是测试图册的封面" /> </a> <a
+								src="<%=imgPath%>1_1.jpg" alt="这是测试图册的封面" /> </a> <a
 								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>3_b.jpg"><img
-								src="<%=imgPath%>3_s.jpg" alt="这是测试图片" /> </a> <a
+								data-fancybox-group="thumb1" href="<%=imgPath%>1_2.jpg"><img
+								src="<%=imgPath%>1_2.jpg" alt="这是测试图片" /> </a> <a
 								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>2_b.jpg"><img
-								src="<%=imgPath%>2_s.jpg" alt="这是测试图片" /> </a> <a
+								data-fancybox-group="thumb1" href="<%=imgPath%>1_3.jpg"><img
+								src="<%=imgPath%>1_3.jpg" alt="这是测试图片" /> </a> <a
 								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb1" href="<%=imgPath%>1_b.jpg"><img
-								src="<%=imgPath%>1_s.jpg" alt="这是测试图片" /> </a>
+								data-fancybox-group="thumb1" href="<%=imgPath%>1_4.jpg"><img
+								src="<%=imgPath%>1_4.jpg" alt="这是测试图片" /> </a>
 						</p>
 						<a class="btn_details_only"
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture/1">Details</a>
 						<a title="预览" class="btn_preview_w_details"
-							onclick="javascript:$('.fancybox-thumbs').click();">Preview</a>
+							onclick="javascript:$('#album1').click();">Preview</a>
 					</div>
 					<div id="post-2" class="album">
 						<div class="iLikeThis" id="iLikeThis-2">
@@ -194,24 +194,27 @@ lTip();
 								class="fixedTip" title="点击标记该相册为喜爱">Like</a> </span>
 						</div>
 						<p>
-							<a class="fancybox-thumbs" title="这是测试图册的封面"
-								data-fancybox-group="thumb2" href="<%=imgPath%>4_b.jpg"><img
+							<a id="album2" class="fancybox-thumbs" title="时光镜面"
+								data-fancybox-group="thumb2" href="<%=imgPath%>2_1.jpg"><img
 								width="200" height="200" class="aligncenter size-medium"
-								src="<%=imgPath%>4_s.jpg" alt="这是测试图册的封面" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>3_b.jpg"><img
-								src="<%=imgPath%>3_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>2_b.jpg"><img
-								src="<%=imgPath%>2_s.jpg" alt="这是测试图片" /> </a> <a
-								style="display: none" title="这是测试图片" class="fancybox-thumbs"
-								data-fancybox-group="thumb2" href="<%=imgPath%>1_b.jpg"><img
-								src="<%=imgPath%>1_s.jpg" alt="这是测试图片" /> </a>
+								src="<%=imgPath%>2_1.jpg" alt="时光镜面" /> </a> <a
+								style="display: none" title="大一圣诞夜，哈哈~" class="fancybox-thumbs"
+								data-fancybox-group="thumb2" href="<%=imgPath%>2_2.jpg"><img
+								src="<%=imgPath%>2_2.jpg" alt="大一圣诞夜，哈哈~" /> </a> <a
+								style="display: none" title="看到这张相片我才知道什么叫做年轻真好~" class="fancybox-thumbs"
+								data-fancybox-group="thumb2" href="<%=imgPath%>2_3.jpg"><img
+								src="<%=imgPath%>2_3.jpg" alt="看到这张相片我才知道什么叫做年轻真好~" /> </a> <a
+								style="display: none" title="不知道是不是最全的一张合影？" class="fancybox-thumbs"
+								data-fancybox-group="thumb2" href="<%=imgPath%>2_4.jpg"><img
+								src="<%=imgPath%>2_4.jpg" alt="不知道是不是最全的一张合影？" /> </a>
+								 <a style="display: none" title="这撒货现在各奔东西啦~" class="fancybox-thumbs"
+								data-fancybox-group="thumb2" href="<%=imgPath%>2_5.jpg"><img
+								src="<%=imgPath%>2_5.jpg" alt="这撒货现在各奔东西啦~" /> </a>
 						</p>
 						<a class="btn_details_only"
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture/2">Details</a>
 						<a title="预览" class="btn_preview_w_details"
-							onclick="javascript:$('.fancybox-thumbs').click();">Preview</a>
+							onclick="javascript:$('#album2').click();">Preview</a>
 					</div>
 				</div>
 				<div class="section_wrap more_padding">
