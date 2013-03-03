@@ -92,7 +92,7 @@ public class DiaryServiceImpl implements DiaryService{
 		String website = req.getParameter("website");
 		String diaryId = req.getParameter("diaryid");
 		String parentId = req.getParameter("parentid");
-		 
+		if(parentId==null) parentId = "0";
 		int result = diaryDao.insertReply(diaryId,parentId,reply,name,email,website);
 		/*
 		 * 更新日志回复数
@@ -108,8 +108,14 @@ public class DiaryServiceImpl implements DiaryService{
 		String diaryId = req.getParameter("diaryid");
 		String parentId = req.getParameter("parentid");
 		UserBO user = UserUtil.getLoginUser(req, resp);
-		 
-		return diaryDao.insertReply(diaryId,parentId,reply,user);
+		if(parentId==null) parentId = "0";
+	 
+		int result = diaryDao.insertReply(diaryId,parentId,reply,user);
+		/*
+		 * 更新日志回复数
+		 */
+		diaryDao.updateDiaryReplyNum(diaryId);
+		return result;
 	}
 
 	@Override

@@ -138,7 +138,7 @@
 .topbar_reply{
 	margin-top:6px;
 	padding-left:6px;
-	display: none;
+	display: inline-block;
 	font-size: 11px;
 	color: #fafafa;
 }
@@ -195,7 +195,7 @@
 .topbar_news{
 	margin-top:6px;
 	padding-left:6px;
-	display:inline-block;
+	display:none;
 	color: #fafafa;
 }
 .topbar_news li{
@@ -237,6 +237,9 @@
 }
 .topbar_info:HOVER .set_info_btn{
 	display: block;
+}
+.reply_r a ,.reply_r a.link{
+	color: white;
 }
 .setHead{
 	position: absolute;

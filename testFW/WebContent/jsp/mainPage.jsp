@@ -299,8 +299,8 @@
 						</div>
 						<div class="topbar_msg">
 							<div class="topbar_navi">
-								<a href="#" title="回复" class="navi_reply"></a> <a href="#"
-									title="动态" class="navi_news on"></a>
+								<a href="#" title="回复" class="navi_reply on"></a> <a href="#"
+									title="动态" class="navi_news"></a>
 							</div>
 							<div class="topbar_content">
 								<div class="topbar_news">
@@ -363,7 +363,7 @@
 												<p class="time">
 													<em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.DAY_OF_MONTH) %>
 												</p>
-												<p class="cont">:&nbsp;<%=leaveMsg.getMsg() %>.</p>
+												<p class="cont">:&nbsp;<a title="<%=leaveMsg.getMsg() %>" href="#" ><%=StringUtil.cutString(leaveMsg.getMsg(),33) %></a></p>
 											</div></li>
 											<%
 											}
