@@ -47,7 +47,7 @@ html {
 body {
 	background: url("../img/bg_body.gif") repeat-y scroll left top
 		transparent;
-	color: #555555;
+	color: white;
 	font: 62.5% "Lucida Grande", Arial, Helvetica, Verdana, sans-serif;
 	min-height: 100%;
 }
@@ -69,13 +69,6 @@ a.exampleTip {
 
 a.exampleTip:hover{
 	text-decoration: underline;
-}
-
-.section {
-	text-align: left;
-	padding-bottom: 18px;
-	border-bottom: 1px solid #333;
-	margin-bottom: 18px;
 }
 
 .search_box {
@@ -110,7 +103,7 @@ a.exampleTip:hover{
 }
 
 h1,h2,h3,h4,h5,h6 {
-	color: #7D7974;
+	color: white;
 	font-size: 1.4em;
 	font-weight: 200;
 }
@@ -239,12 +232,11 @@ li.active #aboutus:hover,li.active #aboutus {
 	padding-top:120px;
 	padding-left: 100px;
 }
-
 .main {
 	margin: 0;
 	overflow: hidden;
 	width: 100%;
-	min-height: 200px;
+	min-height: 450px;
 }
 
 .top_bar {
@@ -255,31 +247,6 @@ li.active #aboutus:hover,li.active #aboutus {
 
 .more_padding {
 	padding-top: 30px;
-}
-
-.section_wrap {
-	border-top: 1px solid #CCCCCC;
-	clear: left;
-	margin: 0 40px 0 0;
-	padding-bottom: 30px;
-	padding-top: 12px;
-}
-
-.section_wrap h3 {
-	color: #CCCCCC;
-	display: inline;
-	float: right;
-	font-size: 3em;
-	line-height: 1em;
-	margin: -11px 0 0;
-	text-shadow: 1px 1px 0 #FFFFFF;
-}
-
-.small {
-	color: #999999;
-	font-family: Georgia;
-	font-size: 1em;
-	font-style: italic;
 }
 
 .clearfix:after {
@@ -338,4 +305,40 @@ li.active #aboutus:hover,li.active #aboutus {
 h1{
     font-size: 28px;
     line-height: 34px;
+}
+/*底部样式 */
+.section {
+	border-top: 1px solid white;
+    position: relative;
+    margin-left: 110px;
+    overflow: hidden;
+    padding: 15px 0;
+    width:90%;
+    position: relative;
+}
+
+.strengths {
+    list-style: none outside none;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 5px;
+    width: 900px;
+}
+
+.strengths li {
+    float: left;
+    margin-right: 35px;
+    width: 250px;
+}
+
+.strengths h3 {
+	border-bottom: 1px solid white;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+.strengths a {
+    color: white;
 }

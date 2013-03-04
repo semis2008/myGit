@@ -16,8 +16,9 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	DiaryBO diary = (DiaryBO) request.getAttribute("diary");
-	List<DiaryReplyBO> replies = (List<DiaryReplyBO>)request.getAttribute("replies");
-	if(replies == null) {
+	List<DiaryReplyBO> replies = (List<DiaryReplyBO>) request
+			.getAttribute("replies");
+	if (replies == null) {
 		replies = new ArrayList<DiaryReplyBO>();
 	}
 	if (diary == null) {
@@ -112,10 +113,10 @@
 		var emailRegExp = new RegExp(
 				"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 		if (!emailRegExp.test(email) || email.indexOf('.') == -1) {
-			$("#guest_email").css("color","red");
+			$("#guest_email").css("color", "red");
 			return;
 		}
-		if(website == 'webSite') {
+		if (website == 'webSite') {
 			website = '';
 		}
 		var diaryid = $("#diaryId").val();
@@ -134,11 +135,11 @@
 			},
 			success : function(msg) {
 				//刷新回复列表，清空回复信息
-				if(msg=='fail') {
+				if (msg == 'fail') {
 					alert("回复失败！");
-				}else if(msg == 'success') {
+				} else if (msg == 'success') {
 					alert("回复成功！");
-				}				
+				}
 			}
 		});
 	}
@@ -158,11 +159,11 @@
 			},
 			success : function(msg) {
 				//刷新回复列表，清空回复信息
-				if(msg=='fail') {
+				if (msg == 'fail') {
 					alert("回复失败！");
-				}else if(msg == 'success') {
+				} else if (msg == 'success') {
 					alert("回复成功！");
-				}				
+				}
 			}
 		});
 	}
@@ -174,12 +175,18 @@
 			success : function(msg) {
 				location.reload();
 			}
-		});
+		})
+;
 	}
 </script>
 <title>日志详情</title>
 </head>
 <body>
+	<div id="backstretch"
+		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
+		<img style="position: relative; left: 0px;"
+			src="<%=ConstantsUtil.FW_DOMAIN%>/img/bg_glass1.jpg">
+	</div>
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -205,16 +212,20 @@
 				<ul class="side_nav">
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
 					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
+						title="查看日志" id="diary">日志</a>
+					</li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
+						title="查看图册信息" id="picture">图册</a>
+					</li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -258,13 +269,13 @@
 								<li class="blogTime"><a title="<%=diary.getTitle()%>"
 									href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(
 					Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(
-					Calendar.DAY_OF_MONTH)%></a>
-								</li>
+					Calendar.DAY_OF_MONTH)%></a></li>
 								<%
 									String[] tags = diary.getTags().split("_");
 									for (String tag : tags) {
 								%>
-								<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a></li>
+								<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a>
+								</li>
 								<%
 									}
 								%>
@@ -303,77 +314,93 @@
 						有<%=diary.getReply_num()%>条回复
 					</div>
 					<%
-						for(DiaryReplyBO reply:replies) {
-							if(reply.getParent_id()==0l) {
+						for (DiaryReplyBO reply : replies) {
+								if (reply.getParent_id() == 0l) {
 					%>
-					<div id="comment<%=reply.getId() %>" class="cmt top">
-					<%
-							}else if(reply.getParent_id()>0l) {
-					%>
-					<div id="comment-2" class="cmt child">
-					<%
-							}
-					%>
-						<img alt="#"
-							src="<%=ConstantsUtil.FW_DOMAIN+reply.getUser_photo() %>" />
-						<div class="commentR">
-							<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=reply.getUser_id() %>" class="name"><%=reply.getUser_name() %></a><a href="#" class="reply">回复</a>
-							<p class="time"><%=DateUtil.formatDate(reply.getReply_time(),3) %></p>
-							<div><%=reply.getReply() %></div>
-						</div>
-					</div>	
+					<div id="comment<%=reply.getId()%>" class="cmt top">
 						<%
-							}
-						}
+							} else if (reply.getParent_id() > 0l) {
 						%>
-						
-					<div class="cmt head" id="reply-div">
-						<div class="quote" style="display: none;">
-						
-						</div>
-						<%
-							if (hasLogin) {
-						%>
-						<div class="user">
+						<div id="comment-2" class="cmt child">
+							<%
+								}
+							%>
 							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN%><%=user.getPhoto() %>" />
-							<textarea class="cmt_area">发表回复...</textarea>
-							<div class="proceed">
-								<button class="btn" type="submit" onclick="commitReplyUser()">回复</button>
+								src="<%=ConstantsUtil.FW_DOMAIN + reply.getUser_photo()%>" />
+							<div class="commentR">
+								<a
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reply.getUser_id()%>"
+									class="name"><%=reply.getUser_name()%></a><a href="#"
+									class="reply">回复</a>
+								<p class="time"><%=DateUtil.formatDate(reply.getReply_time(), 3)%></p>
+								<div><%=reply.getReply()%></div>
 							</div>
 						</div>
 						<%
-							} else {
-						%>
-						<div class="guest">
-							<img alt="#"
-								src="<%=ConstantsUtil.FW_DOMAIN %>/img/head/default/defaultGuest.jpg" />
-							<textarea class="cmt_area">发表回复...</textarea>
-							<div class="proceed">
-								<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
-							</div>
-							<input type="text" id="guest_name" value="name" /><input
-								type="text" id="guest_email" value="email" /><input type="text"
-								value="webSite" id="guest_website" />
-						</div>
-						<%
+							}
 							}
 						%>
+
+						<div class="cmt head" id="reply-div">
+							<div class="quote" style="display: none;"></div>
+							<%
+								if (hasLogin) {
+							%>
+							<div class="user">
+								<img alt="#"
+									src="<%=ConstantsUtil.FW_DOMAIN%><%=user.getPhoto()%>" />
+								<textarea class="cmt_area">发表回复...</textarea>
+								<div class="proceed">
+									<button class="btn" type="submit" onclick="commitReplyUser()">回复</button>
+								</div>
+							</div>
+							<%
+								} else {
+							%>
+							<div class="guest">
+								<img alt="#"
+									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/default/defaultGuest.jpg" />
+								<textarea class="cmt_area">发表回复...</textarea>
+								<div class="proceed">
+									<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
+								</div>
+								<input type="text" id="guest_name" value="name" /><input
+									type="text" id="guest_email" value="email" /><input
+									type="text" value="webSite" id="guest_website" />
+							</div>
+							<%
+								}
+							%>
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- 隐藏域，提供日志id信息 -->
-			<input id="diaryId" value="<%=diary.getId() %>" type="hidden"/>
-			<div class="section_wrap more_padding">
-				<h3>
-					<strong>1989</strong> Keep learning &amp; Remain Modest.
-				</h3>
-				<small>&copy; Copyright 2013 WnJava. All rights reserved.
-					Designed by <a target="_blank"
-					href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
+				<!-- 隐藏域，提供日志id信息 -->
+				<input id="diaryId" value="<%=diary.getId()%>" type="hidden" />
 			</div>
 		</div>
-	</div>
+		<div class="section">
+		<ul class="strengths">
+			<li>
+				<h3>友情链接</h3>
+				<p>
+					<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
+						Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+
+				</p>
+			</li>
+			<li>
+				<h3>WnJava的说明</h3>
+				<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p>
+			</li>
+			<li class="last">
+				<h3>Contact Me!</h3>
+				<p>有任何对本站及我个人的想法，欢迎联系我！</p>
+				<p>
+					Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
+						我 »</a>
+				</p>
+			</li>
+		</ul>
 	</div>
 	</div>
 </body>

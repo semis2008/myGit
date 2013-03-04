@@ -12,9 +12,11 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
-	List<LeaveMsgBO> leaveMsgList = (List<LeaveMsgBO>)request.getAttribute("leaveMsgList");
-	List<DiaryBO> newDiaryList = (List<DiaryBO>)request.getAttribute("newDiaryList");
-	
+	List<LeaveMsgBO> leaveMsgList = (List<LeaveMsgBO>) request
+			.getAttribute("leaveMsgList");
+	List<DiaryBO> newDiaryList = (List<DiaryBO>) request
+			.getAttribute("newDiaryList");
+
 	UserInfoBO info = (UserInfoBO) request
 			.getAttribute("visitedUserInfo");
 	String hobbyStr = "";
@@ -27,10 +29,10 @@
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
 	}
-	if(leaveMsgList == null) {
+	if (leaveMsgList == null) {
 		leaveMsgList = new ArrayList<LeaveMsgBO>();
 	}
-	if(newDiaryList == null) {
+	if (newDiaryList == null) {
 		newDiaryList = new ArrayList<DiaryBO>();
 	}
 	if (user == null) {
@@ -48,8 +50,8 @@
 <!-- google jquery link 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
 
-<script language="javascript" type="text/javascript" 
- 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script> 
+<script language="javascript" type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 <!-- aToolTip css -->
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
@@ -128,12 +130,18 @@
 			success : function(msg) {
 				location.reload();
 			}
+
 		});
 	}
 </script>
-<title>主页</title>
+<title>wnJava--<%=visitedUser.getName()%>的个人主页</title>
 </head>
 <body>
+	<div id="backstretch"
+		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
+		<img style="position: relative; left: 0px;"
+			src="<%=ConstantsUtil.FW_DOMAIN %>/img/bg_glass1.jpg">
+	</div>
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -159,20 +167,16 @@
 				<ul class="side_nav">
 					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -230,8 +234,10 @@
 							<ul>
 								<li>加入日期：<a href="#"><%=DateUtil.formatDate(visitedUser.getReg_time(), 2)%></a>
 								</li>
-								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a></li>
-								<li>图册：<a href="#"><em>9</em>&nbsp;集</a></li>
+								<li>日志：<a href="#"><em>12</em>&nbsp;篇</a>
+								</li>
+								<li>图册：<a href="#"><em>9</em>&nbsp;集</a>
+								</li>
 								<li id="hobby_main" style="display: none;">兴趣：<a href="#">
 										<%
 											if (info.getHobby() == null || "".equals(info.getHobby())) {
@@ -239,17 +245,20 @@
 											} else {
 												out.print(info.getHobby().replace(" ", ","));
 											}
-										%> </a></li>
+										%> </a>
+								</li>
 								<%
 									if (info.getContact() != null && !"".equals(info.getContact())) {
 								%>
 								<li id="contact_main" style="display: none;"><%=info.getContact().split("_")[0]%>：<a
-									href="#"><%=info.getContact().split("_")[1]%></a></li>
+									href="#"><%=info.getContact().split("_")[1]%></a>
+								</li>
 								<%
 									}
 								%>
 								<li id="homeprovince_main" style="display: none;">所在地：<a
-									href="#"><%=info.getHome_province()%></a></li>
+									href="#"><%=info.getHome_province()%></a>
+								</li>
 								<li id="birthday_main" style="display: none;">生日：<a
 									href="#"> <%
  	if (info.getBirthday() != null
@@ -257,16 +266,18 @@
  					.toString())) {
  		out.print(DateUtil.formatDate(info.getBirthday(), 2));
  	}
- %> </a></li>
+ %> </a>
+								</li>
 								<li id="relname_main" style="display: none;">真实姓名：<a
-									href="#"><%=info.getRel_name()%></a></li>
+									href="#"><%=info.getRel_name()%></a>
+								</li>
 							</ul>
 							<%
 								if (visitedUser.getId() == user.getId()) {
 							%>
 							<a class="fancybox-iframe" id="setInfoHref"
 								href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/setInfo.html"><img
-								src="<%=ConstantsUtil.FW_DOMAIN%>/img/info_set.jpg" alt="设置"
+								src="<%=ConstantsUtil.FW_DOMAIN%>/img/set_info.png" alt="设置"
 								class="set_info_btn" /> </a>
 							<%
 								}
@@ -305,18 +316,19 @@
 							<div class="topbar_content">
 								<div class="topbar_news">
 									<ul>
-									<%
-									for(DiaryBO newDiary:newDiaryList) {
-									%>
+										<%
+											for (DiaryBO newDiary : newDiaryList) {
+										%>
 										<li>
 											<div class="news_cont">
-												<b><%=newDiary.getAuthor_name() %></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time()) %></em>发表了日志<a  title="<%=newDiary.getTitle()%>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle() %>》</a><span>[<%=newDiary.getReply_num() %>评/<%=newDiary.getRead_num() %>阅]</span>
-											</div>
-										</li>
+												<b><%=newDiary.getAuthor_name()%></b>在<em><%=DateUtil.getPassedTime(newDiary.getPublish_time())%></em>发表了日志<a
+													title="<%=newDiary.getTitle()%>"
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=newDiary.getId()%>">《<%=newDiary.getTitle()%>》</a><span>[<%=newDiary.getReply_num()%>评/<%=newDiary.getRead_num()%>阅]</span>
+											</div></li>
 										<%
-										}
-									%>
-									<!-- 
+											}
+										%>
+										<!-- 
 									<li>
 											<div class="news_cont">
 												<b>Kalor</b>在<em>3小时前</em>上传了1张图片到图册<a href="#">《冬日美景》</a><span>[35评/93阅]</span>
@@ -342,32 +354,39 @@
 								</div>
 								<div class="topbar_reply">
 									<ul>
-									<%
-									for(LeaveMsgBO leaveMsg:leaveMsgList) {									
-									%>
+										<%
+											for (LeaveMsgBO leaveMsg : leaveMsgList) {
+										%>
 										<li><img
-											src="<%=ConstantsUtil.FW_DOMAIN+leaveMsg.getUser_photo() %>"
+											src="<%=ConstantsUtil.FW_DOMAIN + leaveMsg.getUser_photo()%>"
 											alt="" />
 											<div class="reply_r">
 												<%
-													if("login".equals(leaveMsg.getType())) {
+													if ("login".equals(leaveMsg.getType())) {
 												%>
-													<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=leaveMsg.getUser_id() %>" class="name"><%=leaveMsg.getName() %></a>		
-												<% 
-													}else {
-												%>	
-													<a href="#" class="name"><%=leaveMsg.getName() %></a>
+												<a
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=leaveMsg.getUser_id()%>"
+													class="name"><%=leaveMsg.getName()%></a>
+												<%
+													} else {
+												%>
+												<a href="#" class="name"><%=leaveMsg.getName()%></a>
 												<%
 													}
 												%>
 												<p class="time">
-													<em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.MONTH)+1 %>/</em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time()).get(Calendar.DAY_OF_MONTH) %>
+													<em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time())
+						.get(Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(leaveMsg.getLeave_time())
+						.get(Calendar.DAY_OF_MONTH)%>
 												</p>
-												<p class="cont">:&nbsp;<a title="<%=leaveMsg.getMsg() %>" href="#" ><%=StringUtil.cutString(leaveMsg.getMsg(),33) %></a></p>
-											</div></li>
-											<%
+												<p class="cont">
+													:&nbsp;<a title="<%=leaveMsg.getMsg()%>" href="#"><%=StringUtil.cutString(leaveMsg.getMsg(), 33)%></a>
+												</p>
+											</div>
+										</li>
+										<%
 											}
-									%>
+										%>
 									</ul>
 								</div>
 							</div>
@@ -432,16 +451,27 @@
 						</div>
 					</div>
 					<!-- content-gallery -->
-
-					<div class="section_wrap more_padding">
-						<h3>
-							<strong>1989</strong> Keep learning &amp; Remain Modest.
-						</h3>
-						<small>&copy; Copyright 2013 WnJava. All rights reserved.
-							Designed by <a target="_blank"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
-					</div>
 				</div>
+			</div>
+			<div class="section">
+				<ul class="strengths">
+					<li>
+						<h3>友情链接</h3>
+						<p><a target="_blank" href="http://baipeng.alwaysdata.net">BAI Peng's</a>|
+						<a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+						
+						</p></li>
+					<li>
+						<h3>WnJava的说明</h3>
+						<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p></li>
+					<li class="last">
+						<h3>Contact Me!</h3>
+						<p>有任何对本站及我个人的想法，欢迎联系我！</p>
+						<p>
+							Telephone: 1581 011 2386 or <a
+								href="mailto:semis2008@126.com">Email 我 »</a>
+						</p></li>
+				</ul>
 			</div>
 		</div>
 </body>

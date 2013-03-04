@@ -63,6 +63,11 @@
 <title>搜索结果</title>
 </head>
 <body>
+<div id="backstretch"
+		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
+		<img style="position: relative; left: 0px;"
+			src="<%=ConstantsUtil.FW_DOMAIN %>/img/bg_glass1.jpg">
+	</div>
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -127,16 +132,28 @@
 					</div>
 					<h1>Comming&nbsp;&nbsp;Soon!</h1>
 				</div>
-				<div class="section_wrap more_padding">
-					<h3>
-						<strong>1989</strong> Keep learning &amp; Remain Modest.
-					</h3>
-					<small>&copy; Copyright 2013 WnJava. All rights reserved.
-						Designed by <a target="_blank"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
-				</div>
 			</div>
 		</div>
+		<div class="section">
+				<ul class="strengths">
+					<li>
+						<h3>友情链接</h3>
+						<p><a target="_blank" href="http://baipeng.alwaysdata.net">BAI Peng's</a>|
+						<a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+						
+						</p></li>
+					<li>
+						<h3>WnJava的说明</h3>
+						<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p></li>
+					<li class="last">
+						<h3>Contact Me!</h3>
+						<p>有任何对本站及我个人的想法，欢迎联系我！</p>
+						<p>
+							Telephone: 1581 011 2386 or <a
+								href="mailto:semis2008@126.com">Email 我 »</a>
+						</p></li>
+				</ul>
+			</div>
 	</div>
 	<!--
 	//后期替换js文件为google的链接

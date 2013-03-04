@@ -24,8 +24,8 @@
 <!-- google jquery link 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
 
-<script language="javascript" type="text/javascript" 
- 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script> 
+<script language="javascript" type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 <!-- aToolTip css -->
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
@@ -64,6 +64,11 @@
 <title>关于</title>
 </head>
 <body>
+	<div id="backstretch"
+		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
+		<img style="position: relative; left: 0px;"
+			src="<%=ConstantsUtil.FW_DOMAIN%>/img/bg_glass1.jpg">
+	</div>
 	<div class="wrap">
 		<div class="header">
 			<div class="search_box">
@@ -90,19 +95,23 @@
 					<li <%if ("mainpage".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
+						title="查看个人主页信息" id="mainpage">主页</a>
+					</li>
 					<li <%if ("diary".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
+						title="查看日志" id="diary">日志</a>
+					</li>
 					<li <%if ("picture".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
+						title="查看图册信息" id="picture">图册</a>
+					</li>
 					<li <%if ("aboutus".equals(fun)) {%> class="active" <%}%>><a
 						class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
+						title="关于我以及本站" id="aboutus">about</a>
+					</li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -169,15 +178,31 @@
 
 					</div>
 				</div>
-				<div class="section_wrap more_padding">
-				<h3>
-					<strong>1989</strong> Keep learning &amp; Remain Modest.
-				</h3>
-				<small>&copy; Copyright 2013 WnJava. All rights reserved.
-					Designed by <a target="_blank"
-					href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a> </small><br><br>
 			</div>
-			</div>
+		</div>
+		<div class="section">
+			<ul class="strengths">
+				<li>
+					<h3>友情链接</h3>
+					<p>
+						<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
+							Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+
+					</p>
+				</li>
+				<li>
+					<h3>WnJava的说明</h3>
+					<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p>
+				</li>
+				<li class="last">
+					<h3>Contact Me!</h3>
+					<p>有任何对本站及我个人的想法，欢迎联系我！</p>
+					<p>
+						Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
+							我 »</a>
+					</p>
+				</li>
+			</ul>
 		</div>
 	</div>
 </body>
