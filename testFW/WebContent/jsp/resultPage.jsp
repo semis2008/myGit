@@ -66,7 +66,7 @@
 <div id="backstretch"
 		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
 		<img style="position: relative; left: 0px;"
-			src="<%=ConstantsUtil.FW_DOMAIN %>/img/bg_glass1.jpg">
+			src="<%=ConstantsUtil.FW_DOMAIN %>/img/bg_glass2.jpg">
 	</div>
 	<div class="wrap">
 		<div class="header">

@@ -53,9 +53,9 @@ div.art-cats li.tag a {
     width: 80%;
 }
 .art-title a {
-    color: #666666;
+    color: white;
     text-decoration: none;
-    text-shadow: 0 1px 1px #FFFFFF;
+    text-shadow: 0 1px 1px blue;
 }
 .comment-count {
     float: right;
