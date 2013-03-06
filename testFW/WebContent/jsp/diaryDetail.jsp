@@ -175,11 +175,22 @@
 			success : function(msg) {
 				location.reload();
 			}
-		})
-;
+		});
+	}
+	//回复评论时候，显示所回复的节点信息到quote内
+	function showParentDiv(replyid) {
+		var quotehtml = $("#comment"+replyid).html();
+		$(".quote").html(quotehtml);
+		$(".quote .commentR .reply").text("取消回复");
+		$(".quote .commentR .reply").removeAttr("onclick");
+		$(".quote .commentR .reply").attr("href","javascript:hideParentDiv()");
+		$(".quote").slideDown(800);
+	}
+	function hideParentDiv() {
+		$(".quote").slideUp(500);
 	}
 </script>
-<title>日志详情</title>
+<title>wnJava--<%=diary.getTitle()%></title>
 </head>
 <body>
 	<div id="backstretch"
@@ -212,20 +223,16 @@
 				<ul class="side_nav">
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li class="active"><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -269,13 +276,13 @@
 								<li class="blogTime"><a title="<%=diary.getTitle()%>"
 									href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(
 					Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time()).get(
-					Calendar.DAY_OF_MONTH)%></a></li>
+					Calendar.DAY_OF_MONTH)%></a>
+								</li>
 								<%
 									String[] tags = diary.getTags().split("_");
 									for (String tag : tags) {
 								%>
-								<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a>
-								</li>
+								<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a></li>
 								<%
 									}
 								%>
@@ -299,6 +306,22 @@
 						<div class="art-content">
 							<p><%=diary.getContent()%></p>
 						</div>
+						<!-- Baidu Button BEGIN -->
+						<!-- Baidu Button BEGIN -->
+						<div id="bdshare" style="float: right;" class="bdshare_t bds_tools get-codes-bdshare">
+							<span class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a
+								class="bds_tsina"></a> <a class="bds_tqq"></a> <a
+								class="bds_renren"></a> <a class="bds_t163"></a> <a
+								class="shareCount"></a>
+						</div>
+						<script type="text/javascript" id="bdshare_js"
+							data="type=tools&amp;uid=240802"></script>
+						<script type="text/javascript" id="bdshell_js"></script>
+						<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+						<!-- Baidu Button END -->
+
 					</div>
 					<div id="comments">
 						<div class="comments-title">
@@ -321,7 +344,7 @@
 						<%
 							} else if (reply.getParent_id() > 0l) {
 						%>
-						<div id="comment-2" class="cmt child">
+						<div id="comment<%=reply.getId()%>" class="cmt child">
 							<%
 								}
 							%>
@@ -330,8 +353,8 @@
 							<div class="commentR">
 								<a
 									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reply.getUser_id()%>"
-									class="name"><%=reply.getUser_name()%></a><a href="#"
-									class="reply">回复</a>
+									class="name"><%=reply.getUser_name()%></a><a href="#reply-div"
+									onclick="showParentDiv(<%=reply.getId()%>)" class="reply">回复</a>
 								<p class="time"><%=DateUtil.formatDate(reply.getReply_time(), 3)%></p>
 								<div><%=reply.getReply()%></div>
 							</div>
@@ -342,7 +365,7 @@
 						%>
 
 						<div class="cmt head" id="reply-div">
-							<div class="quote" style="display: none;"></div>
+							<div class="quote" style="display: none"></div>
 							<%
 								if (hasLogin) {
 							%>
@@ -364,9 +387,9 @@
 								<div class="proceed">
 									<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
 								</div>
-								<input type="text" id="guest_name" value="name" /><input
-									type="text" id="guest_email" value="email" /><input
-									type="text" value="webSite" id="guest_website" />
+								<input type="text" id="guest_name" value="称呼" /><input
+									type="text" id="guest_email" value="邮箱" /><input type="text"
+									value="网站" id="guest_website" />
 							</div>
 							<%
 								}
@@ -379,29 +402,26 @@
 			</div>
 		</div>
 		<div class="section">
-		<ul class="strengths">
-			<li>
-				<h3>友情链接</h3>
-				<p>
-					<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
-						Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+			<ul class="strengths">
+				<li>
+					<h3>友情链接</h3>
+					<p>
+						<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
+							Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
 
-				</p>
-			</li>
-			<li>
-				<h3>WnJava的说明</h3>
-				<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p>
-			</li>
-			<li class="last">
-				<h3>Contact Me!</h3>
-				<p>有任何对本站及我个人的想法，欢迎联系我！</p>
-				<p>
-					Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
-						我 »</a>
-				</p>
-			</li>
-		</ul>
-	</div>
+					</p></li>
+				<li>
+					<h3>WnJava的说明</h3>
+					<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p></li>
+				<li class="last">
+					<h3>Contact Me!</h3>
+					<p>有任何对本站及我个人的想法，欢迎联系我！</p>
+					<p>
+						Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
+							我 »</a>
+					</p></li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>
