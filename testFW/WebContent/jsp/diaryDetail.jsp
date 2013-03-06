@@ -102,11 +102,12 @@
 	});
 
 	//游客回复,parentidw：回复日志：0，回复评论：评论id
-	function commitReplyGuest(parentid) {
+	function commitReplyGuest() {
 		var content = $('.cmt_area').val();
 		var name = $("#guest_name").val();
 		var email = $("#guest_email").val();
 		var website = $("#guest_website").val();
+		var parentid = $("#parentId").val();
 		if ($.trim(content) == '' || $.trim(name) == '' || $.trim(email) == '') {
 			return;
 		}
@@ -144,9 +145,10 @@
 		});
 	}
 	//会员回复,parentidw：回复日志：0，回复评论：评论id
-	function commitReplyUser(parentid) {
+	function commitReplyUser() {
 		var content = $('.cmt_area').val();
 		var diaryid = $("#diaryId").val();
+		var parentid = $("#parentId").val();
 		$.ajax({
 			type : "POST",
 			url : "/action/diary/newreply",
@@ -179,12 +181,14 @@
 	}
 	//回复评论时候，显示所回复的节点信息到quote内
 	function showParentDiv(replyid) {
+		$("#parentId").val(replyid);
 		var quotehtml = $("#comment"+replyid).html();
 		$(".quote").html(quotehtml);
 		$(".quote .commentR .reply").text("取消回复");
 		$(".quote .commentR .reply").removeAttr("onclick");
 		$(".quote .commentR .reply").attr("href","javascript:hideParentDiv()");
 		$(".quote").slideDown(800);
+		
 	}
 	function hideParentDiv() {
 		$(".quote").slideUp(500);
@@ -352,7 +356,11 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 								src="<%=ConstantsUtil.FW_DOMAIN + reply.getUser_photo()%>" />
 							<div class="commentR">
 								<a
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reply.getUser_id()%>"
+									href="<%if(reply.getUser_id()==null) {
+										out.print("#");	
+									}else {
+										out.print(ConstantsUtil.FW_DOMAIN+"/action/system/mainpage/"+reply.getUser_id());	
+									}%>"
 									class="name"><%=reply.getUser_name()%></a><a href="#reply-div"
 									onclick="showParentDiv(<%=reply.getId()%>)" class="reply">回复</a>
 								<p class="time"><%=DateUtil.formatDate(reply.getReply_time(), 3)%></p>
@@ -385,7 +393,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 									src="<%=ConstantsUtil.FW_DOMAIN%>/img/head/default/defaultGuest.jpg" />
 								<textarea class="cmt_area">发表回复...</textarea>
 								<div class="proceed">
-									<button class="btn" type="submit" onclick="commitReplyGuest(0)">回复</button>
+									<button class="btn" type="submit" onclick="commitReplyGuest()">回复</button>
 								</div>
 								<input type="text" id="guest_name" value="称呼" /><input
 									type="text" id="guest_email" value="邮箱" /><input type="text"
@@ -399,6 +407,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				</div>
 				<!-- 隐藏域，提供日志id信息 -->
 				<input id="diaryId" value="<%=diary.getId()%>" type="hidden" />
+				<!-- 隐藏域，提供评论id信息 -->
+				<input id="parentId" value="0" type="hidden" />
 			</div>
 		</div>
 		<div class="section">

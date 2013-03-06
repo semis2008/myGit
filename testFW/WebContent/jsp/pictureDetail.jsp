@@ -77,9 +77,19 @@
 			}
 		});
 		$('a.fixedTip').aToolTip();
-		$('input.fixedTip').aToo
-		lTip();
+		$('input.fixedTip').aToolTip();
 	});
+	function userQuit() {
+		$.ajax({
+			type : "POST",
+			url : "/action/user/userquit",
+			dataType : "text",
+			success : function(msg) {
+				location.reload();
+			}
+
+		});
+	}
 </script>
 <title>图册详情</title>
 </head>
@@ -146,13 +156,26 @@
 						<%
 							} else {
 						%>
-						<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-							title="点击进入主页"><%=user.getName()%></a>
+						<a
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+							title="点击进入主页"><%=user.getName()%></a> <a href="#"
+							onclick="userQuit();" title="点击退出">退出</a>
 						<%
 							}
 						%>
+						<%
+							if (hasLogin) {
+						%>
 						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/message.html">留言</a>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
+						<%
+							} else {
+						%>
+						<a class="fancybox-iframe"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
+						<%
+							}
+						%>
 					</div>
 					<div class="albumDetail">
 						<div class="hostinfo ">

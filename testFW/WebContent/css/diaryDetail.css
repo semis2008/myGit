@@ -118,7 +118,7 @@ div.art-cats li.tag a {
 
 #comments .cmt.top {
 	border-bottom: 1px solid #cccccc;
-	margin-bottom: 16px;
+	margin-bottom: 10px;
 	padding-bottom: 6px;
 	width: 100%;
 }
@@ -157,10 +157,9 @@ div.art-cats li.tag a {
 }
 
 .cmt.child,.cmt.replyForm {
-	border-top: 1px dashed #CCCCCC;
-	margin-left: 44px;
-	margin-top: 6px;
-	padding-top: 3px;
+	border-bottom: 1px dashed #CCCCCC;
+	margin: 0 0 10px 44px;
+	padding-top: 0px;
 }
 
 .cmt.head {
@@ -224,13 +223,11 @@ div.art-cats li.tag a {
 .cmt.head .user,.cmt.replyForm .user {
 	width: 100%;
 	float: left;
-	border-bottom: 1px dashed #CCCCCC;
 }
 
 .cmt.head .guest,.cmt.replyForm .guest {
 	width: 100%;
 	float: left;
-	border-bottom: 1px solid #CCCCCC;
 	padding-bottom: 10px;
 	margin-bottom: 12px;
 }
