@@ -1,7 +1,6 @@
 #indexMain{
 	background: transparent;
     margin: 3em 0;
-    padding: 7.5em 0 5.5em;
 }
 .gridster {
     margin: 0 auto;
@@ -10,12 +9,46 @@
     width: 940px;
 }
 .gridster .gs_w.try {
-    background-image: url("http://gridster.net/assets/img/sprite.png");
-    background-position: 37px -169px;
+    background-image: url("../img/sprite.png");
+    background-position: 35px 19px;
     background-repeat: no-repeat;
 }
 .gridster .gs_w {
-    background: none repeat scroll 0 0 #FFFFFF;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+}
+ .gs_w h1{
+ 	font-size: 35px;
+ }
+#index_link{
+	background-image: url("../img/index_link.png");
+	background-position: 30px 0px;
+	margin-top:30px;
+	width: 140px;
+	height:70px;
+	display: block;
+	background-repeat: no-repeat;
+}
+.userList{
+    height: 300px;
+    width: 140px;
+    margin: 0;
+    padding: 0;
+}
+
+.userList .userLi{
+	float: left;
+    font-size: 14px;
+    height: 44px;
+    line-height: 22px;
+    position: relative;
+    text-align: center;
+    width: 44px;
+    z-index: 1;
+    margin: 1px 1px 0 1.6px;
+}
+.userList .userLi img{
+	width: 44px;
+	height: 44px;
 }

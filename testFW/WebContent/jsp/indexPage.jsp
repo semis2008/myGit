@@ -8,11 +8,15 @@
 	pageEncoding="utf-8"%>
 <%
 	UserBO user = (UserBO) request.getAttribute("loginUser");
+	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+	}
+	if (visitedUser == null) {
+		visitedUser = new UserBO();
 	}
 %>
 <html>
@@ -30,7 +34,7 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
-	<!-- gridster css -->
+<!-- gridster css -->
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/gridter/jquery.gridster.min.css"
 	rel="stylesheet" media="screen" />
@@ -81,15 +85,29 @@
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
 		
-		//Grifter初始化
-		$(".gridster ul").gridster({
-			 widget_margins: [10, 10],
-			 widget_base_dimensions: [140, 140]
-			 });
+		var gridster = $(".gridster ul").gridster({
+			widget_margins : [ 10, 10 ],
+			widget_base_dimensions : [ 140, 140 ] 
+		});
+		
+		//随机翻转
+		setInterval(function() {
+			var userNum = 5;
+			var id = Math.floor(Math.random()*userNum)+1;
+			toogleDiv('user'+id);
+		} , 3000);
+		setInterval(function() {
+			var userNum = 5;
+			var id = Math.floor(Math.random()*userNum)+1;
+			toogleDiv('user'+id);
+		} , 4000);
+		
+		//会员hover显示昵称
+		$(".userLi").hover(function() {
+			showUserName(this.id);
+		});
 		
 	});
-
-	 
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -98,9 +116,25 @@
 			success : function(msg) {
 				location.reload();
 			}
-
 		});
 	}
+	
+	//翻转
+	function toogleDiv(divId) {
+		$("#" + divId +" img").animate({
+			width : "0px",
+			left : "1.8px"
+		}, 220);
+		$("#" + divId +" img").animate({
+			width : "44px",
+			left : "1.8px"
+		}, 220);
+	}
+	//显示会员名称
+	function showUserName(userid){
+		$("#user"+userid)
+	}
+	
 </script>
 <title>wnJava--首页</title>
 </head>
@@ -127,7 +161,7 @@
 			</h1>
 			<p>
 				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				不因得失,而惧怕前行.
+					不因得失,而惧怕前行. 
 			</p>
 		</div>
 		<div class="container">
@@ -186,10 +220,18 @@
 					<div id="indexMain">
 						<div class="gridster ready">
 							<ul style="height: 480px; position: relative;">
+
+								<!-- 最新日志信息 -->
 								<li data-sizey="1" data-sizex="2" data-col="1" data-row="1"
 									class="gs_w"></li>
+
+								<!-- 申请外链 -->
 								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
-									class="gs_w"></li>
+									class="gs_w" id="applyLinkDiv">
+									<h1 id="applylink">申请外链</h1> <a
+									href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/36#reply-div"
+									id="index_link"></a>
+								</li>
 
 								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
 									class="gs_w"></li>
@@ -197,21 +239,39 @@
 									class="gs_w"></li>
 
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="1"
-									class="try gs_w"></li>
+									class="gs_w"></li>
 								<li data-sizey="1" data-sizex="2" data-col="1" data-row="2"
 									class="gs_w"></li>
 								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
 									class="gs_w"></li>
 
+								<!-- 拖动提示图标 -->
 								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
-									class="gs_w"></li>
+									class="gs_w try"></li>
+
+
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
 									class="gs_w"></li>
 
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
 									class="gs_w"></li>
+
+								<!-- 会员信息 -->
 								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
-									class="gs_w"></li>
+									class="gs_w">
+									<div class="userList">
+										<a title="用户1" href="" id="user1" class="userLi"> <img
+											src="http://semis2008.gotoip55.com/img/head/default/anime/6.jpg" /><span></span>
+										</a> <a title="用户2" href="" id="user2" class="userLi"> <img
+											src="http://semis2008.gotoip55.com/img/head/default/anime/4.jpg" /><span></span>
+										</a> <a title="用户3" href="" id="user3" class="userLi"> <img
+											src="http://semis2008.gotoip55.com/img/head/default/anime/3.jpg" /><span></span>
+										</a> <a title="用户4" href="" id="user4" class="userLi"> <img
+											src="http://semis2008.gotoip55.com/img/head/default/anime/1.jpg" /><span></span>
+										</a> <a title="用户5" href="" id="user5" class="userLi"> <img
+											src="http://semis2008.gotoip55.com/img/head/default/anime/2.jpg" /><span></span>
+										</a>
+									</div></li>
 							</ul>
 						</div>
 					</div>
