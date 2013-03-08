@@ -45,11 +45,12 @@ html {
 }
 
 body {
-	background: url("../img/bg_body.gif") repeat-y scroll left top
+	background: url("../img/bg_body.gif") repeat-y scroll left top 
 		transparent;
 	color: white;
 	font: 62.5% "Lucida Grande", Arial, Helvetica, Verdana, sans-serif;
 	min-height: 100%;
+	background-position: 0 400px;
 }
 
 .header {
@@ -283,10 +284,10 @@ li.active #aboutus:hover,li.active #aboutus {
     z-index: 100;
 }
 #paging, #paging a {
-    color: #BBBBBB;
+    color: white;
 }
 #paging a:HOVER{
-    color: #999999;
+    color: #ccc;
 }
 #paging a {
     border-left-style: solid;

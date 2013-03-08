@@ -76,6 +76,8 @@ public class SystemServlet extends HttpServlet {
 			}else {
 				targetpath = "/jsp/resultPage.jsp";
 			}
+		}else if ("index".equals(fun)) {
+			targetpath = showIndexPage(req, resp);
 		}
 		
 		UserBO user = UserUtil.getLoginUser(req, resp);
@@ -86,7 +88,7 @@ public class SystemServlet extends HttpServlet {
 	}
 	
 	/**
-	 * 主页业务处理
+	 * 个人主页业务处理
 	 * @param req
 	 * @param resp
 	 */
@@ -116,6 +118,17 @@ public class SystemServlet extends HttpServlet {
 		req.setAttribute("visitedUser", user);
 		req.setAttribute("visitedUserInfo", info);
 		return "/jsp/mainPage.jsp";
+	}
+	
+	/**
+	 * 显示主页
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	private String showIndexPage(HttpServletRequest req, HttpServletResponse resp) {
+		//TODO 主页显示需要继续开发，目前只设计样式
+		return "/jsp/indexPage.jsp";
 	}
 	
 	/**

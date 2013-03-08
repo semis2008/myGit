@@ -1,0 +1,21 @@
+#indexMain{
+	background: transparent;
+    margin: 3em 0;
+    padding: 7.5em 0 5.5em;
+}
+.gridster {
+    margin: 0 auto;
+    opacity: 0.8;
+    transition: opacity 0.6s ease 0s;
+    width: 940px;
+}
+.gridster .gs_w.try {
+    background-image: url("http://gridster.net/assets/img/sprite.png");
+    background-position: 37px -169px;
+    background-repeat: no-repeat;
+}
+.gridster .gs_w {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
