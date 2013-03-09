@@ -50,7 +50,6 @@
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/gridter/jquery.gridster.min.js"></script>
 
-
 <script language="javascript" type="text/javascript">
 	$(function() {
 		$(".navi_news").hover(function() {
@@ -84,30 +83,70 @@
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
-		
+
 		var gridster = $(".gridster ul").gridster({
 			widget_margins : [ 10, 10 ],
-			widget_base_dimensions : [ 140, 140 ] 
+			widget_base_dimensions : [ 140, 140 ]
 		});
-		
+
 		//随机翻转
 		setInterval(function() {
 			var userNum = 5;
-			var id = Math.floor(Math.random()*userNum)+1;
-			toogleDiv('user'+id);
-		} , 3000);
+			var id = Math.floor(Math.random() * userNum) + 1;
+			toogleDiv('user' + id);
+		}, 3000);
 		setInterval(function() {
 			var userNum = 5;
-			var id = Math.floor(Math.random()*userNum)+1;
-			toogleDiv('user'+id);
-		} , 4000);
-		
+			var id = Math.floor(Math.random() * userNum) + 1;
+			toogleDiv('user' + id);
+		}, 4000);
+
 		//会员hover显示昵称
 		$(".userLi").hover(function() {
 			showUserName(this.id);
 		});
-		
+
+		//时钟js
+		// Create two variable with the names of the months and days in an array
+		var monthNames = [ "January", "February", "March", "April", "May",
+				"June", "July", "August", "September", "October", "November",
+				"December" ];
+		var dayNames = [ "Sunday", "Monday", "Tuesday", "Wednesday",
+				"Thursday", "Friday", "Saturday" ]
+
+		// Create a newDate() object
+		var newDate = new Date();
+		// Extract the current date from Date object
+		newDate.setDate(newDate.getDate());
+		// Output the day, date, month and year   
+		$('#Date').html(
+				dayNames[newDate.getDay()] + " " + newDate.getDate() + ' '
+						+ monthNames[newDate.getMonth()] + ' '
+						+ newDate.getFullYear());
+
+		setInterval(function() {
+			// Create a newDate() object and extract the seconds of the current time on the visitor's
+			var seconds = new Date().getSeconds();
+			// Add a leading zero to seconds value
+			$("#sec").html((seconds < 10 ? "0" : "") + seconds);
+		}, 1000);
+
+		setInterval(function() {
+			// Create a newDate() object and extract the minutes of the current time on the visitor's
+			var minutes = new Date().getMinutes();
+			// Add a leading zero to the minutes value
+			$("#min").html((minutes < 10 ? "0" : "") + minutes);
+		}, 1000);
+
+		setInterval(function() {
+			// Create a newDate() object and extract the hours of the current time on the visitor's
+			var hours = new Date().getHours();
+			// Add a leading zero to the hours value
+			$("#hours").html((hours < 10 ? "0" : "") + hours);
+		}, 1000);
+
 	});
+
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -118,23 +157,22 @@
 			}
 		});
 	}
-	
+
 	//翻转
 	function toogleDiv(divId) {
-		$("#" + divId +" img").animate({
+		$("#" + divId + " img").animate({
 			width : "0px",
 			left : "1.8px"
 		}, 220);
-		$("#" + divId +" img").animate({
+		$("#" + divId + " img").animate({
 			width : "44px",
 			left : "1.8px"
 		}, 220);
 	}
 	//显示会员名称
-	function showUserName(userid){
-		$("#user"+userid)
+	function showUserName(userid) {
+		$("#user" + userid)
 	}
-	
 </script>
 <title>wnJava--首页</title>
 </head>
@@ -142,7 +180,7 @@
 	<div id="backstretch"
 		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
 		<img style="position: relative; left: 0px;"
-			src="<% out.print(ConstantsUtil.FW_DOMAIN+ConstantsUtil.DEFAULT_BG); %>">
+			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>">
 	</div>
 	<div class="wrap">
 		<div class="header">
@@ -222,27 +260,36 @@
 							<ul style="height: 480px; position: relative;">
 
 								<!-- 最新日志信息 -->
-								<li data-sizey="1" data-sizex="2" data-col="1" data-row="1"
+								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
 									class="gs_w"></li>
 
 								<!-- 申请外链 -->
 								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
 									class="gs_w" id="applyLinkDiv">
 									<h1 id="applylink">申请外链</h1> <a
-									href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/36#reply-div"
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
 									id="index_link"></a>
 								</li>
 
-								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w"></li>
-								<li data-sizey="2" data-sizex="2" data-col="3" data-row="1"
+								<!-- 时间显示 -->
+								<li data-sizey="1" data-sizex="2" data-col="4" data-row="1"
+									class="gs_w">
+									<div class="clock">
+										<div id="Date"></div>
+										<div id="hours"></div>
+										<div id="point">:</div>
+										<div id="min"></div>
+										<div id="point">:</div>
+										<div id="sec"></div>
+									</div></li>
+								<li data-sizey="2" data-sizex="2" data-col="1" data-row="1"
 									class="gs_w"></li>
 
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="1"
-									class="gs_w"></li>
-								<li data-sizey="1" data-sizex="2" data-col="1" data-row="2"
-									class="gs_w"></li>
 								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
+									class="gs_w"></li>
+								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
+									class="gs_w"></li>
+								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
 									class="gs_w"></li>
 
 								<!-- 拖动提示图标 -->
@@ -250,15 +297,16 @@
 									class="gs_w try"></li>
 
 
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
+								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
 									class="gs_w"></li>
 
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
+								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
 									class="gs_w"></li>
 
 								<!-- 会员信息 -->
 								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
 									class="gs_w">
+									<h1>会员</h1>
 									<div class="userList">
 										<a title="用户1" href="" id="user1" class="userLi"> <img
 											src="http://semis2008.gotoip55.com/img/head/default/anime/6.jpg" /><span></span>

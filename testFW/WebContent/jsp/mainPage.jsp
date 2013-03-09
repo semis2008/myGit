@@ -152,7 +152,7 @@
 				</form>
 			</div>
 			<h1>
-				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
+				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index"
 					title="wnJava Logo"><img
 					src="<%=ConstantsUtil.FW_DOMAIN%>/img/logo.png" alt="wnJava Logo" />
 				</a>

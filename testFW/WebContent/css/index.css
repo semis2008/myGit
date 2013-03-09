@@ -1,54 +1,98 @@
-#indexMain{
+#indexMain {
 	background: transparent;
-    margin: 3em 0;
+	margin: 3em 0;
 }
+
 .gridster {
-    margin: 0 auto;
-    opacity: 0.8;
-    transition: opacity 0.6s ease 0s;
-    width: 940px;
+	margin: 0 auto;
+	opacity: 0.8;
+	transition: opacity 0.6s ease 0s;
+	width: 940px;
 }
+
 .gridster .gs_w.try {
-    background-image: url("../img/sprite.png");
-    background-position: 35px 19px;
-    background-repeat: no-repeat;
+	background-image: url("../img/sprite.png");
+	background-position: 35px 19px;
+	background-repeat: no-repeat;
 }
+
 .gridster .gs_w {
 	border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	cursor: pointer;
 }
- .gs_w h1{
- 	font-size: 35px;
- }
-#index_link{
+
+.gs_w h1 {
+	font-size: 35px;
+}
+
+#index_link {
 	background-image: url("../img/index_link.png");
 	background-position: 30px 0px;
-	margin-top:30px;
+	margin-top: 30px;
 	width: 140px;
-	height:70px;
+	height: 70px;
 	display: block;
 	background-repeat: no-repeat;
 }
-.userList{
-    height: 300px;
-    width: 140px;
-    margin: 0;
-    padding: 0;
+
+.userList {
+	height: 300px;
+	width: 140px;
+	margin: 0;
+	padding: 0;
 }
 
-.userList .userLi{
+.userList .userLi {
 	float: left;
-    font-size: 14px;
-    height: 44px;
-    line-height: 22px;
-    position: relative;
-    text-align: center;
-    width: 44px;
-    z-index: 1;
-    margin: 1px 1px 0 1.6px;
+	font-size: 14px;
+	height: 44px;
+	line-height: 22px;
+	position: relative;
+	text-align: center;
+	width: 44px;
+	z-index: 1;
+	margin: 1px 1px 0 1.6px;
 }
-.userList .userLi img{
+
+.userList .userLi img {
 	width: 44px;
 	height: 44px;
 }
+
+/* 时钟样式*/
+.clock {
+	width: 300px;
+	margin: 0 auto;
+	padding: 0px;
+	color: #fff;
+}
+#Date {
+	font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: center;
+	text-shadow: 0 0 5px #00c6ff;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+.clock #hours, .clock #min, .clock #sec{
+	display: block;
+	font-size: 6em;
+	text-align: center;
+	width:90px;
+	float:left;
+	padding-top:5px;
+	font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	text-shadow: 0 0 5px #00c6ff;
+}
+
+#point {
+	width:8px;
+	-moz-animation: mymove 1s ease infinite;
+	-webkit-animation: mymove 1s ease infinite;
+	float:left;
+	display:block;
+	font-size: 6em;
+}
+
+ 
