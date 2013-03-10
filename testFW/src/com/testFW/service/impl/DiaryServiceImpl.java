@@ -54,22 +54,8 @@ public class DiaryServiceImpl implements DiaryService{
 		
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("totalPage", totalPage);
-		List<DiaryBO> diaryList = diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
-		/*
-		 * 置顶业务处理
-		 */
-		List<DiaryBO> afterDiaryList = new ArrayList<DiaryBO>();
-		if(UserUtil.getVisitedUser(req, resp).getUser_level().equals("3")) {
-			for(DiaryBO diary:diaryList) {
-				if(diary.getTags().contains("置顶")) {
-					afterDiaryList.add(diary);
-					diaryList.remove(diary);
-					break;
-				}
-			}
-			afterDiaryList.addAll(diaryList);
-		}
-		return afterDiaryList;
+		//TODO 考虑添加用户定义置顶的日志逻辑
+		return diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
 	}
 
 	@Override
