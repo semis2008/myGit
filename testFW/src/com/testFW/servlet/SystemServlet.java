@@ -128,11 +128,15 @@ public class SystemServlet extends HttpServlet {
 	 */
 	private String showIndexPage(HttpServletRequest req, HttpServletResponse resp) {
 		//TODO 主页显示需要继续开发，目前只设计样式
-		//获取系统最新发布的日志信息（取5条滚动显示）
+		//获取系统最新发布的日志信息
 		
 		//获取系统日志总数
 		
 		//获取系统图册总数
+		
+		//获取系统注册会员列表
+		
+		//获取系统最新的留言
 		
 		//
 		return "/jsp/indexPage.jsp";

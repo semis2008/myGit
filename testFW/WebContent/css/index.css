@@ -22,14 +22,18 @@
 	cursor: pointer;
 }
 
-.gs_w h1 {
+.gs_w h2 {
 	font-size: 35px;
+}
+.gs_w h1 {
+	font-size: 70px;
+	line-height: 80px;
 }
 
 #index_link {
 	background-image: url("../img/index_link.png");
 	background-position: 30px 0px;
-	margin-top: 30px;
+	margin-top: 15px;
 	width: 140px;
 	height: 70px;
 	display: block;
@@ -94,5 +98,55 @@
 	display:block;
 	font-size: 6em;
 }
-
+.diaryHideTip{
+ filter: alpha(opacity=40);
+ opacity: 0.4;
+ margin-top: -45px;
+ width: 140;
+ background: black;
+ height:49px;
+ display:none;
+ font-size: 14px;
+ text-align: center;
+ padding-top: 10px;
+}
  
+ .diaryCount:HOVER .diaryHideTip{
+	display: block;
+}
+
+.albumHideTip{
+ filter: alpha(opacity=40);
+ opacity: 0.4;
+ margin-top: -45px;
+ width: 140;
+ background: black;
+ height:49px;
+ display:none;
+ font-size: 14px;
+ text-align: center;
+ padding-top: 10px;
+}
+ 
+ .albumCount:HOVER .albumHideTip{
+	display: block;
+}
+ #marquee {
+    position:relative;
+    width: 300px;
+    overflow:hidden;
+  }
+  #marquee img {
+    border:0px;
+    height: 140px;
+  }
+  #marquee dl, #marquee dt,#marquee dd,#marquee a {
+    float:left;
+    margin:0;
+    padding:0;
+  }
+  #marquee dl{
+    width:1000%;
+    height:150px;
+  }
+  

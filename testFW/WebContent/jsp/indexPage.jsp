@@ -18,6 +18,7 @@
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
 	}
+	String imgPath = ConstantsUtil.FW_DOMAIN + "/album/1/1/";
 %>
 <html>
 <head>
@@ -144,7 +145,8 @@
 			// Add a leading zero to the hours value
 			$("#hours").html((hours < 10 ? "0" : "") + hours);
 		}, 1000);
-
+		//图片轮播
+		marquee("marquee");
 	});
 
 	function userQuit() {
@@ -172,6 +174,34 @@
 	//显示会员名称
 	function showUserName(userid) {
 		$("#user" + userid)
+	}
+
+	//图片轮播
+	function marquee(id) {
+		try {
+			document.execCommand("BackgroundImageCache", false, true);
+		} catch (e) {
+		}
+		;
+		var container = document.getElementById(id), original = container
+				.getElementsByTagName("dt")[0], clone = container
+				.getElementsByTagName("dd")[0], speed = arguments[1] || 15;
+		clone.innerHTML = original.innerHTML;
+		container.scrollLeft = clone.offsetLeft
+		var rolling = function() {
+			if (container.scrollLeft == 0) {
+				container.scrollLeft = clone.offsetLeft;
+			} else {
+				container.scrollLeft--;
+			}
+		}
+		var timer = setInterval(rolling, speed)//设置定时器
+		container.onmouseover = function() {
+			clearInterval(timer)
+		}//鼠标移到marquee上时，清除定时器，停止滚动
+		container.onmouseout = function() {
+			timer = setInterval(rolling, speed)
+		}//鼠标移开时重设定时器
 	}
 </script>
 <title>wnJava--首页</title>
@@ -207,20 +237,16 @@
 				<ul class="side_nav">
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a>
-					</li>
+						title="查看个人主页信息" id="mainpage">主页</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a>
-					</li>
+						title="查看日志" id="diary">日志</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a>
-					</li>
+						title="查看图册信息" id="picture">图册</a></li>
 					<li><a class="fixedTip"
 						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a>
-					</li>
+						title="关于我以及本站" id="aboutus">about</a></li>
 				</ul>
 			</div>
 			<div class="main_wrap">
@@ -259,17 +285,35 @@
 						<div class="gridster ready">
 							<ul style="height: 480px; position: relative;">
 
-								<!-- 最新日志信息 -->
+								<!-- 图册轮播
+								 -->
 								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w"></li>
+									class="gs_w">
+									<div id="marquee">
+										<dl>
+											<dt>
+												<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													src="<%=imgPath%>2_1.jpg" /> </a> <a
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													src="<%=imgPath%>2_2.jpg" /> </a> <a
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													src="<%=imgPath%>2_3.jpg" /> </a> <a
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													src="<%=imgPath%>2_4.jpg" /> </a> <a
+													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													src="<%=imgPath%>2_5.jpg" /> </a>
+											</dt>
+											<dd></dd>
+										</dl>
+									</div>
+								</li>
 
 								<!-- 申请外链 -->
 								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
 									class="gs_w" id="applyLinkDiv">
-									<h1 id="applylink">申请外链</h1> <a
+									<h2 id="applylink">申请外链</h2> <a
 									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
-									id="index_link"></a>
-								</li>
+									id="index_link"></a></li>
 
 								<!-- 时间显示 -->
 								<li data-sizey="1" data-sizex="2" data-col="4" data-row="1"
@@ -281,12 +325,19 @@
 										<div id="min"></div>
 										<div id="point">:</div>
 										<div id="sec"></div>
-									</div></li>
+									</div>
+								</li>
 								<li data-sizey="2" data-sizex="2" data-col="1" data-row="1"
 									class="gs_w"></li>
-
+								<!-- 图册统计 -->
 								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
-									class="gs_w"></li>
+									class="gs_w albumCount">
+									<h1>图册</h1>
+									<h2>
+										&nbsp;<a
+											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">2</a>
+									</h2>
+									<div class="albumHideTip">共有图册2篇，点击查看</div></li>
 								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
 									class="gs_w"></li>
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
@@ -296,9 +347,15 @@
 								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
 									class="gs_w try"></li>
 
-
+								<!-- 日志统计 -->
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
-									class="gs_w"></li>
+									class="gs_w diaryCount">
+									<h1>日志</h1>
+									<h2>
+										&nbsp;<a
+											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">21</a>
+									</h2>
+									<div class="diaryHideTip">共有日志21篇，点击查看</div></li>
 
 								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
 									class="gs_w"></li>
@@ -306,7 +363,7 @@
 								<!-- 会员信息 -->
 								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
 									class="gs_w">
-									<h1>会员</h1>
+									<h2>会员&nbsp;15</h2>
 									<div class="userList">
 										<a title="用户1" href="" id="user1" class="userLi"> <img
 											src="http://semis2008.gotoip55.com/img/head/default/anime/6.jpg" /><span></span>
@@ -319,7 +376,8 @@
 										</a> <a title="用户5" href="" id="user5" class="userLi"> <img
 											src="http://semis2008.gotoip55.com/img/head/default/anime/2.jpg" /><span></span>
 										</a>
-									</div></li>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -333,20 +391,17 @@
 							<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
 								Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
 
-						</p>
-					</li>
+						</p></li>
 					<li>
 						<h3>WnJava的说明</h3>
-						<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p>
-					</li>
+						<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p></li>
 					<li class="last">
 						<h3>Contact Me!</h3>
 						<p>有任何对本站及我个人的想法，欢迎联系我！</p>
 						<p>
 							Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
 								我 »</a>
-						</p>
-					</li>
+						</p></li>
 				</ul>
 			</div>
 		</div>
