@@ -147,6 +147,10 @@
 		}, 1000);
 		//图片轮播
 		marquee("marquee");
+		
+		$(".marqHideTip").hover(function(){
+			$(".marqHideTip").show();
+		});
 	});
 
 	function userQuit() {
@@ -197,14 +201,16 @@
 		}
 		var timer = setInterval(rolling, speed)//设置定时器
 		container.onmouseover = function() {
-			clearInterval(timer)
+			clearInterval(timer);
+			$(".marqHideTip").show();
 		}//鼠标移到marquee上时，清除定时器，停止滚动
 		container.onmouseout = function() {
-			timer = setInterval(rolling, speed)
+			timer = setInterval(rolling, speed);
+			$(".marqHideTip").hide();
 		}//鼠标移开时重设定时器
 	}
 </script>
-<title>wnJava--首页</title>
+<title>懒熊de部落格</title>
 </head>
 <body>
 	<div id="backstretch"
@@ -289,23 +295,24 @@
 								 -->
 								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
 									class="gs_w">
-									<div id="marquee">
+									<div id="marquee" class="marquee">
 										<dl>
 											<dt>
-												<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+												<a href="javascript:void(0)"><img
 													src="<%=imgPath%>2_1.jpg" /> </a> <a
-													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													href="javascript:void(0)"><img
 													src="<%=imgPath%>2_2.jpg" /> </a> <a
-													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													href="javascript:void(0)"><img
 													src="<%=imgPath%>2_3.jpg" /> </a> <a
-													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													href="javascript:void(0)"><img
 													src="<%=imgPath%>2_4.jpg" /> </a> <a
-													href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img
+													href="javascript:void(0)"><img
 													src="<%=imgPath%>2_5.jpg" /> </a>
 											</dt>
 											<dd></dd>
 										</dl>
 									</div>
+									<div class="marqHideTip"><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">进入图册列表</a></div>
 								</li>
 
 								<!-- 申请外链 -->
@@ -358,7 +365,9 @@
 									<div class="diaryHideTip">共有日志21篇，点击查看</div></li>
 
 								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
-									class="gs_w"></li>
+									class="gs_w">
+								<h1>懒熊</h1>De<h2>部落格</h2>	
+								</li>
 
 								<!-- 会员信息 -->
 								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"

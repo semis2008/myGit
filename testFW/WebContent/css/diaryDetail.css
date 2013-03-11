@@ -86,7 +86,6 @@ div.art-cats li.tag a {
 
 .art-header .art-meta {
 	border-bottom: 1px solid #D1D1D1;
-	color: #909090;
 	float: left;
 	font-size: 12px;
 	margin-top: 10px;
@@ -96,7 +95,6 @@ div.art-cats li.tag a {
 }
 
 .art-header .art-meta a {
-	color: #909090;
 	text-decoration: none;
 }
 

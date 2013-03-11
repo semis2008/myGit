@@ -25,6 +25,7 @@
 .gs_w h2 {
 	font-size: 35px;
 }
+
 .gs_w h1 {
 	font-size: 70px;
 	line-height: 80px;
@@ -71,6 +72,7 @@
 	padding: 0px;
 	color: #fff;
 }
+
 #Date {
 	font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
 	font-size: 20px;
@@ -79,74 +81,91 @@
 	margin-bottom: 10px;
 	margin-top: 5px;
 }
-.clock #hours, .clock #min, .clock #sec{
+
+.clock #hours,.clock #min,.clock #sec {
 	display: block;
 	font-size: 6em;
 	text-align: center;
-	width:90px;
-	float:left;
-	padding-top:5px;
+	width: 90px;
+	float: left;
+	padding-top: 5px;
 	font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
 	text-shadow: 0 0 5px #00c6ff;
 }
 
 #point {
-	width:8px;
+	width: 8px;
 	-moz-animation: mymove 1s ease infinite;
 	-webkit-animation: mymove 1s ease infinite;
-	float:left;
-	display:block;
+	float: left;
+	display: block;
 	font-size: 6em;
 }
-.diaryHideTip{
- filter: alpha(opacity=40);
- opacity: 0.4;
- margin-top: -45px;
- width: 140;
- background: black;
- height:49px;
- display:none;
- font-size: 14px;
- text-align: center;
- padding-top: 10px;
+
+.diaryHideTip {
+	filter: alpha(opacity = 40);
+	opacity: 0.4;
+	margin-top: -45px;
+	width: 140;
+	background: black;
+	height: 49px;
+	display: none; font-size : 14px;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 14px;
 }
- 
- .diaryCount:HOVER .diaryHideTip{
+
+.diaryCount:HOVER .diaryHideTip {
 	display: block;
 }
 
-.albumHideTip{
- filter: alpha(opacity=40);
- opacity: 0.4;
- margin-top: -45px;
- width: 140;
- background: black;
- height:49px;
- display:none;
- font-size: 14px;
- text-align: center;
- padding-top: 10px;
+.albumHideTip {
+	filter: alpha(opacity = 40);
+	opacity: 0.4;
+	margin-top: -45px;
+	width: 140;
+	background: black;
+	height: 49px;
+	display: none;
+	font-size: 14px;
+	text-align: center;
+	padding-top: 10px;
 }
- 
- .albumCount:HOVER .albumHideTip{
+
+.albumCount:HOVER .albumHideTip {
 	display: block;
 }
- #marquee {
-    position:relative;
-    width: 300px;
-    overflow:hidden;
-  }
-  #marquee img {
-    border:0px;
-    height: 140px;
-  }
-  #marquee dl, #marquee dt,#marquee dd,#marquee a {
-    float:left;
-    margin:0;
-    padding:0;
-  }
-  #marquee dl{
-    width:1000%;
-    height:150px;
-  }
-  
+
+#marquee {
+	position: relative;
+	width: 300px;
+	overflow: hidden;
+}
+
+#marquee img {
+	border: 0px;
+	height: 140px;
+}
+
+#marquee dl,#marquee dt,#marquee dd,#marquee a {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#marquee dl {
+	width: 1000%;
+	height: 150px;
+}
+.marqHideTip {
+	filter: alpha(opacity = 40);
+	opacity: 0.4;
+	margin-top: -60px;
+	width: 140;
+	background: black;
+	height: 40px;
+	display: none;
+	font-size: 14px;
+	text-align: center;
+	padding-top: 10px;
+} 
