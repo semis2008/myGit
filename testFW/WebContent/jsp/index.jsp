@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <%
-	response.sendRedirect(ConstantsUtil.FW_DOMAIN+"/action/system/mainpage");
+	response.sendRedirect(ConstantsUtil.FW_DOMAIN+"/action/system/index");
 %>
 <body>
 </body>

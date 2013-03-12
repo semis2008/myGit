@@ -1,13 +1,13 @@
 #indexMain {
 	background: transparent;
-	margin: 3em 0;
+	margin-bottom: 50px;
 }
 
 .gridster {
 	margin: 0 auto;
 	opacity: 0.8;
 	transition: opacity 0.6s ease 0s;
-	width: 940px;
+	width: 1080px;
 }
 
 .gridster .gs_w.try {

@@ -40,69 +40,17 @@ table {
 }
 
 html {
-	background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;
+	/*background: url("../img/bg_html.jpg") repeat scroll center top #F1F1F1;*/
 	height: 100%;
 }
 
 body {
-	background: url("../img/bg_body.gif") repeat-y scroll left top 
-		transparent;
+	/*background: url("../img/bg_body.gif") repeat-y scroll left top 
+		transparent;*/
 	color: white;
 	font: 62.5% "Lucida Grande", Arial, Helvetica, Verdana, sans-serif;
 	min-height: 100%;
-	background-position: 0 400px;
 }
-
-.header {
-	background: url("../img/bg_header.jpg") repeat-x scroll center top
-		transparent;
-	height: 102px;
-	position:fixed;
-	min-width: 1000px;
-	overflow: hidden;
-	width: 100%;
-	z-index: 999;
-}
-
-a.exampleTip {
-	color: #FEC92C;
-}
-
-a.exampleTip:hover{
-	text-decoration: underline;
-}
-
-.search_box {
-	background: url("../img/bg_search.png") no-repeat scroll right top
-		transparent;
-	display: inline;
-	float: right;
-	height: 39px;
-	margin: 34px 26px 0 0;
-	padding: 3px 13px 0 34px;
-	width: 241px;
-}
-
-.small_search {
-	background: none repeat scroll 0 0 transparent;
-	border: 0 none;
-	color: #999999;
-	font-size: 1.2em;
-	height: 18px;
-	margin-top: 8px;
-	padding: 0;
-	width: 241px;
-}
-
-.header h1 {
-	display: inline;
-	float: left;
-	height: 32px;
-	margin: 38px 24px 0 30px;
-	padding: 0;
-	width: 324px;
-}
-
 h1,h2,h3,h4,h5,h6 {
 	color: white;
 	font-size: 1.4em;
@@ -112,19 +60,6 @@ h1,h2,h3,h4,h5,h6 {
 a,a:link {
 	color: #25A8E0;
 }
-
-.header p {
-	color: #999999;
-	display: inline;
-	float: left;
-	font-family: Georgia, "Times New Roman", serif;
-	font-style: italic;
-	line-height: 1.3em;
-	margin: 38px 0 0;
-	padding: 0;
-	width: 260px;
-}
-
 p {
 	font-size: 1.2em;
 	line-height: 1.6em;
@@ -137,101 +72,18 @@ p img {
 }
 
 .container {
-	margin: 0 auto;
-	position: relative;
-	width: 100%;
+	margin: 0 0 0 10%;
+	position: absolute;
 }
-
-.sidebar {
-	left: 0;
-	position: fixed;
-	top: 120px;
-	width: 80px;
-}
-
-.side_nav {
-	margin: 0;
-	width: 80px;
-}
-
-.side_nav li {
-	height: 90px;
-	width: 80px;
-}
-
 ul {
 	list-style: none outside none;
 }
-
-.side_nav li a {
-	background: url("../img/bg_nav.png") no-repeat scroll 0 0 transparent;
-	display: block;
-	height: 90px;
-	text-indent: -9999px;
-	width: 80px;
-}
-
 a {
 	font-weight: bold;
 	text-decoration: none;
 }
-
-li.active #mainpage:hover,li.active #mainpage,body.home li #mainpage {
-	background-position: -80px 0;
-}
-
-#mainpage {
-	background-position: 0 0;
-}
-
-#mainpage:hover {
-	background-position: -160px 0;
-}
-
-li.active #mainpage:hover,li.active #mainpage {
-	background-position: -80px 0px;
-}
-
-#diary {
-	background-position: 0 -90px;
-}
-
-#diary:hover {
-	background-position: -160px -90px;
-}
-
-li.active #diary:hover,li.active #diary {
-	background-position: -80px -90px;
-}
-
-#picture {
-	background-position: 0 -270px;
-}
-
-#picture:hover {
-	background-position: -160px -270px;
-}
-
-li.active #picture:hover,li.active #picture {
-	background-position: -80px -270px;
-}
-
-#aboutus {
-	background-position: 0 -180px;
-}
-
-#aboutus:hover {
-	background-position: -160px -180px;
-}
-
-li.active #aboutus:hover,li.active #aboutus {
-	background-position: -80px -180px;
-}
-
 .main_wrap {
 	margin: 0;
-	padding-top:120px;
-	padding-left: 100px;
 }
 .main {
 	margin: 0;
@@ -242,12 +94,20 @@ li.active #aboutus:hover,li.active #aboutus {
 
 .top_bar {
 	margin-bottom: 12px;
-	overflow: hidden;
-	width: 100%;
+	font-size: 60px;
+	padding-bottom: 5px;
 }
 
 .more_padding {
 	padding-top: 30px;
+}
+.go_back{
+	float:left;
+	margin:50px 0 0 10px;
+	width:60px;
+	display:inline-block;
+	background:url("../img/go_back.png") no-repeat; 
+	cursor: pointer;
 }
 
 .clearfix:after {
@@ -311,9 +171,9 @@ h1{
 .section {
 	border-top: 1px solid white;
     position: relative;
-    margin-left: 110px;
+    margin-left: 20px;
     overflow: hidden;
-    padding: 15px 0;
+    padding-left: 15px 0;
     width:90%;
     position: relative;
 }
