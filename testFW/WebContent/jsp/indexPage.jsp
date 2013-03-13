@@ -204,6 +204,14 @@ if (fun == null)
 			$(".marqHideTip").hide();
 		};//鼠标移开时重设定时器
 	}
+	
+	//设置背景图片宽度
+	function setBgWidth() {
+		if (document.documentElement && document.documentElement.clientWidth) {
+			winWidth = document.documentElement.clientWidth;
+		}
+		$("#backstretch img").css("width",winWidth);
+	}
 </script>
 <title>懒熊de部落格</title>
 </head>
@@ -213,10 +221,18 @@ if (fun == null)
 		<img style="position: relative; left: 0px;"
 			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>" />
 	</div>
+	<div id="hd">
+		<div class="top_bar">
+			<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/index">首页</a><span>不因得失而惧怕前行</span>
+		</div>
+		<p>
+			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@semis</a>
+		</p>
+	</div>
 	<div class="wrap">
 		<div class="go_back">
 			<%
-			if(!"index".equals(fun)) {
+			if("index".equals(fun)) {
 			%>
 			<img src="<%=ConstantsUtil.FW_DOMAIN %>/img/go_back.png" alt="" />
 			<%
@@ -224,12 +240,114 @@ if (fun == null)
 			%>
 		</div>
 		<div class="container">
-			<div class="top_bar">
-				 首页
-			</div>
 			<div class="main_wrap">
 				<div class="main">
-					<div class="group" id="paging">
+					<div id="indexMain">
+						<div class="gridster ready">
+							<ul style="height: 480px; position: relative;">
+								<!-- 图册轮播
+								 -->
+								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
+									class="gs_w">
+									<div id="marquee" class="marquee">
+										<dl>
+											<dt>
+												<a href="javascript:void(0)"><img
+													src="<%=imgPath%>2_1.jpg" /> </a> <a href="javascript:void(0)"><img
+													src="<%=imgPath%>2_2.jpg" /> </a> <a href="javascript:void(0)"><img
+													src="<%=imgPath%>2_3.jpg" /> </a> <a href="javascript:void(0)"><img
+													src="<%=imgPath%>2_4.jpg" /> </a> <a href="javascript:void(0)"><img
+													src="<%=imgPath%>2_5.jpg" /> </a>
+											</dt>
+											<dd></dd>
+										</dl>
+									</div>
+									<div class="marqHideTip">
+										<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">进入图册列表</a>
+									</div>
+								</li>
+
+								<!-- 申请外链 -->
+								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
+									class="gs_w" id="applyLinkDiv">
+									<h2 id="applylink">申请外链</h2> <a
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
+									id="index_link"></a></li>
+
+								<!-- 时间显示 -->
+								<li data-sizey="1" data-sizex="2" data-col="4" data-row="1"
+									class="gs_w">
+									<div class="clock">
+										<div id="Date"></div>
+										<div id="hours"></div>
+										<div id="point">:</div>
+										<div id="min"></div>
+										<div id="point">:</div>
+										<div id="sec"></div>
+									</div>
+								</li>
+								<li data-sizey="2" data-sizex="2" data-col="1" data-row="1"
+									class="gs_w"></li>
+								<!-- 图册统计 -->
+								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
+									class="gs_w albumCount">
+									<h1>图册</h1>
+									<h2>
+										&nbsp;<a
+											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">2</a>
+									</h2>
+									<div class="albumHideTip">共有图册2篇，点击查看</div></li>
+								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
+									class="gs_w"></li>
+								<!-- 关于 -->
+								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
+									class="gs_w"><span>About</span></li>
+
+								<!-- 拖动提示图标 -->
+								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
+									class="gs_w try"></li>
+
+								<!-- 日志统计 -->
+								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
+									class="gs_w diaryCount">
+									<h1>日志</h1>
+									<h2>
+										&nbsp;<a
+											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">21</a>
+									</h2>
+									<div class="diaryHideTip">共有日志21篇，点击查看</div></li>
+
+								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
+									class="gs_w">
+									<h1>懒熊</h1>De
+									<h2>部落格</h2>
+								</li>
+
+								<!-- 会员信息 -->
+								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
+									class="gs_w">
+									<h2>会员&nbsp;15</h2>
+									<div class="userList">
+										<a title="用户1" href="" id="user1" class="userLi"> <img
+											src="http://www.wnjava.com/img/head/default/anime/6.jpg" /><span></span>
+										</a> <a title="用户2" href="" id="user2" class="userLi"> <img
+											src="http://www.wnjava.com/img/head/default/anime/4.jpg" /><span></span>
+										</a> <a title="用户3" href="" id="user3" class="userLi"> <img
+											src="http://www.wnjava.com/img/head/default/anime/3.jpg" /><span></span>
+										</a> <a title="用户4" href="" id="user4" class="userLi"> <img
+											src="http://www.wnjava.com/img/head/default/anime/1.jpg" /><span></span>
+										</a> <a title="用户5" href="" id="user5" class="userLi"> <img
+											src="http://www.wnjava.com/img/head/default/anime/2.jpg" /><span></span>
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="group" id="paging">
 						<%
 							if (!hasLogin) {
 						%>
@@ -258,135 +376,13 @@ if (fun == null)
 						<%
 							}
 						%>
-					</div>
-					<div id="indexMain">
-						<div class="gridster ready">
-							<ul style="height: 480px; position: relative;">
-
-								<!-- 图册轮播
-								 -->
-								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w">
-									<div id="marquee" class="marquee">
-										<dl>
-											<dt>
-												<a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_1.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_2.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_3.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_4.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_5.jpg" /> </a>
-											</dt>
-											<dd></dd>
-										</dl>
-									</div>
-									<div class="marqHideTip">
-										<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">进入图册列表</a>
-									</div></li>
-
-								<!-- 申请外链 -->
-								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
-									class="gs_w" id="applyLinkDiv">
-									<h2 id="applylink">申请外链</h2> <a
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
-									id="index_link"></a>
-								</li>
-
-								<!-- 时间显示 -->
-								<li data-sizey="1" data-sizex="2" data-col="4" data-row="1"
-									class="gs_w">
-									<div class="clock">
-										<div id="Date"></div>
-										<div id="hours"></div>
-										<div id="point">:</div>
-										<div id="min"></div>
-										<div id="point">:</div>
-										<div id="sec"></div>
-									</div></li>
-								<li data-sizey="2" data-sizex="2" data-col="1" data-row="1"
-									class="gs_w"></li>
-								<!-- 图册统计 -->
-								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
-									class="gs_w albumCount">
-									<h1>图册</h1>
-									<h2>
-										&nbsp;<a
-											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">2</a>
-									</h2>
-									<div class="albumHideTip">共有图册2篇，点击查看</div>
-								</li>
-								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w"></li>
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
-									class="gs_w"></li>
-
-								<!-- 拖动提示图标 -->
-								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
-									class="gs_w try"></li>
-
-								<!-- 日志统计 -->
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
-									class="gs_w diaryCount">
-									<h1>日志</h1>
-									<h2>
-										&nbsp;<a
-											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">21</a>
-									</h2>
-									<div class="diaryHideTip">共有日志21篇，点击查看</div>
-								</li>
-
-								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
-									class="gs_w">
-									<h1>懒熊</h1>De
-									<h2>部落格</h2></li>
-
-								<!-- 会员信息 -->
-								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
-									class="gs_w">
-									<h2>会员&nbsp;15</h2>
-									<div class="userList">
-										<a title="用户1" href="" id="user1" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/6.jpg" /><span></span>
-										</a> <a title="用户2" href="" id="user2" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/4.jpg" /><span></span>
-										</a> <a title="用户3" href="" id="user3" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/3.jpg" /><span></span>
-										</a> <a title="用户4" href="" id="user4" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/1.jpg" /><span></span>
-										</a> <a title="用户5" href="" id="user5" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/2.jpg" /><span></span>
-										</a>
-									</div></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section">
-				<ul class="strengths">
-					<li>
-						<h3>友情链接</h3>
-						<p>
-							<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
-								Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
-
-						</p>
-					</li>
-					<li>
-						<h3>WnJava的说明</h3>
-						<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p>
-					</li>
-					<li class="last">
-						<h3>Contact Me!</h3>
-						<p>有任何对本站及我个人的想法，欢迎联系我！</p>
-						<p>
-							Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
-								我 »</a>
-						</p>
-					</li>
-				</ul>
-			</div>
 		</div>
+	</div>
+	<div id="ft">
+		<p>
+			<span class="flink">友情链接：<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
+				Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a></span><span class="copyright">&copy; 2013 京ICP备13011487号. all designed by <a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/user/1">Kalor</a></span>
+		</p>
 	</div>
 </body>
 </html>
