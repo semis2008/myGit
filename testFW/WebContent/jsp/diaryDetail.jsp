@@ -200,80 +200,29 @@
 	<div id="backstretch"
 		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
 		<img style="position: relative; left: 0px;"
-			src="<% out.print(ConstantsUtil.FW_DOMAIN+ConstantsUtil.DEFAULT_BG); %>">
+			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>">
+	</div>
+	<div id="hd">
+		<div class="top_bar">
+			<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index">首页></a><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">日志></a><a href="#">日志详情</a><span>不因得失而惧怕前行</span>
+		</div>
+		<p>
+			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@semis</a>
+		</p>
+	</div>
+	<div class="go_back">
+		<%
+			if (!"index".equals(fun)) {
+		%>
+		<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"><img src="<%=ConstantsUtil.FW_DOMAIN%>/img/go_back.png" alt="" /></a>
+		<%
+			}
+		%>
 	</div>
 	<div class="wrap">
-		<div class="header">
-			<div class="search_box">
-				<form method="post" id="sForm"
-					action="<%=ConstantsUtil.FW_DOMAIN%>/action/system/search">
-					<input name="s" id="s" value="站内搜索" class="small_search"
-						type="text" />
-				</form>
-			</div>
-			<h1>
-				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-					title="wnJava Logo"><img
-					src="<%=ConstantsUtil.FW_DOMAIN%>/img/logo.png" alt="wnJava Logo" />
-				</a>
-			</h1>
-			<p>
-				不因感情,而影响行动,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					不因得失,而惧怕前行. 
-			</p>
-		</div>
 		<div class="container">
-			<div class="sidebar">
-				<ul class="side_nav">
-					<li><a class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage"
-						title="查看个人主页信息" id="mainpage">主页</a></li>
-					<li class="active"><a class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"
-						title="查看日志" id="diary">日志</a></li>
-					<li><a class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"
-						title="查看图册信息" id="picture">图册</a></li>
-					<li><a class="fixedTip"
-						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"
-						title="关于我以及本站" id="aboutus">about</a></li>
-				</ul>
-			</div>
 			<div class="main_wrap">
 				<div class="main">
-					<div class="top_bar"></div>
-					<div class="group" id="paging">
-						<%
-							if (!hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
-						<%
-							} else {
-						%>
-						<a
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
-							title="点击进入主页"><%=user.getName()%></a> <a href="#"
-							onclick="userQuit();" title="点击退出">退出</a>
-						<%
-							}
-						%>
-						<%
-							if (hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/newDiary.html">发表日志</a>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-						<%
-							} else {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-						<%
-							}
-						%>
-					</div>
 					<div class="artical" id="post-1">
 						<div class="art-cats">
 							<ul>
@@ -312,7 +261,8 @@
 						</div>
 						<!-- Baidu Button BEGIN -->
 						<!-- Baidu Button BEGIN -->
-						<div id="bdshare" style="float: right;" class="bdshare_t bds_tools get-codes-bdshare">
+						<div id="bdshare" style="float: right;"
+							class="bdshare_t bds_tools get-codes-bdshare">
 							<span class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a
 								class="bds_tsina"></a> <a class="bds_tqq"></a> <a
 								class="bds_renren"></a> <a class="bds_t163"></a> <a
@@ -356,11 +306,13 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 								src="<%=ConstantsUtil.FW_DOMAIN + reply.getUser_photo()%>" />
 							<div class="commentR">
 								<a
-									href="<%if(reply.getUser_id()==null) {
-										out.print("#");	
-									}else {
-										out.print(ConstantsUtil.FW_DOMAIN+"/action/system/mainpage/"+reply.getUser_id());	
-									}%>"
+									href="<%if (reply.getUser_id() == null) {
+						out.print("#");
+					} else {
+						out.print(ConstantsUtil.FW_DOMAIN
+								+ "/action/system/mainpage/"
+								+ reply.getUser_id());
+					}%>"
 									class="name"><%=reply.getUser_name()%></a><a href="#reply-div"
 									onclick="showParentDiv(<%=reply.getId()%>)" class="reply">回复</a>
 								<p class="time"><%=DateUtil.formatDate(reply.getReply_time(), 3)%></p>
@@ -411,27 +363,48 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				<input id="parentId" value="0" type="hidden" />
 			</div>
 		</div>
-		<div class="section">
-			<ul class="strengths">
-				<li>
-					<h3>友情链接</h3>
-					<p>
-						<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
-							Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a>
-
-					</p></li>
-				<li>
-					<h3>WnJava的说明</h3>
-					<p>小站刚刚建立，许多功能等待完善，许多创意还没实现~，欢迎大家注册交流。</p></li>
-				<li class="last">
-					<h3>Contact Me!</h3>
-					<p>有任何对本站及我个人的想法，欢迎联系我！</p>
-					<p>
-						Telephone: 1581 011 2386 or <a href="mailto:semis2008@126.com">Email
-							我 »</a>
-					</p></li>
-			</ul>
+		<div class="group" id="paging">
+			<%
+				if (!hasLogin) {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
+			<%
+				} else {
+			%>
+			<a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+				title="点击进入主页"><%=user.getName()%></a> <a href="#"
+				onclick="userQuit();" title="点击退出">退出</a>
+			<%
+				}
+			%>
+			<%
+				if (hasLogin) {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/newDiary.html">发表日志</a>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
+			<%
+				} else {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
+			<%
+				}
+			%>
 		</div>
+	</div>
+	<div id="ft">
+		<p>
+			<span class="flink">友情链接：<a target="_blank"
+				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
+				target="_blank" href="http://www.eamonning.com">清泉逐流</a> </span><span
+				class="copyright">&copy; 2013 京ICP备13011487号. all designed by
+				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/user/1">Kalor</a>
+			</span>
+		</p>
 	</div>
 </body>
 </html>

@@ -204,14 +204,6 @@ if (fun == null)
 			$(".marqHideTip").hide();
 		};//鼠标移开时重设定时器
 	}
-	
-	//设置背景图片宽度
-	function setBgWidth() {
-		if (document.documentElement && document.documentElement.clientWidth) {
-			winWidth = document.documentElement.clientWidth;
-		}
-		$("#backstretch img").css("width",winWidth);
-	}
 </script>
 <title>懒熊de部落格</title>
 </head>
@@ -229,16 +221,16 @@ if (fun == null)
 			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@semis</a>
 		</p>
 	</div>
+	<div class="go_back">
+		<%
+		if(!"index".equals(fun)) {
+		%>
+		<img src="<%=ConstantsUtil.FW_DOMAIN %>/img/go_back.png" alt="" />
+		<%
+		}
+		%>
+	</div>
 	<div class="wrap">
-		<div class="go_back">
-			<%
-			if("index".equals(fun)) {
-			%>
-			<img src="<%=ConstantsUtil.FW_DOMAIN %>/img/go_back.png" alt="" />
-			<%
-			}
-			%>
-		</div>
 		<div class="container">
 			<div class="main_wrap">
 				<div class="main">
@@ -294,14 +286,16 @@ if (fun == null)
 									<h1>图册</h1>
 									<h2>
 										&nbsp;<a
-											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">2</a>
+											href="#">2</a>
 									</h2>
-									<div class="albumHideTip">共有图册2篇，点击查看</div></li>
+									<div class="albumHideTip">共有图册2篇，<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">点击查看</a></div></li>
 								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
 									class="gs_w"></li>
 								<!-- 关于 -->
 								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
-									class="gs_w"><span>About</span></li>
+									class="gs_w aboutMe"><span>About Me</span>
+								<div class="aboutHideTip"><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus">关于本站及作者</a></div>	
+									</li>
 
 								<!-- 拖动提示图标 -->
 								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
@@ -313,9 +307,9 @@ if (fun == null)
 									<h1>日志</h1>
 									<h2>
 										&nbsp;<a
-											href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">21</a>
+											href="#">21</a>
 									</h2>
-									<div class="diaryHideTip">共有日志21篇，点击查看</div></li>
+									<div class="diaryHideTip">共有日志21篇，<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">点击查看</a></div></li>
 
 								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
 									class="gs_w">

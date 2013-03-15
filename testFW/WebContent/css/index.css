@@ -1,6 +1,7 @@
 #indexMain {
 	background: transparent;
 	margin-bottom: 50px;
+	width: 1140px;
 }
 
 .gridster {
@@ -168,4 +169,27 @@
 	font-size: 14px;
 	text-align: center;
 	padding-top: 10px;
-} 
+}
+
+.aboutMe span{
+	font-size: 44px;
+	color: white;
+	text-align: center;
+}
+
+.aboutHideTip {
+	filter: alpha(opacity = 40);
+	opacity: 0.4;
+	margin-top: -35px;
+	width: 140;
+	background: black;
+	height: 50px;
+	display: none;
+	font-size: 14px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.aboutMe:HOVER .aboutHideTip {
+	display: block;
+}
