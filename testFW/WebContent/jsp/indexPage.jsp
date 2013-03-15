@@ -322,15 +322,15 @@ if (fun == null)
 									class="gs_w">
 									<h2>会员&nbsp;15</h2>
 									<div class="userList">
-										<a title="用户1" href="" id="user1" class="userLi"> <img
+										<a title="用户1" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1" id="user1" class="userLi"> <img
 											src="http://www.wnjava.com/img/head/default/anime/6.jpg" /><span></span>
-										</a> <a title="用户2" href="" id="user2" class="userLi"> <img
+										</a> <a title="用户2" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user2" class="userLi"> <img
 											src="http://www.wnjava.com/img/head/default/anime/4.jpg" /><span></span>
-										</a> <a title="用户3" href="" id="user3" class="userLi"> <img
+										</a> <a title="用户3" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user3" class="userLi"> <img
 											src="http://www.wnjava.com/img/head/default/anime/3.jpg" /><span></span>
-										</a> <a title="用户4" href="" id="user4" class="userLi"> <img
+										</a> <a title="用户4" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user4" class="userLi"> <img
 											src="http://www.wnjava.com/img/head/default/anime/1.jpg" /><span></span>
-										</a> <a title="用户5" href="" id="user5" class="userLi"> <img
+										</a> <a title="用户5" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user5" class="userLi"> <img
 											src="http://www.wnjava.com/img/head/default/anime/2.jpg" /><span></span>
 										</a>
 									</div>
