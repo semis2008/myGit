@@ -110,7 +110,7 @@
 			<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index">首页></a><a href="#">日志</a><span>不因得失而惧怕前行</span>
 		</div>
 		<p>
-			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@semis</a>
+			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@伪冥</a>
 		</p>
 	</div>
 	<div class="go_back">
@@ -257,7 +257,7 @@
 				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
 			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
 				designed by <a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/user/1">Kalor</a>
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊r</a>
 			</span>
 		</p>
 	</div>

@@ -218,7 +218,7 @@ if (fun == null)
 			<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/index">首页</a><span>不因得失而惧怕前行</span>
 		</div>
 		<p>
-			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@semis</a>
+			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@伪冥</a>
 		</p>
 	</div>
 	<div class="go_back">
@@ -375,7 +375,7 @@ if (fun == null)
 	<div id="ft">
 		<p>
 			<span class="flink">友情链接：<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
-				Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a></span><span class="copyright">&copy; 2013 京ICP备13011487号. all designed by <a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/user/1">Kalor</a></span>
+				Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a></span><span class="copyright">&copy; 2013 京ICP备13011487号. all designed by <a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/1">偷懒的熊</a></span>
 		</p>
 	</div>
 </body>

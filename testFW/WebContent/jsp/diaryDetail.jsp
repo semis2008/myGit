@@ -402,7 +402,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
 				target="_blank" href="http://www.eamonning.com">清泉逐流</a> </span><span
 				class="copyright">&copy; 2013 京ICP备13011487号. all designed by
-				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/user/1">Kalor</a>
+				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
 			</span>
 		</p>
 	</div>

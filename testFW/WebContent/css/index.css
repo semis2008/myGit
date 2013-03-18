@@ -1,6 +1,7 @@
 #indexMain {
-	background: transparent;
-	margin-bottom: 50px;
+	margin: auto;
+	height:100%;
+	position:relative;
 	width: 1140px;
 }
 
