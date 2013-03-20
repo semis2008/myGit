@@ -90,4 +90,10 @@ public interface UserService {
 	 * @return
 	 */
 	List<LeaveMsgBO> getLeaveMsgList(HttpServletRequest req, HttpServletResponse resp);
+	
+	/**
+	 * 获取系统所有用户
+	 * @return
+	 */
+	List<UserBO> getUsers();
 }

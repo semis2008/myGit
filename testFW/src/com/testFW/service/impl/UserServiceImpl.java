@@ -177,5 +177,9 @@ public class UserServiceImpl implements UserService{
 		UserBO visitedUser = UserUtil.getVisitedUser(req, resp);
 		return userDao.getLeaveMsgList(visitedUser.getId(),0,5);
 	}
+	@Override
+	public List<UserBO> getUsers() {
+		return userDao.queryUsers();
+	}
 	
 }

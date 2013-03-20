@@ -176,4 +176,10 @@ public interface UserDao {
 	 * @return 留言列表
 	 */
 	List<LeaveMsgBO> getLeaveMsgList(Long userId,int start,int end);
+	
+	/**
+	 * 查询系统所有用户（后期分页需完善）
+	 * @return
+	 */
+	List<UserBO> queryUsers();
 }

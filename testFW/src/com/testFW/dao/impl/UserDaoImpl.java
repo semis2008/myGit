@@ -125,4 +125,10 @@ public class UserDaoImpl implements UserDao {
 		String sql = "select * from leavemsg where visited_user_id = ? order by leave_time desc limit 0,5";
 		return dbUtilsTemplate.find(LeaveMsgBO.class, sql, userId);
 	}
+
+	@Override
+	public List<UserBO> queryUsers() {
+		String sql = "select * from user where 1=1 order by reg_time asc";
+		return dbUtilsTemplate.find(UserBO.class, sql, null);
+	}
 }

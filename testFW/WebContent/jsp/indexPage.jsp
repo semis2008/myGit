@@ -13,6 +13,12 @@ if (fun == null)
 
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
+	
+	List<UserBO> users = (List<UserBO>)request.getAttribute("users");
+	if(users == null) {
+		users = new ArrayList<UserBO>();
+	}
+	
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
@@ -320,19 +326,17 @@ if (fun == null)
 								<!-- 会员信息 -->
 								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
 									class="gs_w">
-									<h2>会员&nbsp;15</h2>
+									<h2>会员&nbsp;<%=users.size() %></h2>
 									<div class="userList">
-										<a title="用户1" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1" id="user1" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/6.jpg" /><span></span>
-										</a> <a title="用户2" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user2" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/4.jpg" /><span></span>
-										</a> <a title="用户3" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user3" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/3.jpg" /><span></span>
-										</a> <a title="用户4" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user4" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/1.jpg" /><span></span>
-										</a> <a title="用户5" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1"  id="user5" class="userLi"> <img
-											src="http://www.wnjava.com/img/head/default/anime/2.jpg" /><span></span>
-										</a>
+									<%
+										for(UserBO reg_user:users) {
+									%>
+										<a title="<%=reg_user.getName() %>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reg_user.getId() %>" id="user<%=reg_user.getId() %>" class="userLi"> <img
+											src="<%out.print(ConstantsUtil.FW_DOMAIN + reg_user.getPhoto()); %>" /><span></span>
+										</a> 
+									<%
+										}
+									%>	
 									</div>
 								</li>
 							</ul>

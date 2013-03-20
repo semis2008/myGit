@@ -135,10 +135,13 @@ public class SystemServlet extends HttpServlet {
 		//获取系统图册总数
 		
 		//获取系统注册会员列表
+		List<UserBO> users = userService.getUsers();
 		
 		//获取系统最新的留言
 		
 		//
+		
+		req.setAttribute("users", users);
 		return "/jsp/indexPage.jsp";
 	}
 	
