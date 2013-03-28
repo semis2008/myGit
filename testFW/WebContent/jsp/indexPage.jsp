@@ -7,18 +7,18 @@
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
-String fun = (String) request.getAttribute("fun");
-if (fun == null)
-	fun = "";
+	String fun = (String) request.getAttribute("fun");
+	if (fun == null)
+		fun = "";
 
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	UserBO visitedUser = (UserBO) request.getAttribute("visitedUser");
-	
-	List<UserBO> users = (List<UserBO>)request.getAttribute("users");
-	if(users == null) {
+
+	List<UserBO> users = (List<UserBO>) request.getAttribute("users");
+	if (users == null) {
 		users = new ArrayList<UserBO>();
 	}
-	
+
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
@@ -45,10 +45,11 @@ if (fun == null)
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
-<!-- gridster css -->
+<!-- gridster css 
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/gridter/jquery.gridster.min.css"
 	rel="stylesheet" media="screen" />
+	-->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -57,10 +58,10 @@ if (fun == null)
 <!-- aToolTip js -->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
-<!-- Gridter js -->
+<!-- Gridter js
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/gridter/jquery.gridster.min.js"></script>
-
+ -->
 <script type="text/javascript">
 	$(function() {
 		$(".navi_news").hover(function() {
@@ -94,11 +95,6 @@ if (fun == null)
 		});
 		$('a.fixedTip').aToolTip();
 		$('input.fixedTip').aToolTip();
-
-		var gridster = $(".gridster ul").gridster({
-			widget_margins : [ 10, 10 ],
-			widget_base_dimensions : [ 140, 140 ]
-		});
 
 		//随机翻转
 		setInterval(function() {
@@ -150,12 +146,6 @@ if (fun == null)
 			// Add a leading zero to the hours value
 			$("#hours").html((hours < 10 ? "0" : "") + hours);
 		}, 1000);
-		//图片轮播
-		marquee("marquee");
-
-		$(".marqHideTip").hover(function() {
-			$(".marqHideTip").show();
-		});
 	});
 
 	function userQuit() {
@@ -180,36 +170,6 @@ if (fun == null)
 			left : "1.8px"
 		}, 220);
 	}
-	 
-	//图片轮播
-	function marquee(id) {
-		try {
-			document.execCommand("BackgroundImageCache", false, true);
-		} catch (e) {
-		}
-		;
-		var container = document.getElementById(id), original = container
-				.getElementsByTagName("dt")[0], clone = container
-				.getElementsByTagName("dd")[0], speed = arguments[1] || 15;
-		clone.innerHTML = original.innerHTML;
-		container.scrollLeft = clone.offsetLeft;
-		var rolling = function() {
-			if (container.scrollLeft == 0) {
-				container.scrollLeft = clone.offsetLeft;
-			} else {
-				container.scrollLeft--;
-			}
-		};
-		var timer = setInterval(rolling, speed);//设置定时器
-		container.onmouseover = function() {
-			clearInterval(timer);
-			$(".marqHideTip").show();
-		};//鼠标移到marquee上时，清除定时器，停止滚动
-		container.onmouseout = function() {
-			timer = setInterval(rolling, speed);
-			$(".marqHideTip").hide();
-		};//鼠标移开时重设定时器
-	}
 </script>
 <title>懒熊de部落格</title>
 </head>
@@ -221,19 +181,19 @@ if (fun == null)
 	</div>
 	<div id="hd">
 		<div class="top_bar">
-			<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/index">首页</a><span>不因得失而惧怕前行</span>
+			<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index">首页</a><span>不因得失而惧怕前行</span>
 		</div>
 		<p>
-			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@伪冥</a>
+			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@Kalor</a>
 		</p>
 	</div>
 	<div class="go_back">
 		<%
-		if(!"index".equals(fun)) {
+			if (!"index".equals(fun)) {
 		%>
-		<img src="<%=ConstantsUtil.FW_DOMAIN %>/img/go_back.png" alt="" />
+		<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/go_back.png" alt="" />
 		<%
-		}
+			}
 		%>
 	</div>
 	<div class="wrap">
@@ -241,145 +201,225 @@ if (fun == null)
 			<div class="main_wrap">
 				<div class="main">
 					<div id="indexMain">
-						<div class="gridster ready">
-							<ul style="height: 480px; position: relative;">
-								<!-- 图册轮播
-								 -->
-								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w">
-									<div id="marquee" class="marquee">
-										<dl>
-											<dt>
-												<a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_1.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_2.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_3.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_4.jpg" /> </a> <a href="javascript:void(0)"><img
-													src="<%=imgPath%>2_5.jpg" /> </a>
-											</dt>
-											<dd></dd>
-										</dl>
-									</div>
-									<div class="marqHideTip">
-										<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">进入图册列表</a>
-									</div>
-								</li>
+						<div class="intro">
+							<div class="indexTitle">
+								<p>懒熊·部落格</p>
+								<h1>简单的记录生活，一点一滴的进步。小站刚刚起步，欢迎大家注册留言。</h1>
+							</div>
+							<!-- 时间显示 -->
+							<div class="clock">
+								<div id="Date"></div>
+								<div id="hours"></div>
+								<div id="point">:</div>
+								<div id="min"></div>
+								<div id="point">:</div>
+								<div id="sec"></div>
+							</div>
+						</div>
+						<div class="indexContent">
+							<div class="content">
+								<h2 id="contentTitle">会员动态</h2>
+								<ul>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: list-item; z-index: 7; opacity: 0;">
+										<div class="work-lt">
+											<p>欢迎新加入的用户~~</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://swellcast.com.au"> <img
+												alt="Swellcast Surf Reports" src="img/scast.jpg"> <span><em>Visit
+															site »</em>
+												</span>
+											</a>
+										</div></li>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 0;">
+										<div class="work-lt">
+											<p>Wordpress portfolio theme development for Sydney's
+												Stonefox Creative.</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://stonefoxcreative.com"> <img
+												alt="Wordpress development for Stonefox Creative"
+												src="img/sfox2.jpg"> <span><em>Visit site
+															»</em>
+												</span>
+											</a>
+										</div></li>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 5; opacity: 1;">
+										<div class="work-lt">
+											<p></p>
+										</div>
+										<div class="work-rt">
+											<a href="http://reddot.com.au"> <img
+												alt="Wordpress development for Red Dot" src="img/rdot.jpg">
+													<span><em>Visit site »</em>
+												</span>
+											</a>
+										</div></li>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0;">
+										<div class="work-lt">
+											<p>Utilicons - simple, crisp icons for interface design.</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://utilicons.com"> <img alt="Utilicons"
+												src="img/ut.jpg"> <span><em>Visit site »</em>
+												</span>
+											</a>
+										</div></li>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 0;">
+										<div class="work-lt">
+											<p>Wordpress theme development for renowned Australian
+												fashion stylist Mark Vassallo. Super minimal and responsive
+												across various devices.</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://markvassallo.tv"> <img
+												alt="Wordpress development for mark Vassallo"
+												src="img/mv2.jpg"> <span><em>Visit site »</em>
+												</span>
+											</a>
+										</div></li>
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 2; opacity: 0;">
+										<div class="work-lt">
+											<p>Front end development (HTML, CSS &amp; JQuery) for
+												Jaypak Packaging, the Western Australian packaging
+												manufacturer.</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://jaypak.com.au"> <img
+												alt="Web development for Jaypak Packaging"
+												src="img/jpak.jpg"> <span><em>Visit site »</em>
+												</span>
+											</a>
+										</div></li>
 
-								<!-- 申请外链 -->
-								<li data-sizey="1" data-sizex="1" data-col="1" data-row="3"
-									class="gs_w" id="applyLinkDiv">
-									<h2 id="applylink">申请外链</h2> <a
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
-									id="index_link"></a></li>
-
-								<!-- 时间显示 -->
-								<li data-sizey="1" data-sizex="2" data-col="4" data-row="1"
-									class="gs_w">
-									<div class="clock">
-										<div id="Date"></div>
-										<div id="hours"></div>
-										<div id="point">:</div>
-										<div id="min"></div>
-										<div id="point">:</div>
-										<div id="sec"></div>
-									</div>
-								</li>
-								<li data-sizey="2" data-sizex="2" data-col="1" data-row="1"
-									class="gs_w"></li>
-								<!-- 图册统计 -->
-								<li data-sizey="1" data-sizex="1" data-col="4" data-row="3"
-									class="gs_w albumCount">
-									<h1>图册</h1>
-									<h2>
-										&nbsp;<a
-											href="#">2</a>
-									</h2>
-									<div class="albumHideTip">共有图册2篇，<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">点击查看</a></div></li>
-								<li data-sizey="1" data-sizex="2" data-col="2" data-row="3"
-									class="gs_w"></li>
-								<!-- 关于 -->
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="3"
-									class="gs_w aboutMe"><span>About Me</span>
-								<div class="aboutHideTip"><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus">关于本站及作者</a></div>	
+									<li
+										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 1; opacity: 0;">
+										<div class="work-lt">
+											<p>Front end development (HTML, CSS &amp; JQuery) and
+												WordPress for Australia’s only punk rock bag piper.</p>
+										</div>
+										<div class="work-rt">
+											<a href="http://thebadpiper.com"> <img
+												alt="Wordpress development for The BadPiper"
+												src="img/bpiper.jpg"> <span><em>Visit site
+															»</em>
+												</span>
+											</a>
+										</div></li>
+								</ul>
+								<div class="work-pager">
+									<a href="#" class=" ">1</a><a href="#" class=" ">2</a><a
+										href="#" class="activeSlide">3</a><a href="#">4</a><a href="#">5</a><a
+										href="#">6</a><a href="#">7</a>
+								</div>
+							</div>
+							<div class="aside">
+								<ul>
+									<!-- 申请外链
+									<li id="applyLinkDiv" class="f">
+										<h2 id="applylink">申请外链</h2> <a
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
+										id="index_link"></a></li>
+									 -->
+									<li class="diaryCount " onclick="">
+										<em class="ico_diary"></em>
+										<span>
+										<b>日志</b>
+										&nbsp;|&nbsp;										
+										共21	篇
+										</span>
 									</li>
+									<!-- 图册统计 -->
+									<li class="albumCount">
+										<em class="ico_album"></em>
+										<span>
+										<b>图册</b>
+										&nbsp;|&nbsp;										
+										共2册
+										</span>
+									</li>
+									<!-- 关于 -->
+									<li class="aboutMe ">
+										<em class="ico_about"></em>
+										<span>
+										<b>About Me</b>
+										</span>
+									</li>
+									<!-- 会员信息 -->
+									<li class="userList ">
+										<em class="ico_users"></em>
+										<span>
+										<b>会员</b>
+										&nbsp;|&nbsp;目前有注册成员<%=users.size()%>名
+										</span>
+										<div>
+											<%
+												for (UserBO reg_user : users) {
+											%>
+											<a title="<%=reg_user.getName()%>"
+												href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reg_user.getId()%>"
+												id="user<%=reg_user.getId()%>" class="userLi"> <img
+												src="<%out.print(ConstantsUtil.FW_DOMAIN + reg_user.getPhoto());%>" /><span></span>
+											</a>
+											<%
+												}
+											%>
+										</div>
+									</li>
+								</ul>
 
-								<!-- 拖动提示图标 -->
-								<li data-sizey="1" data-sizex="1" data-col="6" data-row="1"
-									class="gs_w try"></li>
-
-								<!-- 日志统计 -->
-								<li data-sizey="1" data-sizex="1" data-col="5" data-row="2"
-									class="gs_w diaryCount">
-									<h1>日志</h1>
-									<h2>
-										&nbsp;<a
-											href="#">21</a>
-									</h2>
-									<div class="diaryHideTip">共有日志21篇，<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">点击查看</a></div></li>
-
-								<li data-sizey="1" data-sizex="1" data-col="3" data-row="1"
-									class="gs_w">
-									<h1>懒熊</h1>De
-									<h2>部落格</h2>
-								</li>
-
-								<!-- 会员信息 -->
-								<li data-sizey="2" data-sizex="1" data-col="6" data-row="2"
-									class="gs_w">
-									<h2>会员&nbsp;<%=users.size() %></h2>
-									<div class="userList">
-									<%
-										for(UserBO reg_user:users) {
-									%>
-										<a title="<%=reg_user.getName() %>" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=reg_user.getId() %>" id="user<%=reg_user.getId() %>" class="userLi"> <img
-											src="<%out.print(ConstantsUtil.FW_DOMAIN + reg_user.getPhoto()); %>" /><span></span>
-										</a> 
-									<%
-										}
-									%>	
-									</div>
-								</li>
-							</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="group" id="paging">
-						<%
-							if (!hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
-						<%
-							} else {
-						%>
-						<a
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
-							title="点击进入主页"><%=user.getName()%></a> <a href="#"
-							onclick="userQuit();" title="点击退出">退出</a>
-						<%
-							}
-						%>
-						<%
-							if (hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-						<%
-							} else {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-						<%
-							}
-						%>
+			<%
+				if (!hasLogin) {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
+			<%
+				} else {
+			%>
+			<a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
+				title="点击进入主页"><%=user.getName()%></a> <a href="#"
+				onclick="userQuit();" title="点击退出">退出</a>
+			<%
+				}
+			%>
+			<%
+				if (hasLogin) {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
+			<%
+				} else {
+			%>
+			<a class="fancybox-iframe"
+				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
+			<%
+				}
+			%>
 		</div>
 	</div>
 	<div id="ft">
 		<p>
-			<span class="flink">友情链接：<a target="_blank" href="http://baipeng.alwaysdata.net">BAI
-				Peng's</a>| <a target="_blank" href="http://www.eamonning.com">清泉逐流</a></span><span class="copyright">&copy; 2013 京ICP备13011487号. all designed by <a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/1">偷懒的熊</a></span>
+			<span class="flink">友情链接：<a target="_blank"
+				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
+				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
+				designed by <a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
+			</span>
 		</p>
 	</div>
 </body>

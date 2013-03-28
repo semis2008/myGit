@@ -108,6 +108,13 @@ div#login a:link,div#login a:visited {
 </style>
 <body>
 	<script type="text/javascript">
+		$(function(){
+			var param = location.search;
+			if(param=="p=showregist") {
+				showRegist();
+			}			
+		});
+		
 		$("input").focus(function() {
 			$(".tip").text("");
 		});

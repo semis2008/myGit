@@ -3,49 +3,9 @@
 	height:100%;
 	position:relative;
 	width: 1140px;
-}
-
-.gridster {
-	margin: 0 auto;
-	opacity: 0.8;
-	transition: opacity 0.6s ease 0s;
-	width: 90%;
-}
-
-.gridster .gs_w.try {
-	background-image: url("../img/sprite.png");
-	background-position: 35px 19px;
-	background-repeat: no-repeat;
-}
-
-.gridster .gs_w {
-	border: 1px solid #ccc;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-	cursor: pointer;
-}
-
-.gs_w h2 {
-	font-size: 35px;
-}
-
-.gs_w h1 {
-	font-size: 70px;
-	line-height: 80px;
-}
-
-#index_link {
-	background-image: url("../img/index_link.png");
-	background-position: 30px 0px;
-	margin-top: 15px;
-	width: 140px;
-	height: 70px;
-	display: block;
-	background-repeat: no-repeat;
-}
-
+} 
 .userList {
-	height: 300px;
-	width: 140px;
+	height:150px;
 	margin: 0;
 	padding: 0;
 }
@@ -70,12 +30,14 @@
 /* 时钟样式*/
 .clock {
 	width: 300px;
-	margin: 0 auto;
-	padding: 0px;
+	margin:20px 40px 0 0;
+	padding: 0;
 	color: #fff;
+	float: right;
+	display: inline-block;
 }
 
-#Date {
+.clock #Date {
 	font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	text-align: center;
@@ -103,94 +65,180 @@
 	display: block;
 	font-size: 6em;
 }
-
-.diaryHideTip {
-	filter: alpha(opacity = 40);
-	opacity: 0.4;
-	margin-top: -45px;
-	width: 140;
-	background: black;
-	height: 49px;
-	display: none; font-size : 14px;
-	text-align: center;
-	padding-top: 10px;
-	font-size: 14px;
-}
-
-.diaryCount:HOVER .diaryHideTip {
-	display: block;
-}
-
-.albumHideTip {
-	filter: alpha(opacity = 40);
-	opacity: 0.4;
-	margin-top: -45px;
-	width: 140;
-	background: black;
-	height: 49px;
-	display: none;
-	font-size: 14px;
-	text-align: center;
-	padding-top: 10px;
-}
-
-.albumCount:HOVER .albumHideTip {
-	display: block;
-}
-
-#marquee {
-	position: relative;
-	width: 300px;
-	overflow: hidden;
-}
-
-#marquee img {
-	border: 0px;
-	height: 140px;
-}
-
-#marquee dl,#marquee dt,#marquee dd,#marquee a {
-	float: left;
+ 
+.intro{
 	margin: 0;
-	padding: 0;
+    position: relative;
+    display: inline-block;
+}
+.indexContent .content{
+	width: 740px;
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+	
+	border-radius: 7px;
+	border:1px solid #c3c3c3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.indexContent .aside{
+	width: 300px;
+	display: inline-block;
+	float: right;
+	margin-right:40px;
+	color:black;
+	padding: 2px 5px 5px 5px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.indexContent .aside li{
+	cursor:pointer;
+	margin-bottom:15px;
+	padding: 5px;
+	color:white;
+}
+.indexContent .aside li b{
+	font-size: 22px;
 }
 
-#marquee dl {
-	width: 1000%;
-	height: 150px;
-}
-.marqHideTip {
-	filter: alpha(opacity = 40);
-	opacity: 0.4;
-	margin-top: -60px;
-	width: 140;
-	background: black;
-	height: 40px;
-	display: none;
-	font-size: 14px;
-	text-align: center;
-	padding-top: 10px;
+.indexContent .aside li:hover {
+	border-radius: 7px;
+	border:1px solid #c3c3c3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.aboutMe span{
-	font-size: 44px;
-	color: white;
-	text-align: center;
+.indexTitle{
+	width: 800px;
+	border: none;
+	float:left;
+	display: inline-block;
+}
+ 
+.indexTitle p {
+    color: #FFFFFF;
+    font-family: "proxima-nova-condensed-1","proxima-nova-condensed-2";
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: normal;
+    margin: 0 auto 10px;
+    position: relative;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+ 
+.indexTitle h1 {
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 26px;
+    margin: 0 auto 40px;
+    padding-right: 380px;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    width: 580px;
 }
 
-.aboutHideTip {
-	filter: alpha(opacity = 40);
-	opacity: 0.4;
-	margin-top: -35px;
-	width: 140;
-	background: black;
-	height: 50px;
-	display: none;
-	font-size: 14px;
-	text-align: center;
-	padding-top: 10px;
+em.ico_diary {
+    background: url("../img/nsidebar_bg.png") no-repeat scroll -48px -141px transparent;
+    float: left;
+    height: 20px;
+    margin: 11px 0 0 5px;
+    width: 22px;
 }
 
-.aboutMe:HOVER .aboutHideTip {
-	display: block;
+em.ico_album {
+    background: url("../img/ico_album.png") no-repeat scroll transparent;
+    float: left;
+    height: 20px;
+    margin: 11px 0 0 5px;
+    width: 22px;
+}
+
+em.ico_about {
+	background: url("../img/nsidebar_bg.png") no-repeat scroll -49px -43px transparent;
+    float: left;
+    height: 20px;
+    margin: 7px 0 0 5px;
+    width: 22px;
+}
+
+
+em.ico_users {
+	background: url("../img/nsidebar_bg.png") no-repeat scroll -96px -42px transparent;
+    float: left;
+    height: 20px;
+    margin: 7px 0 0 5px;
+    width: 22px;
+}
+
+#contentTitle{
+	border-bottom: 1px solid white;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    left: 0;
+    margin-bottom: 16px;
+    padding: 0 0 8px 40px;
+    position: absolute;
+    top: 180px;
+    width: 200px;
+}
+
+.content ul {
+    height: 400px;
+    list-style: none outside none;
+    position: relative;
+    width: 10000px;
+}
+
+
+.work-pager {
+    height: 10px;
+    left: 40px;
+    position: absolute;
+    top: 240px;
+    width: 200px;
+    z-index: 7;
+}
+
+.work-pager a:link, .work-pager a:visited {
+    background: url("../img/dots.png") no-repeat scroll left top transparent;
+}
+
+.work-pager a:hover, .work-pager a:active, .work-pager a.activeSlide {
+    background: url("../img/dots.png") no-repeat scroll right top transparent;
+}
+a:link, a:visited {
+    color: #EEEEEE;
+    text-decoration: underline;
+}
+.work-pager a {
+    display: block;
+    float: left;
+    height: 10px;
+    margin-right: 6px;
+    text-indent: -9999px;
+    width: 10px;
+}
+
+.content ul li {
+    float: left;
+    height: 368px;
+    overflow: hidden;
+    padding: 32px 0 0;
+    position: relative;
+    width: 800px;
+}
+
+.work-lt {
+    float: left;
+    padding-top: 88px;
+    width: 240px;
+}
+
+.work-rt {
+    float: right;
+    width: 640px;
 }
