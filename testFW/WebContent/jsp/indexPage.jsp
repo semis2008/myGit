@@ -218,104 +218,138 @@
 						</div>
 						<div class="indexContent">
 							<div class="content">
-								<h2 id="contentTitle">会员动态</h2>
+								<h2 id="dynamics_title" class="contentTitle" style="display: none;"> 会员动态</h2>
+								<h2 id="notice_title" class="contentTitle" style="display: none;">公告</h2>
+								<h2 id="diary_title" class="contentTitle" style="display: block;">日志</h2>
+								<h2 id="contentTitle4" class="contentTitle" style="display: none;">会员动态</h2>
+								<h2 id="contentTitle5" class="contentTitle" style="display: none;">会员动态</h2>
+								<h2 id="contentTitle6" class="contentTitle" style="display: none;">会员动态</h2>
+								<h2 id="contentTitle7" class="contentTitle" style="display: none;">会员动态</h2>
 								<ul>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: list-item; z-index: 7; opacity: 0;">
+									<li class="contentHide" id="dynamics">
 										<div class="work-lt">
-											<p>欢迎新加入的用户~~</p>
+											<p>注册之后你也可以出现在这里哦~，还可以发表自己的日志，以及更方便的和大家交流~~</p>
 										</div>
 										<div class="work-rt">
-											<a href="http://swellcast.com.au"> <img
-												alt="Swellcast Surf Reports" src="img/scast.jpg"> <span><em>Visit
-															site »</em>
-												</span>
-											</a>
-										</div></li>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 6; opacity: 0;">
+											<ul>
+												<li>
+													<h3>
+														<span>6/25:</span>偷懒的熊
+													</h3>
+													<p>
+														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第22篇了，赶紧去<a
+															href="#">看看</a>吧
+													</p></li>
+												<li>
+													<h3>
+														<span>6/23:</span>CC
+													</h3>
+													<p>
+														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第13篇了，赶紧去<a
+															href="#">看看</a>吧
+													</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>偷懒的熊
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>CC
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>王廷
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>偷懒的熊
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>偷懒的熊
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+												<li>
+													<h3>
+														<span>6/21:</span>偷懒的熊
+													</h3>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+											</ul>
+										</div>
+									</li>
+									<li class="contentHide" id="notice">
 										<div class="work-lt">
-											<p>Wordpress portfolio theme development for Sydney's
-												Stonefox Creative.</p>
+											<p>系统管理员发布的关于~懒熊·部落格~的一些说明和通知~</p>
 										</div>
 										<div class="work-rt">
-											<a href="http://stonefoxcreative.com"> <img
-												alt="Wordpress development for Stonefox Creative"
-												src="img/sfox2.jpg"> <span><em>Visit site
-															»</em>
-												</span>
-											</a>
-										</div></li>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 5; opacity: 1;">
+											<ul>
+												<li>
+													<h3>
+														<span>公告:</span>&nbsp;|&nbsp;2013/01/01 <a href="#">《JS取随机数相关》</a>
+													</h3>
+												</li>
+												<li>
+													<h3>
+														<span>公告:</span>&nbsp;|&nbsp;2013/11/12 <a href="#">《JS取随机数相关》</a>
+													</h3>
+												</li>
+												<li>
+													<h3>
+														<span>公告:</span>&nbsp;|&nbsp;2013/02/01 <a href="#">《JS取随机数相关》</a>
+													</h3>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="contentShow" id="diary">
 										<div class="work-lt">
-											<p></p>
+											<p>最新的日志信息，点击查看。</p>
 										</div>
 										<div class="work-rt">
-											<a href="http://reddot.com.au"> <img
-												alt="Wordpress development for Red Dot" src="img/rdot.jpg">
-													<span><em>Visit site »</em>
-												</span>
-											</a>
-										</div></li>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0;">
-										<div class="work-lt">
-											<p>Utilicons - simple, crisp icons for interface design.</p>
+											<ul>
+												<li>
+													<h3>
+														<span>05/12:</span>偷懒的熊
+													</h3>
+													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+												</li>
+												<li>
+													<h3>
+														<span>05/12:</span>偷懒的熊
+													</h3>
+													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+												</li>
+												<li>
+													<h3>
+														<span>05/12:</span>偷懒的熊
+													</h3>
+													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+												</li>
+												<li>
+													<h3>
+														<span>05/12:</span>偷懒的熊
+													</h3>
+													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+												</li>
+												<li>
+													<h3>
+														<span>05/12:</span>偷懒的熊
+													</h3>
+													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+												</li>
+											</ul>
 										</div>
-										<div class="work-rt">
-											<a href="http://utilicons.com"> <img alt="Utilicons"
-												src="img/ut.jpg"> <span><em>Visit site »</em>
-												</span>
-											</a>
-										</div></li>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 0;">
-										<div class="work-lt">
-											<p>Wordpress theme development for renowned Australian
-												fashion stylist Mark Vassallo. Super minimal and responsive
-												across various devices.</p>
-										</div>
-										<div class="work-rt">
-											<a href="http://markvassallo.tv"> <img
-												alt="Wordpress development for mark Vassallo"
-												src="img/mv2.jpg"> <span><em>Visit site »</em>
-												</span>
-											</a>
-										</div></li>
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 2; opacity: 0;">
-										<div class="work-lt">
-											<p>Front end development (HTML, CSS &amp; JQuery) for
-												Jaypak Packaging, the Western Australian packaging
-												manufacturer.</p>
-										</div>
-										<div class="work-rt">
-											<a href="http://jaypak.com.au"> <img
-												alt="Web development for Jaypak Packaging"
-												src="img/jpak.jpg"> <span><em>Visit site »</em>
-												</span>
-											</a>
-										</div></li>
+									</li>
+									 
 
-									<li
-										style="position: absolute; top: 0px; left: 0px; display: none; z-index: 1; opacity: 0;">
-										<div class="work-lt">
-											<p>Front end development (HTML, CSS &amp; JQuery) and
-												WordPress for Australia’s only punk rock bag piper.</p>
-										</div>
-										<div class="work-rt">
-											<a href="http://thebadpiper.com"> <img
-												alt="Wordpress development for The BadPiper"
-												src="img/bpiper.jpg"> <span><em>Visit site
-															»</em>
-												</span>
-											</a>
-										</div></li>
 								</ul>
 								<div class="work-pager">
-									<a href="#" class=" ">1</a><a href="#" class=" ">2</a><a
-										href="#" class="activeSlide">3</a><a href="#">4</a><a href="#">5</a><a
+									<a href="#" class="activeSlide">1</a><a href="#" class=" ">2</a><a
+										href="#" class="">3</a><a href="#">4</a><a href="#">5</a><a
 										href="#">6</a><a href="#">7</a>
 								</div>
 							</div>
