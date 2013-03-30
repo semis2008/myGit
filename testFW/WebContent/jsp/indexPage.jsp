@@ -45,11 +45,10 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
-<!-- gridster css 
-<link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/gridter/jquery.gridster.min.css"
-	rel="stylesheet" media="screen" />
-	-->
+<link rel="stylesheet" type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/slicebox/slicebox.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/slicebox/custom.css" />
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -58,10 +57,10 @@
 <!-- aToolTip js -->
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
-<!-- Gridter js
 <script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/gridter/jquery.gridster.min.js"></script>
- -->
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/slicebox/modernizr.custom.46884.js"></script>
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/slicebox/jquery.slicebox.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".navi_news").hover(function() {
@@ -146,8 +145,53 @@
 			// Add a leading zero to the hours value
 			$("#hours").html((hours < 10 ? "0" : "") + hours);
 		}, 1000);
-	});
 
+		//幻灯片
+		var Page = (function() {
+			var $navArrows = $('#nav-arrows').hide(), $navDots = $('#nav-dots')
+					.hide(), $nav = $navDots.children('span'), $shadow = $(
+					'#shadow').hide(), slicebox = $('#sb-slider').slicebox({
+				onReady : function() {
+					$navArrows.show();
+					$navDots.show();
+					$shadow.show();
+				},
+				onBeforeChange : function(pos) {
+					$nav.removeClass('nav-dot-current');
+					$nav.eq(pos).addClass('nav-dot-current');
+
+				}
+			}),
+			init = function() {
+				initEvents();
+			}, initEvents = function() {
+				// add navigation events
+				$navArrows.children(':first').on('click', function() {
+					slicebox.next();
+					return false;
+				});
+				$navArrows.children(':last').on('click', function() {
+					slicebox.previous();
+					return false;
+				});
+				$nav.each(function(i) {
+					$(this).on('click', function(event) {
+						var $dot = $(this);
+						if (!slicebox.isActive()) {
+							$nav.removeClass('nav-dot-current');
+							$dot.addClass('nav-dot-current');
+						}
+						slicebox.jump(i + 1);
+						return false;
+					});
+				});
+			};
+			return {
+				init : init
+			};
+		})();
+		Page.init();
+	});
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -218,13 +262,13 @@
 						</div>
 						<div class="indexContent">
 							<div class="content">
-								<h2 id="dynamics_title" class="contentTitle" style="display: none;"> 会员动态</h2>
-								<h2 id="notice_title" class="contentTitle" style="display: none;">公告</h2>
-								<h2 id="diary_title" class="contentTitle" style="display: block;">日志</h2>
-								<h2 id="contentTitle4" class="contentTitle" style="display: none;">会员动态</h2>
-								<h2 id="contentTitle5" class="contentTitle" style="display: none;">会员动态</h2>
-								<h2 id="contentTitle6" class="contentTitle" style="display: none;">会员动态</h2>
-								<h2 id="contentTitle7" class="contentTitle" style="display: none;">会员动态</h2>
+								<h2 id="dynamics_title" class="contentTitle"
+									style="display: none;">会员动态</h2>
+								<h2 id="notice_title" class="contentTitle"
+									style="display: none;">公告</h2>
+								<h2 id="diary_title" class="contentTitle" style="display: none;">日志</h2>
+								<h2 id="album_title" class="contentTitle"
+									style="display: block;">图册</h2>
 								<ul>
 									<li class="contentHide" id="dynamics">
 										<div class="work-lt">
@@ -239,7 +283,8 @@
 													<p>
 														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第22篇了，赶紧去<a
 															href="#">看看</a>吧
-													</p></li>
+													</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/23:</span>CC
@@ -247,40 +292,46 @@
 													<p>
 														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第13篇了，赶紧去<a
 															href="#">看看</a>吧
-													</p></li>
+													</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>偷懒的熊
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>CC
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>王廷
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>偷懒的熊
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>偷懒的熊
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 												<li>
 													<h3>
 														<span>6/21:</span>偷懒的熊
 													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+												</li>
 											</ul>
-										</div>
-									</li>
+										</div></li>
 									<li class="contentHide" id="notice">
 										<div class="work-lt">
 											<p>系统管理员发布的关于~懒熊·部落格~的一些说明和通知~</p>
@@ -290,22 +341,18 @@
 												<li>
 													<h3>
 														<span>公告:</span>&nbsp;|&nbsp;2013/01/01 <a href="#">《JS取随机数相关》</a>
-													</h3>
-												</li>
+													</h3></li>
 												<li>
 													<h3>
 														<span>公告:</span>&nbsp;|&nbsp;2013/11/12 <a href="#">《JS取随机数相关》</a>
-													</h3>
-												</li>
+													</h3></li>
 												<li>
 													<h3>
 														<span>公告:</span>&nbsp;|&nbsp;2013/02/01 <a href="#">《JS取随机数相关》</a>
-													</h3>
-												</li>
+													</h3></li>
 											</ul>
-										</div>
-									</li>
-									<li class="contentShow" id="diary">
+										</div></li>
+									<li class="contentHide" id="diary">
 										<div class="work-lt">
 											<p>最新的日志信息，点击查看。</p>
 										</div>
@@ -315,83 +362,111 @@
 													<h3>
 														<span>05/12:</span>偷懒的熊
 													</h3>
-													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
-												</li>
+													<p>
+														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+													</p></li>
 												<li>
 													<h3>
 														<span>05/12:</span>偷懒的熊
 													</h3>
-													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
-												</li>
+													<p>
+														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+													</p></li>
 												<li>
 													<h3>
 														<span>05/12:</span>偷懒的熊
 													</h3>
-													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
-												</li>
+													<p>
+														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+													</p></li>
 												<li>
 													<h3>
 														<span>05/12:</span>偷懒的熊
 													</h3>
-													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
-												</li>
+													<p>
+														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+													</p></li>
 												<li>
 													<h3>
 														<span>05/12:</span>偷懒的熊
 													</h3>
-													<p>发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span></p>
+													<p>
+														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+													</p></li>
+											</ul>
+										</div></li>
+									<li class="contentShow" id="album">
+										<div class="work-lt">
+											<p>系统的图册信息，目前尚未对普通用户开放上传功能~。</p>
+										</div>
+										<div class="work-rt">
+											<ul id="sb-slider" class="sb-slider">
+												<li><a
+													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
+													target="_blank"><img
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_2.jpg"
+														alt="image1" /> </a>
+													<div class="sb-description">
+														<h3>Creative Lifesaver</h3>
+													</div>
+												</li>
+												<li><a
+													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
+													target="_blank"><img
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg"
+														alt="image1" /> </a>
+													<div class="sb-description">
+														<h3>Creative Lifesaver</h3>
+													</div>
+												</li>
+												<li><a
+													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
+													target="_blank"><img
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_3.jpg"
+														alt="image1" /> </a>
+													<div class="sb-description">
+														<h3>Creative Lifesaver</h3>
+													</div>
+												</li>
+												<li><a
+													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
+													target="_blank"><img
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_4.jpg"
+														alt="image1" /> </a>
+													<div class="sb-description">
+														<h3>Creative Lifesaver</h3>
+													</div>
 												</li>
 											</ul>
+											<div id="nav-arrows" class="nav-arrows">
+												<a href="#">Next</a> <a href="#">Previous</a>
+											</div>
+											<div class="shadow" id="shadow" style="display: block;"></div>
+											<div id="nav-dots" class="nav-dots">
+												<span class="nav-dot-current"></span> <span></span> <span></span>
+												<span></span>
+											</div>
 										</div>
 									</li>
-									 
-
 								</ul>
 								<div class="work-pager">
 									<a href="#" class="activeSlide">1</a><a href="#" class=" ">2</a><a
-										href="#" class="">3</a><a href="#">4</a><a href="#">5</a><a
-										href="#">6</a><a href="#">7</a>
+										href="#" class="">3</a><a href="#">4</a>
 								</div>
 							</div>
 							<div class="aside">
 								<ul>
-									<!-- 申请外链
-									<li id="applyLinkDiv" class="f">
-										<h2 id="applylink">申请外链</h2> <a
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/36#reply-div"
-										id="index_link"></a></li>
-									 -->
-									<li class="diaryCount " onclick="">
-										<em class="ico_diary"></em>
-										<span>
-										<b>日志</b>
-										&nbsp;|&nbsp;										
-										共21	篇
-										</span>
-									</li>
+									<li class="diaryCount " onclick=""><em class="ico_diary"></em>
+										<span> <b>日志</b> &nbsp;|&nbsp; 共21 篇 </span></li>
 									<!-- 图册统计 -->
-									<li class="albumCount">
-										<em class="ico_album"></em>
-										<span>
-										<b>图册</b>
-										&nbsp;|&nbsp;										
-										共2册
-										</span>
-									</li>
+									<li class="albumCount"><em class="ico_album"></em> <span>
+											<b>图册</b> &nbsp;|&nbsp; 共2册 </span></li>
 									<!-- 关于 -->
-									<li class="aboutMe ">
-										<em class="ico_about"></em>
-										<span>
-										<b>About Me</b>
-										</span>
-									</li>
+									<li class="aboutMe "><em class="ico_about"></em> <span>
+											<b>About Me</b> </span></li>
 									<!-- 会员信息 -->
-									<li class="userList ">
-										<em class="ico_users"></em>
-										<span>
-										<b>会员</b>
-										&nbsp;|&nbsp;目前有注册成员<%=users.size()%>名
-										</span>
+									<li class="userList "><em class="ico_users"></em> <span>
+											<b>会员</b> &nbsp;|&nbsp;目前有注册成员<%=users.size()%>名 </span>
 										<div>
 											<%
 												for (UserBO reg_user : users) {
@@ -404,8 +479,7 @@
 											<%
 												}
 											%>
-										</div>
-									</li>
+										</div></li>
 								</ul>
 
 							</div>
@@ -449,10 +523,9 @@
 		<p>
 			<span class="flink">友情链接：<a target="_blank"
 				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
-				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
-			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
-				designed by <a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
+				target="_blank" href="http://www.eamonning.com">清泉逐流</a> </span><span
+				class="copyright">&copy; 2013 京ICP备13011487号. all designed by
+				<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
 			</span>
 		</p>
 	</div>
