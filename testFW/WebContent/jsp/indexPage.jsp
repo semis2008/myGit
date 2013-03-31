@@ -404,37 +404,37 @@
 												<li><a
 													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
 													target="_blank"><img
-														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_2.jpg"
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/2_1.jpg"
 														alt="image1" /> </a>
 													<div class="sb-description">
-														<h3>Creative Lifesaver</h3>
+														<h3>时光镜面</h3>
 													</div>
 												</li>
 												<li><a
 													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
 													target="_blank"><img
-														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg"
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/2_2.jpg"
 														alt="image1" /> </a>
 													<div class="sb-description">
-														<h3>Creative Lifesaver</h3>
+														<h3>第一版的首页，界面布局什么的.....留作纪念吧</h3>
 													</div>
 												</li>
 												<li><a
 													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
 													target="_blank"><img
-														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_3.jpg"
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/2_3.jpg"
 														alt="image1" /> </a>
 													<div class="sb-description">
-														<h3>Creative Lifesaver</h3>
+														<h3>第二版的主页，目前保留做个人主页了。</h3>
 													</div>
 												</li>
 												<li><a
 													href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture"
 													target="_blank"><img
-														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_4.jpg"
+														src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/2_4.jpg"
 														alt="image1" /> </a>
 													<div class="sb-description">
-														<h3>Creative Lifesaver</h3>
+														<h3>第三版的首页...基本接近我预想的效果了，不过还是被舍弃了理由是...太乱？</h3>
 													</div>
 												</li>
 											</ul>
