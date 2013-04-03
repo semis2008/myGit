@@ -33,12 +33,19 @@ public class DiaryDaoImpl implements DiaryDao {
 	}
 
 	@Override
-	public List<DiaryBO> queryDiaryList(Long userId, int start, int end) {
+	public List<DiaryBO> queryUserDiaryList(Long userId, int start, int end) {
 		String sql = "select * from diary where author_id = ? order by publish_time desc limit ?,?";
 		Object[] param = {userId,start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
 
+	@Override
+	public List<DiaryBO> queryAllDiaryList(int start, int end) {
+		String sql = "select * from diary where 1=1 order by publish_time desc limit ?,?";
+		Object[] param = {start,end};
+		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
+	}
+	
 	@Override
 	public int queryDiaryNumByUserId(Long userId) {
 		String sql = "select count(*) totalNum from diary where author_id = ?";
@@ -87,5 +94,12 @@ public class DiaryDaoImpl implements DiaryDao {
 	public int updateDiaryRead(String diaryid) {
 		String sql = "update diary set read_num = read_num + 1 where id = ?";
 		return dbUtilsTemplate.update(sql, diaryid);
+	}
+
+	@Override
+	public int queryTotalDiaryCount() {
+		String sql = "select count(*) totalNum from diary where 1=1";
+		Map<String,Object> result = dbUtilsTemplate.findFirst(sql,null);
+		return Integer.parseInt((Long)result.get("totalNum")+"");
 	}
 }

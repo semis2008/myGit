@@ -189,6 +189,7 @@ em.ico_users {
 	position: absolute;
 	top: 180px;
 	width: 160px;
+	display: none;
 }
 
 .content ul {

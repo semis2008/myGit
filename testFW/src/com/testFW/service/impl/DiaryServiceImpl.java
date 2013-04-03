@@ -38,7 +38,7 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 
 	@Override
-	public List<DiaryBO> getDiaryList(HttpServletRequest req,
+	public List<DiaryBO> getUserDiaryList(HttpServletRequest req,
 			HttpServletResponse resp) {
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
 		String pageNum = req.getParameter("p1");
@@ -55,14 +55,34 @@ public class DiaryServiceImpl implements DiaryService{
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("totalPage", totalPage);
 		//TODO 考虑添加用户定义置顶的日志逻辑
-		return diaryDao.queryDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
+		return diaryDao.queryUserDiaryList(visitUser.getId(), 10*(currentPage-1), 10*currentPage);
 	}
 
+	@Override
+	public List<DiaryBO> getAllDiaryList(HttpServletRequest req,
+			HttpServletResponse resp) {
+		String pageNum = req.getParameter("p1");
+		if(pageNum==null||pageNum.equals("")) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		/*
+		 * 获取日志总页数
+		 */
+		int totalDiary = diaryDao.queryTotalDiaryCount(); 
+		int totalPage = totalDiary/10+1;
+		
+		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("totalPage", totalPage);
+		//TODO 考虑添加置顶的日志逻辑
+		return diaryDao.queryAllDiaryList(10*(currentPage-1), 10*currentPage);
+	}
+	
 	@Override
 	public List<DiaryBO> getNewDiaryList(HttpServletRequest req,
 			HttpServletResponse resp) {
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
-		return diaryDao.queryDiaryList(visitUser.getId(),0,5);
+		return diaryDao.queryUserDiaryList(visitUser.getId(),0,5);
 	}
 
 	@Override
@@ -113,5 +133,9 @@ public class DiaryServiceImpl implements DiaryService{
 	public int updateDiaryRead(String diaryid) {
 		return diaryDao.updateDiaryRead(diaryid);
 	}
-	 
+
+	@Override
+	public int getTotalDiaryCount() {
+		return diaryDao.queryTotalDiaryCount();
+	}
 }

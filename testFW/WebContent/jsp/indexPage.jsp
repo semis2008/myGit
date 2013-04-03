@@ -18,6 +18,10 @@
 	if (users == null) {
 		users = new ArrayList<UserBO>();
 	}
+	Integer diaryCount = (Integer)request.getAttribute("diaryCount");
+	if(diaryCount == null) {
+		diaryCount = 0;
+	}
 
 	boolean hasLogin = false;
 	if (user == null) {
@@ -191,6 +195,7 @@
 			};
 		})();
 		Page.init();
+		fadeIn(1);
 	});
 	function userQuit() {
 		$.ajax({
@@ -214,6 +219,16 @@
 			left : "1.8px"
 		}, 220);
 	}
+	//主页信息框淡入淡出
+	function fadeIn(id){
+		$(".contentTitle").fadeOut(600);
+		$(".contentHide").fadeOut(600);
+		$("#"+id+"_title").fadeIn(1500);
+		$("#content_"+id).fadeIn(1500);
+		$(".activeSlide").removeClass("activeSlide");
+		$("#paper_"+id).addClass("activeSlide");
+	}
+	
 </script>
 <title>懒熊de部落格</title>
 </head>
@@ -262,15 +277,12 @@
 						</div>
 						<div class="indexContent">
 							<div class="content">
-								<h2 id="dynamics_title" class="contentTitle"
-									style="display: none;">会员动态</h2>
-								<h2 id="notice_title" class="contentTitle"
-									style="display: none;">公告</h2>
-								<h2 id="diary_title" class="contentTitle" style="display: none;">日志</h2>
-								<h2 id="album_title" class="contentTitle"
-									style="display: block;">图册</h2>
+								<h2 id="1_title" class="contentTitle" >会员动态</h2>
+								<h2 id="2_title" class="contentTitle" >公告</h2>
+								<h2 id="3_title" class="contentTitle" >日志</h2>
+								<h2 id="4_title" class="contentTitle" >图册</h2>
 								<ul>
-									<li class="contentHide" id="dynamics">
+									<li class="contentHide" id="content_1">
 										<div class="work-lt">
 											<p>注册之后你也可以出现在这里哦~，还可以发表自己的日志，以及更方便的和大家交流~~</p>
 										</div>
@@ -332,7 +344,7 @@
 												</li>
 											</ul>
 										</div></li>
-									<li class="contentHide" id="notice">
+									<li class="contentHide" id="content_2">
 										<div class="work-lt">
 											<p>系统管理员发布的关于~懒熊·部落格~的一些说明和通知~</p>
 										</div>
@@ -352,7 +364,7 @@
 													</h3></li>
 											</ul>
 										</div></li>
-									<li class="contentHide" id="diary">
+									<li class="contentHide" id="content_3">
 										<div class="work-lt">
 											<p>最新的日志信息，点击查看。</p>
 										</div>
@@ -395,7 +407,7 @@
 													</p></li>
 											</ul>
 										</div></li>
-									<li class="contentShow" id="album">
+									<li class="contentHide" id="content_4">
 										<div class="work-lt">
 											<p>系统的图册信息，目前尚未对普通用户开放上传功能~。</p>
 										</div>
@@ -450,14 +462,14 @@
 									</li>
 								</ul>
 								<div class="work-pager">
-									<a href="#" class="activeSlide">1</a><a href="#" class=" ">2</a><a
-										href="#" class="">3</a><a href="#">4</a>
+									<a href="javascript:fadeIn(1);" onmouseover="fadeIn(1)" id="paper_1" class="activeSlide">1</a><a id="paper_2" href="javascript:fadeIn(2);" onmouseover="fadeIn(2)">2</a><a
+										href="javascript:fadeIn(3);" onmouseover="fadeIn(3)" id="paper_3">3</a><a  id="paper_4" href="javascript:fadeIn(4);" onmouseover="fadeIn(4)">4</a>
 								</div>
 							</div>
 							<div class="aside">
 								<ul>
-									<li class="diaryCount " onclick=""><em class="ico_diary"></em>
-										<span> <b>日志</b> &nbsp;|&nbsp; 共21 篇 </span></li>
+									<li class="diaryCount " onclick="location.href='/action/system/diary'"><em class="ico_diary"></em>
+										<span> <b>日志</b> &nbsp;|&nbsp; 共<%=diaryCount %> 篇 </span></li>
 									<!-- 图册统计 -->
 									<li class="albumCount"><em class="ico_album"></em> <span>
 											<b>图册</b> &nbsp;|&nbsp; 共2册 </span></li>

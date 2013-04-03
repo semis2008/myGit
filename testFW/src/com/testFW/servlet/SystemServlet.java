@@ -1,6 +1,7 @@
 package com.testFW.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -128,19 +129,20 @@ public class SystemServlet extends HttpServlet {
 	 */
 	private String showIndexPage(HttpServletRequest req, HttpServletResponse resp) {
 		//TODO 主页显示需要继续开发，目前只设计样式
+		//获取系统用户最新状态
+		
 		//获取系统最新发布的日志信息
+	
+		//获取系统公告
 		
 		//获取系统日志总数
-		
-		//获取系统图册总数
+		int diaryCount = diaryService.getTotalDiaryCount();
+		//TODO 获取系统图册总数(目前图册尚未实现)
 		
 		//获取系统注册会员列表
 		List<UserBO> users = userService.getUsers();
 		
-		//获取系统最新的留言
-		
-		//
-		
+		req.setAttribute("diaryCount", diaryCount);
 		req.setAttribute("users", users);
 		return "/jsp/indexPage.jsp";
 	}
@@ -151,18 +153,15 @@ public class SystemServlet extends HttpServlet {
 	 * @param resp
 	 */
 	private String showDiary(HttpServletRequest req, HttpServletResponse resp) {
-		/*
-		 * 首次访问设置访问用户 
-		 */
+		 
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
+		List<DiaryBO> diaries =new ArrayList<DiaryBO>();
 		if(visitUser == null) {
-			visitUser = userService.getUserByID("1");
+			// 没有指定用户，显示所有日志
+			diaries = diaryService.getAllDiaryList(req,resp);
+		}else {
+			diaries = diaryService.getUserDiaryList(req,resp);
 		}
-		req.getSession().setAttribute("visitedUser", visitUser);
-		/*
-		 * 参数是页数，获取日志列表
-		 */
-		List<DiaryBO> diaries = diaryService.getDiaryList(req,resp);
 		req.setAttribute("diaries", diaries);
 		return "/jsp/diaryPage.jsp";
 	}

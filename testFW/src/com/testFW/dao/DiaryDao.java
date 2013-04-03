@@ -47,17 +47,25 @@ public interface DiaryDao {
 	 int insertReply(String diaryId,String parentId,String reply,String name,String email,String website);
 	 
 	 /**
-	  * 查询日志列表
+	  * 查询用户日志列表
 	  * @param userId 用户id
 	  * @param start 开始下标
 	  * @param end 结束下标
 	  * @return 日志实体类的List
 	  */
-	 List<DiaryBO> queryDiaryList(Long userId,int start,int end);
+	 List<DiaryBO> queryUserDiaryList(Long userId,int start,int end);
+	 
+	 /**
+	  * 查询所有日志列表
+	  * @param start 开始下标
+	  * @param end 结束下标
+	  * @return 日志实体类的List
+	  */
+	 List<DiaryBO> queryAllDiaryList(int start,int end);
 	 
 	 /**
 	  * 查询指定用户的日志总数
-	  * @param userId 用户id
+	  * @param userId 用户id 
 	  * @return 日志总数
 	  */
 	 int queryDiaryNumByUserId(Long userId);
@@ -89,4 +97,11 @@ public interface DiaryDao {
 	  * @return
 	  */
 	 int updateDiaryRead(String diaryid);
+	 
+	 /**
+	  * 获取系统日志总数
+	  * @return
+	  */
+	 int queryTotalDiaryCount();
+	 
 }

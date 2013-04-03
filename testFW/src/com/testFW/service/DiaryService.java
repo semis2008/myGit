@@ -39,12 +39,20 @@ public interface DiaryService {
 	  */
 	 int newGuestReply(HttpServletRequest req, HttpServletResponse resp);
 	 /**
-	  * 获取日志列表
+	  * 获取指定用户的日志列表
 	  * @param req
 	  * @param resp
 	  * @return 日志列表
 	  */
-	 List<DiaryBO> getDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 List<DiaryBO> getUserDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 
+	 /**
+	  * 获取系统所有的日志列表
+	  * @param req
+	  * @param resp
+	  * @return 日志列表
+	  */
+	 List<DiaryBO> getAllDiaryList(HttpServletRequest req, HttpServletResponse resp);
 	 
 	 /**
 	  * 获取最新日志列表 (取前5条)
@@ -74,5 +82,11 @@ public interface DiaryService {
 	  * @return
 	  */
 	 int updateDiaryRead(String diaryid);
+	 
+	 /**
+	  * 获取系统日志总数
+	  * @return
+	  */
+	 int getTotalDiaryCount();
 	 
 }
