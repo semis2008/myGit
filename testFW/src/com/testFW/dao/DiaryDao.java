@@ -64,6 +64,14 @@ public interface DiaryDao {
 	 List<DiaryBO> queryAllDiaryList(int start,int end);
 	 
 	 /**
+	  * 获取系统公告
+	  * @param start 开始下标
+	  * @param end 结束下标
+	  * @return
+	  */
+	 List<DiaryBO> queryNotices(int start,int end);
+	 
+	 /**
 	  * 查询指定用户的日志总数
 	  * @param userId 用户id 
 	  * @return 日志总数

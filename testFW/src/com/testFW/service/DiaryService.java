@@ -55,12 +55,24 @@ public interface DiaryService {
 	 List<DiaryBO> getAllDiaryList(HttpServletRequest req, HttpServletResponse resp);
 	 
 	 /**
-	  * 获取最新日志列表 (取前5条)
+	  * 获取访问用户的最新日志列表 (取前5条)
 	  * @param req
 	  * @param resp
 	  * @return
 	  */
-	 List<DiaryBO> getNewDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 List<DiaryBO> getUserNewDiaryList(HttpServletRequest req, HttpServletResponse resp);
+	 
+	 /**
+	  * 获取最新日志列表 (取前8条)
+	  * @return
+	  */
+	 List<DiaryBO> getNewDiaryList();
+	 
+	 /**
+	  * 获取系统公告
+	  * @return
+	  */
+	 List<DiaryBO> getNotices();
 	 
 	 /**
 	  * 通过日志id获取日志信息

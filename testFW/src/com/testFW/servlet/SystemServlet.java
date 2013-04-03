@@ -110,7 +110,7 @@ public class SystemServlet extends HttpServlet {
 		UserInfoBO info = userService.getUserInfoByID(param);
 		//获取用户的最新日志信息
 		//FIXME 最新图册信息需要在开发完图册模块之后再开发
-		List<DiaryBO> newDiaryList = diaryService.getNewDiaryList(req,resp);
+		List<DiaryBO> newDiaryList = diaryService.getUserNewDiaryList(req,resp);
 		//获取给该用户的留言 
 		List<LeaveMsgBO> leaveMsgList = userService.getLeaveMsgList(req,resp); 
 		
@@ -132,9 +132,9 @@ public class SystemServlet extends HttpServlet {
 		//获取系统用户最新状态
 		
 		//获取系统最新发布的日志信息
-	
+		List<DiaryBO> diaries = diaryService.getNewDiaryList();
 		//获取系统公告
-		
+		List<DiaryBO> notices = diaryService.getNotices();
 		//获取系统日志总数
 		int diaryCount = diaryService.getTotalDiaryCount();
 		//TODO 获取系统图册总数(目前图册尚未实现)
@@ -142,6 +142,8 @@ public class SystemServlet extends HttpServlet {
 		//获取系统注册会员列表
 		List<UserBO> users = userService.getUsers();
 		
+		req.setAttribute("notices", notices);
+		req.setAttribute("diaries", diaries);
 		req.setAttribute("diaryCount", diaryCount);
 		req.setAttribute("users", users);
 		return "/jsp/indexPage.jsp";

@@ -79,12 +79,15 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 	
 	@Override
-	public List<DiaryBO> getNewDiaryList(HttpServletRequest req,
+	public List<DiaryBO> getUserNewDiaryList(HttpServletRequest req,
 			HttpServletResponse resp) {
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
 		return diaryDao.queryUserDiaryList(visitUser.getId(),0,5);
 	}
-
+	@Override
+	public List<DiaryBO> getNewDiaryList() {
+		return diaryDao.queryAllDiaryList(0,8);
+	}
 	@Override
 	public DiaryBO getDiaryByID(String diaryId) {
 		return diaryDao.queryDiaryById(Long.parseLong(diaryId));
@@ -137,5 +140,10 @@ public class DiaryServiceImpl implements DiaryService{
 	@Override
 	public int getTotalDiaryCount() {
 		return diaryDao.queryTotalDiaryCount();
+	}
+
+	@Override
+	public List<DiaryBO> getNotices() {
+		return diaryDao.queryNotices(0,10);
 	}
 }

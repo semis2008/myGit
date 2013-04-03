@@ -66,7 +66,10 @@ public class DateUtil {
 					+ cal.get(Calendar.HOUR_OF_DAY) + ":"
 					+ cal.get(Calendar.MINUTE);
 			break;
-
+		case 4:
+			res = (cal.get(Calendar.MONTH) + 1)
+					+ "/" + cal.get(Calendar.DAY_OF_MONTH);
+			break;
 		default:
 			break;
 		}

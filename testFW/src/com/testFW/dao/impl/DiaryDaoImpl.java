@@ -102,4 +102,11 @@ public class DiaryDaoImpl implements DiaryDao {
 		Map<String,Object> result = dbUtilsTemplate.findFirst(sql,null);
 		return Integer.parseInt((Long)result.get("totalNum")+"");
 	}
+
+	@Override
+	public List<DiaryBO> queryNotices(int start, int end) {
+		String sql = "select * from diary where author_id = 1 and tags like '%公告%' order by publish_time desc limit ?,?";
+		Object[] param = {start,end};
+		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
+	}
 }

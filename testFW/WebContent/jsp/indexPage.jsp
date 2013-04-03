@@ -23,6 +23,14 @@
 		diaryCount = 0;
 	}
 
+	List<DiaryBO> diaries = (ArrayList<DiaryBO>)request.getAttribute("diaries");
+	if(diaries==null) {
+		diaries = new ArrayList<DiaryBO>();
+	}
+	List<DiaryBO> notices = (ArrayList<DiaryBO>)request.getAttribute("notices");
+	if(notices==null) {
+		notices = new ArrayList<DiaryBO>();
+	}
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
@@ -195,7 +203,7 @@
 			};
 		})();
 		Page.init();
-		fadeIn(1);
+		fadeIn(2);
 	});
 	function userQuit() {
 		$.ajax({
@@ -277,7 +285,7 @@
 						</div>
 						<div class="indexContent">
 							<div class="content">
-								<h2 id="1_title" class="contentTitle" >会员动态</h2>
+							<!-- 	<h2 id="1_title" class="contentTitle" >会员动态</h2> -->
 								<h2 id="2_title" class="contentTitle" >公告</h2>
 								<h2 id="3_title" class="contentTitle" >日志</h2>
 								<h2 id="4_title" class="contentTitle" >图册</h2>
@@ -288,15 +296,6 @@
 										</div>
 										<div class="work-rt">
 											<ul>
-												<li>
-													<h3>
-														<span>6/25:</span>偷懒的熊
-													</h3>
-													<p>
-														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第22篇了，赶紧去<a
-															href="#">看看</a>吧
-													</p>
-												</li>
 												<li>
 													<h3>
 														<span>6/23:</span>CC
@@ -350,18 +349,12 @@
 										</div>
 										<div class="work-rt">
 											<ul>
+											<%for(DiaryBO notice:notices) { %>
 												<li>
 													<h3>
-														<span>公告:</span>&nbsp;|&nbsp;2013/01/01 <a href="#">《JS取随机数相关》</a>
+														<span>公告:</span>&nbsp;|&nbsp;<%=DateUtil.formatDate(notice.getPublish_time(),2) %> <a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/<%=notice.getId() %>">《<%=notice.getTitle() %>》</a>
 													</h3></li>
-												<li>
-													<h3>
-														<span>公告:</span>&nbsp;|&nbsp;2013/11/12 <a href="#">《JS取随机数相关》</a>
-													</h3></li>
-												<li>
-													<h3>
-														<span>公告:</span>&nbsp;|&nbsp;2013/02/01 <a href="#">《JS取随机数相关》</a>
-													</h3></li>
+												<%} %>
 											</ul>
 										</div></li>
 									<li class="contentHide" id="content_3">
@@ -370,41 +363,15 @@
 										</div>
 										<div class="work-rt">
 											<ul>
+											<%for(DiaryBO diary:diaries) { %>
 												<li>
 													<h3>
-														<span>05/12:</span>偷懒的熊
+														<span><%=DateUtil.formatDate(diary.getPublish_time(),4) %>:</span><%=diary.getAuthor_name() %>
 													</h3>
 													<p>
-														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
+														发表了名为<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/<%=diary.getId() %>">《<%=StringUtil.cutString(diary.getTitle(),30) %>》</a>的日志，去看看吧~<span>[<%=diary.getReply_num() %>评/<%=diary.getRead_num() %>阅]</span>
 													</p></li>
-												<li>
-													<h3>
-														<span>05/12:</span>偷懒的熊
-													</h3>
-													<p>
-														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
-													</p></li>
-												<li>
-													<h3>
-														<span>05/12:</span>偷懒的熊
-													</h3>
-													<p>
-														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
-													</p></li>
-												<li>
-													<h3>
-														<span>05/12:</span>偷懒的熊
-													</h3>
-													<p>
-														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
-													</p></li>
-												<li>
-													<h3>
-														<span>05/12:</span>偷懒的熊
-													</h3>
-													<p>
-														发表了名为<a href="#">《JS取随机数相关》</a>的日志，去看看吧~<span>[0评/45阅]</span>
-													</p></li>
+													<%} %>
 											</ul>
 										</div></li>
 									<li class="contentHide" id="content_4">
@@ -462,7 +429,7 @@
 									</li>
 								</ul>
 								<div class="work-pager">
-									<a href="javascript:fadeIn(1);" onmouseover="fadeIn(1)" id="paper_1" class="activeSlide">1</a><a id="paper_2" href="javascript:fadeIn(2);" onmouseover="fadeIn(2)">2</a><a
+									<!--<a href="javascript:fadeIn(1);" onmouseover="fadeIn(1)" id="paper_1">1</a>  --><a id="paper_2" href="javascript:fadeIn(2);" onmouseover="fadeIn(2)" class="activeSlide">2</a><a
 										href="javascript:fadeIn(3);" onmouseover="fadeIn(3)" id="paper_3">3</a><a  id="paper_4" href="javascript:fadeIn(4);" onmouseover="fadeIn(4)">4</a>
 								</div>
 							</div>
@@ -471,10 +438,10 @@
 									<li class="diaryCount " onclick="location.href='/action/system/diary'"><em class="ico_diary"></em>
 										<span> <b>日志</b> &nbsp;|&nbsp; 共<%=diaryCount %> 篇 </span></li>
 									<!-- 图册统计 -->
-									<li class="albumCount"><em class="ico_album"></em> <span>
+									<li class="albumCount" onclick="location.href='/action/system/picture'"><em class="ico_album"></em> <span>
 											<b>图册</b> &nbsp;|&nbsp; 共2册 </span></li>
 									<!-- 关于 -->
-									<li class="aboutMe "><em class="ico_about"></em> <span>
+									<li class="aboutMe" onclick="location.href='/action/system/aboutus'"><em class="ico_about"></em> <span>
 											<b>About Me</b> </span></li>
 									<!-- 会员信息 -->
 									<li class="userList "><em class="ico_users"></em> <span>
