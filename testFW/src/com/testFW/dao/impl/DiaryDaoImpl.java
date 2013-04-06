@@ -109,4 +109,10 @@ public class DiaryDaoImpl implements DiaryDao {
 		Object[] param = {start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
+
+	@Override
+	public List<DiaryBO> queryUserNewDiary(int start, int end) {
+		//TODO 完善相应的sql
+		return null;
+	}
 }

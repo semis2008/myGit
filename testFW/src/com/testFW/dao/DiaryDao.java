@@ -112,4 +112,11 @@ public interface DiaryDao {
 	  */
 	 int queryTotalDiaryCount();
 	 
+	 /**
+	  * 查询指定数目的用户的最新日志信息，每个用户显示一篇日志
+	  * @param start
+	  * @param end
+	  * @return
+	  */
+	 List<DiaryBO> queryUserNewDiary(int start,int end);
 }

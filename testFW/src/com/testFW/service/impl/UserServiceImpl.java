@@ -14,6 +14,7 @@ import com.testFW.service.UserService;
 import com.testFW.util.ConstantsUtil;
 import com.testFW.util.StringUtil;
 import com.testFW.util.UserUtil;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 用户业务处理接口实现类
@@ -180,6 +181,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<UserBO> getUsers() {
 		return userDao.queryUsers();
+	}
+	@Override
+	public DynamicVO getDynamicVOPartr2(DynamicVO dynamicVO) {
+		List<UserBO> users = userDao.queryLatestRegUser(0, 4);
+		dynamicVO.setDynamicPart2(users);
+		return dynamicVO;
 	}
 	
 }

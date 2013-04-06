@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.testFW.bo.DiaryBO;
 import com.testFW.bo.DiaryReplyBO;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 日志业务处理类 
@@ -100,5 +101,12 @@ public interface DiaryService {
 	  * @return
 	  */
 	 int getTotalDiaryCount();
+	 
+	 /**
+	  * 获取首页动态信息之用户最新日志
+	  * @param dynamicVO
+	  * @return
+	  */
+	 DynamicVO getDynamicVOPart1(DynamicVO dynamicVO);
 	 
 }

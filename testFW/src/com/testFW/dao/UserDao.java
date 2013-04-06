@@ -6,6 +6,7 @@ import com.testFW.bo.InvitationCodeBO;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 用户数据处理接口
@@ -182,4 +183,11 @@ public interface UserDao {
 	 * @return
 	 */
 	List<UserBO> queryUsers();
+	
+	/**
+	 * 获取最新注册的用户信息
+	 * @return
+	 */
+	List<UserBO> queryLatestRegUser(int start ,int end);
+	
 }

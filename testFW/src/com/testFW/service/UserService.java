@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 用户业务处理接口
@@ -96,4 +97,10 @@ public interface UserService {
 	 * @return
 	 */
 	List<UserBO> getUsers();
+	
+	/**
+	 * 获取首页动态之新用户注册信息
+	 * @return
+	 */
+	DynamicVO getDynamicVOPartr2(DynamicVO dynamicVO);
 }

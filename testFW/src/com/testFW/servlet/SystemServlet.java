@@ -20,6 +20,7 @@ import com.testFW.bo.UserInfoBO;
 import com.testFW.service.DiaryService;
 import com.testFW.service.UserService;
 import com.testFW.util.UserUtil;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 系统响应处理类
@@ -130,6 +131,9 @@ public class SystemServlet extends HttpServlet {
 	private String showIndexPage(HttpServletRequest req, HttpServletResponse resp) {
 		//TODO 主页显示需要继续开发，目前只设计样式
 		//获取系统用户最新状态
+		DynamicVO dynamicVO = new DynamicVO();
+		dynamicVO = userService.getDynamicVOPartr2(dynamicVO);
+		
 		
 		//获取系统最新发布的日志信息
 		List<DiaryBO> diaries = diaryService.getNewDiaryList();

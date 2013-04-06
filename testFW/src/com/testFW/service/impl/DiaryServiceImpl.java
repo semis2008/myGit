@@ -12,6 +12,7 @@ import com.testFW.bo.UserBO;
 import com.testFW.dao.DiaryDao;
 import com.testFW.service.DiaryService;
 import com.testFW.util.UserUtil;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 日志业务处理接口实现类
@@ -145,5 +146,12 @@ public class DiaryServiceImpl implements DiaryService{
 	@Override
 	public List<DiaryBO> getNotices() {
 		return diaryDao.queryNotices(0,10);
+	}
+
+	@Override
+	public DynamicVO getDynamicVOPart1(DynamicVO dynamicVO) {
+		List<DiaryBO> diaries = diaryDao.queryUserNewDiary(0,3);
+		dynamicVO.setDynamicPart1(diaries);
+		return dynamicVO;
 	}
 }

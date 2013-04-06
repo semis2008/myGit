@@ -9,6 +9,7 @@ import com.testFW.bo.UserInfoBO;
 import com.testFW.dao.UserDao;
 import com.testFW.dao.template.DbUtilsTemplate;
 import com.testFW.util.ConstantsUtil;
+import com.testFW.vo.DynamicVO;
 
 /**
  * 用户数据操作接口实现类
@@ -131,4 +132,12 @@ public class UserDaoImpl implements UserDao {
 		String sql = "select * from user where 1=1 order by reg_time asc";
 		return dbUtilsTemplate.find(UserBO.class, sql, null);
 	}
+
+	@Override
+	public List<UserBO> queryLatestRegUser(int start, int end) {
+		String sql = "select * from user where 1=1 order by reg_time desc limit ?,?";
+		Object[] param = {start,end};
+		return dbUtilsTemplate.find(UserBO.class, sql, param);
+	}
+	
 }
