@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="com.testFW.vo.DynamicVO"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -31,6 +32,11 @@
 	if(notices==null) {
 		notices = new ArrayList<DiaryBO>();
 	}
+	DynamicVO dynamicVO = (DynamicVO)request.getAttribute("dynamics");
+	if(dynamicVO==null) {
+		dynamicVO = new DynamicVO();
+	}
+	
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
@@ -203,7 +209,7 @@
 			};
 		})();
 		Page.init();
-		fadeIn(2);
+		fadeIn(1);
 	});
 	function userQuit() {
 		$.ajax({
@@ -285,7 +291,7 @@
 						</div>
 						<div class="indexContent">
 							<div class="content">
-							<!-- 	<h2 id="1_title" class="contentTitle" >会员动态</h2> -->
+						 		<h2 id="1_title" class="contentTitle" >会员动态</h2> 
 								<h2 id="2_title" class="contentTitle" >公告</h2>
 								<h2 id="3_title" class="contentTitle" >日志</h2>
 								<h2 id="4_title" class="contentTitle" >图册</h2>
@@ -296,51 +302,31 @@
 										</div>
 										<div class="work-rt">
 											<ul>
+											<%
+											for(DiaryBO bo:dynamicVO.getDynamicPart1()) {
+												%>
 												<li>
 													<h3>
-														<span>6/23:</span>CC
+														<span><%=DateUtil.formatDate(bo.getPublish_time(),4) %>:</span><%=bo.getAuthor_name() %>
 													</h3>
 													<p>
-														写了一篇名叫<a href="#">《JS取随机数相关》</a>的日志，这是他的第13篇了，赶紧去<a
-															href="#">看看</a>吧
+														写了一篇名叫<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/<%=bo.getId() %>">《<%=bo.getTitle() %>》</a>的日志，赶紧去<a
+															href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/diarydetail/<%=bo.getId() %>">看看</a>吧
 													</p>
 												</li>
+												<%
+											}											
+											for(UserBO bo:dynamicVO.getDynamicPart2()) {
+												%>
 												<li>
 													<h3>
-														<span>6/21:</span>偷懒的熊
+														<span><%=DateUtil.formatDate(bo.getReg_time(),4) %>:</span><%=bo.getName() %>
 													</h3>
 													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
 												</li>
-												<li>
-													<h3>
-														<span>6/21:</span>CC
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-												</li>
-												<li>
-													<h3>
-														<span>6/21:</span>王廷
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-												</li>
-												<li>
-													<h3>
-														<span>6/21:</span>偷懒的熊
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-												</li>
-												<li>
-													<h3>
-														<span>6/21:</span>偷懒的熊
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-												</li>
-												<li>
-													<h3>
-														<span>6/21:</span>偷懒的熊
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-												</li>
+												<%
+											}
+											%>
 											</ul>
 										</div></li>
 									<li class="contentHide" id="content_2">
@@ -429,7 +415,7 @@
 									</li>
 								</ul>
 								<div class="work-pager">
-									<!--<a href="javascript:fadeIn(1);" onmouseover="fadeIn(1)" id="paper_1">1</a>  --><a id="paper_2" href="javascript:fadeIn(2);" onmouseover="fadeIn(2)" class="activeSlide">2</a><a
+									 <a href="javascript:fadeIn(1);" onmouseover="fadeIn(1)" id="paper_1">1</a><a id="paper_2" href="javascript:fadeIn(2);" onmouseover="fadeIn(2)" class="activeSlide">2</a><a
 										href="javascript:fadeIn(3);" onmouseover="fadeIn(3)" id="paper_3">3</a><a  id="paper_4" href="javascript:fadeIn(4);" onmouseover="fadeIn(4)">4</a>
 								</div>
 							</div>

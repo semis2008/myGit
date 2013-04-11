@@ -102,5 +102,6 @@ public interface UserService {
 	 * 获取首页动态之新用户注册信息
 	 * @return
 	 */
-	DynamicVO getDynamicVOPartr2(DynamicVO dynamicVO);
+	DynamicVO getDynamicVOPart2(DynamicVO dynamicVO);
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.testFW.bo.DiaryBO;
 import com.testFW.bo.InvitationCodeBO;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
@@ -183,10 +184,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.queryUsers();
 	}
 	@Override
-	public DynamicVO getDynamicVOPartr2(DynamicVO dynamicVO) {
+	public DynamicVO getDynamicVOPart2(DynamicVO dynamicVO) {
 		List<UserBO> users = userDao.queryLatestRegUser(0, 4);
 		dynamicVO.setDynamicPart2(users);
 		return dynamicVO;
 	}
-	
 }

@@ -132,7 +132,8 @@ public class SystemServlet extends HttpServlet {
 		//TODO 主页显示需要继续开发，目前只设计样式
 		//获取系统用户最新状态
 		DynamicVO dynamicVO = new DynamicVO();
-		dynamicVO = userService.getDynamicVOPartr2(dynamicVO);
+		dynamicVO = userService.getDynamicVOPart2(dynamicVO);
+		dynamicVO = diaryService.getDynamicVOPart1(dynamicVO);
 		
 		
 		//获取系统最新发布的日志信息
@@ -146,6 +147,7 @@ public class SystemServlet extends HttpServlet {
 		//获取系统注册会员列表
 		List<UserBO> users = userService.getUsers();
 		
+		req.setAttribute("dynamics", dynamicVO);
 		req.setAttribute("notices", notices);
 		req.setAttribute("diaries", diaries);
 		req.setAttribute("diaryCount", diaryCount);

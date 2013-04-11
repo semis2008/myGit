@@ -112,7 +112,8 @@ public class DiaryDaoImpl implements DiaryDao {
 
 	@Override
 	public List<DiaryBO> queryUserNewDiary(int start, int end) {
-		//TODO 完善相应的sql
-		return null;
+		String sql = "select * from (select * from diary order by publish_time desc) diary group by author_id order by publish_time desc limit ?,?";
+		Object[] param = {start,end};
+		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
 }
