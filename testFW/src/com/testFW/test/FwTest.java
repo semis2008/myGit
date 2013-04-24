@@ -2,6 +2,7 @@ package com.testFW.test;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Calendar;
 
 import junit.framework.TestCase;
 
@@ -22,7 +23,11 @@ public class FwTest extends TestCase {
 //		logger.info("currentURL:"+currentURL);
 //		%D2%AC%C1%D6   %D2%AC+%C1%D6
 
-		String sss = "р╛ аж";
-		logger.info("targetURL:"+URLDecoder.decode("%D2%AC%C1%D6"));
+//		String sss = "р╛ аж";
+//		logger.info("targetURL:"+URLDecoder.decode("%D2%AC%C1%D6"));
+		
+		Calendar nowCalendar = Calendar.getInstance();
+		logger.info(nowCalendar.getTimeInMillis());
+		
 	}
 }
