@@ -154,4 +154,14 @@ public class DiaryServiceImpl implements DiaryService{
 		dynamicVO.setDynamicPart1(diaries);
 		return dynamicVO;
 	}
+
+	@Override
+	public int deleteDiary(HttpServletRequest req, HttpServletResponse resp) {
+		String diaryId = req.getParameter("diaryid");
+		if(diaryId==null||"".equals(diaryId)) {
+			return -1;
+		}else {
+			return diaryDao.updateDiaryState(diaryId,"delete");
+		}
+	}
 }

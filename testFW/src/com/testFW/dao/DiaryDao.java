@@ -105,6 +105,13 @@ public interface DiaryDao {
 	  * @return
 	  */
 	 int updateDiaryRead(String diaryid);
+
+	 /**
+	  * 更新日志状态
+	  * @param diaryid 日志id 
+	  * @return
+	  */
+	 int updateDiaryState(String diaryid,String state);
 	 
 	 /**
 	  * 获取系统日志总数

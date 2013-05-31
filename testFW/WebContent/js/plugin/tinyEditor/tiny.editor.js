@@ -35,11 +35,11 @@ TINY.editor = function() {
 		h.className = obj.rowclass || 'tinyeditor-header'; p.className = obj.cssclass || 'tinyeditor'; p.style.width = this.i.width + 'px'; p.appendChild(h);
 		for(i; i < l; i++) {
 			var id = obj.controls[i];
-			if(id =  = 'n') {
+			if(id == 'n') {
 				h = document.createElement('div'); h.className = obj.rowclass || 'tinyeditor-header'; p.appendChild(h);
-			} else if(id =  = '|') {
+			} else if(id == '|') {
 				var d = document.createElement('div'); d.className = obj.dividerclass || 'tinyeditor-divider'; h.appendChild(d);
-			} else if(id =  = 'font') {
+			} else if(id == 'font') {
 				var sel = document.createElement('select'), fonts = obj.fonts || ['Verdana', 'Arial', 'Georgia'], fl = fonts.length, x = 0;
 				sel.className = 'tinyeditor-font'; sel.onchange = new Function(this.n + '.ddaction(this, "fontname")');
 				sel.options[0] = new Option('Font', '');
@@ -48,7 +48,7 @@ TINY.editor = function() {
 					sel.options[x + 1] = new Option(font, font);
 				}
 				h.appendChild(sel)
-			} else if(id =  = 'size') {
+			} else if(id == 'size') {
 				var sel = document.createElement('select'), sizes = obj.sizes || [1, 2, 3, 4, 5, 6, 7], sl = sizes.length, x = 0;
 				sel.className = 'tinyeditor-size'; sel.onchange = new Function(this.n + '.ddaction(this, "fontsize")');
 				for(x; x < sl; x++) {
@@ -56,7 +56,7 @@ TINY.editor = function() {
 					sel.options[x] = new Option(size, size);
 				}
 				h.appendChild(sel)
-			} else if(id =  = 'style') {
+			} else if(id == 'style') {
 				var sel = document.createElement('select'),
 				styles = obj.styles || [['Style', ''], ['Paragraph', '<p>'], ['Header 1', '<h1>'], ['Header 2', '<h2>'], ['Header 3', '<h3>'], ['Header 4', '<h4>'], ['Header 5', '<h5>'], ['Header 6', '<h6>']],
 				sl = styles.length, x = 0;
@@ -72,8 +72,8 @@ TINY.editor = function() {
 				div.unselectable = 'on';
 				div.style.backgroundPosition = '0px ' + pos + 'px';
 				div.title = x[1];
-				ex = func =  = 'a'?'.action("' + x[3] + '", 0, ' + (x[4] || 0) + ')' : '.insert("' + x[4] + '", "' + x[5] + '", "' + x[3] + '")';
-				div.onmousedown = new Function(this.n + (id =  = 'print'?'.print()' : ex));
+				ex = func == 'a'?'.action("' + x[3] + '", 0, ' + (x[4] || 0) + ')' : '.insert("' + x[4] + '", "' + x[5] + '", "' + x[3] + '")';
+				div.onmousedown = new Function(this.n + (id == 'print'?'.print()' : ex));
 				div.onmouseover = new Function(this.n + '.hover(this, ' + pos + ', 1)');
 				div.onmouseout = new Function(this.n + '.hover(this, ' + pos + ', 0)');
 				h.appendChild(div);
@@ -100,10 +100,10 @@ TINY.editor = function() {
 		}
 		this.e = this.i.contentWindow.document; this.e.open();
 		var m = '<html><head>', bodyid = obj.bodyid?" id=\"" + obj.bodyid + "\"" : "";
-		if(obj.cssfile) {m + = '<link rel="stylesheet" href="' + obj.cssfile + '" />'}
-		if(obj.css) {m + = '<style type="text/css">' + obj.css + '</style>'}
-		m + = '</head><body' + bodyid + ' contenteditable="true">' + (obj.content || this.t.value);
-		m + = '</body></html>';
+		if(obj.cssfile) {m += '<link rel="stylesheet" href="' + obj.cssfile + '" />'}
+		if(obj.css) {m += '<style type="text/css">' + obj.css + '</style>'}
+		m += '</head><body' + bodyid + ' contenteditable="true"><div id="tiny_main_div_12">' + (obj.content || this.t.value);
+		m += '</div></body></html>';
 		this.e.write(m);
 		this.e.close(); this.e.designMode = 'On'; this.d = 1;
 		if(this.xhtml) {
@@ -149,7 +149,7 @@ TINY.editor = function() {
 	};
 	edit.prototype.insert = function(pro, msg, cmd) {
 		var val = prompt(pro, msg);
-		if(val! = null && val! = '') {this.e.execCommand(cmd, 0, val)}
+		if(val!= null && val!= '') {this.e.execCommand(cmd, 0, val)}
 	};
 	edit.prototype.setfont = function() {
 		this.restoreSelection();

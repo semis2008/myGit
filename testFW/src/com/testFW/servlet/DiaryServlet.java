@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.testFW.bo.DiaryBO;
 import com.testFW.service.DiaryService;
 
 /**
@@ -44,6 +47,10 @@ public class DiaryServlet extends HttpServlet {
 			newDiary(req, resp);
 		} else if ("newreply".equals(fun)) {
 			newReply(req, resp);
+		} else if ("delete".equals(fun)) {
+			deleteDiary(req, resp);
+		}  else if ("getdiaryinfo".equals(fun)) {
+			getDiaryInfo(req, resp);
 		}
 	}
 
@@ -69,6 +76,49 @@ public class DiaryServlet extends HttpServlet {
 		out.close();
 	}
 
+	/**
+	 * 删除日志
+	 * 
+	 * @param req
+	 * @param resp
+	 * @throws IOException
+	 */
+	private void deleteDiary(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		int result = diaryService.deleteDiary(req, resp);
+		String msg = "";
+		if (result < 1) {
+			msg = "fail";
+		} else {
+			msg = result + "";
+		}
+		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 获取日志信息
+	 * 
+	 * @param req
+	 * @param resp
+	 * @throws IOException
+	 */
+	private void getDiaryInfo(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String diaryid = req.getParameter("diaryid");
+		DiaryBO bo = diaryService.getDiaryByID(diaryid);
+		JSONObject json = null;
+		if(bo!=null) {
+			json = JSONObject.fromObject(bo);
+		}
+		out.print(json);
+		out.flush();
+		out.close();
+	}
+	
 	/**
 	 * 新建回复
 	 * @param req

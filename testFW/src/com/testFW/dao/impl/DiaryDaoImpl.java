@@ -26,7 +26,7 @@ public class DiaryDaoImpl implements DiaryDao {
 	@Override
 	public int insertDiary(String title, String tags, String diaryContent,
 			Long userId,String userName) {
-		String sql = "insert into diary(title,content,author_id,author_name,publish_time,tags) values (?,?,?,?,now(),?)";
+		String sql = "insert into diary(title,content,author_id,author_name,publish_time,tags,status) values (?,?,?,?,now(),?,'normal')";
 		Object[] params = {title,diaryContent,userId,userName,tags};
 		dbUtilsTemplate.update(sql, params);
 		return Integer.parseInt(dbUtilsTemplate.getLastActPriId()+"");
@@ -34,21 +34,21 @@ public class DiaryDaoImpl implements DiaryDao {
 
 	@Override
 	public List<DiaryBO> queryUserDiaryList(Long userId, int start, int end) {
-		String sql = "select * from diary where author_id = ? order by publish_time desc limit ?,?";
+		String sql = "select * from diary where author_id = ? and status != 'delete' order by publish_time desc limit ?,?";
 		Object[] param = {userId,start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
 
 	@Override
 	public List<DiaryBO> queryAllDiaryList(int start, int end) {
-		String sql = "select * from diary where 1=1 order by publish_time desc limit ?,?";
+		String sql = "select * from diary where 1=1 and status != 'delete' order by publish_time desc limit ?,?";
 		Object[] param = {start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
 	}
 	
 	@Override
 	public int queryDiaryNumByUserId(Long userId) {
-		String sql = "select count(*) totalNum from diary where author_id = ?";
+		String sql = "select count(*) totalNum from diary where author_id = ? and status != 'delete'";
 		Map<String,Object> result = dbUtilsTemplate.findFirst(sql, userId);
 		return Integer.parseInt((Long)result.get("totalNum")+"");
 		
@@ -98,7 +98,7 @@ public class DiaryDaoImpl implements DiaryDao {
 
 	@Override
 	public int queryTotalDiaryCount() {
-		String sql = "select count(*) totalNum from diary where 1=1";
+		String sql = "select count(*) totalNum from diary where 1=1 and status = 'normal'";
 		Map<String,Object> result = dbUtilsTemplate.findFirst(sql,null);
 		return Integer.parseInt((Long)result.get("totalNum")+"");
 	}
@@ -112,8 +112,15 @@ public class DiaryDaoImpl implements DiaryDao {
 
 	@Override
 	public List<DiaryBO> queryUserNewDiary(int start, int end) {
-		String sql = "select * from (select * from diary order by publish_time desc) diary group by author_id order by publish_time desc limit ?,?";
+		String sql = "select * from (select * from diary where status != 'delete' order by publish_time desc) diary group by author_id order by publish_time desc limit ?,?";
 		Object[] param = {start,end};
 		return dbUtilsTemplate.find(DiaryBO.class, sql, param);
+	}
+
+	@Override
+	public int updateDiaryState(String diaryid,String state) {
+		String sql = "update diary set diary.status = ? where id = ?";
+		Object[] param = {state,diaryid};
+		return dbUtilsTemplate.update(sql, param);
 	}
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="com.testFW.util.UserUtil"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="com.testFW.util.StringUtil"%>
 <%@page import="com.testFW.util.DateUtil"%>
@@ -96,6 +97,28 @@
 			}
 		});
 	}
+	function deleteDiary(diaryid) {
+		alert(diaryid);
+		$.ajax({
+			type : "POST",
+			url : "/action/diary/delete",
+			data: {
+				diaryid:diaryid
+			},
+			dataType : "text",
+			success : function(msg) {
+				if(msg=='fail') {
+					alert("删除失败！");
+				}else {
+					alert("删除成功！");				
+					location.reload();
+				}
+			}
+		});
+	}
+	function setEditDiaryId(diaryid) {
+		$("#diary_edit_id").val(diaryid);
+	}
 </script>
 <title>日志</title>
 </head>
@@ -103,7 +126,7 @@
 	<div id="backstretch"
 		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
 		<img style="position: relative; left: 0px;"
-			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>">
+			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>" />
 	</div>
 	<div id="hd">
 		<div class="top_bar">
@@ -126,39 +149,10 @@
 		<div class="container">
 			<div class="main_wrap">
 				<div class="main">
-					<div class="group" id="paging">
-						<%
-							if (!hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
-						<%
-							} else {
-						%>
-						<a
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
-							title="点击进入主页"><%=user.getName()%></a> <a href="#"
-							onclick="userQuit();" title="点击退出">退出</a>
-						<%
-							}
-						%>
-						<%
-							if (hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/newDiary.html">发表日志</a>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-						<%
-							} else {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-						<%
-							}
-						%>
-					</div>
 					<div class="articles">
+					<!-- 隐藏域，用于标识编辑的日志id -->
+					<input type="hidden" id="diary_edit_id"/> 
+					
 						<%
 							if (diaryList.size() == 0) {
 								out.print("<h3> 没有日志可供查看~~</h3>");
@@ -206,6 +200,18 @@
 									<a class="more-link"
 										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>">查看全文
 										<span>↓</span> </a>
+										<%
+										if(user.getId()==diary.getAuthor_id()) {
+										%>
+										<a class="more-link fancybox-iframe" onclick="javascript:setEditDiaryId('<%=diary.getId() %>')"
+										 href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/editDiary.html">编辑
+										<span>✎</span> </a>
+										<a class="more-link"
+										href="#" onclick="javascript:deleteDiary('<%=diary.getId() %>')">删除
+										<span>×</span> </a>
+										<%
+										}
+										%>
 								</p>
 							</div>
 						</div>
@@ -257,7 +263,7 @@
 				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
 			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
 				designed by <a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊r</a>
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
 			</span>
 		</p>
 	</div>

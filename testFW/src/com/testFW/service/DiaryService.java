@@ -25,6 +25,14 @@ public interface DiaryService {
 	 int newDiary(HttpServletRequest req, HttpServletResponse resp);
 	 
 	 /**
+	 * 删除日志
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	 int deleteDiary(HttpServletRequest req, HttpServletResponse resp);
+		 
+	 /**
 	  * 登录用户发表回复
 	  * @param req
 	  * @param resp
