@@ -11,4 +11,6 @@
 	<bean id="Diary" class="com.testFW.servlet.DiaryServlet">
 		<property name="diaryService" ref="DiaryService" />
 	</bean>
+	<bean id="Chat" class="com.testFW.servlet.ChatServlet">
+	</bean>
 </beans>

@@ -16,4 +16,4 @@ public class liskovSP extends commonDP{
 		setDp_info("Functions that user pointers or references to base classes must be able to " +
 				"user objects of derived classes without knowing it._所有使用基类的地方必须能够透明的是同其子类的对象。");
 	}
-}·
+}

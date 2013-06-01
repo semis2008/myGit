@@ -90,6 +90,10 @@
 		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>Chat</servlet-name>
+		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>URLMapping</servlet-name>
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
@@ -110,6 +114,10 @@
 	<servlet-mapping>
 		<servlet-name>System</servlet-name>
 		<url-pattern>/system.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Chat</servlet-name>
+		<url-pattern>/chat.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>URLMapping</servlet-name>

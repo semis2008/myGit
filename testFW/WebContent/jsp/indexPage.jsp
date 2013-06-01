@@ -426,6 +426,9 @@
 									<!-- 图册统计 -->
 									<li class="albumCount" onclick="location.href='/action/system/picture'"><em class="ico_album"></em> <span>
 											<b>图册</b> &nbsp;|&nbsp; 共2册 </span></li>
+									<!-- WNChat-->
+									<li class="aboutMe" onclick="location.href='/action/chat/test'"><em class="ico_about"></em> <span>
+											<b>WN Chat</b> </span></li>		
 									<!-- 关于 -->
 									<li class="aboutMe" onclick="location.href='/action/system/aboutus'"><em class="ico_about"></em> <span>
 											<b>About Me</b> </span></li>
