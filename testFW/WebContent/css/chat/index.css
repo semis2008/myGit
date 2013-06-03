@@ -8,13 +8,7 @@ body {
     font-size: 13px;
     line-height: 18px;
     margin: 0;
-}
-.wrap {
-	height: auto !important;
-    margin: 0 auto -200px;
-    min-height: 100%;
-    min-width: 1100px;
-}
+} 
 
 
 .navbar-wrapper {
@@ -27,14 +21,14 @@ body {
     z-index: 10;
 }
 
-.carousel {
+#topCarousel {
     margin-bottom: 60px;
 }
-.carousel .container {
+#topCarousel .container {
     position: relative;
     z-index: 9;
 }
-.carousel-control {
+#topCarousel .carousel-control {
     background-color: transparent;
     border: 0 none;
     font-size: 120px;
@@ -43,30 +37,30 @@ body {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
-.carousel .item {
+#topCarousel .item {
     height: 500px;
 }
-.carousel img {
+#topCarousel img {
     height: 500px;
     left: 0;
     min-width: 100%;
     position: absolute;
     top: 0;
 }
-.carousel-caption {
+#topCarousel .carousel-caption {
     background-color: transparent;
     margin-top: 160px;
     max-width: 550px;
     padding: 0 20px;
     position: static;
 }
-.carousel-caption h1, .carousel-caption .lead {
+#topCarousel .carousel-caption h1, #topCarousel .carousel-caption .lead {
     color: #FFFFFF;
     line-height: 1.25;
     margin: 0;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
-.carousel-caption .btn {
+#topCarousel .carousel-caption .btn {
     margin-top: 10px;
 }
 
@@ -105,7 +99,7 @@ h2.icon-line span{
 #about .span3 p{
 	font-size: 16px;
 }
-
+ 
 .footer {
 	background-color: #252525;
     min-width: 1100px;
