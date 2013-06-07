@@ -13,4 +13,6 @@ public class ConstantsUtil {
 	public static final String SALT = "a86aff6cf0a1";
 	public static final String DEFAULT_HEAD_PHOTO = "/img/head/default/default.jpg";
 	public static final String DEFAULT_BG = "/img/bg.jpg";
+	public static final String SITE_INFO_XML = "WebContent/WEB-INF/conf/siteInfo.xml";
+	
 }

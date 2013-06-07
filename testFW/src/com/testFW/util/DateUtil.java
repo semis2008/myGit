@@ -14,11 +14,26 @@ public class DateUtil {
 	/**
 	 * 获取当前的时间
 	 * 
-	 * @return
+	 * @return Calendar
 	 */
-	public static Calendar getTimeNow() {
+	public static Calendar getCalendarNow() {
 		Calendar cal = Calendar.getInstance();
 		return cal;
+	}
+
+	/**
+	 * 获取当前的时间
+	 * 
+	 * @return String 2013-06-07 11:45
+	 */
+	public static String getTimeNow() {
+		Calendar cal = Calendar.getInstance();
+		String res = "";
+		res = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1)
+				+ "-" + cal.get(Calendar.DAY_OF_MONTH) + " "
+				+ cal.get(Calendar.HOUR_OF_DAY) + ":"
+				+ cal.get(Calendar.MINUTE);
+		return res;
 	}
 
 	/**
@@ -67,8 +82,8 @@ public class DateUtil {
 					+ cal.get(Calendar.MINUTE);
 			break;
 		case 4:
-			res = (cal.get(Calendar.MONTH) + 1)
-					+ "/" + cal.get(Calendar.DAY_OF_MONTH);
+			res = (cal.get(Calendar.MONTH) + 1) + "/"
+					+ cal.get(Calendar.DAY_OF_MONTH);
 			break;
 		default:
 			break;
@@ -121,7 +136,7 @@ public class DateUtil {
 	}
 
 	public static void main(String args[]) {
-		Calendar now = getTimeNow();
+		Calendar now = getCalendarNow();
 
 		System.out.print(now.getTimeInMillis());
 	}

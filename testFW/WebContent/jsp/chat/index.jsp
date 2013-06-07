@@ -144,7 +144,6 @@
 						<button class="btn btn-primary offset1" type="submit">确认注册</button>
 						<button class="btn">取消</button>
 					</div>
-
 				</fieldset>
 			</form>
 		</div>
