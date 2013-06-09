@@ -15,12 +15,21 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
-<link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/chat/index.css" rel="stylesheet"
-	media="screen" />
 <link rel="stylesheet" type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
 	media="screen" />
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/css/chat/index.css" rel="stylesheet"
+	media="screen" />
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger.css"
+	rel="stylesheet" media="screen" />
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger-theme-future.css"
+	rel="stylesheet" media="screen" />
+
+
+
 <title>WNChat首页</title>
 </head>
 <body>
@@ -103,8 +112,8 @@
 						<label class="control-label" for="input01">您的尊姓大名</label>
 						<div class="controls">
 							<div class="input-prepend">
-								<span class="add-on"><i class="icon-user"></i>
-								</span><input type="text" size="16" id="input01" />
+								<span class="add-on"><i class="icon-user"></i> </span><input
+									type="text" size="16" id="input01" />
 							</div>
 							<p class="help-block">字母，数字，汉字皆可</p>
 						</div>
@@ -114,8 +123,8 @@
 						<label class="control-label" for="input02">您的Email</label>
 						<div class="controls">
 							<div class="input-prepend">
-								<span class="add-on"><i class="icon-envelope"></i>
-								</span><input type="text" size="16" id="input02" />
+								<span class="add-on"><i class="icon-envelope"></i> </span><input
+									type="text" size="16" id="input02" />
 							</div>
 							<p class="help-block">邮箱将直接作为您登录的帐号哦</p>
 						</div>
@@ -124,8 +133,8 @@
 						<label class="control-label" for="input03">您要使用的密码</label>
 						<div class="controls">
 							<div class="input-prepend">
-								<span class="add-on"><i class="icon-asterisk"></i>
-								</span><input type="text" size="16" id="input03" />
+								<span class="add-on"><i class="icon-asterisk"></i> </span><input
+									type="text" size="16" id="input03" />
 							</div>
 							<p class="help-block">字母，数字皆可</p>
 						</div>
@@ -134,8 +143,8 @@
 						<label class="control-label" for="input04">请再输入一次密码</label>
 						<div class="controls">
 							<div class="input-prepend">
-								<span class="add-on"><i class="icon-asterisk"></i>
-								</span><input type="password" size="16" id="input04" />
+								<span class="add-on"><i class="icon-asterisk"></i> </span><input
+									type="password" size="16" id="input04" />
 							</div>
 							<p class="help-block">两次密码输入必须一致</p>
 						</div>
@@ -384,7 +393,33 @@
 							class="label label-warning">聊</span>......咳咳....在这里就可以！
 					</h4>
 				</div>
-				<div></div>
+				<div class="span10 offset2">
+					<form class="form-inline" id="contact_form">
+						<div class="row-fluid">
+							<div class="input-prepend span3">
+								<span class="add-on"><i class="icon-user"></i> </span><input
+									id="name" type="text" placeholder="姓名" />
+							</div>
+							<div class="input-prepend span3">
+								<span class="add-on"><i class="icon-envelope"></i> </span><input
+									id="email" type="text" placeholder="邮箱" />
+							</div>
+							<div class="input-prepend span3">
+								<span class="add-on"><i class="icon-home"></i> </span><input
+									id="webSite" type="text" placeholder="网站" />
+							</div>
+						</div>
+						<div class="row-fluid">
+							<textarea class="contact_textarea" id="textarea" rows="5">
+							</textarea>
+						</div>
+						<div class="row-fluid span6 offset2">
+							<a href="#" class="btn btn-large btn-success">提交</a> <a href="#"
+								class="btn btn-large offset1">清空</a>
+						</div>
+
+					</form>
+				</div>
 			</div>
 		</div>
 
@@ -398,9 +433,31 @@
 					<span>历程</span>
 				</h2>
 			</div>
-			<div class="span12"></div>
+			<div class="span12">
+				<ul>
+					<li>ChatBear一开始我想延续WNJava的命名，起了一个WNBear的名字，后来更名为Chat Bear.</li>
+					<li>采用Bootstrap作为前台的框架，省去了我许多的对页面和样式的设计，这对于已经开发了WNJava，全部页面和样式手动设计的我来说，无疑解放了我
+						大量的工作时间。项目从2013-06-01完成了静态页面的整体规划，后续几天我连续的进行工作，主要是学习怎样使用Bootstrap.</li>
+					<li>到06-03的时候，继续添加了 登录和注册的页面（均为静态页面）.</li>
+					<li>之后从06-04开始，我开始设计简单网络爬虫平台，并在06-07提交了一个简单可用的版本。爬虫对我来讲是新领域，在借鉴了
+						别人的代码之后，我重写了适合ChatBeat系统的爬虫平台，并测试通过.</li>
+				</ul>
+			</div>
 		</div>
 
+
+		<!-- 示例 -->
+		<div class="row" id="example">
+			<div class="span12">
+				<h2 class="icon-line">
+					<span>示例</span>
+				</h2>
+			</div>
+			<div class="span12">
+				<a onclick="javascript:showMsg();" class="btn btn-large btn-success">显示消息</a>
+				
+			</div>
+		</div>
 
 
 
@@ -491,6 +548,17 @@
 		src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/pin/jquery.pin.min.js"></script>
+
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/underscore-1.4.4.js"></script>
+
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/backbone-0.9.10.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.min.js"></script>
+
 
 	<script type="text/javascript">
 		$(function() {
@@ -501,7 +569,15 @@
 			$('#conCarousel').carousel({
 				interval : 7000
 			});
+
+			$(".pinned").pin();
 		});
+
+		function showMsg() {
+			$.globalMessenger().post({message: '这是一个弹窗',
+				    type: 'success',
+				    showCloseButton: true});
+		}
 	</script>
 </body>
 </html>

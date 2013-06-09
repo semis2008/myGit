@@ -99,6 +99,19 @@ h2.icon-line span{
 #about .span3 p{
 	font-size: 16px;
 }
+
+.contact_textarea{
+	width: 75.3%;
+}
+#contact_form .row-fluid{
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
  
 .footer {
 	background-color: #252525;
