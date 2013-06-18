@@ -7,9 +7,11 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 
+import com.chatBear.enums.ContentState;
 import com.chatBear.enums.PageState;
 import com.chatBear.enums.SiteState;
 import com.chatBear.enums.SiteType;
+import com.chatBear.model.CrawlContent;
 import com.chatBear.model.CrawlPage;
 import com.chatBear.model.CrawlSite;
 import com.testFW.servlet.ChatServlet;
@@ -169,12 +171,59 @@ public class SiteCrawl {
 		}
 		return result;
 	}
-
+		
+	/**
+	 * 从网站爬取的结果页面中获取所需要的内容
+	 * @param site
+	 * @return
+	 */
+	private CrawlSite getContentFromSite(CrawlSite site) {
+		CrawlSite resultSite = new CrawlSite();
+		List<CrawlPage> pages = site.getResultPages();
+		List<CrawlContent> contents = new ArrayList();
+		for(CrawlPage page:pages) {
+			//从html中获取所需的内容
+			String pageHtml = page.getContent();
+			String start = site.getSubContentStart();
+			String end = site.getSubContentEnd();
+			String[] part1 = pageHtml.split(start);
+			int flag = 0;
+			for(String tempStr:part1) {
+				//网页的开始部分去掉
+				if(flag==0) {
+					flag++;
+					continue;
+				}
+				String[] part2 = tempStr.split(end);
+				String resultContent = part2[0];
+				//爬取的内容和头文件合并，用以产生完整的html元素
+				resultContent = start+resultContent;
+				
+				//对抓取到的内容进行处理
+				//1.过滤掉html元素
+				//2.内容过短的去掉
+				//3.过滤掉空白
+				
+				
+				CrawlContent content = new CrawlContent();
+				content.setContent(resultContent);
+				content.setSiteName(site.getName());
+				content.setState(ContentState.NOT_PUBLISH);
+				contents.add(content);
+			}
+		}
+		resultSite.setContents(contents);
+		return resultSite;
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		List<CrawlSite> sites = XMLUtil.getInstance().sites;
+		CrawlSite resultSite = new CrawlSite();
 		for(CrawlSite site:sites) {
 			SiteCrawl crawl = new SiteCrawl();
-			crawl.doCrawlSite(site);
+			resultSite = crawl.getContentFromSite(crawl.doCrawlSite(site));
 		}
 		logger.info("end");
 	}
