@@ -88,5 +88,4 @@ public class StringUtil {
 
 		return textStr;// 返回文本字符串
 	}
-
 }

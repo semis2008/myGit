@@ -1,0 +1,214 @@
+@CHARSET "UTF-8";
+  
+ * {
+     font-family: Courier,serif,monospace;
+     font-size: 12px;
+ }
+  
+ .chat-main {
+     position: absolute;
+     /*right: 80px;*/
+     left: 50px;
+     top: 20px;
+     z-index: 999;
+     display: none;
+	 cursor: move;
+ }
+  
+ .chat-main .radius {
+     background-color: white;
+     border: 8px solid #94CADF;
+     border-radius: 1em;
+ }
+  
+ #chat {
+     position: relative;
+     /*left: 150px;*/
+     padding: 0;
+     margin: 0;
+ }
+ #chat table {
+     border-collapse: collapse;
+     width: 435px;
+    
+ }
+  
+ #chat table .title {
+     font-weight: bold;
+     color: green;
+     padding: 3px;
+     background-color: #94CADF;
+ }
+  
+ /* ������ */
+ #chat table .split {
+     background-color: #94CADF;
+     cursor: pointer;
+ }
+  
+ /* ################## product info #################### */
+ #chat table .product-info {
+     width: 30%;
+     /*display: none;*/
+     padding: 0;
+     margin: 0;
+     vertical-align: top;
+ }
+  
+ #chat table .product-info ul {
+     margin: 0;
+     padding: 0;
+ }
+  
+ #chat table .product-info ul div.header {
+     background-color: #EBEFFE;
+     line-height: 22px;
+     font-size: 12px;
+     color: black;
+ }
+  
+ #chat table .product-info ul li {
+     list-style: none outside none;
+     background-color: white;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     padding-left: 5px;
+     line-height: 22px;
+     font-size: 11px;
+     color: #6F6F6F;
+     width: 140px;
+ }
+  
+ #chat table .product-info ul li.pic {
+     height: 200px;
+     padding: 0 5px 0 5px;
+     border: 1px dashed #ccc;
+     text-align: center;
+ }
+  
+ #chat table .product-info ul li.pic img {
+ }
+  
+ #chat table .product-info ul li.product-name {
+     font-weight: bold;
+     color: black;
+ }
+  
+ #chat table .product-info ul li.price span {
+     font-family: Courier;
+     font-size: 16px;
+     font-weight: bold;
+     color: #ED4E08;
+ }
+  
+ #chat table .product-info ul li.market-price s {
+     color: black;
+ }
+  
+ #chat table .product-info ul li a {
+     float: right;
+ }
+  
+ #chat table .product-info ul li.info {
+     display: none;
+ }
+  
+ /*########### ������Ϣ���� ############ */
+ #chat table .receive-message {
+     height: 250px;
+ }
+  
+ #chat table .send-message {
+     width: 100%;
+     /*height: auto;*/
+ }
+  
+ #chat table td {
+     /*border: 1px solid white;*/
+ }
+  
+ #chat table .bottom-bar {
+     background-color: #94CADF;
+     text-align: right;
+ }
+  
+ /* ############## ������ ################# start */
+ #chat table .tool-bar {
+     height: 25px;
+     background-color: #94CADF;
+ }
+  
+ #chat table .tool-bar select {
+     float: left;
+ }
+  
+ #chat table .tool-bar select.family {
+     width: 45px;
+     width: 55px;
+ }
+  
+ #chat table .tool-bar div {
+     width: 17px;
+     height: 16px;
+     float: left;
+     cursor: pointer;
+     margin-right: 2px;
+     margin-top: 1px;
+     margin-top: 2px;
+     background: transparent url("../images/editor_v2.png") no-repeat scroll 0 0;
+ }
+  
+ #chat table .tool-bar .color {
+     margin-left: 2px;
+     background-position: -159px 0;
+ }
+ #chat table .tool-bar .bold {
+     background-position:  -128px -64px;
+ }
+ #chat table .tool-bar .italic {
+     background-position: -160px -64px;
+ }
+ #chat table .tool-bar .underline {
+     background-position:  -192px -64px;
+ }
+ #chat table .tool-bar .face {
+     margin: 2px 0 0 3px;
+	 background-position:0 -112px;
+     background-image: url("editor_v2.png");
+ }
+ #chat table .tool-bar .history {
+     background-image: none;
+     width: 60px;
+     float: right;
+     margin-top: 3px;
+     font-size: 12px;
+     display: none;
+ }
+ /* ###### ���� ###### */
+ #chat #face {
+     border: 1px solid black;
+     width: 275px;
+     width: 277px;
+     position: relative;
+     left: 8px;
+     top: -370px;
+     z-index: 3;
+     display: none;
+ }
+  
+ #chat #face img {
+     border: 1px solid #ccc;
+     border-right: none;
+     border-bottom: none;
+     cursor: pointer;
+ }
+  
+ #send {
+     width: 90px;
+     height: 25px;
+ }
+ #close {
+     width: 40px;
+     height: 25px;
+ }

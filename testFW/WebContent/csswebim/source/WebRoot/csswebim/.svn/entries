@@ -1,0 +1,43 @@
+9
+
+dir
+4596
+svn://192.168.1.191/Sword4.0/trunk/CSSWebIM/source/WebRoot/csswebim
+svn://192.168.1.191/Sword4.0
+
+
+
+2012-07-30T07:23:19.042870Z
+3179
+yujiangbi
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5345c969-6f7a-da4c-890d-2048b112eb89
+
+jquery
+dir
+
+images
+dir
+
+org
+dir
+
+css
+dir
+
+js
+dir
+

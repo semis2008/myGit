@@ -1,0 +1,8 @@
+#currentUser Provier is client post UUID this value is ignore
+currentUser = com.css.webim.integration.MyCurrentUser
+#default is 30 (days) 
+OfflineMessageIdel = 30
+# user tree provier
+treeProvier = com.css.webim.integration.MyTreeProvider
+#RMI full class (extends remote):host:alias
+RMI = com.css.webim.server.ChatServiceRMIWrapper:1111:chatservice
