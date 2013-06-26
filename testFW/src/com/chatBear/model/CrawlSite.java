@@ -10,6 +10,14 @@ import com.chatBear.enums.SiteType;
  * @author kalor
  */
 public class CrawlSite extends CrawHtml{
+	//网站标识
+	private String id;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	//网站名称
 	private String name;
 	//网站起始页面

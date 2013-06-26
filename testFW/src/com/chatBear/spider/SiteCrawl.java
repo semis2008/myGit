@@ -100,7 +100,7 @@ public class SiteCrawl {
 	 * 
 	 * @return
 	 */
-	private CrawlSite doCrawlSite(CrawlSite site) {
+	public CrawlSite doCrawlSite(CrawlSite site) {
 		logger.info("---爬取站点：" + site.getName() + "--开始时间:"
 				+ DateUtil.getTimeNow());
 
@@ -178,7 +178,7 @@ public class SiteCrawl {
 	 * @param site
 	 * @return
 	 */
-	private CrawlSite getContentFromSite(CrawlSite site) {
+	public CrawlSite getContentFromSite(CrawlSite site) {
 		CrawlSite resultSite = new CrawlSite();
 		List<CrawlPage> pages = site.getResultPages();
 		List<CrawlContent> contents = new ArrayList();

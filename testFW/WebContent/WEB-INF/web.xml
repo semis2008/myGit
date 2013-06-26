@@ -98,12 +98,21 @@
 		<servlet-name>URLMapping</servlet-name>
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
+	<!-- 获取推送信息 -->
 	<servlet>
 		<servlet-name>getMsg</servlet-name>
 		<servlet-class>com.chatBear.comet.GetMsgAjax</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+ 	<!-- 自动爬取servlet -->
+ 	<servlet>
+		<servlet-name>autoCrawl</servlet-name>
+		<servlet-class>com.chatBear.spider.AutoCrawl</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
- 
+ 	 
+ 	
+ 	
 	<!-- Servlet路径配置 --> 
 	<servlet-mapping>
 		<servlet-name>test</servlet-name>

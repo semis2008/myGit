@@ -28,7 +28,15 @@ import com.chatBear.model.CrawlSite;
 public class XMLUtil {
 	public static XMLUtil xmlUtil;
 	public List<CrawlSite> sites;
-	private static String confPath = ConstantsUtil.SITE_INFO_XML;
+	private static String confPath = "";
+
+	public static String getConfPath() {
+		return confPath;
+	}
+
+	public static void setConfPath(String confPath) {
+		XMLUtil.confPath = confPath;
+	}
 
 	@SuppressWarnings("unchecked")
 	private XMLUtil() {
@@ -60,6 +68,7 @@ public class XMLUtil {
 				}
 				
 				CrawlSite site = new CrawlSite();
+				site.setId(temp.get("id"));
 				site.setName(temp.get("name"));
 				site.setUnicode(temp.get("unicode"));
 				site.setTotalPage(Integer.parseInt(temp.get("total-page")));
