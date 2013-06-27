@@ -573,24 +573,33 @@
 			});
 
 			$(".pinned").pin();
-			getMsg();
+			getMsg(1);
 		});
 
 		function showMsg(msg) {
 			$.globalMessenger().post({message: msg,
 				    type: 'success',
-				    showCloseButton: true});
+				    showCloseButton: true,
+				    hideAfter: 15
+				    });
 		}
 		
 		//获取推送的消息
-		function getMsg() {
+		function getMsg(msgId) {
 			$.ajax({
 				type : "POST",
 				url : "/getmsgajax.do",
+				data : {
+					id : msgId
+				},
 				dataType : "text",
 				success : function(msg) {
-					showMsg(msg);					
-					getMsg();
+					showMsg(msg);
+					if(Math.ceil(Math.random()*10)>5) {
+						getMsg(1);	
+					}else {
+						getMsg(2);
+					}
 				}
 			});
 		}

@@ -179,7 +179,7 @@ public class SiteCrawl {
 	 * @return
 	 */
 	public CrawlSite getContentFromSite(CrawlSite site) {
-		CrawlSite resultSite = new CrawlSite();
+		CrawlSite resultSite = site;
 		List<CrawlPage> pages = site.getResultPages();
 		List<CrawlContent> contents = new ArrayList();
 		for(CrawlPage page:pages) {
@@ -202,10 +202,10 @@ public class SiteCrawl {
 				
 				//对抓取到的内容进行处理
 				//1.过滤掉html元素
-				//2.内容过短的去掉
+				//2.内容过短和过长的去掉
 				//3.过滤掉空白
-//				resultContent = StringUtil.Html2Text(resultContent).trim();
-				if(resultContent.length()<15) {
+				resultContent = StringUtil.Html2Text(resultContent).trim();
+				if(resultContent.length()<30||resultContent.length()>120) {
 					continue;
 				}
 				
