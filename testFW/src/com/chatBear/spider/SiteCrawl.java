@@ -16,6 +16,7 @@ import com.chatBear.model.CrawlPage;
 import com.chatBear.model.CrawlSite;
 import com.testFW.servlet.ChatServlet;
 import com.testFW.util.DateUtil;
+import com.testFW.util.StringUtil;
 import com.testFW.util.XMLUtil;
 
 public class SiteCrawl {
@@ -203,7 +204,10 @@ public class SiteCrawl {
 				//1.过滤掉html元素
 				//2.内容过短的去掉
 				//3.过滤掉空白
-				
+//				resultContent = StringUtil.Html2Text(resultContent).trim();
+				if(resultContent.length()<15) {
+					continue;
+				}
 				
 				CrawlContent content = new CrawlContent();
 				content.setContent(resultContent);
@@ -215,8 +219,6 @@ public class SiteCrawl {
 		resultSite.setContents(contents);
 		return resultSite;
 	}
-	
-	
 	
 	public static void main(String[] args) {
 		List<CrawlSite> sites = XMLUtil.getInstance().sites;

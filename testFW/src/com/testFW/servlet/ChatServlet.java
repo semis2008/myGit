@@ -46,6 +46,8 @@ public class ChatServlet extends HttpServlet {
 		String targetpath = "";
 		if ("test".equals(fun)) {
 			targetpath = "/jsp/chat/index.jsp";
+		}else if ("comet".equals(fun)) {
+			targetpath = "/jsp/chat/helloWorld.jsp";
 		}
 		
 		req.setAttribute("fun", fun);

@@ -257,6 +257,9 @@ div.art-cats li.tag a {
 	color: #999;
 	float: left;
 }
+.art-content {
+	font-size: 14px;
+}
 
 .quote {
 	border: 1px dashed white;

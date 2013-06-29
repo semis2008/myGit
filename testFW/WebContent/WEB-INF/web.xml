@@ -27,7 +27,7 @@
 		<url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
 	<!-- 过滤不合法的访问请求 -->
-	 <filter>
+	<filter>
 		<filter-name>UrlFilter</filter-name>
 		<filter-class>com.testFW.filter.UrlFilter</filter-class>
 		<init-param>
@@ -49,6 +49,7 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -72,7 +73,7 @@
 	<description>用来进行架构设计测试的网站</description>
 
 
-	<!-- Servlet类配置，除测试类外，其他Servlet均采用代理的方式利用Spring的IOC注入 -->
+<!-- Servlet类配置，除测试类外，其他Servlet均采用代理的方式利用Spring的IOC注入-->
 	<servlet>
 		<servlet-name>test</servlet-name>
 		<servlet-class>com.testFW.servlet.TestServlet</servlet-class>
@@ -97,12 +98,23 @@
 		<servlet-name>URLMapping</servlet-name>
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
-
-	<!-- Servlet路径配置 -->
+	<servlet>
+		<servlet-name>getMsg</servlet-name>
+		<servlet-class>com.chatBear.comet.GetMsgAjax</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+ 
+	<!-- Servlet路径配置 --> 
 	<servlet-mapping>
 		<servlet-name>test</servlet-name>
 		<url-pattern>/test.do</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>getMsg</servlet-name>
+		<url-pattern>/getmsgajax.do</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
 		<url-pattern>/user.do</url-pattern>
@@ -138,5 +150,5 @@
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/jsp/exception.jsp</location>
-	</error-page>
+	</error-page>  
 </web-app>

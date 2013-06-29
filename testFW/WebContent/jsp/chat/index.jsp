@@ -70,6 +70,8 @@
 											class="icon-hand-right"></i> wnJava网络社区</a></li>
 									<li><a href="#"><i class="icon-hand-right"></i> Kalor网</a>
 									</li>
+									<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/chat/comet"><i class="icon-hand-right"></i>comet推送</a>
+									</li>
 								</ul></li>
 						</ul>
 					</div>
@@ -571,13 +573,28 @@
 			});
 
 			$(".pinned").pin();
+			getMsg();
 		});
 
-		function showMsg() {
-			$.globalMessenger().post({message: '这是一个弹窗',
+		function showMsg(msg) {
+			$.globalMessenger().post({message: msg,
 				    type: 'success',
 				    showCloseButton: true});
 		}
+		
+		//获取推送的消息
+		function getMsg() {
+			$.ajax({
+				type : "POST",
+				url : "/getmsgajax.do",
+				dataType : "text",
+				success : function(msg) {
+					showMsg(msg);					
+					getMsg();
+				}
+			});
+		}
+		
 	</script>
 </body>
 </html>
