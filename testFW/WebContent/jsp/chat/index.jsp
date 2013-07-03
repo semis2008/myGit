@@ -70,7 +70,9 @@
 											class="icon-hand-right"></i> wnJava网络社区</a></li>
 									<li><a href="#"><i class="icon-hand-right"></i> Kalor网</a>
 									</li>
-									<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/chat/comet"><i class="icon-hand-right"></i>comet推送</a>
+									<li><a
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/chat/comet"><i
+											class="icon-hand-right"></i>comet推送</a>
 									</li>
 								</ul></li>
 						</ul>
@@ -457,7 +459,7 @@
 			</div>
 			<div class="span12">
 				<a onclick="javascript:showMsg();" class="btn btn-large btn-success">显示消息</a>
-				
+
 			</div>
 		</div>
 
@@ -560,9 +562,9 @@
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/backbone-0.9.10.js"></script>
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.min.js"></script>
-
-
 	<script type="text/javascript">
+		var count1 = 0;
+		var count2 = 0;
 		$(function() {
 			//轮播
 			$('#topCarousel').carousel({
@@ -573,37 +575,47 @@
 			});
 
 			$(".pinned").pin();
-			getMsg(1);
+			getMsg(1, 1);
 		});
 
 		function showMsg(msg) {
-			$.globalMessenger().post({message: msg,
-				    type: 'success',
-				    showCloseButton: true,
-				    hideAfter: 15
-				    });
-		}
-		
-		//获取推送的消息
-		function getMsg(msgId) {
-			$.ajax({
-				type : "POST",
-				url : "/getmsgajax.do",
-				data : {
-					id : msgId
-				},
-				dataType : "text",
-				success : function(msg) {
-					showMsg(msg);
-					if(Math.ceil(Math.random()*10)>5) {
-						getMsg(1);	
-					}else {
-						getMsg(2);
-					}
-				}
+			$.globalMessenger().post({
+				message : msg,
+				type : 'success',
+				showCloseButton : true,
+				hideAfter : 15
 			});
 		}
-		
+
+		//获取推送的消息
+		function getMsg(msgId, count) {
+			if (msgId == 1) {
+				count1++;
+			} else if (msgId == 2) {
+				count2++;
+			}
+
+			$.getJSON("/getmsgajax.do", {
+				id : msgId,
+				count : count
+			}, function(json) {
+				$(json).each(function(i) {
+					showMsg(json[i].msg);
+					if (json[i].isEnd == "true") {
+						if (msgId == 1) {
+							count1 = 0;
+						} else if (msgId == 2) {
+							count2 = 0;
+						}
+					}
+					if (Math.ceil(Math.random() * 10) > 5) {
+						getMsg(1, count1);
+					} else {
+						getMsg(2, count2);
+					}
+				});
+			});
+		}
 	</script>
 </body>
 </html>

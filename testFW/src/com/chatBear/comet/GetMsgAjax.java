@@ -15,6 +15,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +35,6 @@ public class GetMsgAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(GetMsgAjax.class);
 	private Map<String,List<CrawlContent>> contentPool = new HashMap<String,List<CrawlContent>>();
-	private Map<String,Integer> countPool = new HashMap<String,Integer>();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -43,7 +45,6 @@ public class GetMsgAjax extends HttpServlet {
 	
 	
 	private List<CrawlContent> contents = null;
-	private Integer count;
 	@Override
 	protected void service(HttpServletRequest arg0, HttpServletResponse arg1)
 			throws ServletException, IOException {
@@ -60,40 +61,43 @@ public class GetMsgAjax extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		String msg = "";
-		 
+		
 		
 		resp.setContentType("text/html;charset=utf-8");
 		String msgId = req.getParameter("id");
-		
+		Integer count = Integer.parseInt(req.getParameter("count"));
 		if(contentPool.containsKey(msgId)) {
 			contents = contentPool.get(msgId);
 		}else{
 			contents =  MsgFactory.getSiteMsg(msgId).getContents();
 			contentPool.put(msgId, contents);
 		}
-		if(countPool.containsKey(msgId)) {
-			count = countPool.get(msgId);
-		}else {
-			count = 0;
-			countPool.put(msgId, count);
-		}
-		
-		
-		
+		String isEnd = "false";
 		if(contents.size()-1<count) {
 			//内容发布完毕，循环
-			count = 0;
+			count = 1;
+			isEnd = "true";
 		} 
+		
 		msg = contents.get(count).getContent() +"- -"+ contents.get(count).getSiteName();
-		count++;
+		
+		//转化为json
+		List<Map<String, String>> list=new ArrayList<Map<String, String>>();
+		  Map<String, String> par_map = new HashMap<String, String>();
+		  par_map.put("msg", msg);
+		  par_map.put("isEnd", isEnd);
+		  list.add(par_map);
+		  JSONArray jsonObject = JSONArray.fromObject(list);
+		
 		try {
 			int time = (int) (Math.random() * 10000) + 3000;
 			logger.info("推送间隔:" + time +"---Content余量："+contents.size()+"---计数器："+count);
+			logger.info("json数据："+jsonObject.toString());
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		out.write(msg + "<br>");
+		out.write(jsonObject.toString());
 		out.flush();
 		out.close();
 	}

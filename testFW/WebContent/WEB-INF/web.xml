@@ -39,6 +39,16 @@
 		<filter-name>UrlFilter</filter-name>
 		<url-pattern>/private/*</url-pattern>
 	</filter-mapping>
+	<!-- XSS过滤 -->
+	<filter>
+     <filter-name>XssSqlFilter</filter-name>
+     <filter-class>com.testFW.filter.XssFilter</filter-class>
+  </filter>
+  <filter-mapping>
+     <filter-name>XssSqlFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+     <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 
 	<!-- listener -->
 	<!-- log4j监听 -->
