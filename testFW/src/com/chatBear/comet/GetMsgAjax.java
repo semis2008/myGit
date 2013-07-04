@@ -34,7 +34,23 @@ import com.chatBear.model.CrawlSite;
 public class GetMsgAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(GetMsgAjax.class);
-	private Map<String,List<CrawlContent>> contentPool = new HashMap<String,List<CrawlContent>>();
+	private static Map<String,List<CrawlContent>> contentPool = new HashMap<String,List<CrawlContent>>();
+	
+	public static Map<String, List<CrawlContent>> getContentPool() {
+		return contentPool;
+	}
+
+	public static void setContentPool(Map<String, List<CrawlContent>> contentPool) {
+		GetMsgAjax.contentPool = contentPool;
+	}
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		logger.info("初始化了一个示例："+this.getClass().getName());
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -91,8 +107,6 @@ public class GetMsgAjax extends HttpServlet {
 		
 		try {
 			int time = (int) (Math.random() * 10000) + 3000;
-			logger.info("推送间隔:" + time +"---Content余量："+contents.size()+"---计数器："+count);
-			logger.info("json数据："+jsonObject.toString());
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

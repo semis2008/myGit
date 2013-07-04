@@ -25,6 +25,9 @@
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger.css"
 	rel="stylesheet" media="screen" />
 <link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/switch/bootstrapSwitch.css"
+	rel="stylesheet" media="screen" />
+<link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger-theme-future.css"
 	rel="stylesheet" media="screen" />
 
@@ -48,33 +51,40 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="#"><i
-									class="icon-home icon-white"></i> 首页</a></li>
+									class="icon-home icon-white"></i> 首页</a>
+							</li>
 							<li><a href="#about"><i class="icon-list icon-white"></i>
-									About</a></li>
+									About</a>
+							</li>
 							<li><a href="#contact"><i
-									class="icon-envelope icon-white"></i> Contact</a></li>
+									class="icon-envelope icon-white"></i> Contact</a>
+							</li>
 							<li class="dropdown"><a data-toggle="dropdown"
 								class="dropdown-toggle" href="#"><i
 									class="icon-plus icon-white"></i> 更多<b class="caret"></b> </a>
 								<ul class="dropdown-menu">
-									<li><a href="#"><i class="icon-user"></i> 个人信息</a></li>
+									<li><a href="#"><i class="icon-user"></i> 个人信息</a>
+									</li>
 									<li><a href="#" data-toggle="modal"
 										data-target="#loginModal" data-keyboard="true"
-										data-backdrop="true"><i class="icon-ok"></i> 登陆</a></li>
+										data-backdrop="true"><i class="icon-ok"></i> 登陆</a>
+									</li>
 									<li><a href="#" data-toggle="modal"
 										data-target="#registModal" data-keyboard="true"
-										data-backdrop="true"><i class="icon-plus-sign"></i> 注册</a></li>
+										data-backdrop="true"><i class="icon-plus-sign"></i> 注册</a>
+									</li>
 									<li class="divider"></li>
 									<li class="nav-header">相关项目</li>
 									<li><a href="<%=ConstantsUtil.FW_DOMAIN%>" target="_blank"><i
-											class="icon-hand-right"></i> wnJava网络社区</a></li>
+											class="icon-hand-right"></i> wnJava网络社区</a>
+									</li>
 									<li><a href="#"><i class="icon-hand-right"></i> Kalor网</a>
 									</li>
 									<li><a
 										href="<%=ConstantsUtil.FW_DOMAIN%>/action/chat/comet"><i
-											class="icon-hand-right"></i>comet推送</a>
-									</li>
-								</ul></li>
+											class="icon-hand-right"></i>comet推送</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -458,7 +468,31 @@
 				</h2>
 			</div>
 			<div class="span12">
-				<a onclick="javascript:showMsg();" class="btn btn-large btn-success">显示消息</a>
+				<ul>
+					<li><h3 class="lead">预览推送框显示效果</h3> <a
+						onclick="javascript:showMsg('测试消息显示效果~');"
+						class="btn btn-large btn-success">显示效果1</a> <a
+						onclick="javascript:showMsg('测试消息显示效果~');"
+						class="btn btn-large btn-success">显示效果2</a> <a
+						onclick="javascript:showMsg('测试消息显示效果~');"
+						class="btn btn-large btn-success">显示效果3</a></li>
+					<li><h3 class="lead">推送系统个人设置</h3>
+						<ul class="inline">
+							<li><span class="label label-info">推送开关</span>
+								<div class="switch switch-small" data-on="primary" data-off="info">
+									<input type="checkbox" checked />
+								</div></li>
+							<li><span class="label label-info">是否推送《糗事百科--热门》</span>
+								<div class="switch switch-small" data-on="primary" data-off="info">
+									<input type="checkbox" checked />
+								</div></li>
+							<li><span class="label label-info">是否推送《新浪新闻--世界各地》</span>
+								<div class="switch switch-small" data-on="primary" data-off="info">
+									<input type="checkbox" checked />
+								</div></li>
+						</ul></li>
+				</ul>
+
 
 			</div>
 		</div>
@@ -553,7 +587,7 @@
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
-		src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/pin/jquery.pin.min.js"></script>
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/switch/bootstrapSwitch.js"></script>
 
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/underscore-1.4.4.js"></script>
@@ -573,17 +607,38 @@
 			$('#conCarousel').carousel({
 				interval : 7000
 			});
-
-			$(".pinned").pin();
 			getMsg(1, 1);
+
+			//开关事件处理
+			$('#mySwitch').on('switch-change', function(e, data) {
+				var $el = $(data.el), value = data.value;
+				console.log(e, $el, value);
+			});
+
 		});
 
 		function showMsg(msg) {
-			$.globalMessenger().post({
+			var msgD = $.globalMessenger().post({
 				message : msg,
 				type : 'success',
 				showCloseButton : true,
-				hideAfter : 15
+
+				actions : {
+					retry : {
+						label : '回复',
+						phrase : 'Retrying TIME',
+						auto : true,
+						delay : 15,
+						action : function() {
+
+						}
+					},
+					cancel : {
+						action : function() {
+							return msgD.cancel();
+						}
+					}
+				}
 			});
 		}
 

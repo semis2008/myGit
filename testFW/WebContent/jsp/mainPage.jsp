@@ -252,8 +252,8 @@
 						</div>
 						<div class="topbar_msg">
 							<div class="topbar_navi">
-								<a href="#" title="回复" class="navi_reply on"></a> <a href="#"
-									title="动态" class="navi_news"></a>
+								<a href="#" title="回复" class="navi_reply"></a> <a href="#"
+									title="动态" class="navi_news on"></a>
 							</div>
 							<div class="topbar_content">
 								<div class="topbar_news">

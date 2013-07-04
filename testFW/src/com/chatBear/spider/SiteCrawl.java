@@ -130,8 +130,8 @@ public class SiteCrawl {
 			logger.info("---爬取站点：" + site.getName() + "--结束时间:"
 					+ DateUtil.getTimeNow());
 		} catch (Exception e) {
-			site.setState(SiteState.ERROR);
-			logger.error("---爬取站点：" + site.getName() + "出错!");
+			logger.error("---爬取站点：" + site.getName() + "出错!重新爬取!");
+			doCrawlSite(site);
 			e.printStackTrace();
 		}
 

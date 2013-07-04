@@ -1,6 +1,8 @@
 package com.chatBear.spider;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 
 import org.apache.log4j.Logger;
 
+import com.chatBear.comet.GetMsgAjax;
 import com.chatBear.comet.MsgFactory;
+import com.chatBear.model.CrawlContent;
 import com.chatBear.model.CrawlSite;
 import com.testFW.util.ConstantsUtil;
 import com.testFW.util.XMLUtil;
@@ -53,6 +57,10 @@ class CrawlTask extends TimerTask {
 	public void run() {
 		XMLUtil.setConfPath(path);
 		List<CrawlSite> sites = XMLUtil.getInstance().sites;
+		//清空现有msg
+		Map<String,List<CrawlContent>> contentPool = new HashMap<String,List<CrawlContent>>();
+		GetMsgAjax.setContentPool(contentPool);
+		
 		CrawlSite resultSite = new CrawlSite();
 		MsgFactory.getInstance();
 		for (CrawlSite site : sites) {
