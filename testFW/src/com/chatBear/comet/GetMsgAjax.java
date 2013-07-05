@@ -106,7 +106,7 @@ public class GetMsgAjax extends HttpServlet {
 		  JSONArray jsonObject = JSONArray.fromObject(list);
 		
 		try {
-			int time = (int) (Math.random() * 10000) + 3000;
+			int time = (int) (Math.random() * 8000) + 3000;
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

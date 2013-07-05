@@ -455,6 +455,7 @@
 					<li>到06-03的时候，继续添加了 登录和注册的页面（均为静态页面）.</li>
 					<li>之后从06-04开始，我开始设计简单网络爬虫平台，并在06-07提交了一个简单可用的版本。爬虫对我来讲是新领域，在借鉴了
 						别人的代码之后，我重写了适合ChatBeat系统的爬虫平台，并测试通过.</li>
+						<li>截至7-5，推送系统的主题功能已经完成，可以直观的看到结果了~，当然，后续还需要更多的细节上，可用性，易用性上的修正.</li>
 				</ul>
 			</div>
 		</div>
@@ -479,32 +480,21 @@
 					<li><h3 class="lead">推送系统个人设置</h3>
 						<ul class="inline">
 							<li><span class="label label-info">推送开关</span>
-								<div class="switch switch-small" data-on="primary" data-off="info">
+								<div id="mySwitch1" class="switch switch-small" data-on="primary" data-off="info">
 									<input type="checkbox" checked />
 								</div></li>
 							<li><span class="label label-info">是否推送《糗事百科--热门》</span>
-								<div class="switch switch-small" data-on="primary" data-off="info">
+								<div id="mySwitch2" class="switch switch-small" data-on="primary" data-off="info">
 									<input type="checkbox" checked />
 								</div></li>
 							<li><span class="label label-info">是否推送《新浪新闻--世界各地》</span>
-								<div class="switch switch-small" data-on="primary" data-off="info">
+								<div id="mySwitch3"  class="switch switch-small" data-on="primary" data-off="info">
 									<input type="checkbox" checked />
 								</div></li>
 						</ul></li>
 				</ul>
-
-
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-
 	</div>
 
 
@@ -595,7 +585,7 @@
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/backbone-0.9.10.js"></script>
 	<script type="text/javascript"
-		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.min.js"></script>
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.js"></script>
 	<script type="text/javascript">
 		var count1 = 0;
 		var count2 = 0;
@@ -608,29 +598,52 @@
 				interval : 7000
 			});
 			getMsg(1, 1);
-
-			//开关事件处理
-			$('#mySwitch').on('switch-change', function(e, data) {
-				var $el = $(data.el), value = data.value;
-				console.log(e, $el, value);
-			});
-
 		});
-
+		
+		var _MsgOn = true;
+		var _SiteONE = true;
+		var _SiteTWO = true;
+		
+		//开关事件处理
+		$('#mySwitch1').on('switch-change', function(e, data) {
+			value = data.value;
+			if(value) {
+				_MsgOn = true;
+				getMsg(1,count1);
+			}else {
+				_MsgOn = false;
+			}
+		});
+		//开关事件处理
+		$('#mySwitch2').on('switch-change', function(e, data) {
+			  value = data.value;
+			  if(value) {
+					_SiteONE = true;
+					getMsg(1,count1);
+				}else {
+					_SiteONE = false;
+				}
+		});
+		//开关事件处理
+		$('#mySwitch3').on('switch-change', function(e, data) {
+			  value = data.value;
+			  if(value) {
+					_SiteTWO = true;
+					getMsg(2,count2);
+				}else {
+					_SiteTWO = false;
+				}
+		});
+		
 		function showMsg(msg) {
 			var msgD = $.globalMessenger().post({
 				message : msg,
-				type : 'success',
-				showCloseButton : true,
-
+				hideAfter : 15,
 				actions : {
 					retry : {
 						label : '回复',
-						phrase : 'Retrying TIME',
-						auto : true,
-						delay : 15,
+						auto : false,
 						action : function() {
-
 						}
 					},
 					cancel : {
@@ -649,27 +662,28 @@
 			} else if (msgId == 2) {
 				count2++;
 			}
-
-			$.getJSON("/getmsgajax.do", {
-				id : msgId,
-				count : count
-			}, function(json) {
-				$(json).each(function(i) {
-					showMsg(json[i].msg);
-					if (json[i].isEnd == "true") {
-						if (msgId == 1) {
-							count1 = 0;
-						} else if (msgId == 2) {
-							count2 = 0;
+			if(_MsgOn) {
+				$.getJSON("/getmsgajax.do", {
+					id : msgId,
+					count : count
+				}, function(json) {
+					$(json).each(function(i) {
+						showMsg(json[i].msg);
+						if (json[i].isEnd == "true") {
+							if (msgId == 1) {
+								count1 = 0;
+							} else if (msgId == 2) {
+								count2 = 0;
+							}
 						}
-					}
-					if (Math.ceil(Math.random() * 10) > 5) {
-						getMsg(1, count1);
-					} else {
-						getMsg(2, count2);
-					}
-				});
-			});
+						if (Math.ceil(Math.random() * 10) > 5&&_SiteONE) {
+							getMsg(1, count1);
+						} else if(_SiteTWO) {
+							getMsg(2, count2);
+						}
+					});
+				});	
+			}
 		}
 	</script>
 </body>

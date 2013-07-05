@@ -27,13 +27,13 @@ public class SiteCrawl {
 	 * 
 	 * @param page
 	 */
-	private CrawlPage doCrawlPage(CrawlPage page) {
+	private CrawlPage doCrawlPage(CrawlPage page)  throws Exception{
 		logger.info("---爬取页面URL：" + page.getUrl() + "--开始时间:"
 				+ DateUtil.getTimeNow());
 
 		// 初始化待爬取url
 		URL url;
-		try {
+		 
 			url = new URL(page.getUrl());
 
 			// 获取链接
@@ -87,11 +87,7 @@ public class SiteCrawl {
 			page.setState(PageState.CRAWLED);
 			logger.info("---爬取页面URL：" + page.getUrl() + "--结束时间:"
 					+ DateUtil.getTimeNow());
-		} catch (Exception e) {
-			page.setState(PageState.ERROR);
-			logger.error("---爬取页面URL：" + page.getUrl() + "--出错！");
-			e.printStackTrace();
-		}
+		 
 		return page;
 	}
 
@@ -100,37 +96,37 @@ public class SiteCrawl {
 	 * 
 	 * @return
 	 */
-	public CrawlSite doCrawlSite(CrawlSite site) {
+	public CrawlSite doCrawlSite(CrawlSite site){
 		logger.info("---爬取站点：" + site.getName() + "--开始时间:"
 				+ DateUtil.getTimeNow());
 
+		List<CrawlPage> result = new ArrayList();
+
 		try {
-			List<CrawlPage> result = new ArrayList();
-
-			// 多页网站
-			if (SiteType.MUTI_PAGE.equals(site.getType())) {
-				// 依据首页信息获取分页信息，并初始化urls
-				site = initUrlsByPage(site);
-				// 依据urls，返回需要遍历的页面
-				List<CrawlPage> toCrawlPages = initCrawlPages(site);
-				// 遍历页面集合，获取信息后返回
-				for (CrawlPage page : toCrawlPages) {
+		// 多页网站
+		if (SiteType.MUTI_PAGE.equals(site.getType())) {
+			// 依据首页信息获取分页信息，并初始化urls
+			site = initUrlsByPage(site);
+			// 依据urls，返回需要遍历的页面
+			List<CrawlPage> toCrawlPages = initCrawlPages(site);
+			// 遍历页面集合，获取信息后返回
+			for (CrawlPage page : toCrawlPages) {
 					page = doCrawlPage(page);
-					site.setCurrentUrl(page.getUrl());
-					result.add(page);
-				}
-			} else if (SiteType.SINGLE_PAGE.equals(site.getType())) {// 单页网站
-				// 获取网站首页内容
-				CrawlPage indexPage = doCrawlPage(site.getIndexPage());
-
-				result.add(indexPage);
+				site.setCurrentUrl(page.getUrl());
+				result.add(page);
 			}
+		} else if (SiteType.SINGLE_PAGE.equals(site.getType())) {// 单页网站
+			// 获取网站首页内容
+			CrawlPage indexPage = doCrawlPage(site.getIndexPage());
 
-			site.setResultPages(result);
-			logger.info("---爬取站点：" + site.getName() + "--结束时间:"
-					+ DateUtil.getTimeNow());
+			result.add(indexPage);
+		}
+
+		site.setResultPages(result);
+		logger.info("---爬取站点：" + site.getName() + "--结束时间:"
+				+ DateUtil.getTimeNow());
 		} catch (Exception e) {
-			logger.error("---爬取站点：" + site.getName() + "出错!重新爬取!");
+			logger.error("爬取出错，重新爬取！");
 			doCrawlSite(site);
 			e.printStackTrace();
 		}
@@ -172,9 +168,10 @@ public class SiteCrawl {
 		}
 		return result;
 	}
-		
+
 	/**
 	 * 从网站爬取的结果页面中获取所需要的内容
+	 * 
 	 * @param site
 	 * @return
 	 */
@@ -182,33 +179,33 @@ public class SiteCrawl {
 		CrawlSite resultSite = site;
 		List<CrawlPage> pages = site.getResultPages();
 		List<CrawlContent> contents = new ArrayList();
-		for(CrawlPage page:pages) {
-			//从html中获取所需的内容
+		for (CrawlPage page : pages) {
+			// 从html中获取所需的内容
 			String pageHtml = page.getContent();
 			String start = site.getSubContentStart();
 			String end = site.getSubContentEnd();
 			String[] part1 = pageHtml.split(start);
 			int flag = 0;
-			for(String tempStr:part1) {
-				//网页的开始部分去掉
-				if(flag==0) {
+			for (String tempStr : part1) {
+				// 网页的开始部分去掉
+				if (flag == 0) {
 					flag++;
 					continue;
 				}
 				String[] part2 = tempStr.split(end);
 				String resultContent = part2[0];
-				//爬取的内容和头文件合并，用以产生完整的html元素
-				resultContent = start+resultContent;
-				
-				//对抓取到的内容进行处理
-				//1.过滤掉html元素
-				//2.内容过短和过长的去掉
-				//3.过滤掉空白
+				// 爬取的内容和头文件合并，用以产生完整的html元素
+				resultContent = start + resultContent;
+
+				// 对抓取到的内容进行处理
+				// 1.过滤掉html元素
+				// 2.内容过短和过长的去掉
+				// 3.过滤掉空白
 				resultContent = StringUtil.Html2Text(resultContent).trim();
-				if(resultContent.length()<30||resultContent.length()>120) {
+				if (resultContent.length() < 30 || resultContent.length() > 120) {
 					continue;
 				}
-				
+
 				CrawlContent content = new CrawlContent();
 				content.setContent(resultContent);
 				content.setSiteName(site.getName());
@@ -219,16 +216,20 @@ public class SiteCrawl {
 		resultSite.setContents(contents);
 		return resultSite;
 	}
-	
+
 	public static void main(String[] args) {
 		List<CrawlSite> sites = XMLUtil.getInstance().sites;
 		CrawlSite resultSite = new CrawlSite();
-		for(CrawlSite site:sites) {
+		for (CrawlSite site : sites) {
 			SiteCrawl crawl = new SiteCrawl();
-			resultSite = crawl.getContentFromSite(crawl.doCrawlSite(site));
+			try {
+				resultSite = crawl.getContentFromSite(crawl.doCrawlSite(site));
+			} catch (Exception e) {
+				logger.error("爬取出错，需要重新爬取");
+				e.printStackTrace();
+			}
 		}
 		logger.info("end");
 	}
-	
-	
+
 }
