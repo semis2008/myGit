@@ -43,6 +43,11 @@
 	<filter>
      <filter-name>XssSqlFilter</filter-name>
      <filter-class>com.testFW.filter.XssFilter</filter-class>
+	 <init-param>
+	 	<!-- 忽略Xss攻击的url -->
+	 	<param-name>ignoreUrl</param-name>
+	 	<param-value>/action/diary/newdiary</param-value>
+	 </init-param>
   </filter>
   <filter-mapping>
      <filter-name>XssSqlFilter</filter-name>

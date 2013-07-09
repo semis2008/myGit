@@ -98,7 +98,6 @@
 		});
 	}
 	function deleteDiary(diaryid) {
-		alert(diaryid);
 		$.ajax({
 			type : "POST",
 			url : "/action/diary/delete",

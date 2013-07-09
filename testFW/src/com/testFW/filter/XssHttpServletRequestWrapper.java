@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequestWrapper;
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 	HttpServletRequest orgRequest = null;
-
-	public XssHttpServletRequestWrapper(HttpServletRequest request) {
+	private boolean ignore;
+	
+	public XssHttpServletRequestWrapper(HttpServletRequest request,boolean ignore) {
 		super(request);
+		this.ignore = ignore;
 		orgRequest = request;
 	}
 
@@ -25,11 +27,14 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 	*/
 	@Override
 	public String getParameter(String name) {
-		String value = super.getParameter(xssEncode(name));
-		if (value != null) {
-			value = xssEncode(value);
+		if(!ignore) {
+			String value = super.getParameter(xssEncode(name));
+			if (value != null) {
+				value = xssEncode(value);
+			}
+			return value;
 		}
-		return value;
+		return super.getParameter(name);
 	}
 
 	/**
@@ -39,12 +44,14 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 	*/
 	@Override
 	public String getHeader(String name) {
-
-		String value = super.getHeader(xssEncode(name));
-		if (value != null) {
-			value = xssEncode(value);
+		if(!ignore) {
+			String value = super.getHeader(xssEncode(name));
+			if (value != null) {
+				value = xssEncode(value);
+			}
+			return value;
 		}
-		return value;
+		return super.getHeader(name);
 	}
 
 	/**
