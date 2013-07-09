@@ -28,7 +28,7 @@ public class XssFilter implements Filter {
 		String targetURL = request1.getRequestURI();
 		String ignoreUrl = filterConfig.getInitParameter("ignoreUrl");
 		boolean ignore = false;
-		if (targetURL.equals(ignoreUrl)) {
+		if (ignoreUrl.contains(targetURL)) {
 			ignore = true;
 		}
 
