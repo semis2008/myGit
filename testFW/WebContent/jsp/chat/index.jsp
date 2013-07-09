@@ -9,9 +9,6 @@
 <link
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap.css"
 	rel="stylesheet" media="screen" />
-<link
-	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet" />
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
 	rel="stylesheet" media="screen" />
