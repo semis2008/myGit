@@ -1,3 +1,8 @@
+body{
+	padding-left: 0;
+	padding-right: 0;
+}
+
 /* 随机背景 */
 .hero-unit01 {
     background: url("../img/bg/head_img01.jpg") repeat scroll 0 0 / cover transparent;
@@ -56,9 +61,32 @@
     padding: 0;
     text-shadow: 1px 1px 2px #FFFFFF;
 }
+
+.panel {
+    /* background: url("images/patterns/white_wall_hash.png") repeat scroll 0 0 #FFFFFF; */
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 8px 1.5px rgba(0, 0, 0, 0.35), 0 20px 70px 8px rgba(0, 0, 0, 0.25);
+    color: #333333;
+    margin-bottom: 120px;
+    padding: 0;
+}
+
+.block-left {
+    padding: 35px 10px 15px 45px;
+}
+
+.padding-large {
+    padding: 35px;
+}
+
 .padding-middle {
     padding: 25px;
 }
+.carousel {
+    margin-bottom: 0;
+}
+
+
 
 img.profile {
     box-shadow: 0 0 2px 3px rgba(255, 255, 255, 0.7), 0 0 30px 8px rgba(0, 0, 0, 0.2);
@@ -68,13 +96,13 @@ img.profile {
     transition: all 500ms ease 0s;
 }
 
-
-
-
+article.container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 .footer {
 	background-color: #252525;
     color:white;
     padding: 45px 0;
-    height: 200px;
 }

@@ -5,73 +5,86 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<link href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap.css"  rel="stylesheet"/>
+<link href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap-responsive.css"  rel="stylesheet"/>
+
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-$(function(){
-	/* 随机背景 */
-	var bg_num = Math.ceil(Math.random() * 5+1);
-	$("#banner-head").addClass("hero-unit0"+bg_num);
-	
-});
+	$(function() {
+		/* 随机背景 */
+		var bg_num = Math.ceil(Math.random() * 5 + 1);
+		$("#banner-head").addClass("hero-unit0" + bg_num);
 
-function userQuit() {
-	$.ajax({
-		type : "POST",
-		url : "/action/user/userquit",
-		dataType : "text",
-		success : function(msg) {
-			location.reload();
-		}
 	});
-}
+
+	function userQuit() {
+		$.ajax({
+			type : "POST",
+			url : "/action/user/userquit",
+			dataType : "text",
+			success : function(msg) {
+				location.reload();
+			}
+		});
+	}
 </script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="<%=ConstantsUtil.FW_DOMAIN%>">WNJava&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				<a data-target=".nav-collapse" data-toggle="collapse"
+					class="btn btn-navbar"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					
+			 <a class="brand" href="<%=ConstantsUtil.FW_DOMAIN%>">&nbsp;&nbsp;&nbsp;&nbsp;WNJava&nbsp;&nbsp;&nbsp;&nbsp;</a>
 				<div class="nav-collapse collapse navbar-responsive-collapse">
 					<ul class="nav">
 						<li class="active"><a href="<%=ConstantsUtil.FW_DOMAIN%>"><i
-								class="icon-home icon-white"></i> 首页</a></li>
+								class="icon-home icon-white"></i> 首页</a>
+						</li>
 						<li><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"><i
-								class="icon-edit icon-white"></i> 日志</a></li>
+								class="icon-edit icon-white"></i> 日志</a>
+						</li>
 						<li><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><i
-								class="icon-picture icon-white"></i> 图册</a></li>
+								class="icon-picture icon-white"></i> 图册</a>
+						</li>
 						<li><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"><i
-								class="icon-home icon-white"></i> 关于</a></li>
+								class="icon-home icon-white"></i> 关于</a>
+						</li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#registModal" data-keyboard="true"
 							data-backdrop="true"><i class="icon-plus-sign icon-white"></i>
-								注册</a>
-						</li>
+								注册</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#loginModal"
 							data-keyboard="true" data-backdrop="true"><i
-								class="icon-ok icon-white"></i> 登陆</a>
-						</li>
+								class="icon-ok icon-white"></i> 登陆</a></li>
 
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">偷懒的熊 <b class="caret"></b> </a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="icon-home icon-black"></i>
-										个人主页</a>
-								</li>
+										个人主页</a></li>
 								<li><a href="#"><i class="icon-edit icon-black"></i>
-										日志：0篇</a>
-								</li>
+										日志：0篇</a></li>
 								<li><a href="#"><i class="icon-picture icon-black"></i>
-										图册：2个</a>
-								</li>
+										图册：2个</a></li>
 								<li class="divider"></li>
 								<li><a href="#"><i class="icon-off icon-black"></i> 注销</a>
 								</li>
-							</ul></li>
+							</ul>
+						</li>
 
 					</ul>
 				</div>
@@ -91,9 +104,9 @@ function userQuit() {
 		</div>
 		<div class="modal-body">
 			<form class="well form-inline">
-				<input type="text" class="input-medium" placeholder="帐号" />
-				<input type="password" class="input-medium" placeholder="密码" />
-				<label class="checkbox"> <input type="checkbox" /> 记住我 </label>
+				<input type="text" class="input-medium" placeholder="帐号" /> <input
+					type="password" class="input-medium" placeholder="密码" /> <label
+					class="checkbox"> <input type="checkbox" /> 记住我 </label>
 				<button type="submit" class="btn btn-primary">登录</button>
 			</form>
 		</div>

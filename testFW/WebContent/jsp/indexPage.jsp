@@ -53,29 +53,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link
-	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap.css"
-	rel="stylesheet" media="screen" />
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<jsp:include page="/jsp/common/head.jsp" flush="true">
+	<jsp:param value="officeDodSendForm" name="userInfo" />
+</jsp:include>
 <link href="/css/index.css" rel="stylesheet" type="text/css" />
 
-
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
-
 <script type="text/javascript">
-	
+	$(function() {
+		//轮播
+		$('#picCarousel').carousel({
+			interval : 6000
+		});
+	});
 </script>
 <title>懒熊de部落格</title>
 </head>
 <body>
-	<jsp:include page="/jsp/common/head.jsp" flush="true">
-		<jsp:param value="officeDodSendForm" name="userInfo" />
-	</jsp:include>
-
-
 	<article class="container"> <section class="row description"
 		id="description"> <!-- 网站描述 -->
 	<div
@@ -89,12 +84,94 @@
 			<hr class="soften" />
 			<p>
 				<span class="hidden-phone">这是我开发的网站，</span>欢迎访问<a target="_blank"
-					href="http://weibo.com/semis">我的博客</a>和我的另一个作品：<a target="_blank"
-					href="http://www.wnjava.com/action/chat/test">ChatBear平台</a>
+					href="http://blog.sina.com.cn/u/1876469127">我的博客</a>和我的另一个作品：<a
+					target="_blank" href="http://www.wnjava.com/action/chat/test">ChatBear平台</a>
 			</p>
 		</div>
 	</div>
 
+	</section> <section class="row" id="dynamic"> <!-- 网站动态-->
+	<div class="span12 panel">
+		<div class="row">
+			<div class="span4 block-left">
+				<h1>网站动态</h1>
+				<p>注册之后你也会出现在这里，可以发布自己的日志，以及与大家进行交流~</p>
+				<a class="btn btn-info btn-large button" target="_blank" href="#">马上注册~</a>
+			</div>
+			<div class="span7">
+				<div class="padding-large">
+					<ul>
+						<%
+							for (DiaryBO bo : dynamicVO.getDynamicPart1()) {
+						%>
+						<li>
+							<h3>
+								<span><%=DateUtil.formatDate(bo.getPublish_time(), 4)%>:</span><%=bo.getAuthor_name()%>
+							</h3>
+							<p>
+								写了一篇名叫<a
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">《<%=bo.getTitle()%>》</a>的日志，赶紧去<a
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
+							</p></li>
+						<%
+							}
+							for (UserBO bo : dynamicVO.getDynamicPart2()) {
+						%>
+						<li>
+							<h3>
+								<span><%=DateUtil.formatDate(bo.getReg_time(), 4)%>:</span><%=bo.getName()%>
+							</h3>
+							<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+						<%
+							}
+						%>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section> <section class="row" id="picture">
+	<div class="span12 panel">
+		<div class="row">
+			<div class="span8">
+				<!-- 轮播 -->
+				<div class="carousel slide" id="picCarousel">
+					<div class="carousel-inner">
+						<div class="item active">
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg" />
+
+							<div class="container">
+								<div class="carousel-caption">
+									<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+								</div>
+							</div>
+
+						</div>
+						<div class="item">
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_2.jpg" />
+							<div class="carousel-caption">
+								<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+							</div>
+						</div>
+						<div class="item">
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_3.jpg" />
+							<div class="carousel-caption">
+								<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+							</div>
+						</div>
+					</div>
+					<a data-slide="prev" href="#picCarousel"
+						class="left carousel-control">‹</a> <a data-slide="next"
+						href="#picCarousel" class="right carousel-control">›</a>
+				</div>
+			</div>
+			<div class="span3 padding-large">
+				<h1>图册概览</h1>
+				<p>一些预设的图片，目前尚未开放图册上传功能~后续会进行开发。</p>
+				<a class="btn btn-info btn-large button" target="_blank" href="#">查看全部</a>
+			</div>
+		</div>
+	</div>
 	</section> </article>
 
 	<%-- 
@@ -133,32 +210,7 @@
 											<p>注册之后你也可以出现在这里哦~，还可以发表自己的日志，以及更方便的和大家交流~~</p>
 										</div>
 										<div class="work-rt">
-											<ul>
-												<%
-													for (DiaryBO bo : dynamicVO.getDynamicPart1()) {
-												%>
-												<li>
-													<h3>
-														<span><%=DateUtil.formatDate(bo.getPublish_time(), 4)%>:</span><%=bo.getAuthor_name()%>
-													</h3>
-													<p>
-														写了一篇名叫<a
-															href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">《<%=bo.getTitle()%>》</a>的日志，赶紧去<a
-															href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
-													</p></li>
-												<%
-													}
-													for (UserBO bo : dynamicVO.getDynamicPart2()) {
-												%>
-												<li>
-													<h3>
-														<span><%=DateUtil.formatDate(bo.getReg_time(), 4)%>:</span><%=bo.getName()%>
-													</h3>
-													<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
-												<%
-													}
-												%>
-											</ul>
+										
 										</div>
 									</li>
 									<li class="contentHide" id="content_2">
