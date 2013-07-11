@@ -22,7 +22,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.chatBear.model.CrawlContent;
-import com.chatBear.model.CrawlSite;
 
 /**
  * WN Chat系统处理类
