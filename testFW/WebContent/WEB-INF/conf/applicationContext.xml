@@ -19,8 +19,7 @@
 		</property>
 	</bean>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${connection.driver_class}" />
 		<property name="jdbcUrl" value="${jdbc.connection.url}" />
 		<property name="idleConnectionTestPeriod"

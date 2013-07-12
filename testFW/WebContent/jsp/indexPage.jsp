@@ -93,35 +93,38 @@
 	</section> <section class="row" id="dynamic"> <!-- 网站动态-->
 	<div class="span12 panel">
 		<div class="row">
-			<div class="span4 block-left">
+			<div class="span3 block-left">
 				<h1>网站动态</h1>
 				<p>注册之后你也会出现在这里，可以发布自己的日志，以及与大家进行交流~</p>
 				<a class="btn btn-info btn-large button" target="_blank" href="#">马上注册~</a>
 			</div>
-			<div class="span7">
+			<div class="span8">
 				<div class="padding-large">
-					<ul>
+					<ul class="unstyled">
 						<%
 							for (DiaryBO bo : dynamicVO.getDynamicPart1()) {
 						%>
 						<li>
-							<h3>
-								<span><%=DateUtil.formatDate(bo.getPublish_time(), 4)%>:</span><%=bo.getAuthor_name()%>
-							</h3>
-							<p>
+							<blockquote>
+								<%=DateUtil.formatDate(bo.getPublish_time(), 4)%>:<a href="#"><%=bo.getAuthor_name()%></a>
+								<p>
 								写了一篇名叫<a
 									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">《<%=bo.getTitle()%>》</a>的日志，赶紧去<a
 									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
-							</p></li>
+								</p>
+								<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+							</blockquote>
+						</li>
 						<%
 							}
 							for (UserBO bo : dynamicVO.getDynamicPart2()) {
 						%>
 						<li>
-							<h3>
-								<span><%=DateUtil.formatDate(bo.getReg_time(), 4)%>:</span><%=bo.getName()%>
-							</h3>
-							<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p></li>
+							<blockquote>
+							<%=DateUtil.formatDate(bo.getReg_time(), 4)%>:<a href="#"><%=bo.getName()%></a>
+							<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
+							</blockquote>
+							</li>
 						<%
 							}
 						%>
