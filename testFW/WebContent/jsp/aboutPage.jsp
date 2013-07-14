@@ -101,50 +101,7 @@
 		<div class="container">
 			<div class="main_wrap">
 				<div class="main">
-					<div class="aboutMe">
-						<h3>>关于我</h3>
-						<p>
-							我是本站的作者，89年生，刚毕业，程序员。<br />
-							熟悉J2EE那套技术，为了工作曾粗略学习了SSH框架，一直觉得这些框架虽然在泛用性上很强大，但是对于特定的项目也就存在资源的浪费。<br />
-							喜欢全局上构架网站，喜欢那种创造之后的喜悦，喜欢新技术。不擅长页面设计，CSS用的很一般。
-							目前在北京生活，节奏比较快，在通往架构师的道路上不断学习着...
-						</p>
-					</div>
-					<div class="aboutFW">
-						<h3>>关于WNJAVA</h3>
-						<p>
-							WNJava这个项目是我临时起意做的，开始的目的是搭建一个JSP-Servlet-Spring的J2EE项目，在搭建的过程中学习基础而重要的J2EE架构知识。<br />
-							这个小站有以前毕设的项目的基础，虽然舍弃了大部分功能。后来就打算干脆建一个完整的小站得了，要发布到网上去...<br />
-							小站从最基础的地方起步，争取使用个人认为实用的技术，像URL隐式映射，干扰盐加密等等。小站刚刚起步，还有许多功能需要完善，还有许多样式需要调整，
-							慢慢写吧~
-						</p>
-					</div>
-					<div class="aboutProcess">
-						<div class="timeline">
-							<ul class="events">
-								<li style="width: 15%; left: 5%;">构建开发环境<em>(12/07~14)</em>
-								</li>
-								<li style="width: 15%; left: 15%;">完成主体框架<em>(12/10~19)</em>
-								</li>
-								<li style="width: 24%; left: 24%;">前台页面设计<em>(12/18~1/13)</em>
-								</li>
-								<li style="width: 36%; left: 35%;">逻辑功能实现<em>(1/14~now)</em>
-								</li>
-								<li style="width: 21%; left: 50%;">beta版上线<em>(2/26~now)</em>
-								</li>
-							</ul>
-							<ul class="intervals">
-								<li class="first">2012-12-01</li>
-								<li>2012-12-10</li>
-								<li>2012-12-20</li>
-								<li>2012-1-13</li>
-								<li>2012-2-26</li>
-								<li class="last">now</li>
-							</ul>
-							<!-- end .intervals -->
-						</div>
-
-					</div>
+					
 				</div>
 			</div>
 		</div>

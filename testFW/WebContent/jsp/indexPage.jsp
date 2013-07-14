@@ -106,25 +106,27 @@
 						%>
 						<li>
 							<blockquote>
-								<%=DateUtil.formatDate(bo.getPublish_time(), 4)%>:<a href="#"><%=bo.getAuthor_name()%></a>
 								<p>
-								写了一篇名叫<a
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">《<%=bo.getTitle()%>》</a>的日志，赶紧去<a
-									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
+									我发布了一篇名叫<a
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">《<%=bo.getTitle()%>》</a>的日志，赶紧来<a
+										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
 								</p>
-								<small>Someone famous <cite title="Source Title">Source Title</cite></small>
-							</blockquote>
-						</li>
+								<small><%=DateUtil.formatDate(bo.getPublish_time(), 3)%>
+									<cite title="Source Title"><a href="#"><%=bo.getAuthor_name()%></a>
+								</cite>
+								</small>
+							</blockquote></li>
 						<%
 							}
 							for (UserBO bo : dynamicVO.getDynamicPart2()) {
 						%>
 						<li>
 							<blockquote>
-							<%=DateUtil.formatDate(bo.getReg_time(), 4)%>:<a href="#"><%=bo.getName()%></a>
-							<p>新加入了~懒熊·部落格~这个大家庭，撒花欢迎~~</p>
-							</blockquote>
-							</li>
+								<p>
+									在<%=DateUtil.formatDate(bo.getReg_time(), 2)%>这个值得纪念的时刻，<a
+										href="#"><%=bo.getName()%></a>加入了~WN Java~这个大家庭，撒花欢迎~~
+								</p>
+							</blockquote></li>
 						<%
 							}
 						%>
@@ -142,10 +144,9 @@
 					<div class="carousel-inner">
 						<div class="item active">
 							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg" />
-
 							<div class="container">
 								<div class="carousel-caption">
-									<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+									<p><em>旅行的足迹...</em></p>
 								</div>
 							</div>
 
@@ -153,13 +154,13 @@
 						<div class="item">
 							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_2.jpg" />
 							<div class="carousel-caption">
-								<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+								<p><em>WNJava网站首页演变轨迹...</em></p>
 							</div>
 						</div>
 						<div class="item">
 							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_3.jpg" />
 							<div class="carousel-caption">
-								<p class="lead">是一个不断push短消息供你阅读的仆人，是一个给你与陌生人自由交流机会的神秘女子，是一个不知道你究竟想要什么，但是却可以给你最近接答案的.....</p>
+								<p><em>懒熊的日常...</em></p>
 							</div>
 						</div>
 					</div>
@@ -172,6 +173,52 @@
 				<h1>图册概览</h1>
 				<p>一些预设的图片，目前尚未开放图册上传功能~后续会进行开发。</p>
 				<a class="btn btn-info btn-large button" target="_blank" href="#">查看全部</a>
+			</div>
+		</div>
+	</div>
+	</section> <section class="row" id="about">
+	<div class="span12 panel">
+		<div class="row">
+			<div class="span11 padding-large">
+				<h1 class="text-center">关于</h1>
+				<hr class="soften" />
+				<div class="aboutMe span7">
+					<h3>>关于我</h3>
+					<p>
+						我是本站的作者。<br />
+						熟悉J2EE那套技术，之前粗略学习了SSH框架，一直觉得这些框架虽然在泛用性上很强大，但是对于特定的项目也就存在资源的浪费。<br />
+						喜欢全局上构架网站，喜欢那种创造之后的喜悦，喜欢新技术。不擅长页面设计。WNJava现在的效果是参照了许多别人的设计得来的。
+						目前在北京生活，节奏比较快，在通往架构师的道路上不断学习着...
+					</p>
+				</div>
+				<div class="aboutProcess span3">
+						<h3>>WNJAVA历程</h3>
+						<ol>
+							<li>构建开发环境<em>(12/07~14)</em>
+							</li>
+							<li>完成主体框架<em>(12/10~19)</em>
+							</li>
+							<li>前台页面设计<em>(12/18~1/13)</em>
+							</li>
+							<li>逻辑功能实现<em>(1/14~2/25)</em>
+							</li>
+							<li>beta版上线<em>(2/26)</em>
+							</li>
+							<li>日志模块完成<em>(4/3)</em>
+							</li>
+							<li>开始开发ChatBear模块<em>(5/27)</em>
+							</li>
+						</ol>
+				</div>
+				<div class="aboutFW span10">
+					<h3>>关于WNJAVA</h3>
+					<p>
+						WNJava这个项目是我为了独自搭建一个完整的网站而开始开发设计的。JSP-Servlet-Spring的基础架构，让我在搭建的过程中学习到了一些基础的J2EE架构知识。<br />
+						小站从最基础的地方起步，开发过程中会不断尝试使用个人认为流行二实用的互联网技术。<br />
+						小站刚刚起步，还有许多功能需要完善，还有许多样式需要调整，慢慢写吧~
+					</p>
+				</div>
+				
 			</div>
 		</div>
 	</div>
