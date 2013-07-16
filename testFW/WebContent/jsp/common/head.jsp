@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<link href="<%=ConstantsUtil.FW_DOMAIN%>/css/common.css" rel="stylesheet" type="text/css" />
 <link href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap.css"  rel="stylesheet"/>
 <link href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap-responsive.css"  rel="stylesheet"/>
 
@@ -58,7 +58,7 @@
 								class="icon-picture icon-white"></i> 图册</a>
 						</li>
 						<li><a
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/aboutus"><i
+							href="#about"><i
 								class="icon-home icon-white"></i> 关于</a>
 						</li>
 					</ul>
@@ -172,12 +172,5 @@
 			</form>
 		</div>
 	</div>
-	<header class="no-radius" id="banner-head">
-	<div class="container text-center">
-		<h1>
-			<img alt="WN Java" src="<%=ConstantsUtil.FW_DOMAIN%>/img/logo.png">
-		</h1>
-	</div>
-	</header>
 </body>
 </html>

@@ -1,102 +1,109 @@
-.articles{
-    width: 70%;
-    float: left;
-    margin: 0;
-    padding: 22px 25px;
+.article{
+	margin-top: 40px;
+}
+.panel {
+	border-radius: 6px 6px 6px 6px;
+	box-shadow: 0 1px 8px 1.5px rgba(0, 0, 0, 0.35), 0 20px 70px 8px
+		rgba(0, 0, 0, 0.25);
+	color: #333333;
+	margin-bottom: 50px;
+	padding: 0px;
+} 
+.panel h1,.panel h3 {
+	cursor: default;
+	background: -webkit-linear-gradient(top, rgba(70, 70, 70, 1) 0%,
+		rgba(111, 111, 111, 1) 50%, rgba(10, 14, 10, 1) 51%, rgba(10, 8, 9, 1)
+		100% );
+	-webkit-box-reflect: below -7px
+		-webkit-gradient(linear, 0 0, 0 100%, from(transparent),
+		color-stop(.2, transparent), to(rgba(3, 3, 3, .1) ) );
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	transition: .5s;
+}
 
+.panel h3 {
+	-webkit-box-reflect: below -17px
+		-webkit-gradient(linear, 0 0, 0 100%, from(transparent),
+		color-stop(.4, transparent), to(rgba(3, 3, 3, .2) ) );
 }
-.artical{
-    clear: both;
-    margin: 0 0 48px;
+
+.panel h1:hover {
+	background: -webkit-linear-gradient(top, rgba(70, 70, 70, 1) 0%,
+		rgba(111, 111, 111, 1) 70%, rgba(10, 14, 10, 1) 71%, rgba(10, 8, 9, 1)
+		100% );
+	-webkit-box-reflect: below -2px
+		-webkit-gradient(linear, 0 0, 0 100%, from(transparent),
+		color-stop(.4, transparent), to(rgba(3, 3, 3, .2) ) );
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-transform: translateY(-5px);
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	transition: .5s;
 }
- 
 div.art-cats {
-    float: left;
-    font-size: 9px;
-    margin-bottom: 14px;
-    margin-right: 12px;
-    margin-top: 2px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 58px;
+	float: left;
+	font-size: 9px;
+	margin-bottom: 14px;
+	margin-right: 12px;
+	margin-top: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 78px;
 }
 
 div.art-cats li {
-    list-style-type: none;
-    margin-bottom: 1px;
+	list-style-type: none;
+	margin-bottom: 1px;
 }
+
 div.art-cats li.blogTime a {
-	font-size:11px;
+	font-size: 11px;
 	padding: 10px 4px 10px 4px;
 }
+
 div.art-cats li a {
-    background-color: #262626;
-    color: #FFFFFF;
-    display: block;
-    padding-top: 40px;
-    text-decoration: none;
+	background-color: #262626;
+	color: #FFFFFF;
+	display: block;
+	padding-top: 40px;
+	text-decoration: none;
 }
-div.art-cats em{
+
+div.art-cats em {
 	font-size: 18px;
 	display: inline-block;
 }
+
 div.art-cats li.tag a {
-    line-height: 14px;
-    padding-top: 0;
-}
-div.art-cats li.tag a {
-    background: none repeat scroll 0 0 #25A8E0;
-}
-.art-title {
-    float: left;
-    margin-top: 10px;
-    width: 80%;
-}
-.art-title a {
-    color: white;
-    text-decoration: none;
-    text-shadow: 0 1px 1px gray;
-}
-.comment-count {
-    float: right;
-    font-size: 16px;
-    margin: 0 !important;
-    padding: 7px 0 0;
-    width: auto;
-}
-.comment-count a {
-    background: none repeat scroll 0 0 #848484;
-    border-radius: 9px 9px 9px 9px;
-    color: #FFFFFF;
-    display: block;
-    padding: 3px 8px;
-    text-decoration: none;
-}
-.art-header {
-	display: block;
-	height: 100px;
-}
-.art-header .art-meta {
-    border-bottom: 1px solid #D1D1D1;
-    float: left;
-    font-size: 12px;
-    margin-top:10px;
-    margin-bottom: 12px;
-    padding: 0 0 2px;
-    width: 540px;
+	line-height: 14px;
+	padding-top: 0;
 }
 
-.art-header .art-meta a {
-    text-decoration: none;
+div.art-cats li.tag a {
+	background: none repeat scroll 0 0 #25A8E0;
 }
-a.more-link{
-    background: none repeat scroll 0 0 #25A8E0;
-    border-right: 1px solid #1E86B3;
-    border-top: 1px solid #1E86B3;
-    color: #FFFFFF !important;
+ 
+a.more-link {
+	background: none repeat scroll 0 0 #25A8E0;
+	border-right: 1px solid #1E86B3;
+	border-top: 1px solid #1E86B3;
+	color: #FFFFFF !important;
+	display: block;
+	float: left;
+	margin: 0 15px 18px 0;
+	padding: 4px 6px;
+	text-decoration: none;
+}
+
+.art-head small:before {
+    content: "— ";
+}
+.art-head small {
+    color: #999999;
     display: block;
-    float: left;
-    margin: 0 15px 18px 0;
-    padding: 4px 6px;
-    text-decoration: none;
+    line-height: 20px;
 }

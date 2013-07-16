@@ -38,55 +38,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<jsp:include page="/jsp/common/head.jsp" flush="true" />
 <link href="/css/diary.css" rel="stylesheet" type="text/css" />
 
-<!-- google jquery link 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
-
-<script language="javascript" type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
-<!-- aToolTip css -->
-<link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
-	rel="stylesheet" media="screen" />
-<!-- floatbar css -->
-<link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/common/floatbar.css"
-	rel="stylesheet" media="screen" />
-
-<script language="javascript" type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
-	media="screen" />
-<!-- aToolTip js -->
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
-<!-- floatbar js -->
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/common/floatbar.js"></script>
 <script language="javascript" type="text/javascript">
-	$(function() {
-		$('.small_search').click(function() {
-			if (this.value == this.defaultValue) {
-				this.value = '';
-			}
-		});
-		$('.fancybox-iframe').fancybox({
-			'padding' : 0,
-			'margin' : 0,
-			'scrolling' : 'no',
-			'type' : 'ajax'
-		});
-		$('.small_search').blur(function() {
-			if (this.value == '') {
-				this.value = this.defaultValue;
-			}
-		});
-		$('a.fixedTip').aToolTip();
-		$('input.fixedTip').aToolTip();
-	});
 	function userQuit() {
 		$.ajax({
 			type : "POST",
@@ -101,182 +57,136 @@
 		$.ajax({
 			type : "POST",
 			url : "/action/diary/delete",
-			data: {
-				diaryid:diaryid
+			data : {
+				diaryid : diaryid
 			},
 			dataType : "text",
 			success : function(msg) {
-				if(msg=='fail') {
+				if (msg == 'fail') {
 					alert("删除失败！");
-				}else {
-					alert("删除成功！");				
+				} else {
+					alert("删除成功！");
 					location.reload();
 				}
 			}
 		});
 	}
-	function setEditDiaryId(diaryid) {
-		$("#diary_edit_id").val(diaryid);
-	}
 </script>
 <title>日志</title>
 </head>
 <body>
-	<div id="backstretch"
-		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
-		<img style="position: relative; left: 0px;"
-			src="<%out.print(ConstantsUtil.FW_DOMAIN + ConstantsUtil.DEFAULT_BG);%>" />
-	</div>
-	<div id="hd">
-		<div class="top_bar">
-			<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index">首页></a><a href="#">日志</a><span>不因得失而惧怕前行</span>
-		</div>
-		<p>
-			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@伪冥</a>
-		</p>
-	</div>
-	<div class="go_back">
-		<%
-			if (!"index".equals(fun)) {
-		%>
-		<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index"><img src="<%=ConstantsUtil.FW_DOMAIN%>/img/go_back.png" alt="" /></a>
-		<%
-			}
-		%>
-	</div>
-	<div class="wrap">
-		<div class="container">
-			<div class="main_wrap">
-				<div class="main">
-					<div class="articles">
-					<!-- 隐藏域，用于标识编辑的日志id -->
-					<input type="hidden" id="diary_edit_id"/> 
-					
-						<%
-							if (diaryList.size() == 0) {
-								out.print("<h3> 没有日志可供查看~~</h3>");
-							} else {
-								for (DiaryBO diary : diaryList) {
-						%>
-						<div class="artical" id="post-1">
-							<div class="art-cats">
-								<ul>
-									<li class="blogTime"><a title="<%=diary.getTitle()%>"
-										href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())
+<div class="bookmark">
+	<ul class="breadcrumb">
+	 	<li><a href="#">首页</a> <span class="divider">/</span></li>
+	 	<li class="active">日志</li>
+	</ul>
+
+</div>
+<article class="container"> <%
+ 	if (diaryList.size() == 0) {
+ 		out.print("<h3> 没有日志可供查看~~</h3>");
+ 	} else {
+ 		for (DiaryBO diary : diaryList) {
+ %>
+ 
+<section class="row article" id="article<%=diary.getId()%>"><!--日志 --> 
+	<div class="span10 offset1 panel">
+		<div class="padding-middle">
+		<div class="art-head">
+			<div class="art-cats">
+				<ul>
+					<li class="blogTime"><a title="<%=diary.getTitle()%>" href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())
 							.get(Calendar.MONTH) + 1%>/</em><%=DateUtil.dateToCalendar(diary.getPublish_time())
-							.get(Calendar.DAY_OF_MONTH)%></a>
-									</li>
-									<%
-										String[] tags = diary.getTags().split("_");
-												for (String tag : tags) {
-									%>
-									<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a>
-									</li>
-									<%
-										}
-									%>
-								</ul>
-							</div>
-							<div class="art-header">
-								<h1 class="art-title">
-									<a title="<%=diary.getTitle()%>"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>"><%=diary.getTitle()%>
-									</a>
-								</h1>
-								<p class="comment-count">
-									<a title="回复数" href="#"><%=diary.getReply_num()%></a>
-								</p>
-								<div class="art-meta">
-									Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span
-										class="byline"> by <span class="author"><a
-											title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
-									</span>
-								</div>
-							</div>
-							<div class="art-content">
-								<p><%=StringUtil.cutString(diary.getContent(), 200)%></p>
-								<p>
-									<a class="more-link"
-										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>">查看全文
-										<span>↓</span> </a>
-										<%
-										if(user.getId()==diary.getAuthor_id()) {
-										%>
-										<a class="more-link fancybox-iframe" onclick="javascript:setEditDiaryId('<%=diary.getId() %>')"
-										 href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/editDiary.html">编辑
-										<span>✎</span> </a>
-										<a class="more-link"
-										href="#" onclick="javascript:deleteDiary('<%=diary.getId() %>')">删除
-										<span>×</span> </a>
-										<%
-										}
-										%>
-								</p>
-							</div>
-						</div>
-						<%
-							}
-							}
-						%>
-					</div>
-				</div>
+							.get(Calendar.DAY_OF_MONTH)%></a> </li>
+							
+					<%
+													String[] tags = diary.getTags().split("_");
+															for (String tag : tags) {
+												%>
+					<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a> </li>
+					<%
+						}
+					%>
+				</ul>
+			</div>
+				<h3>
+					<a title="<%=diary.getTitle()%>"
+						href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>"><%=diary.getTitle()%>
+					</a>
+				</h3>
+				<small>Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span>by<a
+					title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
+				</small>
+		</div>
+			<div class="art-content padding-small">
+				<p><%=StringUtil.cutString(diary.getContent(), 200)%></p>
+			</div>
+			<div class="art-foot">
+				 <ul class="unstyled inline">
+					<li>
+						<a class="btn btn-info btn-small button" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=diary.getId()%>">
+						查看全文<icon class="icon-arrow-down icon-white"></icon></a>
+					</li>
+					<%
+						if (user.getId() == diary.getAuthor_id()||1==1) {
+					%>
+					<li>
+						<a class="btn btn-info btn-small button"
+							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/editDiary.html">编辑 <icon class="icon-edit icon-white"></icon>
+							
+						</a>
+					</li>
+					<li>
+						 <a class="btn btn-danger btn-small button" href="#"
+							onclick="javascript:deleteDiary('<%=diary.getId()%>')">删除 <icon class="icon-remove icon-white"></icon>
+						</a>
+					</li>
+					<%
+						}
+					%>
+				 </ul>
 			</div>
 		</div>
-		<div class="group" id="paging">
-			<%
-				if (!hasLogin) {
-			%>
-			<a class="fancybox-iframe"
-				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
-			<%
-				} else {
-			%>
-			<a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
-				title="点击进入主页"><%=user.getName()%></a> <a href="#"
-				onclick="userQuit();" title="点击退出">退出</a>
-			<%
-				}
-			%>
-			<%
-				if (hasLogin) {
-			%>
-			<a class="fancybox-iframe"
-				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/newDiary.html">发表日志</a>
-			<a class="fancybox-iframe"
-				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-			<%
-				} else {
-			%>
-			<a class="fancybox-iframe"
-				href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-			<%
-				}
-			%>
-		</div>
 	</div>
-	<div id="ft">
-		<p>
-			<span class="flink">友情链接：<a target="_blank"
-				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
-				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
-			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
-				designed by <a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
-			</span>
-		</p>
-	</div>
-	<div class="m-floatBar">
-		<a id="J-goToTop" title="返回顶部" onclick="goToTop() "
-			class="m-top-spacial f-trans" style="z-index: 10; right: -45px;" />
-		<a id="J-nextGroup" title="下一页" class="m-front f-trans"
-			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage + 1%>"
-			style="z-index: 10; right: 20px;" /> <a id="J-preGroup" title="上一页"
-			class="m-back f-trans"
-			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage - 1%>"
-			style="z-index: 10; right: 85px;" /> <input type="hidden"
-			id="totalPage" value="<%=totalPage%>" /> <input type="hidden"
-			id="currentPage" value="<%=currentPage%>" />
-	</div>
+</section> <%
+ 	}
+}
+ %> 
+ </article>
+<div class="pagination pagination-centered">
+	<ul>
+	<%
+		if(currentPage!=1) {
+	%>
+		<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage - 1%>">上一页</a></li>
+	<%
+		}
+		int i = 1;
+		if(totalPage>7) {
+			i=currentPage;
+		}
+		for(;i<totalPage+1;i++) {
+			int count = 1;
+			if(count>7) {
+			%>
+		    <li class="disabled"><a href="#">...</a></li>
+			<%
+			count++;
+			}else {
+				%>
+			    <li  <% if(i==currentPage) { %> class="active" <%}%>><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=i %>"><%=i %></a></li>
+				<%		
+			}
+		}
+		if(currentPage!=totalPage) {
+	%>
+	    <li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage + 1%>">下一页</a></li>
+	<%
+		}
+	%>
+	</ul>
+</div>
+<!-- 底部 -->
+<jsp:include page="/jsp/common/bottom.jsp" flush="true" />
 </body>
 </html>
