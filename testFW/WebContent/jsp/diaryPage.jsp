@@ -77,7 +77,7 @@
 <body>
 <div class="bookmark">
 	<ul class="breadcrumb">
-	 	<li><a href="#">首页</a> <span class="divider">/</span></li>
+	 	<li><a href="<%=ConstantsUtil.FW_DOMAIN%>">首页</a> <span class="divider">/</span></li>
 	 	<li class="active">日志</li>
 	</ul>
 
@@ -92,7 +92,7 @@
 <section class="row article" id="article<%=diary.getId()%>"><!--日志 --> 
 	<div class="span10 offset1 panel">
 		<div class="padding-middle">
-		<div class="art-head">
+		<div class="art-head well">
 			<div class="art-cats">
 				<ul>
 					<li class="blogTime"><a title="<%=diary.getTitle()%>" href="#"><em><%=DateUtil.dateToCalendar(diary.getPublish_time())

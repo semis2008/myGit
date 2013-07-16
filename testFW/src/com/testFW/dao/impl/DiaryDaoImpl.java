@@ -61,19 +61,19 @@ public class DiaryDaoImpl implements DiaryDao {
 	}
 
 	@Override
-	public int insertReply(String diaryId, String parentId, String reply,
+	public int insertReply(String diaryId, String parentName, String parentId, String reply,
 			UserBO user) {
-		String sql = "insert into diary_reply (diary_id,user_id,user_name,reply,email,reply_time,parent_id,user_photo,type) values(?,?,?,?,?,now(),?,?,?)";
-		Object[] params = {diaryId,user.getId(),user.getName(),reply,user.getEmail(),parentId,user.getPhoto(),"1"};
+		String sql = "insert into diary_reply (diary_id,user_id,user_name,reply,email,reply_time,parent_name,parent_id,user_photo,type) values(?,?,?,?,?,now(),?,?,?,?)";
+		Object[] params = {diaryId,user.getId(),user.getName(),reply,user.getEmail(),parentName,parentId,user.getPhoto(),"1"};
 		dbUtilsTemplate.update(sql, params);
 		return Integer.parseInt(dbUtilsTemplate.getLastActPriId()+"");
 	}
 
 	@Override
-	public int insertReply(String diaryId, String parentId, String reply,
+	public int insertReply(String diaryId,String parentName, String parentId, String reply,
 			String name, String email, String website) {
-		String sql = "insert into diary_reply (diary_id,user_name,reply,email,website,reply_time,parent_id,user_photo,type) values(?,?,?,?,?,now(),?,?,?)";
-		Object[] params = {diaryId,name,reply,email,website,parentId,"/img/head/default/defaultGuest.jpg","0"};
+		String sql = "insert into diary_reply (diary_id,user_name,reply,email,website,reply_time,parent_name,parent_id,user_photo,type) values(?,?,?,?,?,now(),?,?,?,?)";
+		Object[] params = {diaryId,name,reply,email,website,parentName,parentId,"/img/head/default/defaultGuest.jpg","0"};
 		dbUtilsTemplate.update(sql, params);
 		return  Integer.parseInt(dbUtilsTemplate.getLastActPriId()+""); 
 	}

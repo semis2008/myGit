@@ -16,6 +16,7 @@ public class DiaryReplyBO {
 	private String email;
 	private String website;
 	private Date reply_time;
+	private String parent_name;
 	private Long parent_id;
 	private String user_photo;
 	private int type;
@@ -40,6 +41,12 @@ public class DiaryReplyBO {
 	}
 	public Long getUser_id() {
 		return user_id;
+	}
+	public String getParent_name() {
+		return parent_name;
+	}
+	public void setParent_name(String parent_name) {
+		this.parent_name = parent_name;
 	}
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;

@@ -32,7 +32,7 @@ public interface DiaryDao {
 	  * @param user 用户
 	  * @return
 	  */
-	 int insertReply(String diaryId,String parentId,String reply,UserBO user);
+	 int insertReply(String diaryId,String parentName, String parentId,String reply,UserBO user);
 	 
 	 /**
 	  * 插入新回复
@@ -44,7 +44,7 @@ public interface DiaryDao {
 	  * @param website 网站
 	  * @return
 	  */
-	 int insertReply(String diaryId,String parentId,String reply,String name,String email,String website);
+	 int insertReply(String diaryId,String parentName, String parentId,String reply,String name,String email,String website);
 	 
 	 /**
 	  * 查询用户日志列表
