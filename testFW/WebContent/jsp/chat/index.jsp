@@ -10,12 +10,6 @@
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/css/bootstrap.css"
 	rel="stylesheet" media="screen" />
 <link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
-	rel="stylesheet" media="screen" />
-<link rel="stylesheet" type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
-	media="screen" />
-<link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/css/chat/index.css" rel="stylesheet"
 	media="screen" />
 <link type="text/css"
@@ -569,8 +563,6 @@
 	<!-- js file -->
 	<script language="javascript" type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
-	<script type="text/javascript"
-		src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript"

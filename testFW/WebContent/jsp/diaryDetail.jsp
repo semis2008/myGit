@@ -35,7 +35,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<jsp:include page="/jsp/common/head.jsp" flush="true" />
+
+<!-- 网站公用顶部 -->
+<jsp:include page="/jsp/common/head.jsp" flush="true" >
+	<jsp:param value="<%=hasLogin %>" name="hasLogin"/>
+	<jsp:param value="<%=user.getName() %>" name="userName"/>
+	<jsp:param value="<%=user.getId() %>" name="userId"/>
+</jsp:include>
+
+
 <link href="/css/diaryDetail.css" rel="stylesheet" type="text/css" />
 
 <script language="javascript" type="text/javascript">
@@ -267,7 +275,9 @@
 											<textarea rows="3" class="span8" placeholder="发表回复..." required></textarea>
 										</h4>
 									</div>
-									<button class="btn pull-right btn-success" type="submit" onclick="commitReplyUser()">回复</button>  									
+									<div class="span4 offset2">
+										<button class="btn btn-block btn-success" type="submit" onclick="commitReplyUser()">回复</button>  									
+									</div>
 								</div>
 							<%
 								} else {
