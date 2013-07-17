@@ -2,7 +2,6 @@ package com.testFW.dao.impl;
 
 import java.util.List;
 
-import com.testFW.bo.InvitationCodeBO;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
@@ -22,18 +21,6 @@ public class UserDaoImpl implements UserDao {
 
 	public void setDbUtilsTemplate(DbUtilsTemplate dbUtilsTemplate) {
 		this.dbUtilsTemplate = dbUtilsTemplate;
-	}
-
-	@Override
-	public InvitationCodeBO queryInvitationCode(String code) {
-		String sql = "select * from invitationcode invit where invit.code = ?";
-		return dbUtilsTemplate.findFirst(InvitationCodeBO.class, sql, code);
-	}
-
-	@Override
-	public int updateInvitationCodeState(InvitationCodeBO bo) {
-		String sql = "update invitationcode invit set invit.state = '1' where invit.id = ?";
-		return dbUtilsTemplate.update(sql, bo.getId());
 	}
 
 	@Override

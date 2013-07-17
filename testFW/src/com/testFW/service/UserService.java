@@ -16,12 +16,6 @@ import com.testFW.vo.DynamicVO;
  * @time 2012-12-17
  */
 public interface UserService {
-	/**
-	 * 验证邀请码是否有效，除了万能邀请码之外，其余邀请码验证之后置状态为不可用
-	 * @param code 邀请码
-	 * @return 验证结果
-	 */
-	boolean verifyCode(String code);
 	
 	/**
 	 * 注册

@@ -75,7 +75,6 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String pass = req.getParameter("pass");
 		String name = req.getParameter("name");
-		String invitationcode = req.getParameter("invitationcode");
 		String msg = "";
 		/*
 		 * 验证邮箱是否已经被注册
@@ -83,18 +82,6 @@ public class UserServlet extends HttpServlet {
 		boolean email_result = userService.verifyEmail(email);
 		if (email_result) {
 			msg = "email_error";
-			out.print(msg);
-			out.flush();
-			out.close();
-			return;
-		}
-
-		/*
-		 * 验证邀请码是否有效
-		 */
-		boolean code_result = userService.verifyCode(invitationcode);
-		if (!code_result) {
-			msg = "code_error";
 			out.print(msg);
 			out.flush();
 			out.close();
