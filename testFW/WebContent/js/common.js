@@ -118,6 +118,7 @@ function userRegist() {
 					} else {
 						if ("success" == msg) {
 							showSuccessMsg("恭喜您，注册成功!");
+							
 						} else {
 							showErrorMsg("对不起，注册失败:系统正在维护中~");
 						}

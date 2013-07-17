@@ -231,16 +231,16 @@
 									
 									<div class="btn-toolbar pull-right">
   											<div class="btn-group">
-											<button class="btn btn-small btn-success" onclick="#">
+											<button class="btn btn-mini btn-success" onclick="#">
 												<icon class="icon-thumbs-up icon-white"></icon>
 												顶
 											</button>
-											<button class="btn btn-small btn-danger" onclick="#">
+											<button class="btn btn-mini btn-danger" onclick="#">
 											<icon class="icon-thumbs-down icon-white"></icon>
 											踩
 											</button>
 											</div>
-											<button class="reply-btn btn btn-small btn-info" onclick="showParentDiv(<%=reply.getId()%>)">
+											<button class="reply-btn btn btn-mini btn-info" onclick="showParentDiv(<%=reply.getId()%>)">
 											<icon class="icon-pencil icon-white"></icon>
 											回复
 											</button>				
