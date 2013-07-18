@@ -43,7 +43,6 @@
 				class="divider">/</span></li>
 			<li class="active">图册</li>
 		</ul>
-
 	</div>
 	<div class="container padding-middle">
 		<ul class="thumbnails">

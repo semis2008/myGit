@@ -32,7 +32,9 @@ body{
 .text-center{
 	text-align: center;
 }
-
+.container{
+	min-height: 80%;
+}
 article.container {
     padding-left: 10px;
     padding-right: 10px;
@@ -48,6 +50,10 @@ article.container {
 }
 .margin-small{
 	margin: 15px;
+}
+.padding-top-bottom-middle {
+	padding-top:50px;
+	padding-bottom: 50px;
 }
 .panel {
 	border-radius: 6px 6px 6px 6px;

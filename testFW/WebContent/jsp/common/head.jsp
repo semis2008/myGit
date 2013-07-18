@@ -72,7 +72,7 @@
 						<li><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><i
 								class="icon-picture icon-white"></i> 图册</a></li>
-						<li><a href="#about"><i class="icon-home icon-white"></i>
+						<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index#about"><i class="icon-home icon-white"></i>
 								关于</a></li>
 					</ul>
 					<ul class="nav pull-right">

@@ -1,6 +1,3 @@
-.container{
-	min-height: 80%;
-}
 .thumbnail img:hover {
     box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.15), 1px 1px 30px 5px rgba(0, 0, 0, 0.2);
 }

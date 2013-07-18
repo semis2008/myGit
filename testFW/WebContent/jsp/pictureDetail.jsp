@@ -19,303 +19,95 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- 网站公用顶部 -->
+<jsp:include page="/jsp/common/head.jsp" flush="true">
+	<jsp:param value="<%=hasLogin %>" name="hasLogin" />
+	<jsp:param value="<%=user.getName() %>" name="userName" />
+	<jsp:param value="<%=user.getId() %>" name="userId" />
+</jsp:include>
 <link href="/css/pictureDetail.css" rel="stylesheet" type="text/css" />
 
-<!-- google jquery link 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
-
-<script language="javascript" type="text/javascript" 
- 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script> 
-<!-- aToolTip css -->
-<link type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/atooltip/atooltip.css"
-	rel="stylesheet" media="screen" />
-<!-- aToolTip js -->
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/atooltip/jquery.atooltip.js"></script>
-<!-- Add mousewheel plugin (this is optional) -->
-<script language="javascript" type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
-
-<!-- Add fancyBox main JS and CSS files -->
-<script language="javascript" type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox.css"
-	media="screen" />
-<!-- Add Thumbnail helper (this is optional) -->
-<link rel="stylesheet" type="text/css"
-	href="<%=ConstantsUtil.FW_DOMAIN%>/css/plugin/fancybox/jquery.fancybox-thumbs.css" />
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/plugin/fancybox/jquery.fancybox-thumbs.js"></script>
 <script language="javascript" type="text/javascript">
 	$(function() {
-		$('.small_search').click(function() {
-			if (this.value == this.defaultValue) {
-				this.value = '';
-			}
-		});
-		/*fancybox-start*/
-		$('.small_search').blur(function() {
-			if (this.value == '') {
-				this.value = this.defaultValue;
-			}
-		});
-		$('a.fixedTip').aToolTip();
-		$('input.fixedTip').aToolTip();
-		$('.fancybox').fancybox();
-		$('.fancybox-iframe').fancybox({
-			'padding' : 0,
-			'margin' : 0,
-			'scrolling' : 'no',
-			'type' : 'ajax'
-		});
-		$('.small_search').blur(function() {
-			if (this.value == '') {
-				this.value = this.defaultValue;
-			}
-		});
-		$('a.fixedTip').aToolTip();
-		$('input.fixedTip').aToolTip();
-	});
-	function userQuit() {
-		$.ajax({
-			type : "POST",
-			url : "/action/user/userquit",
-			dataType : "text",
-			success : function(msg) {
-				location.reload();
-			}
 
-		});
-	}
+	});
 </script>
 <title>图册详情</title>
 </head>
 <body>
-	<div id="backstretch"
-		style="left: 0px; top: 0px; position: fixed; overflow: hidden; z-index: -9999;">
-		<img style="position: relative; left: 0px;"
-			src="<% out.print(ConstantsUtil.FW_DOMAIN+ConstantsUtil.DEFAULT_BG); %>">
+	<div class="bookmark">
+		<ul class="breadcrumb">
+			<li><a href="<%=ConstantsUtil.FW_DOMAIN%>">首页</a> <span
+				class="divider">/</span>
+			</li>
+			<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">图册</a>
+				<span class="divider">/</span>
+			</li>
+			<li class="active">风景</li>
+		</ul>
 	</div>
-	<div id="hd">
-		<div class="top_bar">
-			<a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/index">首页></a><a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/picture">图册></a><a href="#">图册详情</a><span>不因得失而惧怕前行</span>
-		</div>
-		<p>
-			Telephone: 1581 011 2386<a href="http://weibo.com/semis">@伪冥</a>
-		</p>
-	</div>
-	<div class="go_back">
-		<%
-			if (!"index".equals(fun)) {
-		%>
-		<a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><img src="<%=ConstantsUtil.FW_DOMAIN%>/img/go_back.png" alt="" /></a>
-		<%
-			}
-		%>
-	</div>
-	<div class="wrap">
-		<div class="container">
-			<div class="main_wrap">
-				<div class="main">
-					<div class="albumDetail">
-						<div class="hostinfo ">
-							<div id="" class="face">
-								<a title="进入AnRan的个人展区" href="http://anran0420.pp.163.com/">
-									<img src="<%=imgPath%>4_b.jpg" alt="" /> </a>
-							</div>
-							<ul class="albuminfo">
-								<li class="o-info">
-									<h2 class="album-title">【Napa Valley酒庄之旅】</h2>
-									<p>
-										<b>[14张]</b>
-									</p>
-								</li>
-								<li class="albumdesc">
-									<p>器材： 佳能 - EOS 5D Mark II ， 适马 - 50 F1.4 拍摄于：海外 美国 ，
-										发布于：2013.01.09 10:29</p></li>
-								<li class="pic-cmtnum">
-									<p>
-										<b title="浏览量" class="ico-attention"></b> <span>948</span> <b
-											title="评论" class="ico-cmt"></b> <span>4</span> <b title="喜欢"
-											class="ico-like"></b><span>18</span>
-									</p>
-								</li>
-								<li>
-									<p class="album-author">
-										&copy; <a title="进入Kalor的主页" href="#">Kalor</a> <span
-											class="author-follow"><a href="#"><b>+</b>关注他</a><a
-											href="#"> <b>√</b> 已关注</a> <a href="#">取消关注</a> </span> <span
-											class="praise" href="#"><a href="#">赞他(128)</a> </span>
-									</p>
-								</li>
-							</ul>
-						</div>
-						<div class="pics">
-							<div class="left">
-								<ul style="top: -4px; position: absolute;" class="tl_scrubber"
-									id="tl_scrubber">
-									<li class="focus"><a>美景</a>
-									</li>
-									<li><a>黄山</a>
-									</li>
-									<li><a>嵩山</a>
-									</li>
-									<li><a>长江</a>
-									</li>
-									<li><a>日出</a>
-									</li>
-									<li><a>水</a>
-									</li>
-								</ul>
-							</div>
-							<div class="right">
-								<a style="overflow: visible;" class="tl_line"
-									href="javascript:void(0);"> <span style="display: none;"
-									class="tl_add"></span> </a>
-								<div class="tab_block" id="tab_1">
-									<a href="javascript:void(0)" class="tl_point haspic"></a>
-									<div class="tab_div">
-										<div class="tab_head">
-											<a href="#">美景</a>
-										</div>
-										<div class="tab_photos">
-											<div class="main-area">
-												<div class="pic-area" style="">
-													<img src="<%=imgPath%>4_b.jpg"
-														style="width: auto; height: auto;" />
-												</div>
-												<div class="m-picAct">
-													<div class="pic-descArea">
-														<p class="pic-description">未标题-1</p>
-													</div>
-													<div class="pic-btnarea">
-														<p>
-															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
-															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
-																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
-															</a> <a class="w-btnWhiteSmoke f-ml10 "
-																onclick="return false;" href="#">评论</a>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="main-area">
-												<div class="pic-area" style="">
-													<img src="<%=imgPath%>4_b.jpg"
-														style="width: auto; height: auto;" />
-												</div>
-												<div class="m-picAct">
-													<div class="pic-descArea">
-														<p class="pic-description">未标题-1</p>
-													</div>
-													<div class="pic-btnarea">
-														<p>
-															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
-															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
-																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
-															</a> <a class="w-btnWhiteSmoke f-ml10 "
-																onclick="return false;" href="#">评论</a>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="main-area">
-												<div class="pic-area" style="">
-													<img src="<%=imgPath%>4_b.jpg"
-														style="width: auto; height: auto;" />
-												</div>
-												<div class="m-picAct">
-													<div class="pic-descArea">
-														<p class="pic-description">未标题-1</p>
-													</div>
-													<div class="pic-btnarea">
-														<p>
-															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
-															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
-																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
-															</a> <a class="w-btnWhiteSmoke f-ml10 "
-																onclick="return false;" href="#">评论</a>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="main-area">
-												<div class="pic-area" style="">
-													<img src="<%=imgPath%>4_b.jpg"
-														style="width: auto; height: auto;" />
-												</div>
-												<div class="m-picAct">
-													<div class="pic-descArea">
-														<p>未标题-1</p>
-													</div>
-													<div class="pic-btnarea">
-														<p>
-															<a class="w-btnDimGray" onclick="return false;" href="#">喜欢(0)</a>
-															<a class="w-btnWhiteSmoke w-btn-cancelLike f-hide"
-																onclick="return false;" href="#"><b>已喜欢(0)</b><b>取消喜欢(0)</b>
-															</a> <a class="w-btnWhiteSmoke f-ml10 "
-																onclick="return false;" href="#">评论</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab_none" id="tab_2">
-									<a href="javascript:void(0)" class="tl_point haspic"></a>
-								</div>
-							</div>
-						</div>
-					</div>
+	<div class="container">
+		<div class="span10 offset1">
+			<div class="well media">
+				<a href="#" class="pull-left"> <img
+					class="media-object img-polaroid"
+					style="width: 180px; height: 180px;"
+					src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg"
+					data-src="holder.js/180x180" /> </a>
+				<div class="media-body">
+					<ul class="unstyled">
+						<li>
+							<h3>
+								【07-13北戴河之旅】<small>[14张]</small>
+							</h3></li>
+						<li>
+							<blockquote>
+								<small>选了一个周末去了一趟北戴河，周六去的，周日回。看了大海，吹了海风。最后晒伤了.....虽然行程比较紧，不过还是留下了比较美好的回忆。</small>
+							</blockquote></li>
+						<li>
+							<p>
+								&copy; <a title="进入他的主页" href="#">偷懒的熊</a>
+								<icon class="icon-heart"></icon>
+								<a href="#">948</a>
+								<icon class="icon-comment"></icon>
+								<a href="#">4</a>
+							</p>
+						</li>
+						<li><small class="muted">器材： 佳能 - ixus125 ， 拍摄于：秦皇岛
+								中国 ， 发布于：2013.07.13 10:29</small> <span
+							class="btn btn-info btn-mini pull-right" href="#"><icon
+									class="icon-thumbs-up icon-white"></icon>赞一个(948)</span></li>
+					</ul>
 				</div>
 			</div>
 		</div>
-			<div class="group" id="paging">
-						<%
-							if (!hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/login.html">登录</a>
-						<%
-							} else {
-						%>
-						<a
-							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/<%=user.getId()%>"
-							title="点击进入主页"><%=user.getName()%></a> <a href="#"
-							onclick="userQuit();" title="点击退出">退出</a>
-						<%
-							}
-						%>
-						<%
-							if (hasLogin) {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogin.html">留言</a>
-						<%
-							} else {
-						%>
-						<a class="fancybox-iframe"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/messageLogout.html">留言</a>
-						<%
-							}
-						%>
+		<div class="span12 row">
+			<ul class="thumbnails">
+				<li class="padding-top-bottom-middle">
+					<div class="span8">
+						<img data-src="holder.js/300x200" class="img-polaroid" alt=""
+							src="<%=imgPath%>1_1.jpg" />
 					</div>
-		
+					<div class="span3 padding-small well">
+						<p></p>
+					</div>
+				</li>
+				<li class="padding-top-bottom-middle">
+					<div class="span3 padding-small well">
+						<p></p>
+					</div>
+					<div class="span8">
+						<img data-src="holder.js/300x200" class="img-polaroid" alt=""
+							src="<%=imgPath%>1_1.jpg" />
+					</div>
+				</li>
+
+			</ul>
+		</div>
 	</div>
-	<div id="ft">
-		<p>
-			<span class="flink">友情链接：<a target="_blank"
-				href="http://baipeng.alwaysdata.net">BAI Peng's</a>| <a
-				target="_blank" href="http://www.eamonning.com">清泉逐流</a>
-			</span><span class="copyright">&copy; 2013 京ICP备13011487号. all
-				designed by <a
-				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
-			</span>
-		</p>
-	</div>
+	<!-- 底部 -->
+	<jsp:include page="/jsp/common/bottom.jsp" flush="true" />
 </body>
 </html>
