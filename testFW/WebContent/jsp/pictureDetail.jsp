@@ -14,7 +14,7 @@
 	} else {
 		hasLogin = true;
 	}
-	String imgPath = ConstantsUtil.FW_DOMAIN + "/album/1/1/";
+	String imgPath = ConstantsUtil.FW_DOMAIN + "/album/1/2/";
 %>
 <html>
 <head>
@@ -33,6 +33,13 @@
 	$(function() {
 
 	});
+	function showInfoSpan(id) {
+		$("#pic-info-ext-"+id).show();
+	}
+	function hideInfoSpan(id) {
+		$("#pic-info-ext-"+id).hide();
+	}
+	
 </script>
 <title>图册详情</title>
 </head>
@@ -85,25 +92,127 @@
 		</div>
 		<div class="span12 row">
 			<ul class="thumbnails">
+				<%
+					for (int i = 0; i < 9; i++) {
+						if (Math.ceil(Math.random() * 10) > 5) {
+				%>
 				<li class="padding-top-bottom-middle">
-					<div class="span8">
-						<img data-src="holder.js/300x200" class="img-polaroid" alt=""
-							src="<%=imgPath%>1_1.jpg" />
+					<div class="span8 pos-relative">
+						<img data-src="holder.js/300x200" class="img-polaroid pic" alt=""
+							src="<%=imgPath%>2_<%=i + 1%>.jpg" /> <span
+							class="well pic-info-ext padding-small" id="pic-info-ext-<%=i%>">
+							这里是相片的描述~~ </span> <span class="pic-info-span padding-mini badge"
+							onmouseover="showInfoSpan(<%=i%>)"
+							onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
+							<icon class="icon-info-sign icon-white"></icon> </span> <span
+							class="pic-share-span padding-mini badge"
+							style="visibility: visible;"> <icon
+								class="icon-share icon-white"></icon> </span>
 					</div>
 					<div class="span3 padding-small well">
-						<p></p>
-					</div>
-				</li>
-				<li class="padding-top-bottom-middle">
-					<div class="span3 padding-small well">
-						<p></p>
-					</div>
-					<div class="span8">
-						<img data-src="holder.js/300x200" class="img-polaroid" alt=""
-							src="<%=imgPath%>1_1.jpg" />
-					</div>
-				</li>
+						<ul class="unstyled">
+							<li class="row">
+							<div class="btn-group pull-right">
+								<button class="btn btn-success">喜欢(14)</button><button
+								class="btn pull-right">评论(5)</button>
+							</div>
+								
+								
+							</li>
+							<li class="row padding-middle">
+								<ul class="unstyled">
+									 <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li>
+									
+								</ul>
+								
+							</li>
+							<li></li>
+						</ul>
 
+
+					</div>
+				</li>
+				<%
+					} else {
+				%>
+				<li class="padding-top-bottom-middle">
+					<div class="span3 padding-small well">
+						<ul class="unstyled">
+							<li class="row">
+							<div class="btn-group pull-right">
+								<button class="btn btn-success">喜欢(14)</button><button
+								class="btn pull-right">评论(5)</button>
+							</div>
+								
+								
+							</li>
+							<li class="row padding-middle">
+								<ul class="unstyled">
+									 <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li> <li class="border-bottom-dash">
+									<blockquote class="margin-top-bottom-mini">
+										<p>这是一条回复~~</p>
+										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
+									</blockquote>
+									</li>
+									
+								</ul>
+								
+							</li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="span8 pos-relative">
+						<img data-src="holder.js/300x200" class="img-polaroid pic" alt=""
+							src="<%=imgPath%>2_<%=i + 1%>.jpg" /> <span
+							class="well pic-info-ext padding-small" id="pic-info-ext-<%=i%>">
+							这里是相片的描述~~ </span> <span class="pic-info-span padding-mini badge"
+							onmouseover="showInfoSpan(<%=i%>)"
+							onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
+							<icon class="icon-info-sign icon-white"></icon> </span> <span
+							class="pic-share-span padding-mini badge"
+							style="visibility: visible;"> <icon
+								class="icon-share icon-white"></icon> </span>
+					</div>
+				</li>
+				<%
+					}
+					}
+				%>
 			</ul>
 		</div>
 	</div>

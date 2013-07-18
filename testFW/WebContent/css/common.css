@@ -28,7 +28,9 @@ body{
 .padding-small {
     padding: 15px;
 }
-
+.padding-mini{
+	padding: 5px;
+}
 .text-center{
 	text-align: center;
 }
@@ -54,6 +56,21 @@ article.container {
 .padding-top-bottom-middle {
 	padding-top:50px;
 	padding-bottom: 50px;
+}
+.margin-bottom-middle{
+	margin-bottom: 25px;
+}
+.margin-top-bottom-mini{
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.border-bottom-dash{
+	border-bottom-style:dashed;
+	border-bottom-width: thin; 
+}
+.pos-relative{
+	position: relative;
 }
 .panel {
 	border-radius: 6px 6px 6px 6px;
