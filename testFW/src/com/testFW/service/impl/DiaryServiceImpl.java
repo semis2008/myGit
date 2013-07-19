@@ -103,7 +103,10 @@ public class DiaryServiceImpl implements DiaryService{
 		String diaryId = req.getParameter("diaryid");
 		String parentId = req.getParameter("parentid");
 		if(parentId==null) parentId = "0";
-		String parentName= getDiaryByID(diaryId).getAuthor_name();
+		String parentName = "";
+		if(!parentId.equals("0")){
+			parentName= getDiaryReplyById(parentId).getUser_name();
+		}
 		int result = diaryDao.insertReply(diaryId,parentName,parentId,reply,name,email,website);
 		/*
 		 * 更新日志回复数
@@ -120,7 +123,10 @@ public class DiaryServiceImpl implements DiaryService{
 		String parentId = req.getParameter("parentid");
 		UserBO user = UserUtil.getLoginUser(req, resp);
 		if(parentId==null) parentId = "0";
-		String parentName= getDiaryByID(diaryId).getAuthor_name();
+		String parentName = "";
+		if(!parentId.equals("0")){
+			parentName= getDiaryReplyById(parentId).getUser_name();
+		}
 		int result = diaryDao.insertReply(diaryId,parentName,parentId,reply,user);
 		/*
 		 * 更新日志回复数
@@ -130,8 +136,13 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 
 	@Override
-	public List<DiaryReplyBO> getDiaryReplyById(String diaryid) {
-		return  diaryDao.queryDiaryReplyById(Long.parseLong(diaryid));
+	public DiaryReplyBO getDiaryReplyById(String replyId) {
+		return diaryDao.queryDiaryReplyById(Long.parseLong(replyId));
+	}
+
+	@Override
+	public List<DiaryReplyBO> getDiaryReplyListById(String diaryid) {
+		return  diaryDao.queryDiaryReplyListById(Long.parseLong(diaryid));
 	}
 
 	@Override

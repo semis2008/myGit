@@ -95,7 +95,15 @@ public interface DiaryService {
 	  * @param diaryid 日志id
 	  * @return
 	  */
-	 List<DiaryReplyBO> getDiaryReplyById(String diaryid);
+	 List<DiaryReplyBO> getDiaryReplyListById(String diaryid);
+	 
+	 
+	 /**
+	  * 获取指定id的回复
+	  * @param replyId
+	  * @return
+	  */
+	 DiaryReplyBO getDiaryReplyById(String replyId);
 	 
 	 /**
 	  * 更新日志的阅读数

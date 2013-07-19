@@ -186,7 +186,7 @@ public class SystemServlet extends HttpServlet {
 		//获取日志主要内容
 		DiaryBO diary = diaryService.getDiaryByID(param);
 		//获取日志回复信息
-		List<DiaryReplyBO> replies = diaryService.getDiaryReplyById(param);
+		List<DiaryReplyBO> replies = diaryService.getDiaryReplyListById(param);
 		//更新日志的阅读数
 		diaryService.updateDiaryRead(param);
 		req.setAttribute("replies", replies);

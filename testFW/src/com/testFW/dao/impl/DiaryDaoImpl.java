@@ -79,7 +79,13 @@ public class DiaryDaoImpl implements DiaryDao {
 	}
 
 	@Override
-	public List<DiaryReplyBO> queryDiaryReplyById(Long diaryid) {
+	public DiaryReplyBO queryDiaryReplyById(Long id) {
+		String sql =  "select * from diary_reply where id=?";
+		return dbUtilsTemplate.findFirst(DiaryReplyBO.class, sql, id);
+	}
+
+	@Override
+	public List<DiaryReplyBO> queryDiaryReplyListById(Long diaryid) {
 		String sql =  "select * from diary_reply where diary_id=?";
 		return dbUtilsTemplate.find(DiaryReplyBO.class, sql, diaryid);
 	}

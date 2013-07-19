@@ -90,7 +90,7 @@ public interface DiaryDao {
 	  * @param diaryid 日志id
 	  * @return 日志回复信息list
 	  */
-	 List<DiaryReplyBO> queryDiaryReplyById(Long diaryid);
+	 List<DiaryReplyBO> queryDiaryReplyListById(Long diaryid);
 	 
 	 /**
 	  * 日志回复数加一
@@ -126,4 +126,11 @@ public interface DiaryDao {
 	  * @return
 	  */
 	 List<DiaryBO> queryUserNewDiary(int start,int end);
+	 
+	 /**
+	  * 获取指定id的回复
+	  * @param id
+	  * @return
+	  */
+	 DiaryReplyBO queryDiaryReplyById(Long id);
 }

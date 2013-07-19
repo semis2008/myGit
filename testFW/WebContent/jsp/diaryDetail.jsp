@@ -49,7 +49,7 @@
 <script language="javascript" type="text/javascript">
 	//游客回复,parentidw：回复日志：0，回复评论：评论id
 	function commitReplyGuest() {
-		var content = $('.cmt_area').val();
+		var content = $('#guest_reply').val();
 		var name = $("#guest_name").val();
 		var email = $("#guest_email").val();
 		var website = $("#guest_website").val();
@@ -76,14 +76,14 @@
 				if (msg == 'fail') {
 					alert("回复失败！");
 				} else if (msg == 'success') {
-					alert("回复成功！");
+					location.reload();
 				}
 			}
 		});
 	}
 	//会员回复,parentidw：回复日志：0，回复评论：评论id
 	function commitReplyUser() {
-		var content = $('.cmt_area').val();
+		var content = $('#user_reply').val();
 		var diaryid = $("#diaryId").val();
 		var parentid = $("#parentId").val();
 		$.ajax({
@@ -101,7 +101,7 @@
 				if (msg == 'fail') {
 					alert("回复失败！");
 				} else if (msg == 'success') {
-					alert("回复成功！");
+					location.reload();
 				}
 			}
 		});
@@ -224,7 +224,7 @@
 							<% 
 								if (reply.getParent_id() > 0l) {
 							%>
-								<small>回复 <em><a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=reply.getParent_id() %>"><%=reply.getParent_name() %></a></em></small>
+								<small>回复 <em><a href="#"><%=reply.getParent_name() %></a></em></small>
 							<%
 								}
 							%>
@@ -272,7 +272,7 @@
 									</a>
 									<div class="media-body">
 	    								<h4 class="media-heading">
-											<textarea rows="3" class="span8" placeholder="发表回复..." required></textarea>
+											<textarea rows="3" id="user_reply" class="span8" placeholder="发表回复..." required></textarea>
 										</h4>
 									</div>
 									<div class="span4 offset2">
@@ -289,7 +289,7 @@
 									</a>
 									<div class="media-body">
 	    								<h4 class="media-heading">
-											<textarea rows="3" class="span8" placeholder="发表回复..." required></textarea>
+											<textarea rows="3" id="guest_reply" class="span8" placeholder="发表回复..." required></textarea>
 										</h4>
 									</div>
 									<ul class="inline">
@@ -304,7 +304,7 @@
 										</li>
 									</ul>
 									<div class="span4 offset2">
-										<button class="btn btn-block btn-success" type="submit" onclick="commitReplyUser()">回复</button>
+										<button class="btn btn-block btn-success" type="submit" onclick="commitReplyGuest()">回复</button>
 									</div>
 								</div>	
 							 </div>
