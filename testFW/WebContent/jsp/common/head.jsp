@@ -112,7 +112,7 @@
 										图册：2个</a>
 								</li>
 								<li class="divider"></li>
-								<li><a href="#"><i class="icon-pencil icon-black"></i>
+								<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/shownewdiary"><i class="icon-pencil icon-black"></i>
 										写日志</a>
 								<li><a href="#"><i class="icon-picture icon-black"></i>
 										发图册</a>

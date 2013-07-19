@@ -71,15 +71,10 @@ public class SystemServlet extends HttpServlet {
 			targetpath = showPicture(req, resp); 
 		}else if ("aboutus".equals(fun)) {
 			targetpath = "/jsp/aboutPage.jsp";
-		}else if ("search".equals(fun)) {
-			String s = (String) req.getParameter("s");
-			if("".equals(s)) {
-				targetpath = "/jsp/mainPage.jsp";
-			}else {
-				targetpath = "/jsp/resultPage.jsp";
-			}
 		}else if ("index".equals(fun)) {
 			targetpath = showIndexPage(req, resp);
+		}if ("shownewdiary".equals(fun)) {
+			targetpath = showNewDiary(req, resp);
 		}
 		
 		UserBO user = UserUtil.getLoginUser(req, resp);
@@ -173,6 +168,16 @@ public class SystemServlet extends HttpServlet {
 		req.setAttribute("diaries", diaries);
 		return "/jsp/diaryPage.jsp";
 	}
+	
+	/**
+	 * 显示写日志页面
+	 * @param req
+	 * @param resp
+	 */
+	private String showNewDiary(HttpServletRequest req, HttpServletResponse resp) {
+		return "/jsp/newDiary.jsp";
+	}
+	
 	/**
 	 * 日志详情业务处理
 	 * @param req
