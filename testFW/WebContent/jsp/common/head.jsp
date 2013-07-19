@@ -21,9 +21,11 @@
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger-theme-future.css"
 	rel="stylesheet" media="screen" />
 
-
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery.scrollLoading.js"></script>
+	
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
@@ -39,7 +41,7 @@
 		/* 随机背景 */
 		var bg_num = Math.ceil(Math.random() * 5 + 1);
 		$("#banner-head").addClass("hero-unit0" + bg_num);
-
+		$(".scrollLoading").scrollLoading();
 	});
 
 	function userQuit() {

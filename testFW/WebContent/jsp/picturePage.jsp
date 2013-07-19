@@ -48,8 +48,8 @@
 		<ul class="thumbnails">
 			<li class="span3 panel">
 				<div class="thumbnail">
-					<img data-src="holder.js/300x200" class="img-rounded" alt=""
-						src="<%=imgPath%>1_1.jpg" />
+					<img data-src="holder.js/300x200" class="scrollLoading img-rounded" alt=""
+						data-url="<%=imgPath%>1_1.jpg" />
 					<h3>【风景】</h3>
 					<p class="alert alert-info">这是一组风景图册，记录了旅行途中的景色。</p>
 					<button class="reply-btn btn-block btn btn-mini btn-info"
@@ -61,8 +61,8 @@
 			</li>
 			<li class="span3 panel">
 				<div class="thumbnail">
-					<img data-src="holder.js/300x200" class="img-rounded" alt=""
-						src="<%=imgPath%>2_1.jpg" />
+					<img data-src="holder.js/300x200" class="scrollLoading img-rounded" alt=""
+						data-url="<%=imgPath%>2_1.jpg" />
 					<h3>【我自己】</h3>
 					<p class="alert alert-info">我自己相关的照片~</p>
 					<button class="reply-btn btn-block btn btn-mini btn-info"

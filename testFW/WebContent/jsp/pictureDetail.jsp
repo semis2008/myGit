@@ -14,7 +14,17 @@
 	} else {
 		hasLogin = true;
 	}
+
 	String imgPath = ConstantsUtil.FW_DOMAIN + "/album/1/2/";
+
+	Integer currentPage = (Integer) request.getAttribute("currentPage");
+	if (currentPage == null) {
+		currentPage = 1;
+	}
+	Integer totalPage = (Integer) request.getAttribute("totalPage");
+	if (totalPage == null) {
+		totalPage = 1;
+	}
 %>
 <html>
 <head>
@@ -30,10 +40,7 @@
 <link href="/css/pictureDetail.css" rel="stylesheet" type="text/css" />
 
 <script language="javascript" type="text/javascript">
-	$(function() {
-
-	});
-	function showInfoSpan(id) {
+ 	function showInfoSpan(id) {
 		$("#pic-info-ext-"+id).show();
 	}
 	function hideInfoSpan(id) {
@@ -98,115 +105,170 @@
 				%>
 				<li class="padding-top-bottom-middle">
 					<div class="span8 pos-relative">
-						<img data-src="holder.js/300x200" class="img-polaroid pic" alt=""
-							src="<%=imgPath%>2_<%=i + 1%>.jpg" /> <span
-							class="well pic-info-ext padding-small" id="pic-info-ext-<%=i%>">
-							这里是相片的描述~~ </span> <span class="pic-info-span padding-mini badge"
-							onmouseover="showInfoSpan(<%=i%>)"
-							onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
-							<icon class="icon-info-sign icon-white"></icon> </span> <span
-							class="pic-share-span padding-mini badge"
-							style="visibility: visible;"> <icon
-								class="icon-share icon-white"></icon> </span>
+						<img class="img-polaroid pic scrollLoading" alt=""
+							data-url="<%=imgPath%>2_<%=i + 1%>.jpg" src="#" /> <span
+							class="well pic-info-ext span2 padding-small"
+							id="pic-info-ext-<%=i%>"> 这里是相片的描述~~ </span>
+						<div class="span2">
+							<span class="pic-info-span padding-mini badge"
+								onmouseover="showInfoSpan(<%=i%>)"
+								onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
+								<icon class="icon-info-sign icon-white"></icon> </span> <span
+								class="pic-share-span padding-mini badge"
+								style="visibility: visible;"> <icon
+									class="icon-share icon-white"></icon> </span>
+						</div>
 					</div>
-					<div class="span3 padding-small well">
+					<div class="span3 padding-mini well">
 						<ul class="unstyled">
 							<li class="row">
-							<div class="btn-group pull-right">
-								<button class="btn btn-success">喜欢(14)</button><button
-								class="btn pull-right">评论(5)</button>
-							</div>
-								
-								
-							</li>
-							<li class="row padding-middle">
-								<ul class="unstyled">
-									 <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
+								<div class="btn-toolbar pull-right">
+									<div class="btn-group">
+										<button class="btn btn-mini btn-success" onclick="#">
+											<icon class="icon-thumbs-up icon-white"></icon>
+											顶
+										</button>
+										<button class="btn btn-mini btn-danger" onclick="#">
+											<icon class="icon-thumbs-down icon-white"></icon>
+											踩
+										</button>
+									</div>
+									<button class="reply-btn btn btn-mini btn-info" onclick="">
+										<icon class="icon-pencil icon-white"></icon>
+										评论
+									</button>
+								</div></li>
+							<li class="padding-small">
+								<ul class="unstyled pic-reply-ul">
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
 									</li>
-									
-								</ul>
-								
-							</li>
-							<li></li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li>
+										<button class="btn span2 margin-small btn-block btn-info">
+											查看全部
+											<icon class="icon-resize-vertical icon-white"></icon>
+										</button></li>
+								</ul></li>
 						</ul>
-
-
 					</div>
 				</li>
 				<%
 					} else {
 				%>
 				<li class="padding-top-bottom-middle">
-					<div class="span3 padding-small well">
+					<div class="span3 padding-mini well">
 						<ul class="unstyled">
 							<li class="row">
-							<div class="btn-group pull-right">
-								<button class="btn btn-success">喜欢(14)</button><button
-								class="btn pull-right">评论(5)</button>
-							</div>
-								
-								
+								<div class="btn-toolbar pull-right">
+									<div class="btn-group">
+										<button class="btn btn-mini btn-success" onclick="#">
+											<icon class="icon-thumbs-up icon-white"></icon>
+											顶
+										</button>
+										<button class="btn btn-mini btn-danger" onclick="#">
+											<icon class="icon-thumbs-down icon-white"></icon>
+											踩
+										</button>
+									</div>
+									<button class="reply-btn btn btn-mini btn-info" onclick="">
+										<icon class="icon-pencil icon-white"></icon>
+										评论
+									</button>
+								</div>
 							</li>
-							<li class="row padding-middle">
-								<ul class="unstyled">
-									 <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
-									</li> <li class="border-bottom-dash">
-									<blockquote class="margin-top-bottom-mini">
-										<p>这是一条回复~~</p>
-										<small><span class="text-info">Kalor</span><em>2013/03/04 14:33</em></small>
-									</blockquote>
+							<li class="padding-small">
+								<ul class="unstyled pic-reply-ul">
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
 									</li>
-									
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li class="border-bottom-dash">
+										<blockquote class="margin-top-bottom-mini">
+											<p>这是一条回复~~</p>
+											<small><span class="text-info">Kalor</span><em>2013/03/04
+													14:33</em> </small>
+										</blockquote>
+									</li>
+									<li>
+										<button class="btn span2 margin-small btn-block btn-info">
+											查看全部
+											<icon class="icon-resize-vertical icon-white"></icon>
+										</button></li>
 								</ul>
-								
 							</li>
 							<li></li>
 						</ul>
 					</div>
 					<div class="span8 pos-relative">
-						<img data-src="holder.js/300x200" class="img-polaroid pic" alt=""
-							src="<%=imgPath%>2_<%=i + 1%>.jpg" /> <span
-							class="well pic-info-ext padding-small" id="pic-info-ext-<%=i%>">
-							这里是相片的描述~~ </span> <span class="pic-info-span padding-mini badge"
-							onmouseover="showInfoSpan(<%=i%>)"
-							onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
-							<icon class="icon-info-sign icon-white"></icon> </span> <span
-							class="pic-share-span padding-mini badge"
-							style="visibility: visible;"> <icon
-								class="icon-share icon-white"></icon> </span>
+						<img class="pic scrollLoading img-polaroid" alt=""
+							data-url="<%=imgPath%>2_<%=i + 1%>.jpg" src="" /> <span
+							class="well pic-info-ext span2 padding-small"
+							id="pic-info-ext-<%=i%>"> 这里是相片的描述~~ </span>
+						<div class="span2">
+							<span class="pic-info-span padding-mini badge"
+								onmouseover="showInfoSpan(<%=i%>)"
+								onmouseout="hideInfoSpan(<%=i%>)" style="visibility: visible;">
+								<icon class="icon-info-sign icon-white"></icon> </span> <span
+								class="pic-share-span padding-mini badge"
+								style="visibility: visible;"> <icon
+									class="icon-share icon-white"></icon> </span>
+						</div>
 					</div>
 				</li>
 				<%
@@ -216,6 +278,47 @@
 			</ul>
 		</div>
 	</div>
+
+	<div class="pagination pagination-centered">
+		<ul>
+			<%
+				if (currentPage != 1) {
+			%>
+			<li><a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage - 1%>">上一页</a>
+			</li>
+			<%
+				}
+				int i = 1;
+				if (totalPage > 7) {
+					i = currentPage;
+				}
+				for (; i < totalPage + 1; i++) {
+					int count = 1;
+					if (count > 7) {
+			%>
+			<li class="disabled"><a href="#">...</a></li>
+			<%
+				count++;
+					} else {
+			%>
+			<li <%if (i == currentPage) {%> class="active" <%}%>><a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=i%>"><%=i%></a>
+			</li>
+			<%
+				}
+				}
+				if (currentPage != totalPage) {
+			%>
+			<li><a
+				href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary/<%=currentPage + 1%>">下一页</a>
+			</li>
+			<%
+				}
+			%>
+		</ul>
+	</div>
+
 	<!-- 底部 -->
 	<jsp:include page="/jsp/common/bottom.jsp" flush="true" />
 </body>

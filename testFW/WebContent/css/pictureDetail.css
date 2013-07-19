@@ -5,12 +5,12 @@
 .pic-share-span{
 	position: absolute;
 	bottom: 20px;
-	left:45px;
+	left:75px;
 }
 .pic-info-ext{
 	position: absolute;
 	bottom: 30px;
-	height: 220px;
+	height: 180px;
 	left: 30px;
 	background-color: black;
 	color:white;
@@ -18,6 +18,9 @@
 	-moz-opacity: .8;
 	-khtml-opacity: .8;
 	opacity: .8;
-	width: 220px;
 	display: none;
+}
+.pic-reply-ul{
+	height: 370px;
+	overflow: auto;
 }
