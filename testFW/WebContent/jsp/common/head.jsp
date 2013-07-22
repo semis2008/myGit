@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <link href="<%=ConstantsUtil.FW_DOMAIN%>/css/common.css"
 	rel="stylesheet" type="text/css" />
 <link
@@ -23,13 +24,13 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/font_icon/css/font-awesome.css"
 	rel="stylesheet" media="screen" />
-	
+
 
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery.scrollLoading.js"></script>
-	
+
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
@@ -70,65 +71,70 @@
 					class="brand" href="<%=ConstantsUtil.FW_DOMAIN%>">&nbsp;&nbsp;&nbsp;&nbsp;WNJava&nbsp;&nbsp;&nbsp;&nbsp;</a>
 				<div class="nav-collapse collapse navbar-responsive-collapse">
 					<ul class="nav">
-						<li class="active"><a href="<%=ConstantsUtil.FW_DOMAIN%>"><i
-								class="icon-home icon-white"></i> 首页</a></li>
-						<li><a
+						<%
+						String fun = request.getParameter("fun");
+						%>
+						<li <%if(fun.equals("")||fun.equals("index")) {%> class="active"<%} %>><a href="<%=ConstantsUtil.FW_DOMAIN%>"><i
+								class="icon-home icon-white"></i> 首页</a>
+						</li>
+						<li <%if(fun.equals("diarydetail")||fun.equals("diary")) {%> class="active"<%} %>><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"><i
-								class="icon-edit icon-white"></i> 日志</a></li>
-						<li><a
+								class="icon-edit icon-white"></i> 日志</a>
+						</li>
+						<li <%if(fun.equals("picture")) {%> class="active"<%} %>><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><i
-								class="icon-picture icon-white"></i> 图册</a></li>
-						<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index#about"><i class="icon-home icon-white"></i>
-								关于</a></li>
+								class="icon-picture icon-white"></i> 图册</a>
+						</li>
+						<li><a
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index#about"><i
+								class="icon-home icon-white"></i> 关于</a>
+						</li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#registModal" data-keyboard="true"
 							data-backdrop="true"><i class="icon-plus-sign icon-white"></i>
-								注册</a>
-						</li>
-						
+								注册</a></li>
+
 						<%
 							String hasLogin = request.getParameter("hasLogin");
 							String userName = request.getParameter("userName");
-						
+
 							String userId = request.getParameter("userId");
-						
-							if("false".equals(hasLogin)) {
+							if ("false".equals(hasLogin)) {
 						%>
 						<li><a href="#" data-toggle="modal" data-target="#loginModal"
 							data-keyboard="true" data-backdrop="true"><i
-								class="icon-ok icon-white"></i> 登陆</a>
-						</li>
+								class="icon-ok icon-white"></i> 登陆</a></li>
 						<%
-							}else {
+							} else {
+							String userDiaryCount = request.getParameter("userDiaryCount");	
 						%>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><%=userName %> <b class="caret"></b> </a>
+							data-toggle="dropdown"><%=userName%> <b class="caret"></b> </a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="icon-home icon-black"></i>
-										个人主页</a>
-								</li>
+										个人主页</a></li>
 								<li><a href="#"><i class="icon-edit icon-black"></i>
-										日志：0篇</a>
-								</li>
+										日志：<%=userDiaryCount %>篇</a></li>
 								<li><a href="#"><i class="icon-picture icon-black"></i>
-										图册：2个</a>
-								</li>
+										图册：0个</a></li>
 								<li class="divider"></li>
-								<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/shownewdiary"><i class="icon-pencil icon-black"></i>
-										写日志</a>
-								<li><a href="#"><i class="icon-picture icon-black"></i>
+								<li><a
+									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/shownewdiary"><i
+										class="icon-pencil icon-black"></i> 写日志</a>
+								<li><a href="#" onclick="showErrorMsg('你没有发图册的权限哦~')"><i class="icon-picture icon-black"></i>
 										发图册</a>
 								<li><a href="#"><i class="icon-comment icon-black"></i>
 										留言</a>
 								<li class="divider"></li>
-								<li><a href="#"><i class="icon-off icon-black"></i> 注销</a>
+								<li><a href="#" onclick="userQuit();"><i class="icon-off icon-black"></i> 注销</a>
 								</li>
-							</ul></li>
-							<%
+							</ul>
+						</li>
+						<%
 							}
-							%>
+						%>
 					</ul>
 				</div>
 			</div>
@@ -147,9 +153,11 @@
 		</div>
 		<div class="modal-body">
 			<div class="well form-inline">
-				<input type="email" id="txtEmailLogin" name="txtEmailLogin" class="input-medium" placeholder="帐号" /> <input
-					type="password"  id="txtPasswordLogin" name="txtPasswordLogin" class="input-medium" placeholder="密码" /> <label
-					class="checkbox"> <input type="checkbox" id="rememberMe" name="rememberMe"/> 记住我 </label>
+				<input type="email" id="txtEmailLogin" name="txtEmailLogin"
+					class="input-medium" placeholder="帐号" /> <input type="password"
+					id="txtPasswordLogin" name="txtPasswordLogin" class="input-medium"
+					placeholder="密码" /> <label class="checkbox"> <input
+					type="checkbox" id="rememberMe" name="rememberMe" /> 记住我 </label>
 				<button onclick="userLogin()" class="btn btn-primary">登录</button>
 			</div>
 		</div>
@@ -157,14 +165,14 @@
 	<!-- 注册 -->
 	<div class="form-horizontal">
 		<div class="modal hide fade" id="registModal">
-		<div class="modal-header">
-			<a class="close" data-dismiss="modal">×</a>
-			<h3>
-				<span class="label label-info offset1"><i
-					class="icon-plus icon-white"></i>欢迎您注册WNJava，马上开始吧~</span>
-			</h3>
-		</div>
-		<div class="modal-body span7">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">×</a>
+				<h3>
+					<span class="label label-info offset1"><i
+						class="icon-plus icon-white"></i>欢迎您注册WNJava，马上开始吧~</span>
+				</h3>
+			</div>
+			<div class="modal-body span7">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="input01">您的尊姓大名</label>
@@ -213,11 +221,11 @@
 					</div>
 					<div class="control-group">
 						<button class="btn btn-primary offset1" onclick="userRegist();">确认注册</button>
-						<button class="btn">取消</button>
+						<button  data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
 					</div>
 				</fieldset>
+			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

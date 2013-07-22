@@ -64,14 +64,8 @@ public class DiaryServlet extends HttpServlet {
 	private void newDiary(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		PrintWriter out = resp.getWriter();
-		int result = diaryService.newDiary(req, resp);
-		String msg = "";
-		if (result < 1) {
-			msg = "fail";
-		} else {
-			msg = result + "";
-		}
-		out.print(msg);
+		String result = diaryService.newDiary(req, resp);
+		out.print(result);
 		out.flush();
 		out.close();
 	}

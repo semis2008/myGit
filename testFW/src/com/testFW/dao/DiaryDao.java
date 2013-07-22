@@ -22,7 +22,7 @@ public interface DiaryDao {
 	 * @param userName 作者姓名
 	 * @return 受影响的行的主键
 	 */
-	 int insertDiary(String title,String tags,String diaryContent,Long userId,String userName);
+	 String insertDiary(String title,String tags,String diaryContent,Long userId,String userName);
 	 
 	 /**
 	  * 插入新回复

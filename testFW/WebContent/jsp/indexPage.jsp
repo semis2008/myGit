@@ -60,6 +60,7 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin"/>
 	<jsp:param value="<%=user.getName() %>" name="userName"/>
 	<jsp:param value="<%=user.getId() %>" name="userId"/>
+	<jsp:param value="<%=fun %>" name="fun"/>
 </jsp:include>
 
 <link href="/css/index.css" rel="stylesheet" type="text/css" />
@@ -225,7 +226,7 @@
 					<h3>>关于WNJAVA</h3>
 					<p>
 						WNJava这个项目是我为了独自搭建一个完整的网站而开始开发设计的。JSP-Servlet-Spring的基础架构，让我在搭建的过程中学习到了一些基础的J2EE架构知识。<br />
-						小站从最基础的地方起步，开发过程中会不断尝试使用个人认为流行二实用的互联网技术。<br />
+						小站从最基础的地方起步，开发过程中会不断尝试使用个人认为流行而实用的互联网技术。<br />
 						小站刚刚起步，还有许多功能需要完善，还有许多样式需要调整，慢慢写吧~
 					</p>
 				</div>

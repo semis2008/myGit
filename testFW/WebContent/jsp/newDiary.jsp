@@ -33,6 +33,15 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin" />
 	<jsp:param value="<%=user.getName() %>" name="userName" />
 	<jsp:param value="<%=user.getId() %>" name="userId" />
+	<%
+		if (hasLogin) {
+			String userDiaryNum = (String) request
+					.getAttribute("userDiaryNum");
+	%>
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryCount" />
+	<%
+		}
+	%>
 </jsp:include>
 
 
@@ -45,6 +54,43 @@
 	$(function() {
 		$('#editor').wysiwyg();
 	});
+
+	function newDiary() {
+		var diaryContent = $("#editor").html();
+		if (diaryContent == "") {
+			showErrorMsg("内容不能为空！");
+			return false;
+		}
+		var title = $("#diaryTitle").val();
+		var tags = $("#diaryTags").val();
+
+		if ($.trim(title) == "") {
+			showErrorMsg("标题不能为空！");
+			return false;
+		}
+		$
+				.ajax({
+					type : "POST",
+					url : "/action/diary/newdiary",
+					data : {
+						title : title,
+						tags : tags,
+						diaryContent : diaryContent
+					},
+					dataType : "text",
+					success : function(msg) {
+						if ("imgError" == msg) {
+							showErrorMsg("上传的图片总大小不能超过12M!");
+							return false;
+						} else if (msg < 0) {
+							showErrorMsg("发布失败，系统正在维护中...");
+							return false;
+						} else {
+							showSuccessMsg("发布成功！点击查看<a target='_self' href='../system/diarydetail/"+msg+"'>日志详情</a>~");
+						}
+					}
+				});
+	}
 </script>
 <title>wnJava--写日志</title>
 </head>
@@ -151,14 +197,12 @@
 						class="icon-align-justify"></i> </a>
 				</div>
 				<div class="btn-group">
-					<a class="btn" data-edit="unlink" title=""
-						data-original-title="Remove Hyperlink"><i class="icon-cut"></i>
-					</a> <a class="btn" title="" id="pictureBtn"
+					<a class="btn" title="上传的图片总大小不能超过12M" id="pictureBtn"
 						data-original-title="Insert picture (or just drag &amp; drop)"><i
 						class="icon-picture"></i> </a> <input type="file"
 						data-role="magic-overlay" data-target="#pictureBtn"
 						data-edit="insertImage"
-						style="opacity: 0; position: absolute; top: 0px; left: 0px; width: 41px; height: 30px;">
+						style="opacity: 0; position: absolute; top: 0px; left: 0px; width: 41px; height: 30px;" />
 				</div>
 				<div class="btn-group">
 					<a class="btn" data-edit="undo" title=""
@@ -168,7 +212,7 @@
 					</a>
 				</div>
 				<input type="text" data-edit="inserttext" id="voiceBtn"
-					x-webkit-speech="" style="display: none;">
+					x-webkit-speech="" style="display: none;" />
 			</div>
 
 			<div id="editor" contenteditable="true"></div>
@@ -182,7 +226,7 @@
 			<small class="muted">不同标签之间用空格隔开即可~</small>
 		</div>
 		<div class="padding-small margin-bottom-middle">
-			<button class="btn btn-success">发布</button>
+			<button class="btn btn-success" onclick="newDiary()">发布</button>
 			<button type="reset" class="btn">清空</button>
 		</div>
 	</div>

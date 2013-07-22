@@ -22,7 +22,7 @@ public interface DiaryService {
 	 * @param resp
 	 * @return
 	 */
-	 int newDiary(HttpServletRequest req, HttpServletResponse resp);
+	 String newDiary(HttpServletRequest req, HttpServletResponse resp);
 	 
 	 /**
 	 * 删除日志
@@ -71,6 +71,12 @@ public interface DiaryService {
 	  */
 	 List<DiaryBO> getUserNewDiaryList(HttpServletRequest req, HttpServletResponse resp);
 	 
+	 /**
+	  * 获取用户的日志数目
+	  * @param userid
+	  * @return
+	  */
+	 String getUserDiaryNum(String userid);
 	 /**
 	  * 获取最新日志列表 (取前8条)
 	  * @return

@@ -78,6 +78,12 @@ public class SystemServlet extends HttpServlet {
 		}
 		
 		UserBO user = UserUtil.getLoginUser(req, resp);
+		if(user.getId()!=null) {
+			//获取用户的日志总数
+			String userDiaryNum = diaryService.getUserDiaryNum(String.valueOf(user.getId()));
+			req.setAttribute("userDiaryNum", userDiaryNum);
+		}
+		
 		req.setAttribute("fun", fun);
 		req.setAttribute("loginUser", user);
 		RequestDispatcher rd = req.getRequestDispatcher(targetpath);

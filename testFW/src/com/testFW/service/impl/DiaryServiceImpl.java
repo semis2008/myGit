@@ -27,10 +27,15 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 
 	@Override
-	public int newDiary(HttpServletRequest req, HttpServletResponse resp) {
+	public String newDiary(HttpServletRequest req, HttpServletResponse resp) {
 		String title = req.getParameter("title");
 		String tags = req.getParameter("tags");
 		String diaryContent = req.getParameter("diaryContent");
+		//数据库长度为16777215，空余70万字符用作文字
+		if(diaryContent.length()>1600*1000) {
+			return "imgError";
+		}
+		
 		UserBO user = UserUtil.getLoginUser(req, resp);
 		if(!"".equals(tags.trim())) {
 			tags = tags.replace(" ", "_");
@@ -79,6 +84,15 @@ public class DiaryServiceImpl implements DiaryService{
 		return diaryDao.queryAllDiaryList(10*(currentPage-1), 10*currentPage);
 	}
 	
+	@Override
+	public String getUserDiaryNum(String userid) {
+		/*
+		 * 获取日志总页数
+		 */
+		int totalDiary = diaryDao.queryDiaryNumByUserId(Long.parseLong(userid));
+		return totalDiary+"";
+	}
+
 	@Override
 	public List<DiaryBO> getUserNewDiaryList(HttpServletRequest req,
 			HttpServletResponse resp) {
