@@ -39,9 +39,12 @@
 <link href="/css/newDiary.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/editor/editor.js"></script>
-
+<script type="text/javascript"
+	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/editor/hotkey.js"></script>
 <script language="javascript" type="text/javascript">
-	$('.editor').wysiwyg();
+	$(function() {
+		$('#editor').wysiwyg();
+	});
 </script>
 <title>wnJava--写日志</title>
 </head>
@@ -58,7 +61,16 @@
 		</ul>
 	</div>
 	<div class="container">
-		<div class="span10 offset1 padding-small">
+		<div class="padding-small">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-quote-left"></i> </span><input
+					type="text" id="diaryTitle" name="diaryTitle" class="span6"
+					placeholder="点击输入标题" required />
+			</div>
+			<span class="muted">不同标签之间用空格隔开即可~</span>
+		</div>
+
+		<div class="padding-small">
 			<div class="btn-toolbar" data-role="editor-toolbar"
 				data-target="#editor">
 				<div class="btn-group">
@@ -107,7 +119,7 @@
 					</a> <a class="btn" data-edit="italic" title="斜体"
 						data-original-title="Italic (Ctrl/Cmd+I)"><i
 						class="icon-italic"></i> </a> <a class="btn" data-edit="strikethrough"
-						title="" data-original-title="Strikethrough"><i
+						title="贯穿线" data-original-title="Strikethrough"><i
 						class="icon-strikethrough"></i> </a> <a class="btn"
 						data-edit="underline" title="下划线"
 						data-original-title="Underline (Ctrl/Cmd+U)"><i
@@ -139,21 +151,9 @@
 						class="icon-align-justify"></i> </a>
 				</div>
 				<div class="btn-group">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" title=""
-						data-original-title="Hyperlink"><i class="icon-link"></i> </a>
-					<div class="dropdown-menu input-append">
-						<input class="span2" placeholder="URL" type="text"
-							data-edit="createLink">
-							<button class="btn" type="button">Add</button>
-					</div>
 					<a class="btn" data-edit="unlink" title=""
 						data-original-title="Remove Hyperlink"><i class="icon-cut"></i>
-					</a>
-
-				</div>
-
-				<div class="btn-group">
-					<a class="btn" title="" id="pictureBtn"
+					</a> <a class="btn" title="" id="pictureBtn"
 						data-original-title="Insert picture (or just drag &amp; drop)"><i
 						class="icon-picture"></i> </a> <input type="file"
 						data-role="magic-overlay" data-target="#pictureBtn"
@@ -171,8 +171,19 @@
 					x-webkit-speech="" style="display: none;">
 			</div>
 
-			<div class="editor" id="editor" contenteditable="true">Go
-				ahead…</div>
+			<div id="editor" contenteditable="true"></div>
+		</div>
+		<div class="padding-small">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-tags"></i> </span><input
+					type="text" id="diaryTags" name="diaryTags" class="input-large"
+					placeholder="标签" required />
+			</div>
+			<small class="muted">不同标签之间用空格隔开即可~</small>
+		</div>
+		<div class="padding-small margin-bottom-middle">
+			<button class="btn btn-success">发布</button>
+			<button type="reset" class="btn">清空</button>
 		</div>
 	</div>
 

@@ -20,6 +20,10 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/css/messenger-theme-future.css"
 	rel="stylesheet" media="screen" />
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/font_icon/css/font-awesome.css"
+	rel="stylesheet" media="screen" />
+	
 
 <script type="text/javascript"
 	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>

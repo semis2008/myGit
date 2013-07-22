@@ -1,8 +1,7 @@
-.editor {
-	max-height: 250px;
-	height: 250px;
+#editor {
+	max-height: 350px;
+	height: 350px;
 	background-color: white;
-	border-collapse: separate; 
 	border: 1px solid rgb(204, 204, 204); 
 	padding: 4px; 
 	box-sizing: content-box; 
@@ -12,4 +11,8 @@
 	border-bottom-left-radius: 3px; border-top-left-radius: 3px;
 	overflow: scroll;
 	outline: none;
+}
+
+div[data-role="editor-toolbar"] {
+    -moz-user-select: none;
 }
