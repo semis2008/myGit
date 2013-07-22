@@ -20,11 +20,14 @@
 	if (diaryList == null) {
 		diaryList = new ArrayList<DiaryBO>();
 	}
+	String userDiaryNum = "0";
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+		userDiaryNum = (String) request
+		.getAttribute("userDiaryNum");
 	}
 	Integer currentPage = (Integer) request.getAttribute("currentPage");
 	if (currentPage == null) {
@@ -45,6 +48,7 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin"/>
 	<jsp:param value="<%=user.getName() %>" name="userName"/>
 	<jsp:param value="<%=user.getId() %>" name="userId"/>
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 
 <link href="/css/diary.css" rel="stylesheet" type="text/css" />

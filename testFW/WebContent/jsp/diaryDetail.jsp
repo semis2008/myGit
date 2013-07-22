@@ -24,11 +24,14 @@
 	if (diary == null) {
 		diary = new DiaryBO();
 	}
+	String userDiaryNum = "0";
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+		userDiaryNum = (String) request
+		.getAttribute("userDiaryNum");
 	}
 %>
 <html>
@@ -41,6 +44,7 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin"/>
 	<jsp:param value="<%=user.getName() %>" name="userName"/>
 	<jsp:param value="<%=user.getId() %>" name="userId"/>
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 
 

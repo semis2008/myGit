@@ -108,7 +108,7 @@
 								class="icon-ok icon-white"></i> 登陆</a></li>
 						<%
 							} else {
-							String userDiaryCount = request.getParameter("userDiaryCount");	
+							String userDiaryNum = request.getParameter("userDiaryNum");	
 						%>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=userName%> <b class="caret"></b> </a>
@@ -116,7 +116,7 @@
 								<li><a href="#"><i class="icon-home icon-black"></i>
 										个人主页</a></li>
 								<li><a href="#"><i class="icon-edit icon-black"></i>
-										日志：<%=userDiaryCount %>篇</a></li>
+										日志：<%=userDiaryNum %>篇</a></li>
 								<li><a href="#"><i class="icon-picture icon-black"></i>
 										图册：0个</a></li>
 								<li class="divider"></li>

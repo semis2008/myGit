@@ -9,12 +9,18 @@
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
 	boolean hasLogin = false;
+	String userDiaryNum = "0";
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+		userDiaryNum = (String) request
+		.getAttribute("userDiaryNum");
 	}
 	String imgPath = ConstantsUtil.FW_DOMAIN + "/album/1/1/";
+	
+ 
+		
 %>
 <html>
 <head>
@@ -26,6 +32,7 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin" />
 	<jsp:param value="<%=user.getName() %>" name="userName" />
 	<jsp:param value="<%=user.getId() %>" name="userId" />
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 <link href="/css/picturePage.css" rel="stylesheet" type="text/css" />
 

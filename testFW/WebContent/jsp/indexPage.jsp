@@ -38,12 +38,14 @@
 	if (dynamicVO == null) {
 		dynamicVO = new DynamicVO();
 	}
-
+	String userDiaryNum = "0";
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+		userDiaryNum = (String) request
+		.getAttribute("userDiaryNum");
 	}
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
@@ -61,6 +63,7 @@
 	<jsp:param value="<%=user.getName() %>" name="userName"/>
 	<jsp:param value="<%=user.getId() %>" name="userId"/>
 	<jsp:param value="<%=fun %>" name="fun"/>
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 
 <link href="/css/index.css" rel="stylesheet" type="text/css" />

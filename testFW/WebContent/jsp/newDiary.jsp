@@ -15,12 +15,14 @@
 	if (fun == null)
 		fun = "";
 	UserBO user = (UserBO) request.getAttribute("loginUser");
-
+	String userDiaryNum = "0";
 	boolean hasLogin = false;
 	if (user == null) {
 		user = new UserBO();
 	} else {
 		hasLogin = true;
+		userDiaryNum = (String) request
+		.getAttribute("userDiaryNum");
 	}
 %>
 <html>
@@ -33,15 +35,7 @@
 	<jsp:param value="<%=hasLogin %>" name="hasLogin" />
 	<jsp:param value="<%=user.getName() %>" name="userName" />
 	<jsp:param value="<%=user.getId() %>" name="userId" />
-	<%
-		if (hasLogin) {
-			String userDiaryNum = (String) request
-					.getAttribute("userDiaryNum");
-	%>
-	<jsp:param value="<%=userDiaryNum %>" name="userDiaryCount" />
-	<%
-		}
-	%>
+	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 
 
