@@ -158,26 +158,21 @@
 				<div class="carousel slide" id="picCarousel">
 					<div class="carousel-inner">
 						<div class="item active">
-							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg" />
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg" class="span8"/>
 							<div class="container">
 								<div class="carousel-caption">
-									<p><em>旅行的足迹...</em></p>
+									<p><em>WNJava网站首页演变轨迹...</em></p>
 								</div>
 							</div>
 
 						</div>
 						<div class="item">
-							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_2.jpg" />
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/2/2_1.jpg"/>
 							<div class="carousel-caption">
-								<p><em>WNJava网站首页演变轨迹...</em></p>
+								<p><em>0713北戴河之旅</em></p>
 							</div>
 						</div>
-						<div class="item">
-							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_3.jpg" />
-							<div class="carousel-caption">
-								<p><em>懒熊的日常...</em></p>
-							</div>
-						</div>
+						 
 					</div>
 					<a data-slide="prev" href="#picCarousel"
 						class="left carousel-control">‹</a> <a data-slide="next"

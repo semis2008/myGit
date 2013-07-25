@@ -7,6 +7,7 @@
 	<bean id="System" class="com.testFW.servlet.SystemServlet">
 		<property name="userService" ref="UserService" />
 		<property name="diaryService" ref="DiaryService" />
+		<property name="albumService" ref="AlbumService" />
 	</bean>
 	<bean id="Diary" class="com.testFW.servlet.DiaryServlet">
 		<property name="diaryService" ref="DiaryService" />

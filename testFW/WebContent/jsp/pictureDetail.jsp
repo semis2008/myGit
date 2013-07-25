@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.testFW.util.DateUtil"%>
+<%@page import="com.testFW.bo.AlbumBO"%>
 <%@page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="com.testFW.bo.UserBO"%>
@@ -28,6 +30,13 @@
 	if (totalPage == null) {
 		totalPage = 1;
 	}
+	
+	AlbumBO album = (AlbumBO)request.getAttribute("album");
+	if(album == null) {
+		album = new AlbumBO();
+	}
+	
+	
 %>
 <html>
 <head>
@@ -72,31 +81,30 @@
 				<a href="#" class="pull-left"> <img
 					class="media-object img-polaroid"
 					style="width: 180px; height: 180px;"
-					src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg"
+					src="<%=ConstantsUtil.FW_DOMAIN%><%=album.getFront_cover() %>"
 					data-src="holder.js/180x180" /> </a>
 				<div class="media-body">
 					<ul class="unstyled">
 						<li>
 							<h3>
-								【07-13北戴河之旅】<small>[14张]</small>
+								【<%=album.getTitle() %>】<small>[14张]</small>
 							</h3></li>
 						<li>
 							<blockquote>
-								<small>选了一个周末去了一趟北戴河，周六去的，周日回。看了大海，吹了海风。最后晒伤了.....虽然行程比较紧，不过还是留下了比较美好的回忆。</small>
+								<small><%=album.getDescription() %></small>
 							</blockquote></li>
 						<li>
 							<p>
-								&copy; <a title="进入他的主页" href="#">偷懒的熊</a>
+								&copy; <a title="进入他的主页" href="#"><%=album.getAuthor_name() %></a>
 								<icon class="icon-heart"></icon>
-								<a href="#">948</a>
+								<a href="#"><%=album.getPraise_num() %></a>
 								<icon class="icon-comment"></icon>
 								<a href="#">4</a>
 							</p>
 						</li>
-						<li><small class="muted">器材： 佳能 - ixus125 ， 拍摄于：秦皇岛
-								中国 ， 发布于：2013.07.13 10:29</small> <span
+						<li><small class="muted">器材： <%=album.getEquipment() %> ， 拍摄于：<%=album.getAddress() %> ， 发布于：<%=DateUtil.formatDate(album.getCreat_time(),3) %></small> <span
 							class="btn btn-info btn-mini pull-right" href="#"><icon
-									class="icon-thumbs-up icon-white"></icon>赞一个(948)</span></li>
+									class="icon-thumbs-up icon-white"></icon>赞一个(<%=album.getPraise_num() %>)</span></li>
 					</ul>
 				</div>
 			</div>

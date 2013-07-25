@@ -139,11 +139,11 @@
 						查看全文<icon class="icon-arrow-down icon-white"></icon></a>
 					</li>
 					<%
-						if (user.getId() == diary.getAuthor_id()||1==1) {
+						if (user.getId() == diary.getAuthor_id()) {
 					%>
 					<li>
 						<a class="btn btn-info btn-small button"
-							href="<%=ConstantsUtil.FW_DOMAIN%>/jsp/iframe/editDiary.html">编辑 <icon class="icon-edit icon-white"></icon>
+							href="#">编辑 <icon class="icon-edit icon-white"></icon>
 							
 						</a>
 					</li>

@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.testFW.bo.AlbumBO;
 import com.testFW.bo.DiaryBO;
 import com.testFW.bo.DiaryReplyBO;
 import com.testFW.bo.LeaveMsgBO;
 import com.testFW.bo.UserBO;
 import com.testFW.bo.UserInfoBO;
+import com.testFW.service.AlbumService;
 import com.testFW.service.DiaryService;
 import com.testFW.service.UserService;
 import com.testFW.util.UserUtil;
@@ -35,7 +37,12 @@ public class SystemServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(SystemServlet.class);
 	private UserService userService;
 	private DiaryService diaryService;
+	private AlbumService albumService;
 	
+	
+	public void setAlbumService(AlbumService albumService) {
+		this.albumService = albumService;
+	}
 	public void setDiaryService(DiaryService diaryService) {
 		this.diaryService = diaryService;
 	}
@@ -213,8 +220,16 @@ public class SystemServlet extends HttpServlet {
 	private String showPicture(HttpServletRequest req, HttpServletResponse resp) {
 		String param = req.getParameter("p1");
 		if(param==null) {
+			//获取系统所有的图册
+			List<AlbumBO> albums = albumService.getAllAlbums();
+			req.setAttribute("albums", albums);
 			return "/jsp/picturePage.jsp";
 		}else{
+			//获取图册信息
+			AlbumBO album = albumService.getAlbumById(param);
+			req.setAttribute("album", album);
+			//获取图册内相片列表信息
+			
 			return "/jsp/pictureDetail.jsp";
 		}
 	}
