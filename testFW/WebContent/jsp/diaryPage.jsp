@@ -143,7 +143,7 @@
 					%>
 					<li>
 						<a class="btn btn-info btn-small button"
-							href="#">编辑 <icon class="icon-edit icon-white"></icon>
+							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/showeditdiary/<%=diary.getId()%>">编辑 <icon class="icon-edit icon-white"></icon>
 							
 						</a>
 					</li>

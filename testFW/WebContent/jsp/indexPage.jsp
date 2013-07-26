@@ -44,8 +44,7 @@
 		user = new UserBO();
 	} else {
 		hasLogin = true;
-		userDiaryNum = (String) request
-		.getAttribute("userDiaryNum");
+		userDiaryNum = (String) request.getAttribute("userDiaryNum");
 	}
 	if (visitedUser == null) {
 		visitedUser = new UserBO();
@@ -58,11 +57,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- 网站公用顶部 -->
-<jsp:include page="/jsp/common/head.jsp" flush="true" >
-	<jsp:param value="<%=hasLogin %>" name="hasLogin"/>
-	<jsp:param value="<%=user.getName() %>" name="userName"/>
-	<jsp:param value="<%=user.getId() %>" name="userId"/>
-	<jsp:param value="<%=fun %>" name="fun"/>
+<jsp:include page="/jsp/common/head.jsp" flush="true">
+	<jsp:param value="<%=hasLogin %>" name="hasLogin" />
+	<jsp:param value="<%=user.getName() %>" name="userName" />
+	<jsp:param value="<%=user.getId() %>" name="userId" />
+	<jsp:param value="<%=fun %>" name="fun" />
 	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
 
@@ -111,7 +110,9 @@
 			<div class="span3 block-left">
 				<h1>网站动态</h1>
 				<p>注册之后你也会出现在这里，可以发布自己的日志，以及与大家进行交流~</p>
-				<a class="btn btn-info btn-large button" target="_blank" href="#">马上注册~</a>
+				<a data-toggle="modal" data-target="#registModal"
+					data-keyboard="true" data-backdrop="true"
+					class="btn btn-info btn-large button" href="#">马上注册~</a>
 			</div>
 			<div class="span8">
 				<div class="padding-large">
@@ -128,9 +129,9 @@
 								</p>
 								<small><%=DateUtil.formatDate(bo.getPublish_time(), 3)%>
 									<cite title="Source Title"><a href="#"><%=bo.getAuthor_name()%></a>
-								</cite>
-								</small>
-							</blockquote></li>
+								</cite> </small>
+							</blockquote>
+						</li>
 						<%
 							}
 							for (UserBO bo : dynamicVO.getDynamicPart2()) {
@@ -141,7 +142,8 @@
 									在<%=DateUtil.formatDate(bo.getReg_time(), 2)%>这个值得纪念的时刻，<a
 										href="#"><%=bo.getName()%></a>加入了~WN Java~这个大家庭，撒花欢迎~~
 								</p>
-							</blockquote></li>
+							</blockquote>
+						</li>
 						<%
 							}
 						%>
@@ -158,21 +160,26 @@
 				<div class="carousel slide" id="picCarousel">
 					<div class="carousel-inner">
 						<div class="item active">
-							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg" class="span8"/>
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/1/1_1.jpg"
+								class="span8" />
 							<div class="container">
 								<div class="carousel-caption">
-									<p><em>WNJava网站首页演变轨迹...</em></p>
+									<p>
+										<em>WNJava网站首页演变轨迹...</em>
+									</p>
 								</div>
 							</div>
 
 						</div>
 						<div class="item">
-							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/2/2_1.jpg"/>
+							<img alt="" src="<%=ConstantsUtil.FW_DOMAIN%>/album/1/2/2_1.jpg" />
 							<div class="carousel-caption">
-								<p><em>0713北戴河之旅</em></p>
+								<p>
+									<em>0713北戴河之旅</em>
+								</p>
 							</div>
 						</div>
-						 
+
 					</div>
 					<a data-slide="prev" href="#picCarousel"
 						class="left carousel-control">‹</a> <a data-slide="next"
@@ -182,7 +189,7 @@
 			<div class="span3 padding-large">
 				<h1>图册概览</h1>
 				<p>一些预设的图片，目前尚未开放图册上传功能~后续会进行开发。</p>
-				<a class="btn btn-info btn-large button" target="_blank" href="#">查看全部</a>
+				<a class="btn btn-info btn-large button" target="_blank" href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture">查看全部</a>
 			</div>
 		</div>
 	</div>
@@ -202,23 +209,16 @@
 					</p>
 				</div>
 				<div class="aboutProcess span3">
-						<h3>>WNJAVA历程</h3>
-						<ol>
-							<li>构建开发环境<em>(12/07~14)</em>
-							</li>
-							<li>完成主体框架<em>(12/10~19)</em>
-							</li>
-							<li>前台页面设计<em>(12/18~1/13)</em>
-							</li>
-							<li>逻辑功能实现<em>(1/14~2/25)</em>
-							</li>
-							<li>beta版上线<em>(2/26)</em>
-							</li>
-							<li>日志模块完成<em>(4/3)</em>
-							</li>
-							<li>开始开发ChatBear模块<em>(5/27)</em>
-							</li>
-						</ol>
+					<h3>>WNJAVA历程</h3>
+					<ol>
+						<li>构建开发环境<em>(12/07~14)</em></li>
+						<li>完成主体框架<em>(12/10~19)</em></li>
+						<li>前台页面设计<em>(12/18~1/13)</em></li>
+						<li>逻辑功能实现<em>(1/14~2/25)</em></li>
+						<li>beta版上线<em>(2/26)</em></li>
+						<li>日志模块完成<em>(4/3)</em></li>
+						<li>开始开发ChatBear模块<em>(5/27)</em></li>
+					</ol>
 				</div>
 				<div class="aboutFW span10">
 					<h3>>关于WNJAVA</h3>
@@ -228,7 +228,7 @@
 						小站刚刚起步，还有许多功能需要完善，还有许多样式需要调整，慢慢写吧~
 					</p>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

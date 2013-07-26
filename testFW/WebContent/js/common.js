@@ -151,3 +151,38 @@ function userQuit() {
  	});
 }
 
+function leaveMsg() {
+	var type = $("#leave-msg-type").val();
+	var content = $("#leave-msg-content").val();
+	 
+		if (content == "") {
+			showErrorMsg("还什么都没写哦~");
+			return;
+		}
+		$.ajax({
+			type : "POST",
+			url : "/action/user/leavemsg",
+			data : {
+				msg : content,
+				type : type
+			},
+			dataType : "text",
+			success : function(msg) {
+				if ("success" == msg) {
+					showSuccessMsg("留言成功~");
+					$('#leaveMsgModal').modal('hide');
+				} else {
+					showErrorMsg("对不起,留言失败~系统正在维护中...");
+				}
+			}
+		});
+}
+
+
+
+
+
+
+
+
+

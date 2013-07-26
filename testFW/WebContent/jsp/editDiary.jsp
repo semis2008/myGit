@@ -24,6 +24,11 @@
 		userDiaryNum = (String) request
 		.getAttribute("userDiaryNum");
 	}
+	
+	DiaryBO diary = (DiaryBO)request.getAttribute("diary");
+	if(diary==null) {
+		diary = new DiaryBO();
+	}
 %>
 <html>
 <head>
@@ -49,7 +54,9 @@
 		$('#editor').wysiwyg();
 	});
 
-	function newDiary() {
+	function editDiary() {
+		debugger;
+		var diaryid = $("#diaryid").val();
 		var diaryContent = $("#editor").html();
 		if (diaryContent == "") {
 			showErrorMsg("内容不能为空！");
@@ -65,8 +72,9 @@
 		$
 				.ajax({
 					type : "POST",
-					url : "/action/diary/newdiary",
+					url : "/action/diary/editdiary",
 					data : {
+						id : diaryid,
 						title : title,
 						tags : tags,
 						diaryContent : diaryContent
@@ -77,16 +85,16 @@
 							showErrorMsg("上传的图片总大小不能超过12M!");
 							return false;
 						} else if (msg < 0) {
-							showErrorMsg("发布失败，系统正在维护中...");
+							showErrorMsg("修改失败，系统正在维护中...");
 							return false;
 						} else {
-							showSuccessMsg("发布成功！点击查看<a target='_self' href='../system/diarydetail/"+msg+"'>日志详情</a>~");
+							showSuccessMsg("修改成功！点击查看<a target='_self' href='../diarydetail/"+diaryid+"'>日志详情</a>~");
 						}
 					}
 				});
 	}
 </script>
-<title>wnJava--写日志</title>
+<title>wnJava--编辑日志</title>
 </head>
 <body>
 	<div class="bookmark">
@@ -97,14 +105,15 @@
 			<li><a href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary">日志</a>
 				<span class="divider">/</span>
 			</li>
-			<li class="active">写日志</li>
+			<li class="active">编辑日志</li>
 		</ul>
 	</div>
 	<div class="container">
+		<input type="hidden" id="diaryid" value="<%=diary.getId() %>"/>
 		<div class="padding-small">
 			<div class="input-prepend">
 				<span class="add-on"><i class="icon-quote-left"></i> </span><input
-					type="text" id="diaryTitle" name="diaryTitle" class="span6"
+					type="text" id="diaryTitle" name="diaryTitle" class="span6" value="<%=diary.getTitle() %>"
 					placeholder="点击输入标题" required />
 			</div>
 			<span class="muted">标题尽量简明扼要要好哦~</span>
@@ -209,18 +218,18 @@
 					x-webkit-speech="" style="display: none;" />
 			</div>
 
-			<div id="editor" contenteditable="true"></div>
+			<div id="editor" contenteditable="true"><%=diary.getContent() %></div>
 		</div>
 		<div class="padding-small">
 			<div class="input-prepend">
-				<span class="add-on"><i class="icon-tags"></i> </span><input
+				<span class="add-on"><i class="icon-tags"></i> </span><input value="<%=diary.getTags().replaceAll("_"," ") %>"
 					type="text" id="diaryTags" name="diaryTags" class="input-large"
 					placeholder="标签" required />
 			</div>
 			<small class="muted">不同标签之间用空格隔开即可~</small>
 		</div>
 		<div class="padding-small margin-bottom-middle">
-			<button class="btn btn-success" onclick="newDiary()">发布</button>
+			<button class="btn btn-success" onclick="editDiary()">确认修改</button>
 			<button type="reset" class="btn">清空</button>
 		</div>
 	</div>

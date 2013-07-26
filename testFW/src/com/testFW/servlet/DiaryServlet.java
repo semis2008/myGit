@@ -49,8 +49,10 @@ public class DiaryServlet extends HttpServlet {
 			newReply(req, resp);
 		} else if ("delete".equals(fun)) {
 			deleteDiary(req, resp);
-		}  else if ("getdiaryinfo".equals(fun)) {
+		} else if ("getdiaryinfo".equals(fun)) {
 			getDiaryInfo(req, resp);
+		} else if ("editdiary".equals(fun)) {
+			editDiary(req, resp);
 		}
 	}
 
@@ -88,6 +90,22 @@ public class DiaryServlet extends HttpServlet {
 			msg = result + "";
 		}
 		out.print(msg);
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 编辑日志
+	 * 
+	 * @param req
+	 * @param resp
+	 * @throws IOException
+	 */
+	private void editDiary(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
+		String result = diaryService.editDiary(req, resp);
+		out.print(result);
 		out.flush();
 		out.close();
 	}

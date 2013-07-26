@@ -125,7 +125,8 @@
 										class="icon-pencil icon-black"></i> 写日志</a>
 								<li><a href="#" onclick="showErrorMsg('你没有发图册的权限哦~')"><i class="icon-picture icon-black"></i>
 										发图册</a>
-								<li><a href="#"><i class="icon-comment icon-black"></i>
+								<li><a href="#"  data-toggle="modal" data-target="#leaveMsgModal"
+							data-keyboard="true" data-backdrop="true"><i class="icon-comment icon-black"></i>
 										留言</a>
 								<li class="divider"></li>
 								<li><a href="#" onclick="userQuit();"><i class="icon-off icon-black"></i> 注销</a>
@@ -160,6 +161,43 @@
 					type="checkbox" id="rememberMe" name="rememberMe" /> 记住我 </label>
 				<button onclick="userLogin()" class="btn btn-primary">登录</button>
 			</div>
+		</div>
+	</div>
+	<!-- 留言 -->
+	<div class="modal hide fade" id="leaveMsgModal">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>
+				<span class="label label-info"><i
+					class="icon-user icon-white"></i>欢迎您留言给我,不管是提交bug还是吐槽本网站，欢迎欢迎哈~~</span>
+			</h3>
+		</div>
+		<div class="modal-body span7">
+			 <fieldset>
+				   <div class="control-group">
+						<label class="control-label muted" for="input01">留言类型</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-comments-alt"></i> </span>
+								<select id="leave-msg-type">
+									<option value="1">我发现了bug！</option>
+									<option value="2">吐槽吐槽你这网站...</option>
+									<option value="3">求交往！~</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					   <div class="control-group">
+						<div class="controls">
+							<textarea rows="4" class="span5" id="leave-msg-content" placeholder="留言内容"></textarea>
+						</div>
+					</div>
+				   
+					<div class="control-group">
+						<button class="btn btn-primary offset1" onclick="leaveMsg();">提交</button>
+						<button  data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
+					</div>
+				</fieldset>
 		</div>
 	</div>
 	<!-- 注册 -->

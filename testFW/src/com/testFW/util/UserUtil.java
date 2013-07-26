@@ -80,6 +80,9 @@ public class UserUtil {
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		UserBO user = (UserBO) session.getAttribute("visitedUser");
+		if(user==null) {
+			user = buildAdminUser(); 
+		}
 		return user;
 	}
 	 

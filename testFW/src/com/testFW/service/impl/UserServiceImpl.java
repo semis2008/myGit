@@ -77,26 +77,12 @@ public class UserServiceImpl implements UserService{
 		UserBO visitedUser = UserUtil.getVisitedUser(req, resp);
 		String type = req.getParameter("type");
 		String msg = req.getParameter("msg");
-		String email = "";
-		String name = "";
-		int num = 0;
-		if("login".equals(type)) {
-			UserBO loginUser = UserUtil.getLoginUser(req, resp);
-			email = loginUser.getEmail();
-			name = loginUser.getName();
-			userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId(),loginUser.getId(),loginUser.getPhoto());
-		}else if("logout".equals(type)) {
-			email = req.getParameter("email");
-			name = req.getParameter("name");
-			userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId(),null,ConstantsUtil.DEFAULT_HEAD_PHOTO);
-		}else {
-			return false;
-		}
-		if(num<1) {
-			return false;
-		}else {
-			return true;
-		}
+	 	UserBO loginUser = UserUtil.getLoginUser(req, resp);
+		String email = loginUser.getEmail();
+		String name = loginUser.getName();
+		int result = userDao.insertLeaveMsg(email,name,msg,type,visitedUser.getId(),loginUser.getId(),loginUser.getPhoto());
+		if(result<0) return false;
+		return true;
 	}
 	
 	@Override

@@ -46,7 +46,7 @@
 	 <init-param>
 	 	<!-- 忽略Xss攻击的url -->
 	 	<param-name>ignoreUrl</param-name>
-	 	<param-value>/action/diary/newdiary</param-value>
+	 	<param-value>/action/diary/newdiary,/action/diary/editdiary</param-value>
 	 </init-param>
   </filter>
   <filter-mapping>
@@ -118,7 +118,7 @@
  	<servlet>
 		<servlet-name>autoCrawl</servlet-name>
 		<servlet-class>com.chatBear.spider.AutoCrawl</servlet-class>
-		<load-on-startup>1</load-on-startup>
+		<!-- <load-on-startup>1</load-on-startup> -->
 	</servlet>
  	<!-- 获取推送信息 -->
 	<servlet>

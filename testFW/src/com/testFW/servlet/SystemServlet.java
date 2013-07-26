@@ -80,8 +80,10 @@ public class SystemServlet extends HttpServlet {
 			targetpath = "/jsp/aboutPage.jsp";
 		}else if ("index".equals(fun)) {
 			targetpath = showIndexPage(req, resp);
-		}if ("shownewdiary".equals(fun)) {
+		}else if ("shownewdiary".equals(fun)) {
 			targetpath = showNewDiary(req, resp);
+		}else if ("showeditdiary".equals(fun)) {
+			targetpath = showEditDiary(req, resp);
 		}
 		
 		UserBO user = UserUtil.getLoginUser(req, resp);
@@ -189,6 +191,19 @@ public class SystemServlet extends HttpServlet {
 	 */
 	private String showNewDiary(HttpServletRequest req, HttpServletResponse resp) {
 		return "/jsp/newDiary.jsp";
+	}
+	
+	/**
+	 * 显示编辑日志页面
+	 * @param req
+	 * @param resp
+	 */
+	private String showEditDiary(HttpServletRequest req, HttpServletResponse resp) {
+		//获取日志信息，代入
+		String diaryId = req.getParameter("p1");
+		DiaryBO diary = diaryService.getDiaryByID(diaryId);
+		req.setAttribute("diary", diary);
+		return "/jsp/editDiary.jsp";
 	}
 	
 	/**

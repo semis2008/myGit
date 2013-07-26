@@ -55,6 +55,14 @@ public class DiaryDaoImpl implements DiaryDao {
 	}
 
 	@Override
+	public String updateDiary(Long diaryId, String title, String tags,
+			String diaryContent) {
+		String sql = "update diary set title = ? ,tags = ?,content = ? where id = ?";
+		Object[] params = {title,tags,diaryContent,diaryId};
+		return dbUtilsTemplate.update(sql, params)+"";
+	}
+
+	@Override
 	public DiaryBO queryDiaryById(Long diaryId) {
 		String sql = "select * from diary where id = ?";
 		return dbUtilsTemplate.findFirst(DiaryBO.class, sql,diaryId);
