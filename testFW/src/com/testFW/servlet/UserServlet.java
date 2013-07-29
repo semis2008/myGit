@@ -61,6 +61,8 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 
+	
+	
 	/**
 	 * 用户注册
 	 * 
@@ -75,6 +77,7 @@ public class UserServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String pass = req.getParameter("pass");
 		String name = req.getParameter("name");
+		String randImg = req.getParameter("randImg");
 		String msg = "";
 		/*
 		 * 验证邮箱是否已经被注册
@@ -88,6 +91,18 @@ public class UserServlet extends HttpServlet {
 			return;
 		}
 
+		/*
+		 * 判断验证码
+		 */
+		String randCode = UserUtil.getRandCode(req);
+		if(randCode==null||!randCode.equals(randImg)) {
+			msg = "randCode_error";
+			out.print(msg);
+			out.flush();
+			out.close();
+			return;
+		}
+		
 		/*
 		 * 注册
 		 */

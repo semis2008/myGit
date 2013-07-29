@@ -72,6 +72,8 @@ function userRegist() {
 	var name = $.trim($("#txtNameRegist").val());
 	var pass = $.trim($("#txtPasswordRegist").val());
 	var pass_con = $.trim($("#txtPasswordCon").val());
+	var randImg = $("#txtRandImg").val();
+	
 	// 非空验证
 	if (email == "") {
 		showErrorMsg("邮箱不能为空！");
@@ -108,11 +110,15 @@ function userRegist() {
 				data : {
 					email : email,
 					pass : pass,
-					name : name
+					name : name,
+					randImg : randImg
 				},
 				dataType : "text",
 				success : function(msg) {
-					if ("email_error" == msg) {
+					if("randCode_error" == msg) {
+						showErrorMsg("验证码错误！");
+						return;
+					}else if ("email_error" == msg) {
 						showErrorMsg("邮箱已经被注册！");
 						$('#registModal').modal('hide');
 					} else {
@@ -150,7 +156,6 @@ function userQuit() {
 		}
  	});
 }
-
 function leaveMsg() {
 	var type = $("#leave-msg-type").val();
 	var content = $("#leave-msg-content").val();
@@ -177,12 +182,4 @@ function leaveMsg() {
 			}
 		});
 }
-
-
-
-
-
-
-
-
-
+ 

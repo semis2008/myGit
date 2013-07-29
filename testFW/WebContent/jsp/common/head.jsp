@@ -258,6 +258,18 @@
 						</div>
 					</div>
 					<div class="control-group">
+						<label class="control-label" for="input05">请输入验证码</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-asterisk"></i> </span><input class="span2"
+									type="password" size="8" id="txtRandImg"
+									name="txtRandImg" required />
+							</div>
+							<img src="/RandImg" onclick="this.src='/RandImg?d='+Math.random();"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
 						<button class="btn btn-primary offset1" onclick="userRegist();">确认注册</button>
 						<button  data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
 					</div>

@@ -32,6 +32,16 @@ public class UserUtil {
 	}
 	
 	/**
+	 * 获取session中保存的验证码
+	 * @param request
+	 * @return
+	 */
+	public static String getRandCode(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		return (String) session.getAttribute("randCode");
+	}
+	
+	/**
 	 * 添加登录用户session信息
 	 * @param request
 	 * @param bo

@@ -126,6 +126,12 @@
 		<servlet-class>com.chatBear.comet.GetMsgAjax</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet> 
+	<!-- 获取验证码 -->
+	<servlet>
+		<servlet-name>RandImg</servlet-name>
+		<servlet-class>com.testFW.servlet.RandImage</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet> 
  	
  	
 	<!-- Servlet路径配置 --> 
@@ -137,7 +143,10 @@
 		<servlet-name>getMsg</servlet-name>
 		<url-pattern>/getmsgajax.do</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>RandImg</servlet-name>
+		<url-pattern>/RandImg</url-pattern>
+	</servlet-mapping>	
 	
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
