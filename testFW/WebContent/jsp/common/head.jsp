@@ -312,7 +312,7 @@
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/js/common.js"></script>
 	<script type="text/javascript"
-		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/js/jquery-ui-1.8.17.custom.min.js"></script>
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/js/jquery-ui.min.js"></script>
 	<script type="text/javascript"
 		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/js/script.js"></script>
 

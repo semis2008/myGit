@@ -187,7 +187,7 @@ function togglePlayer(){
 	$(".musicbox").toggle(500);
 	$(".musicbox-mini").toggle(500);
 }
-function togglePalyList(){
+function togglePlayList(){
 	$("#playlist").toggle(500);
 	
 }

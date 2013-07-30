@@ -114,7 +114,7 @@
 													String[] tags = diary.getTags().split("_");
 															for (String tag : tags) {
 												%>
-					<li class="tag"><a title="<%=tag%>" href="#"><%=tag%></a> </li>
+					<li class="diary-tag"><a title="<%=tag%>" href="#"><%=tag%></a> </li>
 					<%
 						}
 					%>

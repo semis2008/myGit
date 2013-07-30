@@ -2,42 +2,41 @@
 	// Settings
 	var repeat = localStorage.repeat || 0, shuffle = localStorage.shuffle
 			|| 'false', continous = true, autoplay = false, playlist = [ {
-		title : 'Tell Your World',
-		artist : 'livetune feat. 初音ミク',
-		album : 'Tell Your World',
-		cover : 'cover/tell_your_world.jpg',
-		mp3 : 'music/tell_your_world.mp3',
-		ogg : 'music/tell_your_world.ogg'
+		title : 'inspire',
+		artist : 'Capozio',
+		album : 'Serenity',
+		cover : 'http://www.wnjava.com/music/cover/Serenity.jpg',
+		mp3 : 'http://www.wnjava.com/music/mp3/inspire.mp3',
+		ogg : 'http://www.wnjava.com/music/ogg/inspire.ogg'
 	}, {
-		title : 'Tell Your World',
-		artist : 'livetune feat. 初音ミク',
-		album : 'Tell Your World',
-		cover : 'cover/tell_your_world.jpg',
-		mp3 : 'music/tell_your_world.mp3',
-		ogg : 'music/tell_your_world.ogg'
+		title : 'Journey',
+		artist : 'Capozio',
+		album : 'Serenity',
+		cover : 'http://www.wnjava.com/music/cover/Serenity.jpg',
+		mp3 : 'http://www.wnjava.com/music/mp3/Journey.mp3',
+		ogg : 'http://www.wnjava.com/music/ogg/Journey.ogg'
 	}, {
-		title : 'Tell Your World',
-		artist : 'livetune feat. 初音ミク',
-		album : 'Tell Your World',
-		cover : 'cover/tell_your_world.jpg',
-		mp3 : 'music/tell_your_world.mp3',
-		ogg : 'music/tell_your_world.ogg'
+		title : '上世纪的童话',
+		artist : '雷诺儿',
+		album : '别在我离开之前离开',
+		cover : 'http://www.wnjava.com/music/cover/story.jpg',
+		mp3 : 'http://www.wnjava.com/music/mp3/story.mp3',
+		ogg : 'http://www.wnjava.com/music/ogg/story.ogg'
 	}, {
-		title : 'Tell Your World',
-		artist : 'livetune feat. 初音ミク',
-		album : 'Tell Your World',
-		cover : 'cover/tell_your_world.jpg',
-		mp3 : 'music/tell_your_world.mp3',
-		ogg : 'music/tell_your_world.ogg'
+		title : '夏夕空',
+		artist : '中孝介',
+		album : '心绊情歌 ',
+		cover : 'http://www.wnjava.com/music/cover/xxk.jpg',
+		mp3 : 'http://www.wnjava.com/music/mp3/xxk.mp3',
+		ogg : 'http://www.wnjava.com/music/ogg/xxk.ogg'
 	}, {
-		title : 'Tell Your World',
-		artist : 'livetune feat. 初音ミク',
-		album : 'Tell Your World',
-		cover : 'cover/tell_your_world.jpg',
-		mp3 : 'music/tell_your_world.mp3',
-		ogg : 'music/tell_your_world.ogg'
+		title : 'Lost',
+		artist : 'Capozio',
+		album : 'Serenity',
+		cover : 'http://www.wnjava.com/music/cover/Serenity.jpg',
+		mp3 : 'http://www.wnjava.com/music/mp3/Lost.mp3',
+		ogg : 'http://www.wnjava.com/music/ogg/Lost.ogg'
 	}
-
 	];
 
 	// Load playlist
