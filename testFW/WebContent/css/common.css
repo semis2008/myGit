@@ -64,6 +64,18 @@ article.container {
 .margin-small {
 	margin: 15px;
 }
+.margin-right-middle{
+	margin-right: 15px;
+}
+.margin-right-small{
+	margin-right: 10px;
+}
+.pointer{
+cursor: pointer;
+}
+.fixed{
+	position: fixed;
+}
 
 .padding-top-bottom-middle {
 	padding-top: 50px;
@@ -101,4 +113,21 @@ article.container {
 	
 }
 
-
+.musicbox{
+	top: 40px;
+	right: 0px;
+	background-color: #333;
+	opacity: 0.8;
+	color: white;
+	height: 110px;
+	z-index: 100;
+}
+.musicbox-mini{
+	top: 40px;
+	right: 0px;
+	background-color: #333;
+	opacity: 0.8;
+	color: white;
+	height: 25px;
+	z-index: 100;
+}

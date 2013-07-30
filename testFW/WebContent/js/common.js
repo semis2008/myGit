@@ -182,4 +182,13 @@ function leaveMsg() {
 			}
 		});
 }
+
+function togglePlayer(){
+	$(".musicbox").toggle(500);
+	$(".musicbox-mini").toggle(500);
+}
+function togglePalyList(){
+	$("#playlist").toggle(500);
+	
+}
  

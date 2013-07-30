@@ -24,42 +24,10 @@
 <link type="text/css"
 	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/font_icon/css/font-awesome.css"
 	rel="stylesheet" media="screen" />
+<link type="text/css"
+	href="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/css/stylesheets/style.css"
+	rel="stylesheet" media="screen" />
 
-
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery.scrollLoading.js"></script>
-
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/underscore-1.4.4.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/backbone-0.9.10.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.js"></script>
-<script type="text/javascript"
-	src="<%=ConstantsUtil.FW_DOMAIN%>/js/common.js"></script>
-<script type="text/javascript">
-	$(function() {
-		/* 随机背景 */
-		var bg_num = Math.ceil(Math.random() * 5 + 1);
-		$("#banner-head").addClass("hero-unit0" + bg_num);
-		$(".scrollLoading").scrollLoading();
-	});
-
-	function userQuit() {
-		$.ajax({
-			type : "POST",
-			url : "/action/user/userquit",
-			dataType : "text",
-			success : function(msg) {
-				location.reload();
-			}
-		});
-	}
-</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -72,29 +40,28 @@
 				<div class="nav-collapse collapse navbar-responsive-collapse">
 					<ul class="nav">
 						<%
-						String fun = request.getParameter("fun");
+							String fun = request.getParameter("fun");
 						%>
-						<li <%if(fun.equals("")||fun.equals("index")) {%> class="active"<%} %>><a href="<%=ConstantsUtil.FW_DOMAIN%>"><i
-								class="icon-home icon-white"></i> 首页</a>
-						</li>
-						<li <%if(fun.equals("diarydetail")||fun.equals("diary")) {%> class="active"<%} %>><a
+						<li <%if (fun.equals("") || fun.equals("index")) {%> class="active"
+							<%}%>><a href="<%=ConstantsUtil.FW_DOMAIN%>"><i
+								class="icon-home icon-white"></i> 首页</a></li>
+						<li <%if (fun.equals("diarydetail") || fun.equals("diary")) {%>
+							class="active" <%}%>><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diary"><i
-								class="icon-edit icon-white"></i> 日志</a>
-						</li>
-						<li <%if(fun.equals("picture")) {%> class="active"<%} %>><a
+								class="icon-edit icon-white"></i> 日志</a></li>
+						<li <%if (fun.equals("picture")) {%> class="active" <%}%>><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/picture"><i
-								class="icon-picture icon-white"></i> 图册</a>
-						</li>
+								class="icon-picture icon-white"></i> 图册</a></li>
 						<li><a
 							href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/index#about"><i
-								class="icon-home icon-white"></i> 关于</a>
-						</li>
+								class="icon-home icon-white"></i> 关于</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#registModal" data-keyboard="true"
 							data-backdrop="true"><i class="icon-plus-sign icon-white"></i>
-								注册</a></li>
+								注册</a>
+						</li>
 
 						<%
 							String hasLogin = request.getParameter("hasLogin");
@@ -105,34 +72,38 @@
 						%>
 						<li><a href="#" data-toggle="modal" data-target="#loginModal"
 							data-keyboard="true" data-backdrop="true"><i
-								class="icon-ok icon-white"></i> 登陆</a></li>
+								class="icon-ok icon-white"></i> 登陆</a>
+						</li>
 						<%
 							} else {
-							String userDiaryNum = request.getParameter("userDiaryNum");	
+								String userDiaryNum = request.getParameter("userDiaryNum");
 						%>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=userName%> <b class="caret"></b> </a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="icon-home icon-black"></i>
-										个人主页</a></li>
+										个人主页</a>
+								</li>
 								<li><a href="#"><i class="icon-edit icon-black"></i>
-										日志：<%=userDiaryNum %>篇</a></li>
+										日志：<%=userDiaryNum%>篇</a>
+								</li>
 								<li><a href="#"><i class="icon-picture icon-black"></i>
-										图册：0个</a></li>
+										图册：0个</a>
+								</li>
 								<li class="divider"></li>
 								<li><a
 									href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/shownewdiary"><i
 										class="icon-pencil icon-black"></i> 写日志</a>
-								<li><a href="#" onclick="showErrorMsg('你没有发图册的权限哦~')"><i class="icon-picture icon-black"></i>
-										发图册</a>
-								<li><a href="#"  data-toggle="modal" data-target="#leaveMsgModal"
-							data-keyboard="true" data-backdrop="true"><i class="icon-comment icon-black"></i>
+								<li><a href="#" onclick="showErrorMsg('你没有发图册的权限哦~')"><i
+										class="icon-picture icon-black"></i> 发图册</a>
+								<li><a href="#" data-toggle="modal"
+									data-target="#leaveMsgModal" data-keyboard="true"
+									data-backdrop="true"><i class="icon-comment icon-black"></i>
 										留言</a>
 								<li class="divider"></li>
-								<li><a href="#" onclick="userQuit();"><i class="icon-off icon-black"></i> 注销</a>
-								</li>
-							</ul>
-						</li>
+								<li><a href="#" onclick="userQuit();"><i
+										class="icon-off icon-black"></i> 注销</a></li>
+							</ul></li>
 						<%
 							}
 						%>
@@ -173,31 +144,32 @@
 			</h3>
 		</div>
 		<div class="modal-body span7">
-			 <fieldset>
-				   <div class="control-group">
-						<label class="control-label muted" for="input01">留言类型</label>
-						<div class="controls">
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-comments-alt"></i> </span>
-								<select id="leave-msg-type">
-									<option value="1">我发现了bug！</option>
-									<option value="2">吐槽吐槽你这网站...</option>
-									<option value="3">求交往！~</option>
-								</select>
-							</div>
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label muted" for="input01">留言类型</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-comments-alt"></i> </span> <select
+								id="leave-msg-type">
+								<option value="1">我发现了bug！</option>
+								<option value="2">吐槽吐槽你这网站...</option>
+								<option value="3">求交往！~</option>
+							</select>
 						</div>
 					</div>
-					   <div class="control-group">
-						<div class="controls">
-							<textarea rows="4" class="span5" id="leave-msg-content" placeholder="留言内容"></textarea>
-						</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<textarea rows="4" class="span5" id="leave-msg-content"
+							placeholder="留言内容"></textarea>
 					</div>
-				   
-					<div class="control-group">
-						<button class="btn btn-primary offset1" onclick="leaveMsg();">提交</button>
-						<button  data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
-					</div>
-				</fieldset>
+				</div>
+
+				<div class="control-group">
+					<button class="btn btn-primary offset1" onclick="leaveMsg();">提交</button>
+					<button data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
+				</div>
+			</fieldset>
 		</div>
 	</div>
 	<!-- 注册 -->
@@ -261,21 +233,108 @@
 						<label class="control-label" for="input05">请输入验证码</label>
 						<div class="controls">
 							<div class="input-prepend">
-								<span class="add-on"><i class="icon-asterisk"></i> </span><input class="span2"
-									type="password" size="8" id="txtRandImg"
+								<span class="add-on"><i class="icon-asterisk"></i> </span><input
+									class="span2" type="password" size="8" id="txtRandImg"
 									name="txtRandImg" required />
 							</div>
-							<img src="/RandImg" onclick="this.src='/RandImg?d='+Math.random();"/>
+							<img src="/RandImg"
+								onclick="this.src='/RandImg?d='+Math.random();" />
 						</div>
 					</div>
-					
+
 					<div class="control-group">
 						<button class="btn btn-primary offset1" onclick="userRegist();">确认注册</button>
-						<button  data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
+						<button data-dismiss="modal" aria-hidden="true" class="btn">取消</button>
 					</div>
 				</fieldset>
 			</div>
 		</div>
 	</div>
+	<div class="span4 fixed musicbox panel">
+		<div id="player">
+			<div class="cover"></div>
+			<div class="ctrl">
+				<div class="tool">
+					<icon class="icon-list-ul margin-right-small pointer" onclick="togglePlayList()"></icon>
+					<icon class="icon-resize-small pointer" onclick="togglePlayer()"></icon>
+				</div>
+				<div class="tag">
+					<strong>Title</strong> <span class="artist">Artist</span> <span
+						class="album">Album</span>
+				</div>
+				<div class="control">
+					<div class="left">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="volume right">
+						<div class="mute icon left"></div>
+						<div class="slider left">
+							<div class="pace"></div>
+						</div>
+					</div>
+				</div>
+				<div class="music-progress">
+					<div class="slider">
+						<div class="loaded"></div>
+						<div class="pace"></div>
+					</div>
+					<div class="timer left">0:00</div>
+					<div class="right">
+						<div class="repeat icon"></div>
+						<div class="shuffle icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ul id="playlist"></ul>
+	</div>
+	<div class="span1 fixed musicbox-mini panel hide">
+		<em class="pointer" onclick="togglePlayer()">wnPlayer<icon class="icon-resize-full"></icon></em>
+	</div>
+
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery-1.8.2.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/js/jquery.scrollLoading.js"></script>
+
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/underscore-1.4.4.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/backbone-0.9.10.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/messenger/js/messenger.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/js/common.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/js/common.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/js/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript"
+		src="<%=ConstantsUtil.FW_DOMAIN%>/plugin/musicplayer/js/script.js"></script>
+
+
+	<script type="text/javascript">
+		$(function() {
+			/* 随机背景 */
+			var bg_num = Math.ceil(Math.random() * 5 + 1);
+			$("#banner-head").addClass("hero-unit0" + bg_num);
+			$(".scrollLoading").scrollLoading();
+		});
+
+		function userQuit() {
+			$.ajax({
+				type : "POST",
+				url : "/action/user/userquit",
+				dataType : "text",
+				success : function(msg) {
+					location.reload();
+				}
+			});
+		}
+	</script>
 </body>
 </html>
