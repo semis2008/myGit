@@ -114,11 +114,45 @@
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
 	
+	
+	<servlet>
+  	<servlet-name>albumup</servlet-name>
+  	<servlet-class>org.albumup.control.AlbumUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>albumup</servlet-name>
+  	<url-pattern>/action/albumup</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 图册上传相关，需要整理 -->
+  <servlet>
+  	<servlet-name>imgup</servlet-name>
+  	<servlet-class>org.albumup.control.ImgUploadServlet</servlet-class>
+    <init-param>
+      <param-name>temppath</param-name>
+      <param-value>/temp</param-value>
+    </init-param>  	
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>imgup</servlet-name>
+  	<url-pattern>/action/imgupload</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>imgdown</servlet-name>
+  	<servlet-class>org.albumup.control.ImgDownServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>imgdown</servlet-name>
+  	<url-pattern>/imgs</url-pattern>
+  </servlet-mapping>
+	
+	
  	<!-- 自动爬取servlet -->
  	<servlet>
 		<servlet-name>autoCrawl</servlet-name>
 		<servlet-class>com.chatBear.spider.AutoCrawl</servlet-class>
-		<!-- <load-on-startup>1</load-on-startup> -->
+		<load-on-startup>1</load-on-startup>
 	</servlet>
  	<!-- 获取推送信息 -->
 	<servlet>
