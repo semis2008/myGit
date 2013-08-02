@@ -176,12 +176,12 @@ public class SystemServlet extends HttpServlet {
 		 
 		UserBO visitUser = UserUtil.getVisitedUser(req, resp);
 		List<DiaryBO> diaries =new ArrayList<DiaryBO>();
-		if(visitUser == null) {
+//		if(visitUser == null) {
 			// 没有指定用户，显示所有日志
 			diaries = diaryService.getAllDiaryList(req,resp);
-		}else {
-			diaries = diaryService.getUserDiaryList(req,resp);
-		}
+//		}else {
+//			diaries = diaryService.getUserDiaryList(req,resp);
+//		}
 		req.setAttribute("diaries", diaries);
 		return "/jsp/diaryPage.jsp";
 	}
