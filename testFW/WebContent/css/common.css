@@ -60,7 +60,9 @@ article.container {
 .margin-middle {
 	margin: 30px;
 }
-
+.margin-top-middle{
+	margin-top: 30px;
+}
 .margin-small {
 	margin: 15px;
 }

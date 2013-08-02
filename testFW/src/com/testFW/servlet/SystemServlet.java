@@ -84,6 +84,8 @@ public class SystemServlet extends HttpServlet {
 			targetpath = showNewDiary(req, resp);
 		}else if ("showeditdiary".equals(fun)) {
 			targetpath = showEditDiary(req, resp);
+		}else if ("showalbumup".equals(fun)) {
+			targetpath = showAlbumUp(req, resp);
 		}
 		
 		UserBO user = UserUtil.getLoginUser(req, resp);
@@ -182,6 +184,16 @@ public class SystemServlet extends HttpServlet {
 		}
 		req.setAttribute("diaries", diaries);
 		return "/jsp/diaryPage.jsp";
+	}
+	
+	/**
+	 * 显示上传图册页面
+	 * @param req
+	 * @param resp
+	 */
+	private String showAlbumUp(HttpServletRequest req, HttpServletResponse resp) {
+	
+		return "/jsp/albumup.jsp";
 	}
 	
 	/**

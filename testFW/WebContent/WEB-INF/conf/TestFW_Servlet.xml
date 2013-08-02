@@ -14,4 +14,7 @@
 	</bean>
 	<bean id="Chat" class="com.testFW.servlet.ChatServlet">
 	</bean>
+	<bean id="Album" class="com.testFW.servlet.AlbumServlet">
+		<property name="albumService" ref="AlbumService" />
+	</bean>
 </beans>

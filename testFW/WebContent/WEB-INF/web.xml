@@ -110,20 +110,15 @@
 		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>Album</servlet-name>
+		<servlet-class>com.testFW.servlet.DelegatingServletProxy</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>URLMapping</servlet-name>
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
 	
 	
-	<servlet>
-  	<servlet-name>albumup</servlet-name>
-  	<servlet-class>org.albumup.control.AlbumUpServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>albumup</servlet-name>
-  	<url-pattern>/action/albumup</url-pattern>
-  </servlet-mapping>
-  
   <!-- 图册上传相关，需要整理 -->
   <servlet>
   	<servlet-name>imgup</servlet-name>
@@ -189,6 +184,10 @@
 	<servlet-mapping>
 		<servlet-name>Diary</servlet-name>
 		<url-pattern>/diary.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Album</servlet-name>
+		<url-pattern>/album.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>System</servlet-name>

@@ -46,7 +46,7 @@
 	<jsp:param value="<%=user.getId() %>" name="userId"/>
 	<jsp:param value="<%=userDiaryNum %>" name="userDiaryNum" />
 </jsp:include>
-  <title>ShareTour</title>
+  <title>wnJava--新建图册</title>
   
   <link href="/css/albumup.css" rel="stylesheet" type="text/css" />
   <link href="/css/fineuploader.css" rel="stylesheet" type="text/css" />
@@ -114,39 +114,21 @@
       html[xmlns] .clearfix { display: block; }
       * html .clearfix { height: 1%; }       
     </style>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+   
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Pro</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-            </ul>             
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div> <!-- end nav bar -->  
     <!--  begin container  -->
     <div class="container">
       <div class="row">
-        <div class="span8">
+        <div class="span10 offset1 margin-top-middle">
           <div class="box">
             <div class="box-header">
-              <span class="newalbum">新相册</span>
+              <span class="newalbum">新图册</span>
             </div>
             <!-- box header -->
             <form>
             <div class="box-body">
-                <label for="albumname">相册名：</label>
+                <label for="albumname">图册名：</label>
                 <input type="text" style="width:98%" name="albumname" id="albumname">
                 <div id="imgshow">
           
