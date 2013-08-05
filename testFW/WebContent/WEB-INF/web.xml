@@ -117,32 +117,6 @@
 		<servlet-name>URLMapping</servlet-name>
 		<servlet-class>com.testFW.servlet.URLMappingServlet</servlet-class>
 	</servlet>
-	
-	
-  <!-- 图册上传相关，需要整理 -->
-  <servlet>
-  	<servlet-name>imgup</servlet-name>
-  	<servlet-class>org.albumup.control.ImgUploadServlet</servlet-class>
-    <init-param>
-      <param-name>temppath</param-name>
-      <param-value>/temp</param-value>
-    </init-param>  	
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>imgup</servlet-name>
-  	<url-pattern>/action/imgupload</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>imgdown</servlet-name>
-  	<servlet-class>org.albumup.control.ImgDownServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>imgdown</servlet-name>
-  	<url-pattern>/imgs</url-pattern>
-  </servlet-mapping>
-	
-	
  	<!-- 自动爬取servlet -->
  	<servlet>
 		<servlet-name>autoCrawl</servlet-name>

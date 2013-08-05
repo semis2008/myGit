@@ -29,7 +29,7 @@
 		<hr class="featurette-divider" />
 		&copy; 2013
 		京ICP备13011487号.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		by now , most designed by <a
+		Author : <a
 			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
 	</div>
 </div>
