@@ -83,7 +83,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=userName%> <b class="caret"></b> </a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="icon-home icon-black"></i>
+								<li><a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=userId %>"><i class="icon-home icon-black"></i>
 										个人主页</a></li>
 								<li><a href="#"><i class="icon-edit icon-black"></i>
 										日志：<%=userDiaryNum%>篇</a></li>

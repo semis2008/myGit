@@ -126,7 +126,7 @@
 					</a>
 				</h3>
 				<small>Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span>by<a
-					title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
+					title="查看他发布的所有博文" href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=diary.getAuthor_id() %>"><%=diary.getAuthor_name()%></a> </span>
 				</small>
 		</div>
 			<div class="art-content padding-small">

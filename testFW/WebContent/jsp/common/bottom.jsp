@@ -17,7 +17,9 @@
 			<a href="#">历程</a> <br /> <a href="#">Core Technology</a> <br /></li>
 		<li class="span2"><h5>友情链接：</h5> <a target="_blank"
 			href="http://baipeng.alwaysdata.net">BAI Peng's</a><br /> <a
-			target="_blank" href="http://www.eamonning.com">清泉逐流</a></li>
+			target="_blank" href="http://www.eamonning.com">清泉逐流</a>
+			<br /> <a
+			target="_blank" href="http://www.dandyweng.com/">Dandy Weng</a></li>
 		<li class="span3 pull-right"><p>
 				<img src="<%=ConstantsUtil.FW_DOMAIN%>/img/chat/bear.png"
 					alt="Chat Bear" /><br />
@@ -27,7 +29,7 @@
 		<hr class="featurette-divider" />
 		&copy; 2013
 		京ICP备13011487号.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		all designed by <a
+		by now , most designed by <a
 			href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/mainpage/1">偷懒的熊</a>
 	</div>
 </div>

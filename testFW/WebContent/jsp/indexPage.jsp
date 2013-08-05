@@ -128,7 +128,7 @@
 										href="<%=ConstantsUtil.FW_DOMAIN%>/action/system/diarydetail/<%=bo.getId()%>">看看</a>吧
 								</p>
 								<small><%=DateUtil.formatDate(bo.getPublish_time(), 3)%>
-									<cite title="Source Title"><a href="#"><%=bo.getAuthor_name()%></a>
+									<cite title="<%=bo.getAuthor_name()%>"><a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=bo.getAuthor_id() %>"><%=bo.getAuthor_name()%></a>
 								</cite> </small>
 							</blockquote>
 						</li>
@@ -140,7 +140,7 @@
 							<blockquote>
 								<p>
 									在<%=DateUtil.formatDate(bo.getReg_time(), 2)%>这个值得纪念的时刻，<a
-										href="#"><%=bo.getName()%></a>加入了~WN Java~这个大家庭，撒花欢迎~~
+										href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=bo.getId() %>"><%=bo.getName()%></a>加入了~WN Java~这个大家庭，撒花欢迎~~
 								</p>
 							</blockquote>
 						</li>

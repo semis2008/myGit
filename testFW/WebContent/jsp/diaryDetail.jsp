@@ -164,7 +164,7 @@
 					</a>
 				</h3>
 				<small>Posted on <a title="发布日期" href="#"><%=DateUtil.formatDate(diary.getPublish_time(), 3)%></a><span>by<a
-					title="查看他发布的所有博文" href="#"><%=diary.getAuthor_name()%></a> </span>
+					title="查看他发布的所有博文" href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=diary.getAuthor_id() %>"><%=diary.getAuthor_name()%></a> </span>
 				</small>
 		</div>
 			<hr class="soften" />
@@ -228,7 +228,7 @@
 							<% 
 								if (reply.getParent_id() > 0l) {
 							%>
-								<small>回复 <em><a href="#"><%=reply.getParent_name() %></a></em></small>
+								<small>回复 <em><a href="<%=ConstantsUtil.FW_DOMAIN %>/action/system/mainpage/<%=reply.getParent_id() %>"><%=reply.getParent_name() %></a></em></small>
 							<%
 								}
 							%>
